@@ -1,0 +1,40 @@
+---
+title: "The Everlasting Covenant"
+titleTl: "Ang Walang Hanggang Tipan"
+category: "eternal-covenant"
+icon: "Infinity"
+searchKeywords: "covenant eternal everlasting peace blood"
+searchKeywordsTl: "tipan walang hanggan kapayapaan dugo"
+searchContent: "The eternal covenant is God's promise of peace and salvation through the blood of the everlasting covenant. It is a relationship established by God with His people that shall never be removed."
+searchContentTl: "Ang walang hanggang tipan ay ang pangako ng Diyos ng kapayapaan at kaligtasan sa pamamagitan ng dugo ng walang hanggang tipan. Ito ay isang relasyong itinatag ng Diyos sa Kaniyang bayan na hindi kailanman maaalis."
+---
+import { ScriptureLink } from '../../scriptureData';
+import { 
+  Book, Scroll, PenTool, ShieldCheck, Compass, Zap, Globe, History, Search, 
+  ArrowLeft, X, ChevronRight, Clock, CheckCircle2, Scale, Users, Flame, Eye, 
+  Infinity, Heart, Tag, Droplets, Presentation, ExternalLink, FileText, Star 
+} from 'lucide-react';
+
+<div className="space-y-3">
+          <p className="text-base leading-snug">
+            {props.lang === 'en'
+              ? "The eternal covenant is God's promise of peace and salvation through the blood of the everlasting covenant. It is a relationship established by God with His people that shall never be removed."
+              : "Ang walang hanggang tipan ay ang pangako ng Diyos ng kapayapaan at kaligtasan sa pamamagitan ng dugo ng walang hanggang tipan. Ito ay isang relasyong itinatag ng Diyos sa Kaniyang bayan na hindi kailanman maaalis."}
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <div className="bg-brand-blue/5 p-3 rounded-lg border-l-4 border-brand-gold">
+              <span className="font-bold block mb-1">
+                <ScriptureLink verse="Hebrews 13:20" onHover={props.onHover}>Hebrews 13:20</ScriptureLink>
+              </span>
+              <p className="text-sm italic">"Now the God of peace, that brought again from the dead our Lord Jesus, that great shepherd of the sheep, through the blood of the everlasting covenant,"</p>
+            </div>
+            <div className="bg-brand-blue/5 p-3 rounded-lg border-l-4 border-brand-gold">
+              <span className="font-bold block mb-1">
+                <ScriptureLink verse="Isaiah 54:10" onHover={props.onHover}>Isaiah 54:10</ScriptureLink>
+              </span>
+              <p className="text-sm italic">"For the mountains shall depart, and the hills be removed; but my kindness shall not depart from thee, neither shall the covenant of my peace be removed, saith the Lord that hath mercy on thee."</p>
+            </div>
+          </div>
+        
+
+</div>

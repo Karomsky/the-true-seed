@@ -1,0 +1,37 @@
+---
+title: "The Requirement to be Born Again"
+titleTl: "Ang Kinakailangan upang Maipanganak na Muli"
+category: "true-church"
+icon: "ShieldCheck"
+searchKeywords: "born again water spirit john 3:5 baptism"
+searchKeywordsTl: "maipanganak na muli tubig espiritu juan 3:5 bautismo"
+searchContent: "Entering the kingdom of God requires a true spiritual rebirth—being born of water and the Spirit through baptism into the Body of Christ."
+searchContentTl: "Ang pagpasok sa kaharian ng Diyos ay nangangailangan ng tunay na espirituwal na muling pagsilang—ang maipanganak sa tubig at sa Espiritu sa pamamagitan ng bautismo sa Katawan ni Cristo."
+---
+import { ScriptureLink } from '../../scriptureData';
+import { 
+  Book, Scroll, PenTool, ShieldCheck, Compass, Zap, Globe, History, Search, 
+  ArrowLeft, X, ChevronRight, Clock, CheckCircle2, Scale, Users, Flame, Eye, 
+  Infinity, Heart, Tag, Droplets, Presentation, ExternalLink, FileText, Star 
+} from 'lucide-react';
+
+<div className="space-y-3">
+          <p className="text-base leading-snug">
+            {props.lang === 'en'
+              ? "Jesus told Nicodemus: 'Unless one is born of water and the Spirit, he cannot enter the kingdom of God' (John 3:5). This is not just a profession of faith; it is a spiritual creation."
+              : "Sinabi ni Jesus kay Nicodemo: 'Maliban na ang tao'y ipanganak ng tubig at ng Espiritu, ay hindi siya makakapasok sa kaharian ng Dios' (Juan 3:5). Hindi lamang ito pagpapahayag ng pananampalataya; ito ay isang espirituwal na paglikha."}
+          </p>
+          <p className="text-base leading-snug">
+            {props.lang === 'en'
+              ? "Baptism is the definitive entry point. By being buried with Christ in baptism, we put off the 'Old Man' and put on the 'New Man' (Eph 4:22, 24), becoming a new creation in Christ (2 Cor 5:17)."
+              : "Ang bautismo ang tiyak na entry point. Sa pagkalibing na kasama ni Cristo sa bautismo, hinuhubad natin ang 'Lumang Tao' at isinusuot ang 'Bagong Tao' (Eph 4:22, 24), na nagiging isang bagong nilalang kay Cristo (2 Cor 5:17)."}
+          </p>
+          <div className="bg-brand-blue/5 p-3 rounded-lg border-l-4 border-brand-gold">
+            <span className="font-bold block mb-1">
+              <ScriptureLink verse="John 3:5" onHover={props.onHover}>John 3:5</ScriptureLink>
+            </span>
+            <p className="text-sm italic">"...unless one is born of water and the Spirit, he cannot enter the kingdom of God."</p>
+          </div>
+        
+
+</div>

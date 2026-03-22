@@ -1,0 +1,42 @@
+---
+title: "The Ends of the Earth"
+titleTl: "Ang mga Wakas ng Lupa"
+category: "messenger"
+icon: "Clock"
+searchKeywords: "ends of the earth time period prophecy july 27 1914 world war i wwi matthew 24:3 6-7 isaiah 43:5-6"
+searchKeywordsTl: "mga wakas ng lupa yugto ng panahon hula hulyo 27 1914 unang digmaang pandaigdig mateo 24:3 6-7 isaias 43:5-6"
+searchContent: "The 'ends of the earth' is a specific time period starting on July 27, 1914, marked by the outbreak of World War I. This fulfills the prophecy in Matthew 24:3, 6-7 and Isaiah 43:5-6."
+searchContentTl: "Ang 'mga wakas ng lupa' ay isang tiyak na yugto ng panahon na nagsimula noong Hulyo 27, 1914, na minarkahan ng pagsiklab ng Unang Digmaang Pandaigdig. Tinutupad nito ang hula sa Mateo 24:3, 6-7 at Isaias 43:5-6."
+---
+import { ScriptureLink } from '../../scriptureData';
+import { 
+  Book, Scroll, PenTool, ShieldCheck, Compass, Zap, Globe, History, Search, 
+  ArrowLeft, X, ChevronRight, Clock, CheckCircle2, Scale, Users, Flame, Eye, 
+  Infinity, Heart, Tag, Droplets, Presentation, ExternalLink, FileText, Star 
+} from 'lucide-react';
+
+<div className="space-y-3">
+          <p className="text-base leading-snug">
+            {props.lang === 'en'
+              ? "The 'ends of the earth' refers to a specific time period in the last days, beginning with the outbreak of a world war. This was fulfilled on July 27, 1914."
+              : "Ang 'mga wakas ng lupa' ay tumutukoy sa isang tiyak na yugto ng panahon sa mga huling araw, na nagsisimula sa pagsiklab ng isang digmaang pandaigdig. Ito ay natupad noong Hulyo 27, 1914."}
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <div className="p-3 bg-white border border-gray-100 rounded-xl shadow-sm">
+              <div className="text-brand-gold font-bold text-xs uppercase mb-1">{props.lang === 'en' ? "The Sign" : "Ang Tanda"}</div>
+              <div className="font-bold">{props.lang === 'en' ? "World War I" : "Unang Digmaang Pandaigdig"}</div>
+              <p className="text-xs text-gray-500 mt-1"><ScriptureLink verse="Matthew 24:6" onHover={props.onHover}>Matthew 24:6-7</ScriptureLink> - {props.lang === 'en' ? "Nation shall rise against nation." : "Bansa laban sa bansa."}</p>
+            </div>
+            <div className="p-3 bg-white border border-gray-100 rounded-xl shadow-sm">
+              <div className="text-brand-gold font-bold text-xs uppercase mb-1">{props.lang === 'en' ? "The Date" : "Ang Petsa"}</div>
+              <div className="font-bold">July 27, 1914</div>
+              <p className="text-xs text-gray-500 mt-1">{props.lang === 'en' ? "The official start of the Great War." : "Ang opisyal na simula ng Dakilang Digmaan."}</p>
+            </div>
+          </div>
+          <div className="p-3 bg-brand-blue/5 rounded-xl border border-brand-blue/10">
+            <h4 className="font-bold text-brand-blue mb-1">{props.lang === 'en' ? "Gathering from the East" : "Pagtitipon mula sa Silangan"}</h4>
+            <p className="text-xs text-gray-600"><ScriptureLink verse="Isaiah 43:5" onHover={props.onHover}>Isaiah 43:5-6</ScriptureLink> - {props.lang === 'en' ? "God's children gathered from the east and west in this period." : "Ang mga anak ng Diyos ay titipunin mula sa silangan at kanluran sa panahong ito."}</p>
+          </div>
+        
+
+</div>

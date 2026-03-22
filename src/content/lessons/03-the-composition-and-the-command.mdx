@@ -1,0 +1,49 @@
+---
+title: "The Composition and the Command"
+titleTl: "Ang Komposisyon at ang Utos"
+category: "bible"
+icon: "ShieldCheck"
+searchKeywords: "66 books 40 writers contradictions 1 cor 4:6 rev 22:18-19"
+searchKeywordsTl: "66 aklat 40 manunulat kontradiksyon 1 cor 4:6 apoc 22:18-19"
+searchContent: "The Bible was written by ~40 writers over various eras but contains zero doctrinal contradictions. We are commanded not to go beyond what is written (1 Cor 4:6)."
+searchContentTl: "Ang Biblia ay isinulat ng ~40 manunulat sa iba't ibang panahon ngunit walang doctrinal na kontradiksyon. Inutusan tayong huwag hihigit sa mga bagay na nasusulat (1 Cor 4:6)."
+---
+import { ScriptureLink } from '../../scriptureData';
+import { 
+  Book, Scroll, PenTool, ShieldCheck, Compass, Zap, Globe, History, Search, 
+  ArrowLeft, X, ChevronRight, Clock, CheckCircle2, Scale, Users, Flame, Eye, 
+  Infinity, Heart, Tag, Droplets, Presentation, ExternalLink, FileText, Star 
+} from 'lucide-react';
+
+<div className="space-y-3">
+          <p className="text-base leading-snug">
+            {props.lang === 'en'
+              ? "Written by approximately 40 different writers spanning various eras and backgrounds, the 66 books (39 OT, 27 NT) contain zero doctrinal contradictions. It operates as a unified spiritual masterpiece."
+              : "Isinulat ng humigit-kumulang 40 iba't ibang manunulat na sumasaklaw sa iba't ibang panahon at pinagmulan, ang 66 na aklat (39 OT, 27 NT) ay walang doctrinal na kontradiksyon. Gumagana ito bilang isang nagkakaisang espirituwal na obra maestra."}
+          </p>
+          <div className="bg-brand-dark text-white p-3 rounded-xl shadow-inner">
+            <div className="flex justify-around text-center">
+              <div>
+                <div className="text-4xl font-bold text-brand-gold">66</div>
+                <div className="text-xs uppercase tracking-widest mt-1">Canonical Books</div>
+              </div>
+              <div className="text-4xl font-light opacity-30">|</div>
+              <div>
+                <div className="text-4xl font-bold text-brand-gold">40</div>
+                <div className="text-xs uppercase tracking-widest mt-1">Writers</div>
+              </div>
+              <div className="text-4xl font-light opacity-30">|</div>
+              <div>
+                <div className="text-4xl font-bold text-brand-gold">0</div>
+                <div className="text-xs uppercase tracking-widest mt-1">Contradictions</div>
+              </div>
+            </div>
+          </div>
+          <div className="bg-brand-gold/10 p-3 rounded-lg border-l-4 border-brand-gold">
+            <span className="font-bold block mb-1">{props.lang === 'en' ? "The Strict Command" : "Ang Mahigpit na Utos"}</span>
+            <p className="text-sm italic">"Do not go beyond what is written." (1 Cor 4:6)</p>
+            <p className="text-xs mt-2 text-red-600 font-semibold">{props.lang === 'en' ? "Penalty: Divine plagues and removal from the Holy City (Rev 22:18-19)." : "Parusa: Mga salot ng Diyos at pag-aalis sa Banal na Lungsod (Apoc 22:18-19)."}</p>
+          </div>
+        
+
+</div>

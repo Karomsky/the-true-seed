@@ -1,0 +1,38 @@
+---
+title: "The Divine Revelation"
+titleTl: "Ang Banal na Pahayag"
+category: "bible"
+icon: "Zap"
+searchKeywords: "prophets chosen mouths speak revelation finger of god"
+searchKeywordsTl: "propeta pinili bibig salita pahayag daliri ng diyos"
+searchContent: "God's words originated from Him. He used various methods: writing with His 'finger' (Deut 9:10), placing words in prophets' mouths (Jer 1:9), and speaking through Christ (Heb 1:1-2)."
+searchContentTl: "Ang mga salita ng Diyos ay nagmula sa Kaniya. Gumamit Siya ng iba't ibang paraan: pagsulat gamit ang Kaniyang 'daliri' (Deut 9:10), paglalagay ng mga salita sa bibig ng mga propeta (Jer 1:9), at pagsasalita sa pamamagitan ni Cristo (Heb 1:1-2)."
+---
+import { ScriptureLink } from '../../scriptureData';
+
+<div className="space-y-3">
+  <p className="text-base leading-snug">
+    {props.lang === 'en' 
+      ? "The Bible is the highly engineered Word of God. It was revealed through various authorized channels: the 'Finger of God' for the Commandments, the 'Mouth of the Prophet' for specific messages, and finally through the Ultimate Messenger, Jesus Christ."
+      : "Ang Biblia ay ang mataas na pagkaka-engineer na Salita ng Diyos. Ito ay inihayag sa pamamagitan ng iba't ibang awtorisadong channel: ang 'Daliri ng Diyos' para sa mga Kautusan, ang 'Bibig ng Propeta' para sa mga partikular na mensahe, at sa huli ay sa pamamagitan ng Pinakadakilang Sugo, si Jesucristo."}
+  </p>
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+    <div className="bg-brand-blue/5 p-3 rounded-lg border-l-4 border-brand-gold">
+      <span className="font-bold block mb-1">
+        <ScriptureLink verse="Deuteronomy 9:10" onHover={props.onHover}>Deuteronomy 9:10</ScriptureLink>
+      </span>
+      <p className="text-sm italic">"...two tablets of stone written with the finger of God."</p>
+    </div>
+    <div className="bg-brand-blue/5 p-3 rounded-lg border-l-4 border-brand-gold">
+      <span className="font-bold block mb-1">
+        <ScriptureLink verse="Jeremiah 1:9" onHover={props.onHover}>Jeremiah 1:9</ScriptureLink>
+      </span>
+      <p className="text-sm italic">"Behold, I have put my words in thy mouth."</p>
+    </div>
+  </div>
+  <p className="text-base leading-snug">
+    {props.lang === 'en'
+      ? "God also revealed truths through Direct Voice (Moses), Angelic Messengers (Gabriel), and Visions & Dreams to chosen prophets."
+      : "Inihayag din ng Diyos ang mga katotohanan sa pamamagitan ng Tuwirang Tinig (Moises), mga Anghel na Sugo (Gabriel), at mga Paningin at Panaginip sa mga piniling propeta."}
+  </p>
+</div>

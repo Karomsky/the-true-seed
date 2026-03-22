@@ -1,0 +1,37 @@
+---
+title: "The Name and the Final Call"
+titleTl: "Ang Pangalan at ang Huling Tawag"
+category: "true-church"
+icon: "ShieldCheck"
+searchKeywords: "name romans 16:16 eccl 12:13 return"
+searchKeywordsTl: "pangalan roma 16:16 eccl 12:13 pagbabalik"
+searchContent: "The true Church bears the name 'Church of Christ' (Romans 16:16). Returning to the Church is the way to fulfill the whole duty of man: to fear God and keep His commandments."
+searchContentTl: "Ang tunay na Iglesia ay nagtataglay ng pangalang 'Iglesia ni Cristo' (Roma 16:16). Ang pagbabalik sa Iglesia ang paraan upang matupad ang buong tungkulin ng tao: ang matakot sa Diyos at sundin ang Kaniyang mga utos."
+---
+import { ScriptureLink } from '../../scriptureData';
+import { 
+  Book, Scroll, PenTool, ShieldCheck, Compass, Zap, Globe, History, Search, 
+  ArrowLeft, X, ChevronRight, Clock, CheckCircle2, Scale, Users, Flame, Eye, 
+  Infinity, Heart, Tag, Droplets, Presentation, ExternalLink, FileText, Star 
+} from 'lucide-react';
+
+<div className="space-y-3">
+          <p className="text-base leading-snug">
+            {props.lang === 'en'
+              ? "The name of the Church is a mark of its identity and ownership. Romans 16:16 states: 'The churches of Christ salute you.' It is the only authorized path to bridge the gap between the beastly state and the 'Whole Man'."
+              : "Ang pangalan ng Iglesia ay isang tanda ng kaniyang pagkakakilanlan at pagmamay-ari. Sinasabi sa Roma 16:16: 'Binabati kayo ng mga iglesia ni Cristo.' Ito ang tanging awtorisadong landas upang tulay ang agwat sa pagitan ng kalagayang hayop at ng 'Buong Tao'."}
+          </p>
+          <p className="text-base leading-snug">
+            {props.lang === 'en'
+              ? "The conclusion of the matter is to 'Fear God, and keep His commandments: for this is the whole duty of man' (Eccl 12:13). Entering the Church of Christ is the fulfillment of this divine purpose."
+              : "Ang wakas ng bagay ay 'Matakot ka sa Dios, at sundin mo ang kaniyang mga utos; sapagka't ito ang buong katungkulan ng tao' (Ecl 12:13). Ang pagpasok sa Iglesia ni Cristo ang katuparan ng banal na layuning ito."}
+          </p>
+          <div className="bg-brand-blue/5 p-3 rounded-lg border-l-4 border-brand-gold">
+            <span className="font-bold block mb-1">
+              <ScriptureLink verse="Ecclesiastes 12:13" onHover={props.onHover}>Ecclesiastes 12:13</ScriptureLink>
+            </span>
+            <p className="text-sm italic">"Fear God, and keep His commandments: for this is the whole duty of man."</p>
+          </div>
+        
+
+</div>

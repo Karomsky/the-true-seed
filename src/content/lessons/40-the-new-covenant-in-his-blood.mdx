@@ -1,0 +1,41 @@
+---
+title: "The New Covenant in His Blood"
+titleTl: "Ang Bagong Tipan sa Kaniyang Dugo"
+category: "eternal-covenant"
+icon: "Droplets"
+searchKeywords: "new covenant blood christ sacrifice cup testament"
+searchKeywordsTl: "bagong tipan dugo cristo sakripisyo kopa testamento"
+searchContent: "The New Covenant was established by Jesus Christ through His blood. It represents the forgiveness of sins and the new relationship between God and His people."
+searchContentTl: "Ang Bagong Tipan ay itinatag ni Jesucristo sa pamamagitan ng Kaniyang dugo. Kinakatawan nito ang kapatawaran ng mga kasalanan at ang bagong relasyon sa pagitan ng Diyos at ng Kaniyang bayan."
+---
+import { ScriptureLink } from '../../scriptureData';
+import { 
+  Book, Scroll, PenTool, ShieldCheck, Compass, Zap, Globe, History, Search, 
+  ArrowLeft, X, ChevronRight, Clock, CheckCircle2, Scale, Users, Flame, Eye, 
+  Infinity, Heart, Tag, Droplets, Presentation, ExternalLink, FileText, Star 
+} from 'lucide-react';
+
+<div className="space-y-3">
+          <p className="text-base leading-snug">
+            {props.lang === 'en'
+              ? "The New Covenant was established by Jesus Christ through the shedding of His blood. This covenant replaces the old covenant and provides a direct way for humanity to be reconciled with God through the forgiveness of sins."
+              : "Ang Bagong Tipan ay itinatag ni Jesucristo sa pamamagitan ng pagbubuhos ng Kaniyang dugo. Ang tipan na ito ay pumapalit sa lumang tipan at nagbibigay ng direktang paraan para sa sangkatauhan na makipagkasundo sa Diyos sa pamamagitan ng kapatawaran ng mga kasalanan."}
+          </p>
+          <p className="text-base leading-snug">
+            {props.lang === 'en'
+              ? "During the Last Supper, Jesus took the cup and declared it to be the new testament in His blood, which was shed for many. This sacrifice is the ultimate fulfillment of God's promise to restore His people."
+              : "Noong Huling Hapunan, kinuha ni Jesus ang kopa at ipinahayag na ito ang bagong tipan sa Kaniyang dugo, na ibinuhos para sa marami. Ang sakripisyong ito ang pinakamataas na katuparan ng pangako ng Diyos na ibalik ang Kaniyang bayan."}
+          </p>
+          <div className="bg-brand-blue/5 p-3 rounded-lg border-l-4 border-brand-gold">
+            <span className="font-bold block mb-1">
+              <ScriptureLink verse="Luke 22:20" onHover={props.onHover}>Luke 22:20</ScriptureLink>
+            </span>
+            <p className="text-sm italic">
+              {props.lang === 'en'
+                ? "Likewise also the cup after supper, saying, This cup is the new testament in my blood, which is shed for you."
+                : "Gayon din naman ang kopa, pagkatapos na makahapon, na sinasabi, Ang kopang ito ay ang bagong tipan sa aking dugo, na ibinubuhos dahil sa inyo."}
+            </p>
+          </div>
+        
+
+</div>

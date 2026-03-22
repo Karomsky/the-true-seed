@@ -1,0 +1,42 @@
+---
+title: "True Religion"
+titleTl: "Ang Tunay na Relihiyon"
+category: "salvation"
+icon: "Scale"
+searchKeywords: "true religion salvation ecclesiastes 12:13 duty of man fear god commandments"
+searchKeywordsTl: "tunay na relihiyon kaligtasan eclesiastes 12:13 katungkulan ng tao matakot sa diyos utos"
+searchContent: "The whole duty of man is to fear God and keep His commandments. True religion is the way to fulfill this duty and achieve salvation. Ecclesiastes 12:13."
+searchContentTl: "Ang buong katungkulan ng tao ay matakot sa Diyos at sundin ang Kaniyang mga utos. Ang tunay na relihiyon ang paraan upang matupad ang katungkulang ito at makamit ang kaligtasan. Eclesiastes 12:13."
+---
+import { ScriptureLink } from '../../scriptureData';
+import { 
+  Book, Scroll, PenTool, ShieldCheck, Compass, Zap, Globe, History, Search, 
+  ArrowLeft, X, ChevronRight, Clock, CheckCircle2, Scale, Users, Flame, Eye, 
+  Infinity, Heart, Tag, Droplets, Presentation, ExternalLink, FileText, Star 
+} from 'lucide-react';
+
+<div className="space-y-3">
+          <p className="text-base leading-snug">
+            {props.lang === 'en'
+              ? "True religion is not just a choice; it is the fulfillment of man's whole duty to God. To be saved, one must belong to the true religion and obey God's commands."
+              : "Ang tunay na relihiyon ay hindi lamang isang pagpipilian; ito ay ang pagtupad sa buong katungkulan ng tao sa Diyos. Upang maligtas, ang isa ay dapat mapabilang sa tunay na relihiyon at sumunod sa mga utos ng Diyos."}
+          </p>
+          <div className="bg-brand-dark text-white p-3 rounded-2xl border border-brand-gold/30">
+            <h4 className="text-brand-gold font-bold mb-2 flex items-center gap-2">
+              <Scale size={18} />
+              {props.lang === 'en' ? "The Whole Duty of Man" : "Ang Buong Katungkulan ng Tao"}
+            </h4>
+            <p className="text-sm text-gray-300 italic">
+              "Fear God, and keep his commandments: for this is the whole duty of man." — <ScriptureLink verse="Ecclesiastes 12:13" onHover={props.onHover}>Ecclesiastes 12:13</ScriptureLink>
+            </p>
+          </div>
+          <div className="bg-brand-blue/5 p-3 rounded-xl border border-brand-blue/10">
+            <p className="text-sm text-gray-700">
+              {props.lang === 'en'
+                ? "Sin destroyed the true essence of man. To be restored in the sight of God, one must belong to the true religion and obey His ordinances."
+                : "Sinira ng kasalanan ang tunay na esensya ng tao. Upang maibalik sa paningin ng Diyos, ang isa ay dapat mapabilang sa tunay na relihiyon at sumunod sa Kaniyang mga utos."}
+            </p>
+          </div>
+        
+
+</div>

@@ -1,0 +1,37 @@
+---
+title: "Propagation: The Parable of the Sower"
+titleTl: "Pagpapalaganap: Ang Parabula ng Tagapaghasik"
+category: "true-church"
+icon: "ShieldCheck"
+searchKeywords: "parable sower seed word of god luke 8:11"
+searchKeywordsTl: "parabula tagapaghasik binhi salita ng diyos lucas 8:11"
+searchContent: "The lineage of the promise continues today through the preaching of the Word. The seed is the Word of God, and ministers are tasked with sowing it."
+searchContentTl: "Ang pinagmulan ng pangako ay nagpapatuloy ngayon sa pamamagitan ng pangangaral ng Salita. Ang binhi ay ang Salita ng Diyos, at ang mga ministro ay may tungkuling ihasik ito."
+---
+import { ScriptureLink } from '../../scriptureData';
+import { 
+  Book, Scroll, PenTool, ShieldCheck, Compass, Zap, Globe, History, Search, 
+  ArrowLeft, X, ChevronRight, Clock, CheckCircle2, Scale, Users, Flame, Eye, 
+  Infinity, Heart, Tag, Droplets, Presentation, ExternalLink, FileText, Star 
+} from 'lucide-react';
+
+<div className="space-y-3">
+          <p className="text-base leading-snug">
+            {props.lang === 'en'
+              ? "The Parable of the Sower reveals how the Seed (the Word of God) grows today. Luke 8:11 explicitly states: 'The seed is the word of God.' Ministers sow the seed, while members support the work through inviting and offerings."
+              : "Inihahayag ng Parabula ng Tagapaghasik kung paano lumalago ang Binhi (ang Salita ng Diyos) ngayon. Eksplicitong sinasabi sa Lucas 8:11: 'Ang binhi ay ang salita ng Dios.' Ang mga ministro ang naghahasik ng binhi, habang ang mga miyembro ay sumusuporta sa gawain sa pamamagitan ng pag-aanyaya at mga handog."}
+          </p>
+          <p className="text-base leading-snug">
+            {props.lang === 'en'
+              ? "There is a division of labor (1 Cor 3:6): The Minister plants, the Members water, and God gives the increase. This sustained work ensures the growth of the Church."
+              : "Mayroong paghahati ng tungkulin (1 Cor 3:6): Ang Ministro ang nagtatanim, ang mga Miyembro ang nagdidilig, at ang Diyos ang nagpapalago. Ang patuloy na gawaing ito ang tumitiyak sa paglago ng Iglesia."}
+          </p>
+          <div className="bg-brand-blue/5 p-3 rounded-lg border-l-4 border-brand-gold">
+            <span className="font-bold block mb-1">
+              <ScriptureLink verse="Luke 8:11" onHover={props.onHover}>Luke 8:11</ScriptureLink>
+            </span>
+            <p className="text-sm italic">"Now the parable is this: The seed is the word of God."</p>
+          </div>
+        
+
+</div>

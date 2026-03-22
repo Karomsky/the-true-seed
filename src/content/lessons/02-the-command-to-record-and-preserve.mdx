@@ -1,0 +1,36 @@
+---
+title: "The Command to Record and Preserve"
+titleTl: "Ang Utos na Isulat at Ingatan"
+category: "bible"
+icon: "PenTool"
+searchKeywords: "record preserve jeremiah 30:2 seal daniel 12:4 revelation 10:4"
+searchKeywordsTl: "isulat ingatan jeremias 30:2 tatak daniel 12:4 apocalipsis 10:4"
+searchContent: "God instructed His servants to write His words in a book to ensure perfect accuracy. Once complete, the book was 'sealed' to safeguard the truth."
+searchContentTl: "Inutusan ng Diyos ang Kaniyang mga lingkod na isulat ang Kaniyang mga salita sa isang aklat upang matiyak ang perpektong katumpakan. Kapag tapos na, ang aklat ay 'tinatakan' upang bantayan ang katotohanan."
+---
+import { ScriptureLink } from '../../scriptureData';
+import { 
+  Book, Scroll, PenTool, ShieldCheck, Compass, Zap, Globe, History, Search, 
+  ArrowLeft, X, ChevronRight, Clock, CheckCircle2, Scale, Users, Flame, Eye, 
+  Infinity, Heart, Tag, Droplets, Presentation, ExternalLink, FileText, Star 
+} from 'lucide-react';
+
+<div className="space-y-3">
+          <p className="text-base leading-snug">
+            {props.lang === 'en'
+              ? "To preserve the message for future generations, God ordered His words to be recorded. This happened in three stages: The Command to Record, the Divine Watch (guarding the writing process), and the Seal."
+              : "Upang maingatan ang mensahe para sa mga susunod na salinlahi, ipinag-utos ng Diyos na itala ang Kaniyang mga salita. Nangyari ito sa tatlong yugto: Ang Utos na Itala, ang Banal na Pagbabantay (pagbabantay sa proseso ng pagsulat), at ang Tatak."}
+          </p>
+          <ul className="space-y-2">
+            <li className="bg-brand-blue/5 p-3 rounded-xl border border-brand-blue/10">
+              <span className="font-bold block text-brand-blue mb-1">{props.lang === 'en' ? "The Command" : "Ang Utos"}</span>
+              <span className="text-sm">{props.lang === 'en' ? <>'Write all the words that I have spoken to you in a book' (<ScriptureLink verse="Jeremiah 30:2" onHover={props.onHover}>Jeremiah 30:2</ScriptureLink>)</> : <>'Isulat mo sa isang aklat ang lahat ng mga salita na aking sinalita sa iyo' (<ScriptureLink verse="Jeremiah 30:2" onHover={props.onHover}>Jeremias 30:2</ScriptureLink>)</>}</span>
+            </li>
+            <li className="bg-brand-blue/5 p-3 rounded-xl border border-brand-blue/10">
+              <span className="font-bold block text-brand-blue mb-1">{props.lang === 'en' ? "The Seal" : "Ang Tatak"}</span>
+              <span className="text-sm">{props.lang === 'en' ? <>Once revelation was complete, the book was closed and sealed (<ScriptureLink verse="Daniel 12:4" onHover={props.onHover}>Daniel 12:4</ScriptureLink>, <ScriptureLink verse="Revelation 10:4" onHover={props.onHover}>Rev 10:4</ScriptureLink>)</> : <>Nang matapos ang pahayag, ang aklat ay isinara at tinatakan (<ScriptureLink verse="Daniel 12:4" onHover={props.onHover}>Daniel 12:4</ScriptureLink>, <ScriptureLink verse="Revelation 10:4" onHover={props.onHover}>Apoc 10:4</ScriptureLink>)</>}</span>
+            </li>
+          </ul>
+        
+
+</div>

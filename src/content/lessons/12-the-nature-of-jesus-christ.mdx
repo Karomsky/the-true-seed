@@ -1,0 +1,51 @@
+---
+title: "The Nature of Jesus Christ"
+titleTl: "Ang Kalikasan ni Jesucristo"
+category: "christ"
+icon: "Users"
+searchKeywords: "jesus christ man not god mediator john 8:40 1 timothy 2:5 flesh bones"
+searchKeywordsTl: "jesucristo tao hindi diyos tagapamagitan juan 8:40 1 timoteo 2:5 laman buto"
+searchContent: "Jesus Christ is a man, not God. John 8:40 and 1 Timothy 2:5 emphasize His humanity as the mediator between God and men. He has flesh and bones, unlike God who is Spirit."
+searchContentTl: "Si Jesucristo ay tao, hindi Diyos. Binibigyang-kahulugan ng Juan 8:40 at 1 Timoteo 2:5 ang Kaniyang pagkatao bilang tagapamagitan sa Diyos at sa mga tao. Siya ay may laman at mga buto, hindi gaya ng Diyos na Espiritu."
+---
+import { ScriptureLink } from '../../scriptureData';
+import { 
+  Book, Scroll, PenTool, ShieldCheck, Compass, Zap, Globe, History, Search, 
+  ArrowLeft, X, ChevronRight, Clock, CheckCircle2, Scale, Users, Flame, Eye, 
+  Infinity, Heart, Tag, Droplets, Presentation, ExternalLink, FileText, Star 
+} from 'lucide-react';
+
+<div className="space-y-3">
+          <p className="text-base leading-snug">
+            {props.lang === 'en'
+              ? "The Bible is clear: Jesus Christ is a man. He is the mediator between God and mankind. While He is the most exalted of all creations, He remains distinct from the Father, who is the only true God."
+              : "Malinaw ang Biblia: si Jesucristo ay tao. Siya ang tagapamagitan sa Diyos at sa sangkatauhan. Bagaman Siya ang pinaka-dakila sa lahat ng nilikha, Siya ay nananatiling iba sa Ama, na Siya lamang ang tunay na Diyos."}
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <div className="bg-brand-blue/5 p-3 rounded-lg border-l-4 border-brand-gold">
+              <span className="font-bold block mb-1"><ScriptureLink verse="John 8:40" onHover={props.onHover}>John 8:40</ScriptureLink></span>
+              <p className="text-sm italic">"But now ye seek to kill me, a man that hath told you the truth..."</p>
+            </div>
+            <div className="bg-brand-blue/5 p-3 rounded-lg border-l-4 border-brand-gold">
+              <span className="font-bold block mb-1"><ScriptureLink verse="1 Timothy 2:5" onHover={props.onHover}>1 Timothy 2:5</ScriptureLink></span>
+              <p className="text-sm italic">"For there is one God, and one mediator between God and men, the man Christ Jesus."</p>
+            </div>
+          </div>
+          <div className="p-3 bg-gray-50 rounded-xl border border-gray-200">
+            <h4 className="font-bold text-sm mb-2 uppercase tracking-wider text-brand-blue">{props.lang === 'en' ? "Biblical Distinction" : "Pagkakaibang Biblikal"}</h4>
+            <div className="grid grid-cols-2 gap-3 text-xs">
+              <div className="space-y-1">
+                <div className="font-bold text-brand-gold">{props.lang === 'en' ? "The Father (God)" : "Ang Ama (Diyos)"}</div>
+                <p>{props.lang === 'en' ? "Is NOT a man" : "HINDI tao"} (<ScriptureLink verse="Hosea 11:9" onHover={props.onHover}>Hosea 11:9</ScriptureLink>)</p>
+                <p>{props.lang === 'en' ? "Is Spirit" : "Espiritu"} (<ScriptureLink verse="John 4:24" onHover={props.onHover}>John 4:24</ScriptureLink>)</p>
+              </div>
+              <div className="space-y-1">
+                <div className="font-bold text-brand-gold">{props.lang === 'en' ? "Jesus Christ" : "Jesucristo"}</div>
+                <p>{props.lang === 'en' ? "IS a man" : "TAO"} (<ScriptureLink verse="John 8:40" onHover={props.onHover}>John 8:40</ScriptureLink>)</p>
+                <p>{props.lang === 'en' ? "Has flesh and bones" : "May laman at buto"} (<ScriptureLink verse="Luke 24:39" onHover={props.onHover}>Luke 24:39</ScriptureLink>)</p>
+              </div>
+            </div>
+          </div>
+        
+
+</div>

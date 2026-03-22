@@ -1,0 +1,37 @@
+---
+title: "The Lineage of the Promise: Seed of Abraham"
+titleTl: "Ang Pinagmulan ng Pangako: Binhi ni Abraham"
+category: "true-church"
+icon: "ShieldCheck"
+searchKeywords: "lineage promise seed abraham galatians 3:16 3:29"
+searchKeywordsTl: "pinagmulan pangako binhi abraham galacia 3:16 3:29"
+searchContent: "The promise made in Eden was passed to Abraham and fulfilled in Christ. By belonging to Christ, we legally become the Seed of Abraham and heirs to the promise."
+searchContentTl: "Ang pangakong ginawa sa Eden ay ipinasa kay Abraham at natupad kay Cristo. Sa pag-anib kay Cristo, tayo ay legal na nagiging Binhi ni Abraham at mga tagapagmana ng pangako."
+---
+import { ScriptureLink } from '../../scriptureData';
+import { 
+  Book, Scroll, PenTool, ShieldCheck, Compass, Zap, Globe, History, Search, 
+  ArrowLeft, X, ChevronRight, Clock, CheckCircle2, Scale, Users, Flame, Eye, 
+  Infinity, Heart, Tag, Droplets, Presentation, ExternalLink, FileText, Star 
+} from 'lucide-react';
+
+<div className="space-y-3">
+          <p className="text-base leading-snug">
+            {props.lang === 'en'
+              ? "God promised a 'Seed' in Eden (Gen 3:15) that would defeat the enemy. This promise was refined through Abraham (Gen 17:7). Galatians 3:16 clarifies that the 'Seed' is Christ, not a multitude of physical descendants."
+              : "Nangako ang Diyos ng isang 'Binhi' sa Eden (Gen 3:15) na tatalo sa kaaway. Ang pangakong ito ay pinino sa pamamagitan ni Abraham (Gen 17:7). Nililinaw ng Galacia 3:16 na ang 'Binhi' ay si Cristo, hindi ang maraming pisikal na inapo."}
+          </p>
+          <p className="text-base leading-snug">
+            {props.lang === 'en'
+              ? "Galatians 3:29 reveals the spiritual fulfillment: 'And if you are Christ’s, then you are Abraham’s seed, and heirs according to the promise.' Entering the Church makes us part of this spiritual lineage."
+              : "Inihahayag ng Galacia 3:29 ang espirituwal na katuparan: 'At kung kayo'y kay Cristo, kayo nga'y binhi ni Abraham, at mga tagapagmana ayon sa pangako.' Ang pagpasok sa Iglesia ay gumagawa sa atin na bahagi ng espirituwal na linyang ito."}
+          </p>
+          <div className="bg-brand-blue/5 p-3 rounded-lg border-l-4 border-brand-gold">
+            <span className="font-bold block mb-1">
+              <ScriptureLink verse="Galatians 3:16" onHover={props.onHover}>Galatians 3:16</ScriptureLink>
+            </span>
+            <p className="text-sm italic">"He does not say, 'And to seeds,' as of many, but as of one, 'And to your Seed,' who is Christ."</p>
+          </div>
+        
+
+</div>

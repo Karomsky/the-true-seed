@@ -1,0 +1,46 @@
+---
+title: "The Holy Supper"
+titleTl: "Ang Banal na Hapunan"
+category: "salvation"
+icon: "Droplets"
+searchKeywords: "holy supper ordinance cleansing forgiveness sins self-examination house of god 1 peter 4:17 1 corinthians 11:29"
+searchKeywordsTl: "banal na hapunan tuntunin paglilinis kapatawaran kasalanan pagsisiyasat sa sarili bahay ng diyos 1 pedro 4:17 1 corinto 11:29"
+searchContent: "The Holy Supper is for the cleansing of the Church and forgiveness of sins. Judgment begins in the house of God, so we must examine ourselves before participating to avoid condemnation with the world."
+searchContentTl: "Ang Banal na Hapunan ay para sa paglilinis ng Iglesia at kapatawaran ng mga kasalanan. Ang paghuhukom ay nagsisimula sa bahay ng Diyos, kaya dapat nating siyasatin ang ating sarili bago makibahagi upang huwag mahatulan kasama ng sanlibutan."
+---
+import { ScriptureLink } from '../../scriptureData';
+import { 
+  Book, Scroll, PenTool, ShieldCheck, Compass, Zap, Globe, History, Search, 
+  ArrowLeft, X, ChevronRight, Clock, CheckCircle2, Scale, Users, Flame, Eye, 
+  Infinity, Heart, Tag, Droplets, Presentation, ExternalLink, FileText, Star 
+} from 'lucide-react';
+
+<div className="space-y-3">
+          <p className="text-base leading-snug">
+            {props.lang === 'en'
+              ? "The Holy Supper is a divine ordinance established by Christ for the cleansing of the Church and the forgiveness of sins."
+              : "Ang Banal na Hapunan ay isang banal na tuntunin na itinatag ni Cristo para sa paglilinis ng Iglesia at sa kapatawaran ng mga kasalanan."}
+          </p>
+          <div className="bg-brand-blue/5 p-3 rounded-2xl border-l-4 border-brand-blue">
+            <h4 className="font-bold text-brand-blue mb-2">{props.lang === 'en' ? "Judgment in the House of God" : "Paghuhukom sa Bahay ng Diyos"}</h4>
+            <p className="text-sm text-gray-700">
+              {props.lang === 'en'
+                ? "Judgment begins in the house of God. The Holy Supper serves as a time for self-examination to avoid being judged with the world."
+                : "Ang paghuhukom ay nagsisimula sa bahay ng Diyos. Ang Banal na Hapunan ay nagsisilbing panahon para sa pagsisiyasat sa sarili upang huwag mahatulan kasama ng sanlibutan."}
+            </p>
+            <div className="mt-4 flex gap-3">
+              <span className="text-[10px] font-bold text-brand-gold"><ScriptureLink verse="1 Peter 4:17" onHover={props.onHover}>1 Peter 4:17</ScriptureLink></span>
+              <span className="text-[10px] font-bold text-brand-gold"><ScriptureLink verse="1 Corinthians 11:29" onHover={props.onHover}>1 Corinthians 11:29, 32</ScriptureLink></span>
+            </div>
+          </div>
+          <div className="space-y-2">
+            <h4 className="font-bold text-brand-blue">{props.lang === 'en' ? "Preparation" : "Paghahanda"}</h4>
+            <ul className="list-disc list-inside text-sm text-gray-600 space-y-2">
+              <li>{props.lang === 'en' ? <span>Examine yourself (<ScriptureLink verse="2 Corinthians 13:5" onHover={props.onHover}>2 Corinthians 13:5</ScriptureLink>)</span> : <span>Siyasatin ang inyong sarili (<ScriptureLink verse="2 Corinthians 13:5" onHover={props.onHover}>2 Corinto 13:5</ScriptureLink>)</span>}</li>
+              <li>{props.lang === 'en' ? "Confess and turn away from sin" : "Ipahayag at talikuran ang kasalanan"}</li>
+              <li>{props.lang === 'en' ? "Communion with the body and blood of Christ" : "Pakikipagkaisa sa katawan at dugo ni Cristo"}</li>
+            </ul>
+          </div>
+        
+
+</div>

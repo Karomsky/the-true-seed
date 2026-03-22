@@ -1,0 +1,47 @@
+---
+title: "The Messenger from the Far East"
+titleTl: "Ang Sugo mula sa Malayong Silangan"
+category: "messenger"
+icon: "Compass"
+searchKeywords: "messenger far east felix manalo prophecy philippines 1914 revelation 7:2 isaiah 46:11 isaiah 41:9-10"
+searchKeywordsTl: "sugo malayong silangan felix manalo hula pilipinas 1914 apocalipsis 7:2 isaias 46:11 isaias 41:9-10"
+searchContent: "Prophecy speaks of a messenger sent from the Far East (Philippines) in the last days. This was fulfilled in the mission of Brother Felix Y. Manalo, who began preaching in 1914, coinciding with the ends of the earth."
+searchContentTl: "Nagsasalita ang hula tungkol sa isang sugo na mula sa Malayong Silangan (Pilipinas) sa mga huling araw. Ito ay natupad sa misyon ng Kapatid na Felix Y. Manalo, na nagsimulang mangaral noong 1914, kasabay ng mga wakas ng lupa."
+---
+import { ScriptureLink } from '../../scriptureData';
+import { 
+  Book, Scroll, PenTool, ShieldCheck, Compass, Zap, Globe, History, Search, 
+  ArrowLeft, X, ChevronRight, Clock, CheckCircle2, Scale, Users, Flame, Eye, 
+  Infinity, Heart, Tag, Droplets, Presentation, ExternalLink, FileText, Star 
+} from 'lucide-react';
+
+<div className="space-y-3">
+          <p className="text-base leading-snug">
+            {props.lang === 'en'
+              ? "Prophecy speaks of a messenger sent from the 'Far East' to bring salvation in the last days. This was fulfilled in the mission of Brother Felix Y. Manalo."
+              : "Nagsasalita ang hula tungkol sa isang sugo na mula sa 'Malayong Silangan' upang magdala ng kaligtasan sa mga huling araw. Ito ay natupad sa misyon ng Kapatid na Felix Y. Manalo."}
+          </p>
+          <div className="space-y-2">
+            <div className="flex gap-3 items-start bg-brand-blue/5 p-3 rounded-xl">
+              <div className="bg-brand-gold/20 p-2 rounded-lg"><Search className="h-5 w-5 text-brand-blue" /></div>
+              <div>
+                <span className="font-bold block"><ScriptureLink verse="Isaiah 46:11" onHover={props.onHover}>Isaiah 46:11</ScriptureLink></span>
+                <p className="text-sm text-gray-600">"Calling a bird of prey from the east, the man of my choice from a distant land..."</p>
+              </div>
+            </div>
+            <div className="flex gap-3 items-start bg-brand-blue/5 p-3 rounded-xl">
+              <div className="bg-brand-gold/20 p-2 rounded-lg"><Search className="h-5 w-5 text-brand-blue" /></div>
+              <div>
+                <span className="font-bold block"><ScriptureLink verse="Isaiah 41:9" onHover={props.onHover}>Isaiah 41:9-10</ScriptureLink></span>
+                <p className="text-sm text-gray-600">"Thou whom I have taken from the ends of the earth... I have chosen thee..."</p>
+              </div>
+            </div>
+          </div>
+          <p className="text-sm text-gray-500 italic">
+            {props.lang === 'en'
+              ? "Brother Felix Manalo began preaching the Iglesia ni Cristo in the Philippines (Far East) in 1914, fulfilling these prophecies."
+              : "Nagsimulang mangaral ang Kapatid na Felix Manalo ng Iglesia ni Cristo sa Pilipinas (Malayong Silangan) noong 1914, bilang katuparan ng mga hulang ito."}
+          </p>
+        
+
+</div>

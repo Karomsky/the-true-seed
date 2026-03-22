@@ -1,0 +1,49 @@
+---
+title: "The One New Man"
+titleTl: "Ang Isang Bagong Tao"
+category: "salvation"
+icon: "Users"
+searchKeywords: "one new man atonement christ head church body ephesians 2:15 salvation mechanism"
+searchKeywordsTl: "isang bagong tao pagbabayad-sala cristo ulo iglesia katawan efeso 2:15 mekanismo ng kaligtasan"
+searchContent: "The 'One New Man' is the biblical mechanism of salvation. Christ (the Head) and the Church (the Body) form a single entity. By becoming part of this Body, a sinner's debt is paid by Christ. Ephesians 2:15."
+searchContentTl: "Ang 'Isang Bagong Tao' ay ang biblikal na mekanismo ng kaligtasan. Si Cristo (ang Ulo) at ang Iglesia (ang Katawan) ay bumubuo ng iisang entidad. Sa pamamagitan ng pagiging bahagi ng Katawang ito, ang utang ng isang makasalanan ay binabayaran ni Cristo. Efeso 2:15."
+---
+import { ScriptureLink } from '../../scriptureData';
+import { 
+  Book, Scroll, PenTool, ShieldCheck, Compass, Zap, Globe, History, Search, 
+  ArrowLeft, X, ChevronRight, Clock, CheckCircle2, Scale, Users, Flame, Eye, 
+  Infinity, Heart, Tag, Droplets, Presentation, ExternalLink, FileText, Star 
+} from 'lucide-react';
+
+<div className="space-y-3">
+          <p className="text-base leading-snug">
+            {props.lang === 'en'
+              ? "The 'One New Man' is the logic of atonement. Christ created a new entity to satisfy God's Law. By becoming part of the Body (The Church), a sinner's debt is paid by the Head (Christ)."
+              : "Ang 'Isang Bagong Tao' ay ang lohika ng pagbabayad-sala. Gumawa si Cristo ng isang bagong entidad upang matugunan ang Kautusan ng Diyos. Sa pamamagitan ng pagiging bahagi ng Katawan (Ang Iglesia), ang utang ng isang makasalanan ay binabayaran ng Ulo (Cristo)."}
+          </p>
+          <div className="bg-brand-blue/5 p-3 rounded-2xl border border-brand-blue/10 flex flex-col items-center text-center">
+            <div className="flex items-center gap-3 mb-2">
+              <div className="text-center">
+                <div className="font-bold text-brand-blue">Christ</div>
+                <div className="text-[10px] uppercase text-gray-500">(HEAD)</div>
+              </div>
+              <div className="text-2xl text-brand-gold">+</div>
+              <div className="text-center">
+                <div className="font-bold text-brand-blue">Church</div>
+                <div className="text-[10px] uppercase text-gray-500">(BODY)</div>
+              </div>
+              <div className="text-2xl text-brand-gold">=</div>
+              <div className="text-center bg-brand-gold/10 p-3 rounded-xl border border-brand-gold/30">
+                <div className="font-bold text-brand-blue">ONE NEW MAN</div>
+                <div className="text-[10px] uppercase text-gray-500">(Eph 2:15)</div>
+              </div>
+            </div>
+            <p className="text-sm italic text-gray-600">
+              {props.lang === 'en'
+                ? "Wages of Sin = Death (Rom 6:23). Christ = No Sin (1 Peter 2:21). Christ dies for the BODY's sins."
+                : "Kabayaran ng Kasalanan = Kamatayan (Roma 6:23). Cristo = Walang Kasalanan (1 Pedro 2:21). Namatay si Cristo para sa mga kasalanan ng KATAWAN."}
+            </p>
+          </div>
+        
+
+</div>

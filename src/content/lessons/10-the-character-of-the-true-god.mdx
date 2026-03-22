@@ -1,0 +1,40 @@
+---
+title: "The Character of the True God"
+titleTl: "Ang Katangian ng Tunay na Diyos"
+category: "god"
+icon: "Heart"
+searchKeywords: "justice mercy love holiness righteous judge 1 john 4:8 deut 32:4 lev 19:2"
+searchKeywordsTl: "katarungan awa pag-ibig kabanalan matuwid na hukom 1 juan 4:8 deut 32:4 lev 19:2"
+searchContent: "God is defined by His character: He is Love (1 John 4:8), Just (Deut 32:4), and Holy (Lev 19:2). He is a righteous judge who remains true to His nature."
+searchContentTl: "Ang Diyos ay binibigyang-kahulugan ng Kaniyang katangian: Siya ay Pag-ibig (1 Juan 4:8), Matuwid (Deut 32:4), at Banal (Lev 19:2). Siya ay matuwid na hukom na nananatiling tapat sa Kaniyang kalikasan."
+---
+import { ScriptureLink } from '../../scriptureData';
+import { 
+  Book, Scroll, PenTool, ShieldCheck, Compass, Zap, Globe, History, Search, 
+  ArrowLeft, X, ChevronRight, Clock, CheckCircle2, Scale, Users, Flame, Eye, 
+  Infinity, Heart, Tag, Droplets, Presentation, ExternalLink, FileText, Star 
+} from 'lucide-react';
+
+<div className="space-y-3">
+          <p className="text-base leading-snug">
+            {props.lang === 'en'
+              ? "Beyond His power, God's character is defined by perfect love, absolute justice, and supreme holiness. He is a righteous judge whose actions are always consistent with His nature."
+              : "Higit sa Kaniyang kapangyarihan, ang katangian ng Diyos ay binubuo ng perpektong pag-ibig, ganap na katarungan, at kataas-taasang kabanalan. Siya ay matuwid na hukom na ang mga gawa ay laging pareho sa Kaniyang kalikasan."}
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <div className="p-3 rounded-xl bg-brand-gold/5 border border-brand-gold/20">
+              <h4 className="font-bold text-brand-dark mb-1">{props.lang === 'en' ? "God is Love" : "Ang Dios ay Pag-ibig"}</h4>
+              <p className="text-xs text-gray-600"><ScriptureLink verse="1 John 4:8" onHover={props.onHover}>1 John 4:8</ScriptureLink> - "He that loveth not knoweth not God; for God is love."</p>
+            </div>
+            <div className="p-3 rounded-xl bg-brand-gold/5 border border-brand-gold/20">
+              <h4 className="font-bold text-brand-dark mb-1">{props.lang === 'en' ? "Just & Righteous" : "Matuwid at Tumpak"}</h4>
+              <p className="text-xs text-gray-600"><ScriptureLink verse="Deuteronomy 32:4" onHover={props.onHover}>Deuteronomy 32:4</ScriptureLink> - "A God of truth and without iniquity, just and right is he."</p>
+            </div>
+          </div>
+          <div className="bg-brand-blue/5 p-3 rounded-xl border border-brand-blue/10">
+            <h4 className="font-bold text-brand-blue mb-1">{props.lang === 'en' ? "God is Holy" : "Ang Dios ay Banal"}</h4>
+            <p className="text-xs text-gray-600"><ScriptureLink verse="Leviticus 19:2" onHover={props.onHover}>Leviticus 19:2</ScriptureLink> - "Ye shall be holy: for I the Lord your God am holy."</p>
+          </div>
+        
+
+</div>

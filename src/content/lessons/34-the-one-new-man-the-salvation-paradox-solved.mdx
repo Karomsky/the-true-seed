@@ -1,0 +1,45 @@
+---
+title: "The One New Man: The Salvation Paradox Solved"
+titleTl: "Ang Isang Taong Bago: Nalutas ang Paradox ng Kaligtasan"
+category: "true-church"
+icon: "ShieldCheck"
+searchKeywords: "one new man salvation paradox deut 24:16 eph 2:15"
+searchKeywordsTl: "isang taong bago paradox ng kaligtasan deut 24:16 eph 2:15"
+searchContent: "The 'Salvation Paradox' states that every man must die for his own sin (Deut 24:16). Christ solved this by creating the 'One New Man' (Eph 2:15), where He is the Head and the Church is His Body."
+searchContentTl: "Sinasabi ng 'Paradox ng Kaligtasan' na ang bawat tao ay dapat mamatay para sa sarili niyang kasalanan (Deut 24:16). Nilutas ito ni Cristo sa pamamagitan ng paglikha ng 'Isang Taong Bago' (Eph 2:15), kung saan Siya ang Ulo at ang Iglesia ang Kaniyang Katawan."
+---
+import { ScriptureLink } from '../../scriptureData';
+import { 
+  Book, Scroll, PenTool, ShieldCheck, Compass, Zap, Globe, History, Search, 
+  ArrowLeft, X, ChevronRight, Clock, CheckCircle2, Scale, Users, Flame, Eye, 
+  Infinity, Heart, Tag, Droplets, Presentation, ExternalLink, FileText, Star 
+} from 'lucide-react';
+
+<div className="space-y-3">
+          <p className="text-base leading-snug">
+            {props.lang === 'en'
+              ? "God's law strictly demands personal accountability: 'A person shall be put to death for his own sin' (Deut 24:16). This creates a paradox: how can a sinless Christ save mankind if proxy death is legally impossible?"
+              : "Mahigpit na hinihingi ng kautusan ng Diyos ang personal na pananagutan: 'Ang bawat tao'y papatayin dahil sa kaniyang sariling kasalanan' (Deut 24:16). Lumilikha ito ng paradox: paano maililigtas ng isang walang kasalanang Cristo ang sangkatauhan kung ang proxy death ay legal na imposible?"}
+          </p>
+          <p className="text-base leading-snug">
+            {props.lang === 'en'
+              ? "Christ solved this not by breaking the law, but by fulfilling it through the creation of the 'One New Man' (Eph 2:15). He is the Head, and the Church is His Body (Col 1:18). When He died, He legally died for His own Body's sins."
+              : "Nilutas ito ni Cristo hindi sa pamamagitan ng paglabag sa kautusan, kundi sa pagtupad nito sa pamamagitan ng paglikha ng 'Isang Taong Bago' (Eph 2:15). Siya ang Ulo, at ang Iglesia ang Kaniyang Katawan (Col 1:18). Nang Siya ay mamatay, legal Siyang namatay para sa mga kasalanan ng Kaniyang sariling Katawan."}
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <div className="bg-brand-blue/5 p-3 rounded-lg border-l-4 border-brand-gold">
+              <span className="font-bold block mb-1">
+                <ScriptureLink verse="Deuteronomy 24:16" onHover={props.onHover}>Deuteronomy 24:16</ScriptureLink>
+              </span>
+              <p className="text-sm italic">"...every man shall be put to death for his own sin."</p>
+            </div>
+            <div className="bg-brand-blue/5 p-3 rounded-lg border-l-4 border-brand-gold">
+              <span className="font-bold block mb-1">
+                <ScriptureLink verse="Ephesians 2:15" onHover={props.onHover}>Ephesians 2:15</ScriptureLink>
+              </span>
+              <p className="text-sm italic">"...so as to create in Himself one new man from the two, thus making peace..."</p>
+            </div>
+          </div>
+        
+
+</div>

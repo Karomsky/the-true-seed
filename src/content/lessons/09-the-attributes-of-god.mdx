@@ -1,0 +1,38 @@
+---
+title: "The Attributes of God"
+titleTl: "Ang mga Katangian ng Diyos"
+category: "god"
+icon: "Infinity"
+searchKeywords: "omnipotent almighty omniscient eternal creator ps 90:2 gen 17:1 1 john 3:20"
+searchKeywordsTl: "makapangyarihan nakaaalam walang hanggan maylalang awit 90:2 gen 17:1 1 juan 3:20"
+searchContent: "God is eternal (Ps 90:2), Almighty (Gen 17:1), and all-knowing (1 John 3:20). He is the Creator of all things and His power has no limits."
+searchContentTl: "Ang Diyos ay walang hanggan (Awit 90:2), Makapangyarihan sa lahat (Gen 17:1), at nakaaalam ng lahat (1 Juan 3:20). Siya ang Maylalang ng lahat ng bagay at ang Kaniyang kapangyarihan ay walang hanggan."
+---
+import { ScriptureLink } from '../../scriptureData';
+import { 
+  Book, Scroll, PenTool, ShieldCheck, Compass, Zap, Globe, History, Search, 
+  ArrowLeft, X, ChevronRight, Clock, CheckCircle2, Scale, Users, Flame, Eye, 
+  Infinity, Heart, Tag, Droplets, Presentation, ExternalLink, FileText, Star 
+} from 'lucide-react';
+
+<div className="space-y-3">
+          <p className="text-base leading-snug">
+            {props.lang === 'en'
+              ? "The true God possesses attributes that are exclusive to Him. He is eternal, almighty, and possesses infinite knowledge."
+              : "Ang tunay na Diyos ay nagtataglay ng mga katangiang sa Kaniya lamang matatagpuan. Siya ay walang hanggan, makapangyarihan sa lahat, at may walang hanggang kaalaman."}
+          </p>
+          <div className="space-y-3">
+            {[
+              { label: props.lang === 'en' ? "Eternal" : "Walang Hanggan", desc: props.lang === 'en' ? <>From everlasting to everlasting (<ScriptureLink verse="Psalms 90:2" onHover={props.onHover}>Ps. 90:2</ScriptureLink>)</> : <>Mula sa walang hanggan hanggang sa walang hanggan (<ScriptureLink verse="Awit 90:2" onHover={props.onHover}>Awit 90:2</ScriptureLink>)</> },
+              { label: props.lang === 'en' ? "Almighty" : "Makapangyarihan sa Lahat", desc: props.lang === 'en' ? <>God Almighty (<ScriptureLink verse="Genesis 17:1" onHover={props.onHover}>Gen. 17:1</ScriptureLink>)</> : <>Dios na Makapangyarihan sa lahat (<ScriptureLink verse="Genesis 17:1" onHover={props.onHover}>Gen. 17:1</ScriptureLink>)</> },
+              { label: props.lang === 'en' ? "Omniscient" : "Nakaaalam ng Lahat", desc: props.lang === 'en' ? <>God knoweth all things (<ScriptureLink verse="1 John 3:20" onHover={props.onHover}>1 John 3:20</ScriptureLink>)</> : <>Nalalaman ng Dios ang lahat ng mga bagay (<ScriptureLink verse="1 Juan 3:20" onHover={props.onHover}>1 Juan 3:20</ScriptureLink>)</> }
+            ].map((attr, i) => (
+              <div key={i} className="flex justify-between items-center p-3 bg-gray-50 rounded-lg border border-gray-100">
+                <span className="font-bold text-brand-blue">{attr.label}</span>
+                <span className="text-xs text-gray-500 italic">{attr.desc}</span>
+              </div>
+            ))}
+          </div>
+        
+
+</div>
