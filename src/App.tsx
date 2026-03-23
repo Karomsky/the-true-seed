@@ -32,6 +32,8 @@ import { Helmet } from 'react-helmet-async';
 import { useAppStore } from './store/useAppStore';
 import StudyPage from './StudyPage';
 import BaptismPage from './BaptismPage';
+import AdminDashboard from './AdminDashboard';
+import AuthModal from './components/AuthModal';
 import { scriptures, ScriptureLink } from './scriptureData';
 
 const TRANSLATIONS: Record<string, Record<string, string>> = {
@@ -165,9 +167,10 @@ const inquirySchema = z.object({
 type InquiryFormValues = z.infer<typeof inquirySchema>;
 
 export default function App() {
-  const [view, setView] = useState<'home' | 'study' | 'baptism'>('home');
-  const { lang, setLang, completedLessons } = useAppStore();
+  const [view, setView] = useState<'home' | 'study' | 'baptism' | 'admin'>('home');
+  const { lang, setLang, completedLessons, user, token, setUserSession, syncProgress } = useAppStore();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const [activeTimelineIndex, setActiveTimelineIndex] = useState(0);
   const [tooltip, setTooltip] = useState<{ verse: string | null; x: number; y: number }>({ verse: null, x: 0, y: 0 });
   const [studyConfig, setStudyConfig] = useState<{ category?: string; lessonId?: number }>({});
@@ -191,6 +194,12 @@ export default function App() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  useEffect(() => {
+    if (user && token) {
+      syncProgress();
+    }
+  }, [user, token, syncProgress]);
 
   const t = TRANSLATIONS[lang];
 
@@ -273,6 +282,8 @@ export default function App() {
         />
       ) : view === 'baptism' ? (
         <BaptismPage lang={lang} onBack={handleBackToHome} onHover={handleHover} />
+      ) : view === 'admin' ? (
+        <AdminDashboard onBack={handleBackToHome} />
       ) : (
         <>
           {/* Navigation */}
@@ -313,24 +324,40 @@ export default function App() {
                   >
                     {t.nav_join}
                   </button>
-                  <div className="flex items-center gap-2 bg-white/10 p-1 rounded-lg border border-white/20 ml-4">
+                  <div className="flex items-center gap-3 ml-4">
+                    <div className="flex items-center gap-1 bg-white/10 p-1 rounded-lg border border-white/20">
+                      <button
+                        onClick={() => setLang('en')}
+                        aria-label="Switch to English"
+                        aria-pressed={lang === 'en'}
+                        className={`px-2 py-0.5 text-[10px] font-bold rounded transition-colors ${lang === 'en' ? 'bg-brand-gold text-brand-dark' : 'text-white hover:text-brand-gold'}`}
+                      >
+                        EN
+                      </button>
+                      <button
+                        onClick={() => setLang('tl')}
+                        aria-label="Switch to Tagalog"
+                        aria-pressed={lang === 'tl'}
+                        className={`px-2 py-0.5 text-[10px] font-bold rounded transition-colors ${lang === 'tl' ? 'bg-brand-gold text-brand-dark' : 'text-white hover:text-brand-gold'}`}
+                      >
+                        TL
+                      </button>
+                    </div>
                     <button
-                      onClick={() => setLang('en')}
-                      className={`px-2 py-0.5 text-[10px] font-bold rounded transition-colors ${lang === 'en' ? 'bg-brand-gold text-brand-dark' : 'text-white hover:text-brand-gold'}`}
+                      onClick={() => user ? setUserSession(null, null) : setIsAuthModalOpen(true)}
+                      className="text-white hover:text-brand-gold p-1.5 bg-brand-blue/20 rounded-lg border border-white/20 transition-colors flex items-center gap-2"
+                      title={user ? "Logout" : "Log in to Sync"}
+                      aria-label={user ? "Logout from your account" : "Log in to your account"}
                     >
-                      EN
-                    </button>
-                    <button
-                      onClick={() => setLang('tl')}
-                      className={`px-2 py-0.5 text-[10px] font-bold rounded transition-colors ${lang === 'tl' ? 'bg-brand-gold text-brand-dark' : 'text-white hover:text-brand-gold'}`}
-                    >
-                      TL
+                      <User className="h-4 w-4" />
                     </button>
                   </div>
                 </div>
                 <div className="md:hidden flex items-center">
                   <button
                     onClick={() => setIsMenuOpen(!isMenuOpen)}
+                    aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+                    aria-expanded={isMenuOpen}
                     className="text-brand-gold hover:text-white focus:outline-none"
                   >
                     {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -389,6 +416,22 @@ export default function App() {
                         className={`px-4 py-1.5 text-sm font-bold rounded transition-colors ${lang === 'tl' ? 'bg-brand-gold text-brand-dark' : 'text-white border border-white/20'}`}
                       >
                         Tagalog
+                      </button>
+                    </div>
+                    <div className="px-3 pt-2 pb-4">
+                      <button
+                        onClick={() => {
+                          setIsMenuOpen(false);
+                          if (user) {
+                            setUserSession(null, null);
+                          } else {
+                            setIsAuthModalOpen(true);
+                          }
+                        }}
+                        className="w-full flex items-center justify-center gap-2 bg-brand-blue/20 text-brand-gold border border-brand-blue/30 py-3 rounded-xl font-bold text-sm hover:bg-brand-blue/30 transition-colors"
+                      >
+                        <User className="h-5 w-5" />
+                        {user ? (lang === 'en' ? 'Sign Out' : 'Mag-Sign Out') : (lang === 'en' ? 'Sign In / Register' : 'Mag-Sign In')}
                       </button>
                     </div>
                   </div>
@@ -1201,14 +1244,22 @@ export default function App() {
                 <p className="text-xs text-gray-500">
                   © {new Date().getFullYear()} Iglesia ni Cristo - The True Seed. All rights reserved.
                 </p>
-                <div className="flex gap-6">
-                  <Globe className="h-4 w-4 text-gray-500" />
-                  <MapPin className="h-4 w-4 text-gray-500" />
+                <div className="flex items-center gap-6">
+                  <Globe className="h-4 w-4 text-gray-500 hover:text-white transition-colors cursor-pointer" />
+                  <MapPin className="h-4 w-4 text-gray-500 hover:text-white transition-colors cursor-pointer" />
+                  <button
+                    onClick={() => { setView('admin'); window.scrollTo(0, 0); }}
+                    className="text-gray-500 hover:text-brand-gold transition-colors ml-4"
+                    title="Admin Access"
+                  >
+                    <ShieldCheck className="h-4 w-4" />
+                  </button>
                 </div>
               </div>
             </div>
           </footer>
 
+          <AuthModal isOpen={isAuthModalOpen} onClose={() => setIsAuthModalOpen(false)} />
         </>
       )}
 
@@ -1223,6 +1274,7 @@ export default function App() {
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               className="p-3 bg-brand-gold text-brand-dark rounded-full shadow-2xl hover:bg-yellow-400 transition-all hover:scale-110 active:scale-90 btn-glow"
               title="Back to Top"
+              aria-label="Scroll back to top"
             >
               <ArrowDown className="h-6 w-6 transform rotate-180" />
             </motion.button>
@@ -1246,6 +1298,7 @@ export default function App() {
           }}
           className="p-3 bg-brand-blue text-white rounded-full shadow-2xl hover:bg-brand-dark transition-all btn-glow"
           title="Share Website"
+          aria-label="Share this website"
         >
           <Share2 className="h-6 w-6" />
         </motion.button>

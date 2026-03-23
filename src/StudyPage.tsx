@@ -159,6 +159,7 @@ export default function StudyPage({
         <div className="w-full px-4 sm:px-6 lg:px-8 relative z-10 flex items-center justify-between">
           <button
             onClick={() => onBack()}
+            aria-label={lang === 'en' ? "Back to Home" : "Bumalik sa Home"}
             className="flex items-center gap-2 text-brand-gold hover:text-white transition-colors group"
           >
             <ArrowLeft className="h-5 w-5 transform group-hover:-translate-x-1 transition-transform" />
@@ -223,6 +224,7 @@ export default function StudyPage({
               </div>
               <input
                 type="text"
+                aria-label={lang === 'en' ? "Search for a lesson topic" : "Maghanap ng paksa ng aralin"}
                 placeholder={lang === 'en' ? "Search for a lesson topic..." : "Maghanap ng paksa ng aralin..."}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
@@ -235,6 +237,7 @@ export default function StudyPage({
                     onClick={() => setSearchQuery('')}
                     className="p-2 text-gray-400 hover:text-brand-blue transition-colors"
                     title={lang === 'en' ? "Clear search" : "Linisin ang paghahanap"}
+                    aria-label={lang === 'en' ? "Clear search" : "Linisin ang paghahanap"}
                   >
                     <X className="h-5 w-5" />
                   </button>
@@ -243,6 +246,7 @@ export default function StudyPage({
                   type="submit"
                   className="bg-brand-blue text-white p-2.5 rounded-xl font-bold text-sm hover:bg-brand-dark transition-all shadow-md active:scale-95 flex items-center justify-center"
                   title={lang === 'en' ? "Search" : "Hanapin"}
+                  aria-label={lang === 'en' ? "Search" : "Hanapin"}
                 >
                   <Search className="h-5 w-5" />
                 </button>
