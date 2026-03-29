@@ -62,6 +62,7 @@ export default function StudyPage({
     { id: 'false-churches', name: lang === 'en' ? 'False Churches' : 'Ibang Iglesia', icon: ShieldCheck, color: 'bg-brand-dark', pdfUrl: '/False_Church_Study_Guide.pdf' },
     { id: 'true-church', name: lang === 'en' ? 'The True Church' : 'Ang Tunay na Iglesia', icon: ShieldCheck, color: 'bg-brand-blue', pdfUrl: '/The_True_Church_Study_Guide.pdf' },
     { id: 'eternal-covenant', name: lang === 'en' ? 'Eternal Covenant' : 'Walang Hanggang Tipan', icon: Infinity, color: 'bg-brand-blue', pdfUrl: '/Eternal_Covenant_Study_Guide.pdf' },
+    { id: 'election', name: lang === 'en' ? 'Election' : 'Pagpili', icon: Star, color: 'bg-brand-gold', pdfUrl: '/Election_Study_Guide.pdf' },
   ];
 
   const lessons = getLessons(lang, onHover);

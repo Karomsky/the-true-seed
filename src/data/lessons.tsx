@@ -69,6 +69,9 @@ import Lesson37Content, { frontmatter as lesson37Fm } from '../content/lessons/3
 import Lesson38Content, { frontmatter as lesson38Fm } from '../content/lessons/38-the-legal-necessity-of-the-church.mdx';
 import Lesson39Content, { frontmatter as lesson39Fm } from '../content/lessons/39-the-name-and-the-final-call.mdx';
 import Lesson40Content, { frontmatter as lesson40Fm } from '../content/lessons/40-the-new-covenant-in-his-blood.mdx';
+import Lesson41Content, { frontmatter as lesson41Fm } from '../content/lessons/41-the-elect-of-god.mdx';
+import Lesson42Content, { frontmatter as lesson42Fm } from '../content/lessons/42-the-foreknowledge-of-god.mdx';
+import Lesson43Content, { frontmatter as lesson43Fm } from '../content/lessons/43-the-called-out-assembly.mdx';
 
 export const getLessons = (lang: 'en' | 'tl', onHover: (verse: string | null, x: number, y: number) => void): Lesson[] => {
 return [
@@ -1173,6 +1176,123 @@ return [
             ],
             correctIndex: 1,
             explanation: lang === 'en' ? "The New Covenant signifies the forgiveness of sins and a renewed relationship with God through Christ's sacrifice." : "Ang Bagong Tipan ay nangangahulugan ng kapatawaran ng mga kasalanan at isang bagong relasyon sa Diyos sa pamamagitan ng sakripisyo ni Cristo."
+          }
+        ]
+      }
+    },
+    {
+      id: 41,
+      category: lesson41Fm.category,
+      title: lesson41Fm.title,
+      titleTl: lesson41Fm.titleTl,
+      icon: Star,
+      searchKeywords: lesson41Fm.searchKeywords,
+      searchKeywordsTl: lesson41Fm.searchKeywordsTl,
+      searchContent: lesson41Fm.searchContent,
+      searchContentTl: lesson41Fm.searchContentTl,
+      content: <Lesson41Content lang={lang} onHover={onHover} />,
+      quiz: {
+        title: "The Elect of God",
+        questions: [
+          {
+            question: lang === 'en' ? "According to Matthew 22:14, how are the called and chosen compared?" : "Ayon sa Mateo 22:14, paano inihambing ang mga tinawag at mga hinirang?",
+            options: [
+              lang === 'en' ? "Many are called, and all are chosen" : "Marami ang tinawag, at lahat ay hinirang",
+              lang === 'en' ? "Few are called, and many are chosen" : "Kakaunti ang tinawag, at marami ang hinirang",
+              lang === 'en' ? "Many are called, but few are chosen" : "Marami ang tinawag, ngunit kakaunti ang hinirang",
+              lang === 'en' ? "None are called or chosen" : "Walang tinawag o hinirang"
+            ],
+            correctIndex: 2,
+            explanation: lang === 'en' ? "Matthew 22:14 states: 'For many are called, but few are chosen.' This shows that election is specific and purposeful." : "Sinasabi sa Mateo 22:14: 'Sapagka't marami ang mga tinawag, datapuwa't kakaunti ang mga hinirang.' Ipinapakita nito na ang pagpili ay tiyak at may layunin."
+          },
+          {
+            question: lang === 'en' ? "What does 1 Peter 2:9 call the people of God?" : "Ano ang itinawag ng 1 Pedro 2:9 sa bayan ng Diyos?",
+            options: [
+              lang === 'en' ? "A random group of people" : "Isang random na grupo ng mga tao",
+              lang === 'en' ? "A chosen generation, a royal priesthood, a holy nation" : "Isang hinirang na lahi, isang maharlikang pagkasaserdote, isang banal na bansa",
+              lang === 'en' ? "A sinful and lost people" : "Isang makasalanan at nawawalang bayan",
+              lang === 'en' ? "An ordinary gathering of neighbors" : "Isang ordinaryong pagtitipon ng mga kapitbahay"
+            ],
+            correctIndex: 1,
+            explanation: lang === 'en' ? "1 Peter 2:9 calls them 'a chosen generation, a royal priesthood, an holy nation, a peculiar people.'" : "Tinatawag sila ng 1 Pedro 2:9 na 'isang hinirang na lahi, isang maharlikang pagkasaserdote, isang banal na bansa, isang natatanging bayan.'"
+          }
+        ]
+      }
+    },
+    {
+      id: 42,
+      category: lesson42Fm.category,
+      title: lesson42Fm.title,
+      titleTl: lesson42Fm.titleTl,
+      icon: Eye,
+      searchKeywords: lesson42Fm.searchKeywords,
+      searchKeywordsTl: lesson42Fm.searchKeywordsTl,
+      searchContent: lesson42Fm.searchContent,
+      searchContentTl: lesson42Fm.searchContentTl,
+      content: <Lesson42Content lang={lang} onHover={onHover} />,
+      quiz: {
+        title: "The Foreknowledge of God",
+        questions: [
+          {
+            question: lang === 'en' ? "According to Romans 8:29-30 what is the first step in the chain of salvation?" : "Ayon sa Roma 8:29-30 ano ang unang hakbang sa kadena ng kaligtasan?",
+            options: [
+              lang === 'en' ? "Justification" : "Pagiging matuwid",
+              lang === 'en' ? "Glorification" : "Pagpapaluwalhati",
+              lang === 'en' ? "Foreknowledge" : "Pagkaalam bago",
+              lang === 'en' ? "Being called" : "Pagtawag"
+            ],
+            correctIndex: 2,
+            explanation: lang === 'en' ? "Romans 8:29-30 shows the chain begins with God's foreknowledge (foreknown → predestined → called → justified → glorified)." : "Ipinapakita ng Roma 8:29-30 na nagsisimula ang kadena sa pagkaalam ng Diyos nang maaga (nakilala bago → nagtakda → tinawag → pinawalang-sala → niluwalhati)."
+          },
+          {
+            question: lang === 'en' ? "Is God's election based on foreseen human merit according to 2 Timothy 1:9?" : "Batay ba ang pagpili ng Diyos sa nakita nang maaga na merito ng tao ayon sa 2 Timoteo 1:9?",
+            options: [
+              lang === 'en' ? "Yes, God chose those He knew would be good" : "Oo, pinili ng Diyos ang mga alam Niyang magiging mabuti",
+              lang === 'en' ? "No, it is based solely on His own purpose and grace" : "Hindi, ito ay batay lamang sa Kaniyang sariling layunin at biyaya",
+              lang === 'en' ? "It depends on the person's free will" : "Nakasalalay ito sa malayang kalooban ng tao",
+              lang === 'en' ? "God has no plan for salvation" : "Ang Diyos ay walang plano para sa kaligtasan"
+            ],
+            correctIndex: 1,
+            explanation: lang === 'en' ? "2 Timothy 1:9 states that God saved us 'not according to our works, but according to His own purpose and grace.'" : "Sinasabi ng 2 Timoteo 1:9 na iniligtas tayo ng Diyos 'hindi ayon sa ating mga gawa, kundi ayon sa Kaniyang sariling layunin at biyaya.'"
+          }
+        ]
+      }
+    },
+    {
+      id: 43,
+      category: lesson43Fm.category,
+      title: lesson43Fm.title,
+      titleTl: lesson43Fm.titleTl,
+      icon: Users,
+      searchKeywords: lesson43Fm.searchKeywords,
+      searchKeywordsTl: lesson43Fm.searchKeywordsTl,
+      searchContent: lesson43Fm.searchContent,
+      searchContentTl: lesson43Fm.searchContentTl,
+      content: <Lesson43Content lang={lang} onHover={onHover} />,
+      quiz: {
+        title: "The Called Out Assembly",
+        questions: [
+          {
+            question: lang === 'en' ? "What does the Greek word 'ekklesia' (Church) literally mean?" : "Ano ang literal na ibig sabihin ng salitang Griyego na 'ekklesia' (Iglesia)?",
+            options: [
+              lang === 'en' ? "A building for worship" : "Isang gusali para sa pagsamba",
+              lang === 'en' ? "The called-out assembly" : "Ang tinawag na palabas na kapulungan",
+              lang === 'en' ? "A group of friends" : "Isang grupo ng mga kaibigan",
+              lang === 'en' ? "A religious ceremony" : "Isang relihiyosong seremonya"
+            ],
+            correctIndex: 1,
+            explanation: lang === 'en' ? "The Greek 'ekklesia' literally means 'the called-out ones' or 'called-out assembly' — pointing to those elected and gathered by God." : "Ang Griyegong 'ekklesia' ay literal na nangangahulugang 'ang mga tinawag na palabas' o 'tinawag na kapulungan' — tumutukoy sa mga hinirang at tinipon ng Diyos."
+          },
+          {
+            question: lang === 'en' ? "According to John 15:16, who made the choice in the relationship between Christ and His disciples?" : "Ayon sa Juan 15:16, sino ang pumili sa relasyon sa pagitan ni Cristo at ng Kaniyang mga alagad?",
+            options: [
+              lang === 'en' ? "The disciples chose Christ" : "Pinili ng mga alagad si Cristo",
+              lang === 'en' ? "It was a mutual choice" : "Ito ay isang mutual na pagpili",
+              lang === 'en' ? "Christ chose His disciples" : "Pinili ni Cristo ang Kaniyang mga alagad",
+              lang === 'en' ? "Neither chose the other" : "Wala sa kanila ang pumili sa isa'"
+            ],
+            correctIndex: 2,
+            explanation: lang === 'en' ? "John 15:16 says: 'Ye have not chosen me, but I have chosen you' — making clear that it is Christ, not man, who initiates election." : "Sinasabi sa Juan 15:16: 'Hindi kayo ang pumili sa akin, kundi ako ang pumili sa inyo' — malinaw na nagpapakita na si Cristo, hindi ang tao, ang nagpasimula ng pagpili."
           }
         ]
       }
