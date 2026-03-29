@@ -35,6 +35,8 @@ import { Lesson, Quiz } from './types/study';
 import QuizComponent from './components/QuizComponent';
 import { getLessons } from './data/lessons';
 import { useAppStore } from './store/useAppStore';
+import { generateCertificate } from './utils/certificate';
+import { Award, Trophy, Medal } from 'lucide-react';
 
 export default function StudyPage({
   onBack,
@@ -72,6 +74,28 @@ export default function StudyPage({
   const [hasReadCurrent, setHasReadCurrent] = useState(false);
   const [showQuizPrompt, setShowQuizPrompt] = useState(false);
   const [isQuizActive, setIsQuizActive] = useState(false);
+  const [isGeneratingCertificate, setIsGeneratingCertificate] = useState(false);
+
+  const getCategoryStatus = (categoryId: string) => {
+    const categoryLessons = lessons.filter(l => l.category === categoryId);
+    if (categoryLessons.length === 0) return 0;
+    const completedInCategory = categoryLessons.filter(l => completedLessons.includes(l.id));
+    return (completedInCategory.length / categoryLessons.length);
+  };
+
+  const handleDownloadCertificate = async () => {
+    setIsGeneratingCertificate(true);
+    try {
+      const { user } = useAppStore.getState();
+      const userName = user?.email.split('@')[0] || 'Faithful Student';
+      const date = new Date().toLocaleDateString();
+      await generateCertificate(userName, date, lang);
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setIsGeneratingCertificate(false);
+    }
+  };
 
   useEffect(() => {
     if (initialLessonId) {
@@ -213,6 +237,77 @@ export default function StudyPage({
                   />
                 </div>
               </div>
+            </div>
+
+            {/* Achievements Section */}
+            <div className="mb-10 px-4">
+              <div className="flex flex-wrap justify-center gap-4">
+                {categories.filter(c => c.id !== 'all').map((cat) => {
+                  const progress = getCategoryStatus(cat.id);
+                  const isDone = progress === 1;
+                  const Icon = cat.icon;
+                  return (
+                    <motion.div
+                      key={cat.id}
+                      whileHover={{ y: -5 }}
+                      className={`relative group flex flex-col items-center p-3 rounded-2xl border transition-all duration-500 ${isDone ? 'bg-white border-brand-gold shadow-lg shadow-brand-gold/10' : 'bg-gray-50/30 border-gray-100 opacity-60'}`}
+                      title={`${cat.name}: ${Math.round(progress * 100)}%`}
+                    >
+                      <div className={`p-3 rounded-full mb-2 ${isDone ? 'bg-brand-gold text-brand-dark' : 'bg-gray-200 text-gray-400'}`}>
+                        <Icon className="h-5 w-5" />
+                      </div>
+                      <div className="text-[9px] uppercase tracking-tighter font-bold text-center max-w-[70px] leading-tight">
+                        {cat.name}
+                      </div>
+                      {isDone && (
+                        <div className="absolute -top-1 -right-1 bg-brand-gold text-brand-dark rounded-full p-0.5 border-2 border-white shadow-sm">
+                          <CheckCircle2 className="h-3 w-3" />
+                        </div>
+                      )}
+                      
+                      {/* Tooltip */}
+                      <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 bg-brand-dark text-white text-[10px] py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-50 shadow-xl">
+                        {isDone ? (lang === 'en' ? 'Module Mastered!' : 'Masterado na!') : `${Math.round(progress * 100)}% Complete`}
+                      </div>
+                    </motion.div>
+                  );
+                })}
+              </div>
+
+              {completedLessons.length >= lessons.length && (
+                <motion.div 
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="mt-8 p-6 bg-gradient-to-br from-brand-blue to-brand-dark rounded-3xl text-center border-b-4 border-brand-gold relative overflow-hidden"
+                >
+                  <div className="absolute -top-10 -right-10 opacity-10">
+                    <Trophy className="h-40 w-40 text-brand-gold" />
+                  </div>
+                  <div className="relative z-10">
+                    <Medal className="h-10 w-10 text-brand-gold mx-auto mb-3" />
+                    <h3 className="text-xl font-bold text-white mb-2 font-serif">
+                      {lang === 'en' ? "Congratulations, Graduate!" : "Pagbati, Nagtapos!"}
+                    </h3>
+                    <p className="text-white/70 text-sm mb-6 max-w-sm mx-auto">
+                      {lang === 'en' 
+                        ? "You have completed all theological modules. You are now eligible for your Certificate of Completion." 
+                        : "Natapos mo na ang lahat ng mga teolohikong modyul. Karapat-dapat ka na para sa iyong Katibayan ng Pagtatapos."}
+                    </p>
+                    <button
+                      onClick={handleDownloadCertificate}
+                      disabled={isGeneratingCertificate}
+                      className="bg-brand-gold text-brand-dark px-8 py-3 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-yellow-400 transition-all flex items-center gap-2 mx-auto active:scale-95 shadow-xl disabled:opacity-50"
+                    >
+                      {isGeneratingCertificate ? (
+                        <div className="h-4 w-4 border-2 border-brand-dark/30 border-t-brand-dark rounded-full animate-spin"></div>
+                      ) : (
+                        <FileText className="h-4 w-4" />
+                      )}
+                      {lang === 'en' ? "Download Official Certificate" : "I-download ang Opisyal na Katibayan"}
+                    </button>
+                  </div>
+                </motion.div>
+              )}
             </div>
 
             <form
@@ -487,7 +582,7 @@ export default function StudyPage({
                             </button>
                             <button
                               onClick={() => {
-                                const availableLessons = lessons.filter(l => l.category === selectedCategory);
+                                const availableLessons = lessons.filter(l => l.category === selectedCategory || selectedCategory === 'all');
                                 const currentIndex = availableLessons.findIndex(l => l.id === activeLesson);
                                 const nextIndex = currentIndex < availableLessons.length - 1 ? currentIndex + 1 : 0;
                                 setActiveLesson(availableLessons[nextIndex].id);
@@ -520,3 +615,4 @@ export default function StudyPage({
     </div>
   );
 }
+
