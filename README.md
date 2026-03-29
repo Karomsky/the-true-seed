@@ -102,5 +102,47 @@ The True Seed utilizes robust testing measures to ensure the integrity of the ap
 
 ---
 
+## 🚀 CI/CD Deployment Flow
+
+This project uses a **fully automated Continuous Deployment pipeline**. Every code change flows from your local machine to the live production website automatically — no manual server work needed.
+
+```mermaid
+flowchart TD
+    DEV["🖥️ Local Project\n──────────────────\nVS Code Editor\ne:/gdev/trueseed/the-true-seed"]
+    AI["🤖 Antigravity AI\n──────────────────\nCode Generation\nBug Fixes & Features\nRefactoring & Testing"]
+    GH["🐙 GitHub Repository\n──────────────────\nKaromsky/the-true-seed\nbranch: main"]
+    RW["🚂 Railway Platform\n──────────────────\nDocker Build\nNode.js + Vite Compilation\nExpress Server Boot"]
+    LIVE["🌐 Live Website\n──────────────────\nhttps://www.r510.org\n24/7 Online — SSL Secured"]
+
+    DEV -- "1️⃣  Write / Edit Code" --> AI
+    AI -- "2️⃣  Apply changes to files" --> DEV
+    DEV -- "3️⃣  git push origin main" --> GH
+    GH -- "4️⃣  Auto-detects new commit\n(Webhook Trigger)" --> RW
+    RW -- "5️⃣  Builds Docker image\nRuns: npm run build + start" --> RW
+    RW -- "6️⃣  Zero-downtime Deploy" --> LIVE
+
+    style DEV fill:#1e293b,stroke:#c5a059,color:#f8fafc
+    style AI fill:#7c3aed,stroke:#a78bfa,color:#f8fafc
+    style GH fill:#24292e,stroke:#58a6ff,color:#f8fafc
+    style RW  fill:#7c3aed,stroke:#a78bfa,color:#f8fafc
+    style LIVE fill:#065f46,stroke:#34d399,color:#f8fafc
+```
+
+### How it works step-by-step:
+
+| Step | Actor | Action |
+|------|-------|--------|
+| **1** | Developer | Opens VS Code locally at `e:/gdev/trueseed/the-true-seed` |
+| **2** | **Antigravity AI** | Writes, edits, and tests code changes directly in the project files |
+| **3** | Developer + AI | Runs `git add . && git commit && git push origin main` |
+| **4** | GitHub | Detects the new commit on `main` and notifies Railway via a webhook |
+| **5** | Railway | Pulls the latest code, builds the Docker image, compiles the React frontend (`npm run build`), and boots the Express server |
+| **6** | Railway | Performs a zero-downtime swap — your visitors never see a loading screen |
+| **✅** | Everyone | `https://www.r510.org` is now live with the new features! |
+
+> 💡 **You never need to touch the Railway dashboard again for deployments.** Just run `git push` and Railway handles all of the rest automatically.
+
+---
+
 ## 🛡️ License
 Proprietary layout. Content belongs exclusively to the Iglesia Ni Cristo repository of doctrines. All Rights Reserved.
