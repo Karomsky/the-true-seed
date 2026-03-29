@@ -1,0 +1,61 @@
+---
+title: "The Fullness of the One New Man"
+titleTl: "Ang Kabuuan ng Isang Bagong Tao"
+category: "one-new-man"
+icon: "Infinity"
+searchKeywords: "fullness complete stature mature Ephesians 4:13 unity faith knowledge growing up into him whole body fitly joined together increase"
+searchKeywordsTl: "kabuuan kumpleto tayog ganap Efeso 4:13 pagkakaisa pananampalataya kaalaman lumalaki sa kanya buong katawan maayos na pinagsama pagtaas"
+searchContent: "The goal of the One New Man is to reach the fullness of Christ — a complete, mature, unified Body. Ephesians 4:13 describes this as 'the measure of the stature of the fullness of Christ,' achieved through the Church working together as one."
+searchContentTl: "Ang layunin ng Isang Bagong Tao ay maabot ang kabuuan ni Cristo — isang kumpleto, ganap, nagkakaisang Katawan. Inilarawan ito ng Efeso 4:13 bilang 'sukatan ng tayog ng kabuuan ni Cristo,' na nakamit sa pamamagitan ng Iglesia na nagtatrabaho nang magkasama bilang isa."
+---
+import { ScriptureLink } from '../../scriptureData';
+
+<div className="space-y-3">
+  <p className="text-base leading-snug">
+    {props.lang === 'en'
+      ? "The One New Man is not static — it is growing. God's grand design is not simply to gather a crowd, but to build His Body into a perfect, unified entity that reaches the very fullness of Christ Himself. This is the ultimate destiny of the Church."
+      : "Ang Isang Bagong Tao ay hindi static — ito ay lumalaki. Ang dakilang disenyo ng Diyos ay hindi lamang upang makapagtipon ng maraming tao, kundi upang itayo ang Kaniyang Katawan sa isang perpekto, nagkakaisang entity na umaabot sa mismong kabuuan ni Cristo. Ito ang pinakamataas na kapalaran ng Iglesia."}
+  </p>
+
+  <div className="p-4 bg-gradient-to-br from-brand-gold/10 to-brand-blue/5 rounded-xl border border-brand-gold/20">
+    <h4 className="font-bold text-brand-dark mb-2 text-sm uppercase tracking-wider">{props.lang === 'en' ? "The Four Pillars of Growth" : "Ang Apat na Haligi ng Paglago"}</h4>
+    <div className="grid grid-cols-2 gap-2">
+      {[
+        { en: 'Unity of Faith', tl: 'Pagkakaisa ng Pananampalataya' },
+        { en: 'Knowledge of Christ', tl: 'Kaalaman kay Cristo' },
+        { en: 'Perfect Man', tl: 'Ganap na Tao' },
+        { en: 'Fullness of Christ', tl: 'Kabuuan ni Cristo' },
+      ].map((item, i) => (
+        <div key={i} className="bg-white/70 p-2 rounded-lg text-xs font-bold text-center text-brand-blue border border-brand-blue/10">
+          {props.lang === 'en' ? item.en : item.tl}
+        </div>
+      ))}
+    </div>
+    <p className="text-xs text-gray-500 text-center mt-2"><ScriptureLink verse="Ephesians 4:13" onHover={props.onHover}>Ephesians 4:13</ScriptureLink></p>
+  </div>
+
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+    <div className="bg-brand-gold/5 p-3 rounded-lg border-l-4 border-brand-gold">
+      <span className="font-bold block mb-1">
+        <ScriptureLink verse="Ephesians 4:16" onHover={props.onHover}>Ephesians 4:16</ScriptureLink>
+      </span>
+      <p className="text-sm italic">"...the whole body fitly joined together...according to the effectual working in the measure of every part, maketh increase of the body..."</p>
+    </div>
+    <div className="bg-brand-blue/5 p-3 rounded-lg border-l-4 border-brand-blue">
+      <span className="font-bold block mb-1">
+        <ScriptureLink verse="Colossians 2:10" onHover={props.onHover}>Colossians 2:10</ScriptureLink>
+      </span>
+      <p className="text-sm italic">"And ye are complete in him, which is the head of all principality and power."</p>
+    </div>
+  </div>
+
+  <div className="p-4 bg-gradient-to-r from-brand-dark/90 to-brand-blue text-white rounded-xl text-center">
+    <p className="font-bold text-brand-gold text-sm uppercase tracking-widest mb-1">{props.lang === 'en' ? "The Final Picture" : "Ang Panghuling Larawan"}</p>
+    <p className="text-sm opacity-90">
+      {props.lang === 'en'
+        ? "The One New Man fully realized: Christ the Head, united with His Church the Body — complete, holy, and glorified forever."
+        : "Ang Isang Bagong Tao na ganap na natupad: si Cristo ang Ulo, nagkakaisa sa Kaniyang Iglesia ang Katawan — kumpleto, banal, at niluwalhati magpakailanman."}
+    </p>
+    <p className="text-xs text-white/60 mt-2"><ScriptureLink verse="Revelation 21:2" onHover={props.onHover}>Revelation 21:2</ScriptureLink></p>
+  </div>
+</div>

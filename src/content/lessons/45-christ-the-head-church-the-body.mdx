@@ -1,0 +1,57 @@
+---
+title: "Christ the Head, Church the Body"
+titleTl: "Si Cristo ang Ulo, Ang Iglesia ang Katawan"
+category: "one-new-man"
+icon: "Heart"
+searchKeywords: "head body Christ church Ephesians 1:22-23 Colossians 1:18 saviour body members members of his body members of Christ"
+searchKeywordsTl: "ulo katawan Cristo iglesia Efeso 1:22-23 Colosas 1:18 tagapagligtas katawan mga miyembro miyembro ng kaniyang katawan miyembro ni Cristo"
+searchContent: "The Church is not merely an organization — it is the literal Body of Christ. He is the Head (Ephesians 1:22-23). This biological illustration reveals deep spiritual truth: you cannot separate a body from its head and still have life."
+searchContentTl: "Ang Iglesia ay hindi lamang isang organisasyon — ito ang literal na Katawan ni Cristo. Siya ang Ulo (Efeso 1:22-23). Ang biyolohikal na ilustrasyong ito ay nagpapakita ng malalim na espirituwal na katotohanan: hindi mo maaaring ihiwalay ang katawan mula sa ulo at mayroon pa ring buhay."
+---
+import { ScriptureLink } from '../../scriptureData';
+
+<div className="space-y-3">
+  <p className="text-base leading-snug">
+    {props.lang === 'en'
+      ? "The Holy Scripture uses the human anatomy to reveal the relationship between Christ and His Church. He is the Head; the Church is His Body. This is not a metaphor for leadership — it is a biological and legal truth about what kind of entity the Church actually is."
+      : "Ginagamit ng Banal na Kasulatan ang anatomiya ng tao upang ipakita ang relasyon sa pagitan ni Cristo at ng Kaniyang Iglesia. Siya ang Ulo; ang Iglesia ang Kaniyang Katawan. Hindi ito isang metapora para sa pamumuno — ito ay isang biyolohikal at legal na katotohanan tungkol sa kung anong uri ng entity ang Iglesia."}
+  </p>
+
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+    <div className="bg-brand-gold/5 p-3 rounded-lg border-l-4 border-brand-gold text-center">
+      <div className="text-2xl mb-1">👑</div>
+      <div className="font-bold text-brand-gold text-xs uppercase mb-1">{props.lang === 'en' ? "The Head" : "Ang Ulo"}</div>
+      <div className="font-bold">Jesus Christ</div>
+      <p className="text-xs text-gray-500 mt-1"><ScriptureLink verse="Ephesians 1:22" onHover={props.onHover}>Eph 1:22</ScriptureLink></p>
+    </div>
+    <div className="bg-gray-50 p-3 rounded-lg text-center flex items-center justify-center">
+      <div className="font-bold text-brand-blue text-2xl">+</div>
+    </div>
+    <div className="bg-brand-blue/5 p-3 rounded-lg border-l-4 border-brand-blue text-center">
+      <div className="text-2xl mb-1">⛪</div>
+      <div className="font-bold text-brand-blue text-xs uppercase mb-1">{props.lang === 'en' ? "The Body" : "Ang Katawan"}</div>
+      <div className="font-bold">{props.lang === 'en' ? "The Church" : "Ang Iglesia"}</div>
+      <p className="text-xs text-gray-500 mt-1"><ScriptureLink verse="Ephesians 1:23" onHover={props.onHover}>Eph 1:23</ScriptureLink></p>
+    </div>
+  </div>
+
+  <div className="p-3 bg-brand-blue/5 rounded-xl border border-brand-blue/10">
+    <h4 className="font-bold text-brand-blue mb-1">{props.lang === 'en' ? "The Saviour of the Body" : "Ang Tagapagligtas ng Katawan"}</h4>
+    <p className="text-sm text-gray-600">
+      {props.lang === 'en'
+        ? "Ephesians 5:23 reveals that Christ is 'the saviour of the body.' Salvation is not individual and isolated — it is corporate, flowing from Head to Body. This is why membership in the Body of Christ (the Church) is essential to salvation."
+        : "Inihahayag ng Efeso 5:23 na si Cristo ay 'ang Tagapagligtas ng katawan.' Ang kaligtasan ay hindi indibidwal at nakahiwalay — ito ay kolektibo, dumadaloy mula sa Ulo patungo sa Katawan. Kaya naman ang pagiging miyembro ng Katawan ni Cristo (ang Iglesia) ay mahalaga sa kaligtasan."}
+      {' '}<ScriptureLink verse="Ephesians 5:23" onHover={props.onHover}>Eph 5:23</ScriptureLink>
+    </p>
+  </div>
+
+  <div className="p-3 bg-white border border-gray-100 rounded-xl shadow-sm">
+    <h4 className="font-bold text-brand-gold mb-1">{props.lang === 'en' ? "One Body, Not Many" : "Isang Katawan, Hindi Marami"}</h4>
+    <p className="text-sm text-gray-600">
+      {props.lang === 'en'
+        ? "Just as a human body has only one head, Christ has only one Body — one Church. There cannot be multiple legitimate churches any more than a man can have multiple heads."
+        : "Tulad ng isang katawan ng tao na may iisang ulo lamang, si Cristo ay may iisang Katawan lamang — isang Iglesia. Hindi maaaring magkaroon ng maraming lehitimong iglesia tulad na hindi maaaring magkaroon ng tao ng maraming ulo."}
+      {' '}<ScriptureLink verse="Ephesians 4:4" onHover={props.onHover}>Eph 4:4</ScriptureLink>
+    </p>
+  </div>
+</div>

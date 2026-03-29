@@ -64,6 +64,7 @@ export default function StudyPage({
     { id: 'true-church', name: lang === 'en' ? 'The True Church' : 'Ang Tunay na Iglesia', icon: ShieldCheck, color: 'bg-brand-blue', pdfUrl: '/The_True_Church_Study_Guide.pdf' },
     { id: 'eternal-covenant', name: lang === 'en' ? 'Eternal Covenant' : 'Walang Hanggang Tipan', icon: Infinity, color: 'bg-brand-blue', pdfUrl: '/Eternal_Covenant_Study_Guide.pdf' },
     { id: 'election', name: lang === 'en' ? 'Election' : 'Pagpili', icon: Star, color: 'bg-brand-gold', pdfUrl: '/Election_Study_Guide.pdf' },
+    { id: 'one-new-man', name: lang === 'en' ? 'One New Man' : 'Isang Bagong Tao', icon: Presentation, color: 'bg-brand-blue', pdfUrl: '/One_New_Man_Study_Guide.pdf' },
     { id: 'bookmarks', name: lang === 'en' ? 'Bookmarks' : 'Mga Bookmark', icon: Bookmark, color: 'bg-brand-dark' },
   ];
 

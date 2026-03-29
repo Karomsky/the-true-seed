@@ -72,6 +72,9 @@ import Lesson40Content, { frontmatter as lesson40Fm } from '../content/lessons/4
 import Lesson41Content, { frontmatter as lesson41Fm } from '../content/lessons/41-the-elect-of-god.mdx';
 import Lesson42Content, { frontmatter as lesson42Fm } from '../content/lessons/42-the-foreknowledge-of-god.mdx';
 import Lesson43Content, { frontmatter as lesson43Fm } from '../content/lessons/43-the-called-out-assembly.mdx';
+import Lesson44Content, { frontmatter as lesson44Fm } from '../content/lessons/44-the-mystery-of-the-one-new-man.mdx';
+import Lesson45Content, { frontmatter as lesson45Fm } from '../content/lessons/45-christ-the-head-church-the-body.mdx';
+import Lesson46Content, { frontmatter as lesson46Fm } from '../content/lessons/46-the-fullness-of-the-one-new-man.mdx';
 
 export const getLessons = (lang: 'en' | 'tl', onHover: (verse: string | null, x: number, y: number) => void): Lesson[] => {
 return [
@@ -1293,6 +1296,123 @@ return [
             ],
             correctIndex: 2,
             explanation: lang === 'en' ? "John 15:16 says: 'Ye have not chosen me, but I have chosen you' — making clear that it is Christ, not man, who initiates election." : "Sinasabi sa Juan 15:16: 'Hindi kayo ang pumili sa akin, kundi ako ang pumili sa inyo' — malinaw na nagpapakita na si Cristo, hindi ang tao, ang nagpasimula ng pagpili."
+          }
+        ]
+      }
+    },
+    {
+      id: 44,
+      category: lesson44Fm.category,
+      title: lesson44Fm.title,
+      titleTl: lesson44Fm.titleTl,
+      icon: Users,
+      searchKeywords: lesson44Fm.searchKeywords,
+      searchKeywordsTl: lesson44Fm.searchKeywordsTl,
+      searchContent: lesson44Fm.searchContent,
+      searchContentTl: lesson44Fm.searchContentTl,
+      content: <Lesson44Content lang={lang} onHover={onHover} />,
+      quiz: {
+        title: "The Mystery of the One New Man",
+        questions: [
+          {
+            question: lang === 'en' ? "What does Ephesians 2:14 say Christ broke down?" : "Ano ang sinabi ng Efeso 2:14 na winasak ni Cristo?",
+            options: [
+              lang === 'en' ? "The temple of Jerusalem" : "Ang templo ng Jerusalem",
+              lang === 'en' ? "The middle wall of partition between Jews and Gentiles" : "Ang harang na pader sa pagitan ng mga Judio at Hentil",
+              lang === 'en' ? "The power of Satan" : "Ang kapangyarihan ni Satanas",
+              lang === 'en' ? "The laws of Rome" : "Ang mga batas ng Roma"
+            ],
+            correctIndex: 1,
+            explanation: lang === 'en' ? "Ephesians 2:14 says Christ 'hath broken down the middle wall of partition between us,' referring to the division between Jews and Gentiles." : "Sinasabi ng Efeso 2:14 na si Cristo ay 'bumasak ng harang na pader sa pagitan natin,' na tumutukoy sa dibiyon sa pagitan ng mga Judio at Hentil."
+          },
+          {
+            question: lang === 'en' ? "What did Christ create from the two groups (Jews and Gentiles) according to Ephesians 2:15?" : "Ano ang nilikha ni Cristo mula sa dalawang grupo (Judio at Hentil) ayon sa Efeso 2:15?",
+            options: [
+              lang === 'en' ? "A compromise agreement" : "Isang kompromisong kasunduan",
+              lang === 'en' ? "Two separate but equal churches" : "Dalawang hiwalay ngunit pantay na iglesia",
+              lang === 'en' ? "One New Man" : "Isang Bagong Tao",
+              lang === 'en' ? "A new law and commandment" : "Isang bagong batas at utos"
+            ],
+            correctIndex: 2,
+            explanation: lang === 'en' ? "Ephesians 2:15 says Christ created 'one new man' from the two, making peace — not a blend of two groups but a brand new creation." : "Sinasabi ng Efeso 2:15 na nilikha ni Cristo ang 'isang bagong tao' mula sa dalawa, gumagawa ng kapayapaan — hindi isang halo ng dalawang grupo kundi isang bagong nilikha."
+          }
+        ]
+      }
+    },
+    {
+      id: 45,
+      category: lesson45Fm.category,
+      title: lesson45Fm.title,
+      titleTl: lesson45Fm.titleTl,
+      icon: Heart,
+      searchKeywords: lesson45Fm.searchKeywords,
+      searchKeywordsTl: lesson45Fm.searchKeywordsTl,
+      searchContent: lesson45Fm.searchContent,
+      searchContentTl: lesson45Fm.searchContentTl,
+      content: <Lesson45Content lang={lang} onHover={onHover} />,
+      quiz: {
+        title: "Christ the Head, Church the Body",
+        questions: [
+          {
+            question: lang === 'en' ? "According to Ephesians 1:22-23, what is the Church in relation to Christ?" : "Ayon sa Efeso 1:22-23, ano ang Iglesia kaugnay kay Cristo?",
+            options: [
+              lang === 'en' ? "His servant" : "Kaniyang alipin",
+              lang === 'en' ? "His body" : "Kaniyang katawan",
+              lang === 'en' ? "His house" : "Kaniyang tahanan",
+              lang === 'en' ? "His army" : "Kaniyang hukbo"
+            ],
+            correctIndex: 1,
+            explanation: lang === 'en' ? "Ephesians 1:22-23 states the Church is 'his body, the fullness of him that filleth all in all.' The Church is His body, not merely His organization." : "Sinasabi ng Efeso 1:22-23 na ang Iglesia ay 'kaniyang katawan, ang kapunuan niyaong nagpupuno ng lahat sa lahat.' Ang Iglesia ay Kaniyang katawan, hindi lamang Kaniyang organisasyon."
+          },
+          {
+            question: lang === 'en' ? "According to Ephesians 5:23, what is Christ the Saviour of?" : "Ayon sa Efeso 5:23, Tagapagligtas ng ano si Cristo?",
+            options: [
+              lang === 'en' ? "The world" : "Ng mundo",
+              lang === 'en' ? "Israel" : "Ng Israel",
+              lang === 'en' ? "The body (the Church)" : "Ng katawan (ang Iglesia)",
+              lang === 'en' ? "All individuals personally" : "Ng lahat ng indibidwal nang personal"
+            ],
+            correctIndex: 2,
+            explanation: lang === 'en' ? "Ephesians 5:23 specifically says Christ 'is the saviour of the body.' Salvation flows from the Head to the Body — the Church." : "Sinasabi ng Efeso 5:23 na si Cristo ay 'ang Tagapagligtas ng katawan.' Ang kaligtasan ay dumadaloy mula sa Ulo patungo sa Katawan — ang Iglesia."
+          }
+        ]
+      }
+    },
+    {
+      id: 46,
+      category: lesson46Fm.category,
+      title: lesson46Fm.title,
+      titleTl: lesson46Fm.titleTl,
+      icon: Infinity,
+      searchKeywords: lesson46Fm.searchKeywords,
+      searchKeywordsTl: lesson46Fm.searchKeywordsTl,
+      searchContent: lesson46Fm.searchContent,
+      searchContentTl: lesson46Fm.searchContentTl,
+      content: <Lesson46Content lang={lang} onHover={onHover} />,
+      quiz: {
+        title: "The Fullness of the One New Man",
+        questions: [
+          {
+            question: lang === 'en' ? "According to Ephesians 4:13, what is the goal of the growth of the Body?" : "Ayon sa Efeso 4:13, ano ang layunin ng paglago ng Katawan?",
+            options: [
+              lang === 'en' ? "To have the largest number of members" : "Upang magkaroon ng pinakamaraming miyembro",
+              lang === 'en' ? "The measure of the stature of the fullness of Christ" : "Ang sukatan ng tayog ng kabuuan ni Cristo",
+              lang === 'en' ? "To build the biggest church buildings" : "Upang magtayo ng pinakamalaking gusali ng simbahan",
+              lang === 'en' ? "To follow all the laws of Moses" : "Upang sundin ang lahat ng batas ni Moises"
+            ],
+            correctIndex: 1,
+            explanation: lang === 'en' ? "Ephesians 4:13 says the Body grows 'unto the measure of the stature of the fullness of Christ' — maturity, unity, and completeness in Christ." : "Sinasabi ng Efeso 4:13 na lumalaki ang Katawan 'hanggang sa sukatan ng tayog ng kabuuan ni Cristo' — kapanahunan, pagkakaisa, at pagkakumpleto kay Cristo."
+          },
+          {
+            question: lang === 'en' ? "According to Colossians 2:10, where does completeness come from?" : "Ayon sa Colosas 2:10, saan nagmumula ang pagkakumpleto?",
+            options: [
+              lang === 'en' ? "From personal discipline and prayer" : "Mula sa personal na disiplina at panalangin",
+              lang === 'en' ? "From following religious traditions" : "Mula sa pagsunod ng mga relihiyosong tradisyon",
+              lang === 'en' ? "From being complete in Christ, the Head" : "Mula sa pagiging kumpleto kay Cristo, ang Ulo",
+              lang === 'en' ? "From studying the Old Testament laws" : "Mula sa pag-aaral ng mga batas ng Lumang Tipan"
+            ],
+            correctIndex: 2,
+            explanation: lang === 'en' ? "Colossians 2:10 says 'ye are complete in him' — completeness comes from union with Christ the Head, not from any human effort or tradition." : "Sinasabi ng Colosas 2:10 na 'kayo ay kumpleto sa kaniya' — ang pagkakumpleto ay nagmumula sa pagkakaisa kay Cristo ang Ulo, hindi mula sa anumang pagsisikap ng tao o tradisyon."
           }
         ]
       }
