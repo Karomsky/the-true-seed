@@ -25,7 +25,8 @@ import {
   Presentation,
   ExternalLink,
   FileText,
-  Star
+  Star,
+  Bookmark
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ScriptureLink } from './scriptureData';
@@ -63,6 +64,7 @@ export default function StudyPage({
     { id: 'true-church', name: lang === 'en' ? 'The True Church' : 'Ang Tunay na Iglesia', icon: ShieldCheck, color: 'bg-brand-blue', pdfUrl: '/The_True_Church_Study_Guide.pdf' },
     { id: 'eternal-covenant', name: lang === 'en' ? 'Eternal Covenant' : 'Walang Hanggang Tipan', icon: Infinity, color: 'bg-brand-blue', pdfUrl: '/Eternal_Covenant_Study_Guide.pdf' },
     { id: 'election', name: lang === 'en' ? 'Election' : 'Pagpili', icon: Star, color: 'bg-brand-gold', pdfUrl: '/Election_Study_Guide.pdf' },
+    { id: 'bookmarks', name: lang === 'en' ? 'Bookmarks' : 'Mga Bookmark', icon: Bookmark, color: 'bg-brand-dark' },
   ];
 
   const lessons = getLessons(lang, onHover);
@@ -71,7 +73,7 @@ export default function StudyPage({
   const [selectedCategory, setSelectedCategory] = useState<string>(initialCategory);
   const [activeLesson, setActiveLesson] = useState(initialLessonId || 1);
   const [searchQuery, setSearchQuery] = useState('');
-  const { completedLessons, markLessonComplete } = useAppStore();
+  const { completedLessons, markLessonComplete, bookmarkedLessons, toggleBookmark } = useAppStore();
   const [hasReadCurrent, setHasReadCurrent] = useState(false);
   const [showQuizPrompt, setShowQuizPrompt] = useState(false);
   const [isQuizActive, setIsQuizActive] = useState(false);
@@ -124,34 +126,28 @@ export default function StudyPage({
   };
 
   const filteredLessons = lessons.filter(l => {
+    // Bookmarks virtual category
+    if (selectedCategory === 'bookmarks') {
+      return bookmarkedLessons.includes(l.id);
+    }
+
     const query = searchQuery.toLowerCase().trim();
-
-    // Category filtering logic
     const matchesCategory = selectedCategory === 'all' || l.category === selectedCategory;
-
     if (query === '') return matchesCategory;
 
     const matchesTitle = l.title.toLowerCase().includes(query) ||
       l.titleTl.toLowerCase().includes(query);
-
     const matchesKeywords = (l.searchKeywords?.toLowerCase().includes(query)) ||
       (l.searchKeywordsTl?.toLowerCase().includes(query));
-
     const matchesContent = (l.searchContent?.toLowerCase().includes(query)) ||
       (l.searchContentTl?.toLowerCase().includes(query));
-
-    // Search in quiz questions and explanations
     const matchesQuiz = l.quiz?.questions.some(q => {
       const qText = typeof q.question === 'string' ? q.question.toLowerCase() : '';
       const expText = typeof q.explanation === 'string' ? q.explanation.toLowerCase() : '';
       const optionsText = q.options.some(o => typeof o === 'string' ? o.toLowerCase().includes(query) : false);
-
       return qText.includes(query) || expText.includes(query) || optionsText;
     });
-
     const matchesSearch = matchesTitle || matchesKeywords || matchesContent || matchesQuiz;
-
-    // Combine category filter with search query
     return matchesCategory && matchesSearch;
   });
 
@@ -466,15 +462,31 @@ export default function StudyPage({
               ))}
               {filteredLessons.length === 0 && (
                 <div className="text-center py-12 px-4 bg-white/30 rounded-2xl border-2 border-dashed border-gray-200">
-                  <Search className="h-8 w-8 text-gray-300 mx-auto mb-3 opacity-50" />
-                  <div className="text-gray-500 font-bold text-sm mb-1">
-                    {lang === 'en' ? "No matches found" : "Walang nahanap na tugma"}
-                  </div>
-                  <div className="text-gray-400 text-xs">
-                    {lang === 'en'
-                      ? "Try searching for different keywords or topics."
-                      : "Subukang maghanap ng ibang mga keyword o paksa."}
-                  </div>
+                  {selectedCategory === 'bookmarks' ? (
+                    <>
+                      <Bookmark className="h-8 w-8 text-gray-300 mx-auto mb-3" />
+                      <div className="text-gray-500 font-bold text-sm mb-1">
+                        {lang === 'en' ? "No bookmarks yet" : "Wala pang mga bookmark"}
+                      </div>
+                      <div className="text-gray-400 text-xs">
+                        {lang === 'en'
+                          ? "Open any lesson and tap the bookmark icon to save it here."
+                          : "Buksan ang anumang aralin at i-tap ang bookmark icon upang i-save ito dito."}
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <Search className="h-8 w-8 text-gray-300 mx-auto mb-3 opacity-50" />
+                      <div className="text-gray-500 font-bold text-sm mb-1">
+                        {lang === 'en' ? "No matches found" : "Walang nahanap na tugma"}
+                      </div>
+                      <div className="text-gray-400 text-xs">
+                        {lang === 'en'
+                          ? "Try searching for different keywords or topics."
+                          : "Subukang maghanap ng ibang mga keyword o paksa."}
+                      </div>
+                    </>
+                  )}
                 </div>
               )}
             </div>
@@ -504,18 +516,39 @@ export default function StudyPage({
                         <div className="text-brand-gold font-bold font-sans text-xs uppercase tracking-[0.3em]">
                           Module {activeLesson < 10 ? `0${activeLesson}` : activeLesson}
                         </div>
-                        {currentLesson?.pdfUrl && (
-                          <a
-                            href={currentLesson.pdfUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 px-4 py-1.5 bg-brand-gold/10 text-brand-gold border border-brand-gold/20 rounded-full font-bold text-[10px] uppercase tracking-widest hover:bg-brand-gold hover:text-brand-dark transition-all"
+                        <div className="flex items-center gap-2">
+                          {/* Bookmark button */}
+                          <motion.button
+                            onClick={() => toggleBookmark(activeLesson)}
+                            whileTap={{ scale: 0.85 }}
+                            title={bookmarkedLessons.includes(activeLesson)
+                              ? (lang === 'en' ? 'Remove Bookmark' : 'Alisin ang Bookmark')
+                              : (lang === 'en' ? 'Bookmark this Lesson' : 'I-bookmark ang Araling Ito')}
+                            aria-label={bookmarkedLessons.includes(activeLesson)
+                              ? (lang === 'en' ? 'Remove Bookmark' : 'Alisin ang Bookmark')
+                              : (lang === 'en' ? 'Bookmark this Lesson' : 'I-bookmark ang Araling Ito')}
+                            className={`p-2 rounded-xl border-2 transition-all ${
+                              bookmarkedLessons.includes(activeLesson)
+                                ? 'bg-brand-gold border-brand-gold text-brand-dark shadow-md'
+                                : 'border-gray-200 text-gray-400 hover:border-brand-gold hover:text-brand-gold'
+                            }`}
                           >
-                            <FileText className="h-3.5 w-3.5" />
-                            {lang === 'en' ? "Study Guide (PDF)" : "Gabay sa Pag-aaral (PDF)"}
-                            <ExternalLink className="h-3 w-3 opacity-50" />
-                          </a>
-                        )}
+                            <Bookmark className={`h-4 w-4 ${bookmarkedLessons.includes(activeLesson) ? 'fill-current' : ''}`} />
+                          </motion.button>
+
+                          {currentLesson?.pdfUrl && (
+                            <a
+                              href={currentLesson.pdfUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-2 px-4 py-1.5 bg-brand-gold/10 text-brand-gold border border-brand-gold/20 rounded-full font-bold text-[10px] uppercase tracking-widest hover:bg-brand-gold hover:text-brand-dark transition-all"
+                            >
+                              <FileText className="h-3.5 w-3.5" />
+                              {lang === 'en' ? "Study Guide (PDF)" : "Gabay sa Pag-aaral (PDF)"}
+                              <ExternalLink className="h-3 w-3 opacity-50" />
+                            </a>
+                          )}
+                        </div>
                       </div>
                       <h2 className="text-3xl md:text-4xl font-bold text-brand-blue mb-8 border-b border-gray-100 pb-6 font-serif">
                         {lang === 'en' ? currentLesson?.title : currentLesson?.titleTl}
