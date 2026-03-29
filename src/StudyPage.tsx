@@ -241,33 +241,62 @@ export default function StudyPage({
 
             {/* Achievements Section */}
             <div className="mb-10 px-4">
+              <div className="flex items-center justify-center gap-2 mb-4">
+                <Trophy className="h-4 w-4 text-brand-gold" />
+                <h3 className="text-[11px] uppercase tracking-[0.2em] font-bold text-gray-500 font-sans">
+                  {lang === 'en' ? "Your Achievements" : "Iyong mga Tagumpay"}
+                </h3>
+              </div>
               <div className="flex flex-wrap justify-center gap-4">
                 {categories.filter(c => c.id !== 'all').map((cat) => {
                   const progress = getCategoryStatus(cat.id);
                   const isDone = progress === 1;
+                  const hasStarted = progress > 0;
                   const Icon = cat.icon;
                   return (
                     <motion.div
                       key={cat.id}
-                      whileHover={{ y: -5 }}
-                      className={`relative group flex flex-col items-center p-3 rounded-2xl border transition-all duration-500 ${isDone ? 'bg-white border-brand-gold shadow-lg shadow-brand-gold/10' : 'bg-gray-50/30 border-gray-100 opacity-60'}`}
+                      whileHover={{ y: -5, scale: 1.05 }}
+                      className={`relative group flex flex-col items-center p-3 rounded-2xl border-2 transition-all duration-300 cursor-default
+                        ${isDone 
+                          ? 'bg-white border-brand-gold shadow-lg shadow-brand-gold/20' 
+                          : hasStarted
+                            ? 'bg-white border-brand-blue/30 shadow-sm'
+                            : 'bg-gray-50 border-gray-200'
+                        }`}
                       title={`${cat.name}: ${Math.round(progress * 100)}%`}
                     >
-                      <div className={`p-3 rounded-full mb-2 ${isDone ? 'bg-brand-gold text-brand-dark' : 'bg-gray-200 text-gray-400'}`}>
+                      <div className={`p-3 rounded-full mb-2 transition-colors ${
+                        isDone 
+                          ? 'bg-brand-gold text-brand-dark' 
+                          : hasStarted
+                            ? 'bg-brand-blue/10 text-brand-blue'
+                            : 'bg-gray-200 text-gray-400'
+                      }`}>
                         <Icon className="h-5 w-5" />
                       </div>
-                      <div className="text-[9px] uppercase tracking-tighter font-bold text-center max-w-[70px] leading-tight">
+                      <div className={`text-[9px] uppercase tracking-tighter font-bold text-center max-w-[70px] leading-tight ${
+                        isDone ? 'text-brand-dark' : hasStarted ? 'text-brand-blue' : 'text-gray-400'
+                      }`}>
                         {cat.name}
                       </div>
-                      {isDone && (
-                        <div className="absolute -top-1 -right-1 bg-brand-gold text-brand-dark rounded-full p-0.5 border-2 border-white shadow-sm">
-                          <CheckCircle2 className="h-3 w-3" />
+                      {/* Progress mini-bar */}
+                      {!isDone && (
+                        <div className="w-12 h-1 bg-gray-200 rounded-full mt-1.5 overflow-hidden">
+                          <div
+                            className="h-full bg-brand-blue/50 rounded-full transition-all"
+                            style={{ width: `${Math.round(progress * 100)}%` }}
+                          />
                         </div>
                       )}
-                      
+                      {isDone && (
+                        <div className="absolute -top-2 -right-2 bg-brand-gold text-brand-dark rounded-full p-0.5 border-2 border-white shadow-md">
+                          <CheckCircle2 className="h-3.5 w-3.5" />
+                        </div>
+                      )}
                       {/* Tooltip */}
                       <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 bg-brand-dark text-white text-[10px] py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-50 shadow-xl">
-                        {isDone ? (lang === 'en' ? 'Module Mastered!' : 'Masterado na!') : `${Math.round(progress * 100)}% Complete`}
+                        {isDone ? (lang === 'en' ? '🏆 Module Mastered!' : '🏆 Masterado na!') : `${Math.round(progress * 100)}% Complete`}
                       </div>
                     </motion.div>
                   );
