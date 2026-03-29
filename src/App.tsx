@@ -35,6 +35,8 @@ import BaptismPage from './BaptismPage';
 import AdminDashboard from './AdminDashboard';
 import AuthModal from './components/AuthModal';
 import { scriptures, ScriptureLink } from './scriptureData';
+import { useRegisterSW } from 'virtual:pwa-register/react';
+
 
 const TRANSLATIONS: Record<string, Record<string, string>> = {
   en: {
@@ -177,6 +179,12 @@ export default function App() {
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [scrolled, setScrolled] = useState(false);
 
+  // PWA update notification
+  const { needRefresh: [needRefresh], updateServiceWorker } = useRegisterSW({
+    onRegistered(r) { console.log('SW registered:', r); },
+    onRegisterError(e) { console.log('SW registration error:', e); }
+  });
+
   const {
     register,
     handleSubmit,
@@ -248,6 +256,34 @@ export default function App() {
 
   return (
     <div className="bg-brand-light text-slate-800 antialiased selection:bg-brand-gold selection:text-brand-dark min-h-screen">
+
+      {/* PWA Update Banner */}
+      <AnimatePresence>
+        {needRefresh && (
+          <motion.div
+            initial={{ y: -80, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: -80, opacity: 0 }}
+            className="fixed top-0 left-0 right-0 z-[9999] bg-brand-gold text-brand-dark px-4 py-3 flex items-center justify-between shadow-xl"
+          >
+            <div className="flex items-center gap-3">
+              <div className="bg-brand-dark/10 rounded-full p-1.5">
+                <ArrowDown className="h-4 w-4 rotate-180" />
+              </div>
+              <span className="font-bold text-sm font-sans">
+                {lang === 'en' ? '✨ New content is available!' : '✨ Mayroong bagong nilalaman!'}
+              </span>
+            </div>
+            <button
+              onClick={() => updateServiceWorker(true)}
+              className="bg-brand-dark text-white px-4 py-1.5 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-black transition-colors active:scale-95 ml-4 whitespace-nowrap"
+            >
+              {lang === 'en' ? 'Refresh Now' : 'I-refresh Ngayon'}
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <Helmet>
         <title>{lang === 'en' ? 'The True Seed | Church of Christ' : 'Ang Tunay na Binhi | Iglesia ni Cristo'}</title>
         <meta name="description" content={lang === 'en' ? 'Explore the highly engineered theological structure of the Bible.' : 'Siyasatin ang mataas na pagkaka-engineer sa teolohiya ng Biblia.'} />

@@ -20,7 +20,7 @@ export default defineConfig(({ mode }) => {
       react(),
       tailwindcss(),
       VitePWA({
-        registerType: 'autoUpdate',
+        registerType: 'prompt',
         includeAssets: ['favicon.svg', '*.pdf'],
         manifest: {
           name: 'The True Seed | Church of Christ',
