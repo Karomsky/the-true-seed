@@ -21,8 +21,7 @@ COPY . .
 # Build the Vite Frontend
 RUN npm run build
 
-# Expose the dynamically assigned Port
-EXPOSE 3000
+# Let the dynamic PORT handle routing
 
 # Start the full-stack server
 CMD [ "npm", "run", "start" ]
