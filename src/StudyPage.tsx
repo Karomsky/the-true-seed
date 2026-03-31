@@ -196,6 +196,48 @@ export default function StudyPage({
         </div>
       </header>
 
+      {/* ---------- Achievements Section ---------- */}
+      <AnimatePresence>
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          className="mt-6 bg-white/30 backdrop-blur-sm rounded-2xl border border-gray-200 p-4"
+        >
+          <h2 className="text-xl font-bold text-brand-gold mb-4">
+            {lang === 'en' ? 'Your Achievements' : 'Ang Iyong Mga Tagumpay'}
+          </h2>
+
+          {/* Render a badge for each real category (exclude All and Bookmarks) */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {categories
+              .filter(c => c.id !== 'all' && c.id !== 'bookmarks')
+              .map(cat => {
+                const progress = getCategoryStatus(cat.id);
+                const isMastered = progress >= 1;
+                return (
+                  <div
+                    key={cat.id}
+                    className={`flex flex-col items-center p-2 rounded-xl border-2 ${isMastered ? 'border-brand-gold bg-brand-gold/10' : 'border-gray-200'}`}
+                  >
+                    <cat.icon
+                      className={`h-6 w-6 ${isMastered ? 'text-brand-gold' : 'text-gray-400'}`}
+                    />
+                    <span className="text-xs mt-1 font-medium">{cat.name}</span>
+                    {/* Progress bar */}
+                    <div className="w-full h-1 bg-gray-200 rounded mt-2 overflow-hidden">
+                      <div
+                        className={`h-full ${isMastered ? 'bg-brand-gold' : 'bg-brand-dark'}`}
+                        style={{ width: `${progress * 100}%` }}
+                      />
+                    </div>
+                  </div>
+                );
+              })}
+          </div>
+        </motion.div>
+      </AnimatePresence>
+
       <main className="w-full px-4 sm:px-6 lg:px-8 py-8">
         <div className="max-w-5xl mx-auto mb-16">
           <div className="bg-white rounded-3xl shadow-2xl p-8 border border-gray-100">
