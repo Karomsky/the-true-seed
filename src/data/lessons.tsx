@@ -1318,15 +1318,15 @@ return [
             question: lang === 'en' ? "What does Ephesians 2:14 say Christ broke down?" : "Ano ang sinabi ng Efeso 2:14 na winasak ni Cristo?",
             options: [
               lang === 'en' ? "The temple of Jerusalem" : "Ang templo ng Jerusalem",
-              lang === 'en' ? "The middle wall of partition between Jews and Gentiles" : "Ang harang na pader sa pagitan ng mga Judio at Hentil",
+              lang === 'en' ? "The middle wall of partition between God and men" : "Ang harang na pader sa pagitan ng Diyos at mga tao",
               lang === 'en' ? "The power of Satan" : "Ang kapangyarihan ni Satanas",
               lang === 'en' ? "The laws of Rome" : "Ang mga batas ng Roma"
             ],
             correctIndex: 1,
-            explanation: lang === 'en' ? "Ephesians 2:14 says Christ 'hath broken down the middle wall of partition between us,' referring to the division between Jews and Gentiles." : "Sinasabi ng Efeso 2:14 na si Cristo ay 'bumasak ng harang na pader sa pagitan natin,' na tumutukoy sa dibiyon sa pagitan ng mga Judio at Hentil."
+            explanation: lang === 'en' ? "Ephesians 2:14 says Christ 'hath broken down the middle wall of partition between us,' referring to the separation between God and men." : "Sinasabi ng Efeso 2:14 na si Cristo ay 'bumasak ng harang na pader sa pagitan natin,' na tumutukoy sa paghihiwalay sa pagitan ng Diyos at mga tao."
           },
           {
-            question: lang === 'en' ? "What did Christ create from the two groups (Jews and Gentiles) according to Ephesians 2:15?" : "Ano ang nilikha ni Cristo mula sa dalawang grupo (Judio at Hentil) ayon sa Efeso 2:15?",
+            question: lang === 'en' ? "What did Christ create from the two (Christ and Church) according to Ephesians 2:15?" : "Ano ang nilikha ni Cristo mula sa dalawa (Cristo at Iglesia) ayon sa Efeso 2:15?",
             options: [
               lang === 'en' ? "A compromise agreement" : "Isang kompromisong kasunduan",
               lang === 'en' ? "Two separate but equal churches" : "Dalawang hiwalay ngunit pantay na iglesia",

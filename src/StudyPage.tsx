@@ -26,7 +26,8 @@ import {
   ExternalLink,
   FileText,
   Star,
-  Bookmark
+  Bookmark,
+  PlayCircle
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ScriptureLink } from './scriptureData';
@@ -54,17 +55,17 @@ export default function StudyPage({
 }) {
   const categories = [
     { id: 'all', name: lang === 'en' ? 'All Modules' : 'Lahat ng Modyul', icon: Globe, color: 'bg-brand-blue' },
-    { id: 'bible', name: lang === 'en' ? 'The Bible' : 'Ang Biblia', icon: Book, color: 'bg-brand-blue', pdfUrl: '/The_Bible_Study_Guide.pdf' },
-    { id: 'god', name: lang === 'en' ? 'The True God' : 'Ang Tunay na Diyos', icon: Flame, color: 'bg-brand-gold', pdfUrl: '/The_True_God_Study_Guide.pdf' },
-    { id: 'christ', name: lang === 'en' ? 'Jesus Christ' : 'Jesucristo', icon: Users, color: 'bg-brand-dark', pdfUrl: '/Jesus_Christ_Study_Guide.pdf' },
-    { id: 'messenger', name: lang === 'en' ? 'The Messenger' : 'Ang Sugo', icon: Scroll, color: 'bg-brand-blue', pdfUrl: '/The_Messenger_Study_Guide.pdf' },
-    { id: 'salvation', name: lang === 'en' ? 'Salvation' : 'Kaligtasan', icon: Heart, color: 'bg-brand-blue', pdfUrl: '/Salvation_Study_Guide.pdf' },
-    { id: 'judgement', name: lang === 'en' ? 'Judgement Day' : 'Araw ng Paghuhukom', icon: Scale, color: 'bg-brand-gold', pdfUrl: '/Judgement_Day_Study_Guide.pdf' },
-    { id: 'false-churches', name: lang === 'en' ? 'False Churches' : 'Ibang Iglesia', icon: ShieldCheck, color: 'bg-brand-dark', pdfUrl: '/False_Church_Study_Guide.pdf' },
-    { id: 'true-church', name: lang === 'en' ? 'The True Church' : 'Ang Tunay na Iglesia', icon: ShieldCheck, color: 'bg-brand-blue', pdfUrl: '/The_True_Church_Study_Guide.pdf' },
-    { id: 'eternal-covenant', name: lang === 'en' ? 'Eternal Covenant' : 'Walang Hanggang Tipan', icon: Infinity, color: 'bg-brand-blue', pdfUrl: '/Eternal_Covenant_Study_Guide.pdf' },
-    { id: 'election', name: lang === 'en' ? 'Election' : 'Pagpili', icon: Star, color: 'bg-brand-gold', pdfUrl: '/Election_Study_Guide.pdf' },
-    { id: 'one-new-man', name: lang === 'en' ? 'One New Man' : 'Isang Bagong Tao', icon: Presentation, color: 'bg-brand-blue', pdfUrl: '/One_New_Man_Study_Guide.pdf' },
+    { id: 'bible', name: lang === 'en' ? 'The Bible' : 'Ang Biblia', icon: Book, color: 'bg-brand-blue', pdfUrl: 'https://drive.google.com/file/d/1cS1ZJ5DW3VlS6zxBfBw9HU6Ns9qJaO_2/view?usp=drive_link', videoUrl: 'https://youtu.be/inJU4ez8YaI' },
+    { id: 'god', name: lang === 'en' ? 'The True God' : 'Ang Tunay na Diyos', icon: Flame, color: 'bg-brand-gold', pdfUrl: 'https://drive.google.com/file/d/12PhIkV4W-Q3FgmYwnIYv-HGRkGHz_Oel/view?usp=drive_link', videoUrl: 'https://youtu.be/_qcsvXb0kqs' },
+    { id: 'christ', name: lang === 'en' ? 'Jesus Christ' : 'Jesucristo', icon: Users, color: 'bg-brand-dark', pdfUrl: 'https://drive.google.com/file/d/1_KJEnxM6Hd9t6TVlHbKjAkt0cfBHlLwC/view?usp=drive_link', videoUrl: 'https://youtu.be/wpeUJVNQmh0' },
+    { id: 'messenger', name: lang === 'en' ? 'The Messenger' : 'Ang Sugo', icon: Scroll, color: 'bg-brand-blue', pdfUrl: 'https://drive.google.com/file/d/15bTsdOPXg7jEo8U6si_f4kQtmBAh2TdS/view?usp=drive_link', videoUrl: 'https://youtu.be/arCAdJ2AAIg' },
+    { id: 'salvation', name: lang === 'en' ? 'Salvation' : 'Kaligtasan', icon: Heart, color: 'bg-brand-blue', pdfUrl: 'https://drive.google.com/file/d/17h1cPKPG6aYdfJbHyVy4G-6Q503ogslK/view?usp=drive_link', videoUrl: 'https://youtu.be/8ZIEesJT9Jg' },
+    { id: 'judgement', name: lang === 'en' ? 'Judgement Day' : 'Araw ng Paghuhukom', icon: Scale, color: 'bg-brand-gold', pdfUrl: 'https://drive.google.com/file/d/1dF5xqOW7rYPnKSTAOmWX5X17N5InFv_e/view?usp=drive_link', videoUrl: 'https://youtu.be/inLrUSzKd7U' },
+    { id: 'false-churches', name: lang === 'en' ? 'False Churches' : 'Ibang Iglesia', icon: ShieldCheck, color: 'bg-brand-dark', pdfUrl: 'https://drive.google.com/file/d/1pK88Pn0vd3ek02eiTYcpjPI58VBKMuky/view?usp=drive_link', videoUrl: 'https://youtu.be/X-OUhcCBzOY' },
+    { id: 'true-church', name: lang === 'en' ? 'The True Church' : 'Ang Tunay na Iglesia', icon: ShieldCheck, color: 'bg-brand-blue', pdfUrl: 'https://drive.google.com/file/d/1NUjMDRGObk6eooyYw7Nb13NvE90vO337/view?usp=drive_link', videoUrl: 'https://youtu.be/NrLZjwyCabU' },
+    { id: 'eternal-covenant', name: lang === 'en' ? 'Eternal Covenant' : 'Walang Hanggang Tipan', icon: Infinity, color: 'bg-brand-blue', pdfUrl: 'https://drive.google.com/file/d/1v875zO-MiNUiTiXGAY3NcJoPHdAM0laQ/view?usp=drive_link', videoUrl: 'https://youtu.be/_42LiWGjFrk' },
+    { id: 'election', name: lang === 'en' ? 'Election' : 'Pagpili', icon: Star, color: 'bg-brand-gold', pdfUrl: 'https://drive.google.com/file/d/1Dx85elsE6zeTN44tlVDz4L0KWOsk__pU/view?usp=drive_link', videoUrl: 'https://youtu.be/JBq2SKDtSmk' },
+    { id: 'one-new-man', name: lang === 'en' ? 'One New Man' : 'Isang Bagong Tao', icon: Presentation, color: 'bg-brand-blue', pdfUrl: 'https://drive.google.com/file/d/1guh3f-Ys164VYTsOgE3g89qWMBD_3zcF/view?usp=drive_link', videoUrl: 'https://youtu.be/7g3BRtlJHj0?si=MPzIY__sTAGnJAMn' },
     { id: 'bookmarks', name: lang === 'en' ? 'Bookmarks' : 'Mga Bookmark', icon: Bookmark, color: 'bg-brand-dark' },
   ];
 
@@ -79,6 +80,7 @@ export default function StudyPage({
   const [showQuizPrompt, setShowQuizPrompt] = useState(false);
   const [isQuizActive, setIsQuizActive] = useState(false);
   const [isGeneratingCertificate, setIsGeneratingCertificate] = useState(false);
+  const [showAchievements, setShowAchievements] = useState(false);
 
   const getCategoryStatus = (categoryId: string) => {
     const categoryLessons = lessons.filter(l => l.category === categoryId);
@@ -196,47 +198,7 @@ export default function StudyPage({
         </div>
       </header>
 
-      {/* ---------- Achievements Section ---------- */}
-      <AnimatePresence>
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
-          className="mt-6 bg-white/30 backdrop-blur-sm rounded-2xl border border-gray-200 p-4"
-        >
-          <h2 className="text-xl font-bold text-brand-gold mb-4">
-            {lang === 'en' ? 'Your Achievements' : 'Ang Iyong Mga Tagumpay'}
-          </h2>
 
-          {/* Render a badge for each real category (exclude All and Bookmarks) */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {categories
-              .filter(c => c.id !== 'all' && c.id !== 'bookmarks')
-              .map(cat => {
-                const progress = getCategoryStatus(cat.id);
-                const isMastered = progress >= 1;
-                return (
-                  <div
-                    key={cat.id}
-                    className={`flex flex-col items-center p-2 rounded-xl border-2 ${isMastered ? 'border-brand-gold bg-brand-gold/10' : 'border-gray-200'}`}
-                  >
-                    <cat.icon
-                      className={`h-6 w-6 ${isMastered ? 'text-brand-gold' : 'text-gray-400'}`}
-                    />
-                    <span className="text-xs mt-1 font-medium">{cat.name}</span>
-                    {/* Progress bar */}
-                    <div className="w-full h-1 bg-gray-200 rounded mt-2 overflow-hidden">
-                      <div
-                        className={`h-full ${isMastered ? 'bg-brand-gold' : 'bg-brand-dark'}`}
-                        style={{ width: `${progress * 100}%` }}
-                      />
-                    </div>
-                  </div>
-                );
-              })}
-          </div>
-        </motion.div>
-      </AnimatePresence>
 
       <main className="w-full px-4 sm:px-6 lg:px-8 py-8">
         <div className="max-w-5xl mx-auto mb-16">
@@ -250,8 +212,111 @@ export default function StudyPage({
               </p>
             </div>
 
+            <form
+              onSubmit={(e) => e.preventDefault()}
+              className="relative mb-8 group"
+            >
+              <div className="absolute inset-y-0 left-0 pl-6 flex items-center pointer-events-none">
+                <Search className="h-6 w-6 text-brand-gold group-focus-within:text-brand-blue transition-colors" />
+              </div>
+              <input
+                type="text"
+                aria-label={lang === 'en' ? "Search for a lesson topic" : "Maghanap ng paksa ng aralin"}
+                placeholder={lang === 'en' ? "Search for a lesson topic..." : "Maghanap ng paksa ng aralin..."}
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full pl-16 pr-32 py-5 bg-gray-50 border-2 border-transparent rounded-2xl focus:bg-white focus:border-brand-gold focus:ring-4 focus:ring-brand-gold/10 outline-none font-sans text-lg transition-all placeholder:text-gray-400"
+              />
+              <div className="absolute inset-y-0 right-0 flex items-center pr-3 gap-2">
+                {searchQuery && (
+                  <button
+                    type="button"
+                    onClick={() => setSearchQuery('')}
+                    className="p-2 text-gray-400 hover:text-brand-blue transition-colors"
+                    title={lang === 'en' ? "Clear search" : "Linisin ang paghahanap"}
+                    aria-label={lang === 'en' ? "Clear search" : "Linisin ang paghahanap"}
+                  >
+                    <X className="h-5 w-5" />
+                  </button>
+                )}
+                <button
+                  type="submit"
+                  className="bg-brand-blue text-white p-2.5 rounded-xl font-bold text-sm hover:bg-brand-dark transition-all shadow-md active:scale-95 flex items-center justify-center"
+                  title={lang === 'en' ? "Search" : "Hanapin"}
+                  aria-label={lang === 'en' ? "Search" : "Hanapin"}
+                >
+                  <Search className="h-5 w-5" />
+                </button>
+              </div>
+            </form>
+
+            <div className="overflow-x-auto pb-2 custom-scrollbar">
+              <div className="flex justify-center gap-3 min-w-max">
+                {categories.map((cat) => (
+                  <button
+                    key={cat.id}
+                    onClick={() => handleCategoryChange(cat.id)}
+                    className={`flex items-center gap-2 px-6 py-3 rounded-xl transition-all border-2 ${selectedCategory === cat.id
+                      ? `border-brand-gold ${cat.color} text-white shadow-md scale-105`
+                      : 'border-gray-100 bg-white text-gray-500 hover:border-brand-blue/30'
+                      }`}
+                  >
+                    <cat.icon className={`h-4 w-4 ${selectedCategory === cat.id ? 'text-brand-gold' : 'text-gray-400'}`} />
+                    <span className="font-bold font-sans uppercase tracking-widest text-[10px]">{cat.name}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Category Resources Buttons */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="mt-6 mb-12 flex flex-wrap justify-center gap-4"
+            >
+              <button
+                onClick={() => setShowAchievements(!showAchievements)}
+                className={`inline-flex items-center gap-2 px-6 py-2 rounded-full font-bold text-xs uppercase tracking-widest transition-all shadow-sm ${showAchievements ? 'bg-brand-gold text-brand-dark hover:bg-yellow-400' : 'bg-gray-100 text-gray-500 hover:bg-gray-200'}`}
+              >
+                <Trophy className="h-4 w-4" />
+                {lang === 'en' ? (showAchievements ? "Hide Progress" : "View Progress") : (showAchievements ? "Itago ang Pag-unlad" : "Tingnan ang Pag-unlad")}
+              </button>
+              {categories.find(c => c.id === selectedCategory)?.videoUrl && (
+                <a
+                  href={categories.find(c => c.id === selectedCategory)?.videoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-6 py-2 bg-red-500/10 text-red-600 border border-red-500/30 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-red-600 hover:text-white transition-all shadow-sm"
+                >
+                  <PlayCircle className="h-4 w-4" />
+                  {lang === 'en' ? "Watch Video" : "Manood ng Video"}
+                  <ExternalLink className="h-3 w-3 opacity-50" />
+                </a>
+              )}
+              {categories.find(c => c.id === selectedCategory)?.pdfUrl && (
+                <a
+                  href={categories.find(c => c.id === selectedCategory)?.pdfUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-6 py-2 bg-brand-blue/10 text-brand-blue border border-brand-blue/30 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-brand-blue hover:text-white transition-all shadow-sm"
+                >
+                  <FileText className="h-4 w-4" />
+                  {lang === 'en' ? "View Study Guide" : "Tingnan ang Gabay sa Pag-aaral"}
+                  <ExternalLink className="h-3 w-3 opacity-50" />
+                </a>
+              )}
+            </motion.div>
+
             {/* Progress Section */}
-            <div className="max-w-md mx-auto mb-8 bg-gray-50/50 p-4 rounded-2xl border border-gray-100 flex items-center justify-between">
+            <AnimatePresence>
+              {showAchievements && (
+                <motion.div
+                  initial={{ opacity: 0, height: 0, overflow: 'hidden' }}
+                  animate={{ opacity: 1, height: 'auto', overflow: 'visible' }}
+                  exit={{ opacity: 0, height: 0, overflow: 'hidden' }}
+                  className="w-full"
+                >
+                  <div className="max-w-md mx-auto mb-8 bg-gray-50/50 p-4 rounded-2xl border border-gray-100 flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <div className="p-2.5 bg-brand-gold/10 rounded-xl">
                   <CheckCircle2 className="h-5 w-5 text-brand-gold" />
@@ -280,7 +345,7 @@ export default function StudyPage({
             </div>
 
             {/* Achievements Section */}
-            <div className="mb-10 px-4">
+            <div className="mb-0 px-4">
               <div className="flex items-center justify-center gap-2 mb-4">
                 <Trophy className="h-4 w-4 text-brand-gold" />
                 <h3 className="text-[11px] uppercase tracking-[0.2em] font-bold text-gray-500 font-sans">
@@ -378,82 +443,9 @@ export default function StudyPage({
                 </motion.div>
               )}
             </div>
-
-            <form
-              onSubmit={(e) => e.preventDefault()}
-              className="relative mb-8 group"
-            >
-              <div className="absolute inset-y-0 left-0 pl-6 flex items-center pointer-events-none">
-                <Search className="h-6 w-6 text-brand-gold group-focus-within:text-brand-blue transition-colors" />
-              </div>
-              <input
-                type="text"
-                aria-label={lang === 'en' ? "Search for a lesson topic" : "Maghanap ng paksa ng aralin"}
-                placeholder={lang === 'en' ? "Search for a lesson topic..." : "Maghanap ng paksa ng aralin..."}
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-16 pr-32 py-5 bg-gray-50 border-2 border-transparent rounded-2xl focus:bg-white focus:border-brand-gold focus:ring-4 focus:ring-brand-gold/10 outline-none font-sans text-lg transition-all placeholder:text-gray-400"
-              />
-              <div className="absolute inset-y-0 right-0 flex items-center pr-3 gap-2">
-                {searchQuery && (
-                  <button
-                    type="button"
-                    onClick={() => setSearchQuery('')}
-                    className="p-2 text-gray-400 hover:text-brand-blue transition-colors"
-                    title={lang === 'en' ? "Clear search" : "Linisin ang paghahanap"}
-                    aria-label={lang === 'en' ? "Clear search" : "Linisin ang paghahanap"}
-                  >
-                    <X className="h-5 w-5" />
-                  </button>
-                )}
-                <button
-                  type="submit"
-                  className="bg-brand-blue text-white p-2.5 rounded-xl font-bold text-sm hover:bg-brand-dark transition-all shadow-md active:scale-95 flex items-center justify-center"
-                  title={lang === 'en' ? "Search" : "Hanapin"}
-                  aria-label={lang === 'en' ? "Search" : "Hanapin"}
-                >
-                  <Search className="h-5 w-5" />
-                </button>
-              </div>
-            </form>
-
-            <div className="overflow-x-auto pb-2 custom-scrollbar">
-              <div className="flex justify-center gap-3 min-w-max">
-                {categories.map((cat) => (
-                  <button
-                    key={cat.id}
-                    onClick={() => handleCategoryChange(cat.id)}
-                    className={`flex items-center gap-2 px-6 py-3 rounded-xl transition-all border-2 ${selectedCategory === cat.id
-                      ? `border-brand-gold ${cat.color} text-white shadow-md scale-105`
-                      : 'border-gray-100 bg-white text-gray-500 hover:border-brand-blue/30'
-                      }`}
-                  >
-                    <cat.icon className={`h-4 w-4 ${selectedCategory === cat.id ? 'text-brand-gold' : 'text-gray-400'}`} />
-                    <span className="font-bold font-sans uppercase tracking-widest text-[10px]">{cat.name}</span>
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {/* Category Slide Deck Button */}
-            {categories.find(c => c.id === selectedCategory)?.pdfUrl && (
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="mt-6 flex justify-center"
-              >
-                <a
-                  href={categories.find(c => c.id === selectedCategory)?.pdfUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-6 py-2 bg-brand-blue/10 text-brand-blue border border-brand-blue/30 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-brand-blue hover:text-white transition-all shadow-sm"
-                >
-                  <FileText className="h-4 w-4" />
-                  {lang === 'en' ? "View Study Guide (PDF)" : "Tingnan ang Gabay sa Pag-aaral (PDF)"}
-                  <ExternalLink className="h-3 w-3 opacity-50" />
-                </a>
-              </motion.div>
-            )}
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
         </div>
 
@@ -579,15 +571,27 @@ export default function StudyPage({
                             <Bookmark className={`h-4 w-4 ${bookmarkedLessons.includes(activeLesson) ? 'fill-current' : ''}`} />
                           </motion.button>
 
-                          {currentLesson?.pdfUrl && (
+                          {categories.find(c => c.id === currentLesson?.category)?.videoUrl && (
                             <a
-                              href={currentLesson.pdfUrl}
+                              href={categories.find(c => c.id === currentLesson?.category)?.videoUrl}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="inline-flex items-center gap-2 px-4 py-1.5 bg-brand-gold/10 text-brand-gold border border-brand-gold/20 rounded-full font-bold text-[10px] uppercase tracking-widest hover:bg-brand-gold hover:text-brand-dark transition-all"
+                              className="inline-flex items-center gap-2 px-4 py-1.5 bg-red-500/10 text-red-600 border border-red-500/20 rounded-full font-bold text-[10px] uppercase tracking-widest hover:bg-red-600 hover:text-white transition-all shadow-sm"
+                            >
+                              <PlayCircle className="h-3.5 w-3.5" />
+                              {lang === 'en' ? "Watch Video" : "Manood ng Video"}
+                              <ExternalLink className="h-3 w-3 opacity-50" />
+                            </a>
+                          )}
+                          {categories.find(c => c.id === currentLesson?.category)?.pdfUrl && (
+                            <a
+                              href={categories.find(c => c.id === currentLesson?.category)?.pdfUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-2 px-4 py-1.5 bg-brand-gold/10 text-brand-gold border border-brand-gold/20 rounded-full font-bold text-[10px] uppercase tracking-widest hover:bg-brand-gold hover:text-brand-dark transition-all shadow-sm"
                             >
                               <FileText className="h-3.5 w-3.5" />
-                              {lang === 'en' ? "Study Guide (PDF)" : "Gabay sa Pag-aaral (PDF)"}
+                              {lang === 'en' ? "Study Guide" : "Gabay sa Pag-aaral"}
                               <ExternalLink className="h-3 w-3 opacity-50" />
                             </a>
                           )}
