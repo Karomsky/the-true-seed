@@ -305,7 +305,7 @@ export default function App() {
     }
   }, [user, token, syncProgress]);
 
-  const t = TRANSLATIONS[lang] || TRANSLATIONS.en;
+  const hpT = TRANSLATIONS[lang] || TRANSLATIONS.en;
 
   const handleHover = (verse: string | null, x: number, y: number) => {
     setTooltip({ verse, x, y });
@@ -437,7 +437,7 @@ export default function App() {
                       href={`#${item}`}
                       className="text-white/80 hover:text-brand-gold transition-colors text-xs font-bold uppercase tracking-widest relative group"
                     >
-                      {t[`nav_${item}` as keyof typeof t]}
+                      {hpT[`nav_${item}` as keyof typeof hpT]}
                       <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-gold transition-all duration-300 group-hover:w-full"></span>
                     </a>
                   ))}
@@ -445,7 +445,7 @@ export default function App() {
                     onClick={() => openStudy()}
                     className="flex items-center gap-2 bg-brand-gold text-brand-dark px-5 py-2 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-yellow-400 transition-all hover:scale-105 active:scale-95 btn-glow"
                   >
-                    <span>{t.nav_study}</span>
+                    <span>{hpT.nav_study}</span>
                     {completedLessons.length > 0 && (
                       <span className="bg-brand-dark text-brand-gold px-2 py-0.5 rounded-full text-[10px]">
                         {completedLessons.length}/38
@@ -456,7 +456,7 @@ export default function App() {
                     onClick={() => setView('baptism')}
                     className="text-white/80 hover:text-brand-gold transition-colors text-xs font-bold uppercase tracking-widest"
                   >
-                    {t.nav_join}
+                    {hpT.nav_join}
                   </button>
                   <div className="flex items-center gap-3 ml-4">
                     <div className="flex items-center gap-1 bg-white/10 p-1 rounded-lg border border-white/20">
@@ -600,7 +600,7 @@ export default function App() {
                 viewport={{ once: true }}
                 className="text-brand-gold font-semibold tracking-[0.2em] uppercase mb-4 text-sm md:text-base border-b border-brand-gold/30 pb-2"
               >
-                {t.hero_subtitle}
+                {hpT.hero_subtitle}
               </motion.span>
               <motion.h1
                 initial={{ opacity: 0, y: 20 }}
@@ -609,9 +609,9 @@ export default function App() {
                 transition={{ delay: 0.1 }}
                 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-8 max-w-5xl font-serif"
               >
-                {t.hero_title_1} <br />
+                {hpT.hero_title_1} <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-gold to-yellow-200 italic font-normal">
-                  {t.hero_title_2}
+                  {hpT.hero_title_2}
                 </span>
               </motion.h1>
 
@@ -645,7 +645,7 @@ export default function App() {
                 href="#theology"
                 className="inline-flex items-center justify-center px-10 py-4 text-base font-bold text-brand-dark bg-brand-gold hover:bg-yellow-400 rounded-full shadow-gold transition-all transform hover:-translate-y-1 uppercase tracking-widest btn-glow"
               >
-                {t.hero_cta}
+                {hpT.hero_cta}
                 <ArrowDown className="ml-2 h-5 w-5 animate-bounce" />
               </motion.a>
             </div>
@@ -655,8 +655,8 @@ export default function App() {
           <section id="theology" className="py-24 bg-brand-light relative">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center max-w-3xl mx-auto mb-16">
-                <h2 className="text-brand-blue text-sm font-bold tracking-widest uppercase mb-2">{t.nav_theology}</h2>
-                <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 font-serif">{t.theology_title}</h3>
+                <h2 className="text-brand-blue text-sm font-bold tracking-widest uppercase mb-2">{hpT.nav_theology}</h2>
+                <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 font-serif">{hpT.theology_title}</h3>
                 <div className="w-24 h-1 bg-brand-gold mx-auto"></div>
               </div>
 
@@ -716,7 +716,7 @@ export default function App() {
               {/* Five Stages of Creation Integration */}
               <div className="mt-24">
                 <div className="text-center max-w-3xl mx-auto mb-12">
-                  <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">{t.stages_title}</h3>
+                  <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">{hpT.stages_title}</h3>
                   <p className="text-gray-600 mb-8">
                     {lang === 'tl'
                       ? "Ang landas patungo sa 'Isang Taong Bago' ay ang huling yugto ng paglalang ng Diyos sa sangkatauhan."
@@ -764,8 +764,8 @@ export default function App() {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                 <div>
-                  <h2 className="text-brand-gold text-sm font-bold tracking-widest uppercase mb-2">{t.nav_solution}</h2>
-                  <h3 className="text-3xl md:text-5xl font-bold mb-6 font-serif">{t.solution_title}</h3>
+                  <h2 className="text-brand-gold text-sm font-bold tracking-widest uppercase mb-2">{hpT.nav_solution}</h2>
+                  <h3 className="text-3xl md:text-5xl font-bold mb-6 font-serif">{hpT.solution_title}</h3>
                   <div className="w-24 h-1 bg-brand-gold mb-8"></div>
 
                   <div className="space-y-8">
@@ -776,7 +776,7 @@ export default function App() {
                       className="glass-panel p-6 rounded-xl"
                     >
                       <h4 className="text-xl font-bold text-brand-gold mb-2 flex items-center gap-2">
-                        <Scale className="h-5 w-5" /> {t.solution_paradox}
+                        <Scale className="h-5 w-5" /> {hpT.solution_paradox}
                       </h4>
                       <p className="text-gray-300 leading-relaxed">
                         {lang === 'tl'
@@ -795,7 +795,7 @@ export default function App() {
                       className="glass-panel p-6 rounded-xl border-l-4 border-l-brand-gold"
                     >
                       <h4 className="text-xl font-bold text-white mb-2 flex items-center gap-2">
-                        <Users className="h-5 w-5 text-brand-gold" /> {t.solution_perfect}
+                        <Users className="h-5 w-5 text-brand-gold" /> {hpT.solution_perfect}
                       </h4>
                       <p className="text-gray-300 leading-relaxed">
                         {lang === 'tl'
@@ -849,8 +849,8 @@ export default function App() {
           <section id="history" className="py-24 bg-white relative">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center max-w-3xl mx-auto mb-16">
-                <h2 className="text-brand-blue text-sm font-bold tracking-widest uppercase mb-2">{t.nav_history}</h2>
-                <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 font-serif">{t.history_title}</h3>
+                <h2 className="text-brand-blue text-sm font-bold tracking-widest uppercase mb-2">{hpT.nav_history}</h2>
+                <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 font-serif">{hpT.history_title}</h3>
                 <p className="text-gray-600">
                   {lang === 'tl'
                     ? "Sundan ang makasaysayang paglalakbay ng bayan ng Diyos mula sa sinaunang pinagmulan nito hanggang sa muling paglitaw nito."
@@ -1146,8 +1146,8 @@ export default function App() {
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
               <div className="text-center max-w-3xl mx-auto mb-20">
-                <h2 className="text-brand-blue text-sm font-bold tracking-widest uppercase mb-2">{t.redemption_title}</h2>
-                <h3 className="text-3xl md:text-5xl font-bold mb-4 text-slate-900 font-serif">{t.redemption_subtitle}</h3>
+                <h2 className="text-brand-blue text-sm font-bold tracking-widest uppercase mb-2">{hpT.redemption_title}</h2>
+                <h3 className="text-3xl md:text-5xl font-bold mb-4 text-slate-900 font-serif">{hpT.redemption_subtitle}</h3>
                 <div className="w-24 h-1 bg-brand-gold mx-auto"></div>
               </div>
 
@@ -1157,12 +1157,12 @@ export default function App() {
 
                 <div className="space-y-12 md:space-y-0">
                   {[
-                    { icon: <Leaf className="h-6 w-6" />, title: t.path_step_1_title, desc: t.path_step_1_desc, scripture: "Luke 8:11" },
-                    { icon: <Flame className="h-6 w-6" />, title: t.path_step_2_title, desc: t.path_step_2_desc, scripture: "Romans 6:23" },
-                    { icon: <Scale className="h-6 w-6" />, title: t.path_step_3_title, desc: t.path_step_3_desc, scripture: "Ephesians 2:15" },
-                    { icon: <Users className="h-6 w-6" />, title: t.path_step_4_title, desc: t.path_step_4_desc, scripture: "Colossians 1:18" },
-                    { icon: <Droplets className="h-6 w-6" />, title: t.path_step_5_title, desc: t.path_step_5_desc, scripture: "Galatians 3:27" },
-                    { icon: <Cloud className="h-6 w-6" />, title: t.path_step_6_title, desc: t.path_step_6_desc, scripture: "Revelation 21:1-4" }
+                    { icon: <Leaf className="h-6 w-6" />, title: hpT.path_step_1_title, desc: hpT.path_step_1_desc, scripture: "Luke 8:11" },
+                    { icon: <Flame className="h-6 w-6" />, title: hpT.path_step_2_title, desc: hpT.path_step_2_desc, scripture: "Romans 6:23" },
+                    { icon: <Scale className="h-6 w-6" />, title: hpT.path_step_3_title, desc: hpT.path_step_3_desc, scripture: "Ephesians 2:15" },
+                    { icon: <Users className="h-6 w-6" />, title: hpT.path_step_4_title, desc: hpT.path_step_4_desc, scripture: "Colossians 1:18" },
+                    { icon: <Droplets className="h-6 w-6" />, title: hpT.path_step_5_title, desc: hpT.path_step_5_desc, scripture: "Galatians 3:27" },
+                    { icon: <Cloud className="h-6 w-6" />, title: hpT.path_step_6_title, desc: hpT.path_step_6_desc, scripture: "Revelation 21:1-4" }
                   ].map((step, index) => (
                     <div key={index} className={`relative flex flex-col md:flex-row items-center ${index % 2 === 0 ? 'md:flex-row-reverse' : ''} md:py-12`}>
                       {/* Step Marker */}
@@ -1218,8 +1218,8 @@ export default function App() {
           <section id="mission" className="py-24 bg-brand-dark text-white relative">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center max-w-3xl mx-auto mb-16">
-                <h2 className="text-brand-gold text-sm font-bold tracking-widest uppercase mb-2">{t.nav_mission}</h2>
-                <h3 className="text-3xl md:text-4xl font-bold mb-4 font-serif">{t.mission_title}</h3>
+                <h2 className="text-brand-gold text-sm font-bold tracking-widest uppercase mb-2">{hpT.nav_mission}</h2>
+                <h3 className="text-3xl md:text-4xl font-bold mb-4 font-serif">{hpT.mission_title}</h3>
                 <div className="w-24 h-1 bg-brand-gold mx-auto"></div>
               </div>
 
@@ -1385,7 +1385,7 @@ export default function App() {
                               <div className="w-4 h-4 border-2 border-brand-dark border-t-transparent rounded-full animate-spin"></div>
                               {lang === 'tl' ? "Ipinapadala..." : (lang === 'es' ? "Enviando..." : "Sending...")}
                             </span>
-                          ) : t.contact_btn}
+                          ) : hpT.contact_btn}
                         </button>
                       </form>
                     )}
@@ -1405,7 +1405,7 @@ export default function App() {
                     <span className="text-2xl font-bold tracking-wider uppercase">The True Seed</span>
                   </div>
                   <p className="text-gray-400 max-w-md leading-relaxed">
-                    {t.footer_desc}
+                    {hpT.footer_desc}
                   </p>
                 </div>
                 <div>
@@ -1413,7 +1413,7 @@ export default function App() {
                   <ul className="space-y-4 text-sm text-gray-400">
                     {['theology', 'solution', 'history', 'authority', 'membership', 'mission'].map((item) => (
                       <li key={item}>
-                        <a href={`#${item}`} className="hover:text-brand-gold transition-colors">{t[`nav_${item}` as keyof typeof t]}</a>
+                        <a href={`#${item}`} className="hover:text-brand-gold transition-colors">{hpT[`nav_${item}` as keyof typeof hpT]}</a>
                       </li>
                     ))}
                   </ul>
@@ -1421,8 +1421,8 @@ export default function App() {
                 <div>
                   <h4 className="text-brand-gold font-bold uppercase tracking-widest mb-6">{lang === 'tl' ? "Mga Sanggunian" : (lang === 'es' ? "Recursos" : "Resources")}</h4>
                   <ul className="space-y-4 text-sm text-gray-400">
-                    <li><button onClick={() => openStudy()} className="hover:text-brand-gold transition-colors">{t.nav_study}</button></li>
-                    <li><button onClick={() => setView('baptism')} className="hover:text-brand-gold transition-colors">{t.nav_join}</button></li>
+                    <li><button onClick={() => openStudy()} className="hover:text-brand-gold transition-colors">{hpT.nav_study}</button></li>
+                    <li><button onClick={() => setView('baptism')} className="hover:text-brand-gold transition-colors">{hpT.nav_join}</button></li>
                   </ul>
                 </div>
               </div>
