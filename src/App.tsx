@@ -525,7 +525,7 @@ export default function App() {
                         onClick={() => setIsMenuOpen(false)}
                         className="block px-3 py-2 text-white hover:text-brand-gold text-base font-medium"
                       >
-                        {t[`nav_${item}` as keyof typeof t] || item.charAt(0).toUpperCase() + item.slice(1).replace('-', ' ')}
+                        {hpT[`nav_${item}` as keyof typeof hpT] || item.charAt(0).toUpperCase() + item.slice(1).replace('-', ' ')}
                       </a>
                     ))}
                     <button
@@ -535,7 +535,7 @@ export default function App() {
                       }}
                       className="w-full text-left block px-3 py-2 text-brand-gold hover:text-white text-base font-medium"
                     >
-                      {t.nav_study}
+                      {hpT.nav_study}
                     </button>
                     <button
                       onClick={() => {
@@ -544,7 +544,7 @@ export default function App() {
                       }}
                       className="w-full text-left block px-3 py-2 text-white hover:text-brand-gold text-base font-medium"
                     >
-                      {t.nav_join}
+                      {hpT.nav_join}
                     </button>
                     <div className="flex flex-wrap items-center gap-2 px-3 py-4 mt-2 border-t border-white/10">
                       <button
@@ -972,7 +972,7 @@ export default function App() {
           <section id="authority" className="py-24 bg-gray-50 relative overflow-hidden">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center max-w-3xl mx-auto mb-16">
-                <h2 className="text-brand-blue text-sm font-bold tracking-widest uppercase mb-2">{t.nav_authority}</h2>
+                <h2 className="text-brand-blue text-sm font-bold tracking-widest uppercase mb-2">{hpT.nav_authority}</h2>
                 <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
                   {lang === 'tl' ? "Ang Banal na Komisyon" : (lang === 'es' ? "La Comisión Divina" : "The Divine Commission")}
                 </h3>
@@ -1103,8 +1103,8 @@ export default function App() {
                 </div>
 
                 <div className="order-1 lg:order-2">
-                  <h2 className="text-brand-blue text-sm font-bold tracking-widest uppercase mb-2">{t.nav_membership}</h2>
-                  <h3 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6 font-serif">{t.membership_title}</h3>
+                  <h2 className="text-brand-blue text-sm font-bold tracking-widest uppercase mb-2">{hpT.nav_membership}</h2>
+                  <h3 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6 font-serif">{hpT.membership_title}</h3>
                   <div className="w-24 h-1 bg-brand-gold mb-8"></div>
 
                   <p className="text-lg text-gray-600 leading-relaxed mb-6">
@@ -1290,9 +1290,9 @@ export default function App() {
                       <Mail className="w-64 h-64" />
                     </div>
                     <div className="relative z-10">
-                      <h3 className="text-3xl font-bold mb-4">{t.contact_title}</h3>
+                      <h3 className="text-3xl font-bold mb-4">{hpT.contact_title}</h3>
                       <p className="text-gray-300 mb-8">
-                        {t.contact_desc}
+                        {hpT.contact_desc}
                       </p>
                       <div className="flex items-center gap-4 text-brand-gold">
                         <MapPin className="h-5 w-5" />
