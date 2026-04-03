@@ -11,12 +11,22 @@
 **The True Seed** is a full-stack web application designed to present profound biblical studies, historical prophecies, and interactive modules. Built with a heavy emphasis on dynamic UI interactions, the app provides a highly responsive, mobile-first approach to engaging with deeply rooted theological concepts.
 
 ### ✨ Key Features
-* **Bilingual Support:** Complete UI and lesson content translation targeting English and Tagalog audiences.
-* **Offline First (PWA):** Installs natively on Android, iOS, and desktop. Leverages Vite PWA plugins and service workers to aggressively cache PDF Study Guides and content, enabling fully offline study mode.
-* **Full-Stack Admin & SQLite Backend:** Includes an Express.js backend API and `better-sqlite3` database tailored to handle user tracking and administrative inquiries.
-* **Cloud Progress Sync:** Users can securely Register and Sign in to synchronize their reading progress and quiz modules between devices seamlessly.
-* **Interactive Quizzes:** End-of-lesson assessment checks utilizing dynamic Zustand application state tracking.
-* **Fully Audited & Tested:** Extensive End-to-End browser simulation testing provided by Microsoft Playwright, alongside complete W3C ARIA Accessible UI development.
+* **Trilingual Support:** Complete UI and lesson content translation for English, Tagalog, and Spanish audiences.
+* **Offline First (PWA):** Installs natively on Android, iOS, and desktop. Leverages Vite PWA plugins and service workers to aggressively cache content and assets for offline study.
+* **Full-Stack Admin & SQLite Backend:** Includes an Express.js backend API and `better-sqlite3` database for tracking and inquiries.
+* **Cloud Progress Sync:** Users can synchronize their reading progress and quiz modules between devices securely.
+* **Interactive Quizzes:** End-of-lesson assessment checks utilizing dynamic Zustand application state tracking, fully localized for all three languages.
+* **Fully Audited & Tested:** Extensive Playwright E2E browser simulation alongside W3C ARIA Accessible UI development.
+
+---
+
+## 📚 Documentation
+
+For detailed technical information, refer to the following guides:
+
+* **[Architecture & Tech Stack](docs/ARCHITECTURE.md)** — Core design principles and technology choices.
+* **[Multi-Language System](docs/LOCALIZATION.md)** — How the `lz` localization pattern and trilingual engine work.
+* **[Changelog](CHANGELOG.md)** — Track all recent features, bug fixes, and version history.
 
 ---
 
@@ -34,6 +44,7 @@
 
 ```text
 the-true-seed/
+├── docs/             # Technical documentation and guides
 ├── src/
 │   ├── components/       # Reusable UI components (AuthModal, Quizzes, UI buttons)
 │   ├── content/          # Markdown and localized text content for lesson modules

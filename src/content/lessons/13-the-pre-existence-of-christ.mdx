@@ -7,6 +7,9 @@ searchKeywords: "pre-existence plan of god foreordained 1 peter 1:20 john 17:5 b
 searchKeywordsTl: "pre-existence plano ng diyos itinalaga 1 pedro 1:20 juan 17:5 bago ang mundo"
 searchContent: "Christ existed in the plan and mind of God before the world began. 1 Peter 1:20 explains He was foreordained before the foundation of the world. His 'glory' in John 17:5 refers to this divine plan."
 searchContentTl: "Si Cristo ay umiral na sa plano at isipan ng Diyos bago pa ang mundo. Ipinaliliwanag ng 1 Pedro 1:20 na Siya ay itinalaga na bago pa ang pagtatatag ng mundo. Ang Kaniyang 'kaluwalhatian' sa Juan 17:5 ay tumutukoy sa banal na planong ito."
+titleEs: "La Pre-existencia de Cristo"
+searchKeywordsEs: "pre-existencia plan de dios predestinado 1 pedro 1:20 juan 17:5 antes de la fundación del mundo"
+searchContentEs: "Cristo existió en el plan y la mente de Dios antes de que el mundo comenzara. 1 Pedro 1:20 explica que fue predestinado antes de la fundación del mundo. Su 'gloria' en Juan 17:5 se refiere a este plan divino."
 ---
 import { ScriptureLink } from '../../scriptureData';
 import { 
@@ -19,23 +22,26 @@ import {
           <p className="text-base leading-snug">
             {props.lang === 'en'
               ? "Christ's pre-existence was not as a literal being, but as a plan in the mind of God. He was foreordained before the foundation of the world to be our Savior."
-              : "Ang pre-existence ni Cristo ay hindi bilang isang literal na nilalang, kundi bilang isang plano sa isipan ng Diyos. Siya ay itinalaga na bago pa ang pagtatatag ng mundo upang maging ating Tagapagligtas."}
+              : (props.lang === 'es' ? "La pre-existencia de Cristo no fue como un ser literal, sino como un plan en la mente de Dios. Fue predestinado antes de la fundación del mundo para ser nuestro Salvador."
+              : "Ang pre-existence ni Cristo ay hindi bilang isang literal na nilalang, kundi bilang isang plano sa isipan ng Diyos. Siya ay itinalaga na bago pa ang pagtatatag ng mundo upang maging ating Tagapagligtas.")}
           </p>
           <div className="bg-brand-gold/5 p-5 rounded-xl border border-brand-gold/20">
-            <h4 className="font-bold text-brand-dark mb-2">{props.lang === 'en' ? "Foreordained by God" : "Itinalaga ng Diyos"}</h4>
+            <h4 className="font-bold text-brand-dark mb-2">{props.lang === 'en' ? "Foreordained by God" : (props.lang === 'es' ? "Predestinado por Dios" : "Itinalaga ng Diyos")}</h4>
             <p className="text-sm text-gray-700 italic mb-3">
               {props.lang === 'en'
                 ? '"Who verily was foreordained before the foundation of the world, but was manifest in these last times for you."'
-                : '"Na siya ngang nakilala nang una bago itinatag ang sanglibutan, nguni\'t inihayag sa mga huling panahon dahil sa inyo."'}
+                : (props.lang === 'es' ? '"Que verdaderamente fue predestinado antes de la fundación del mundo, pero fue manifestado en los últimos tiempos por vosotros."'
+                : '"Na siya ngang nakilala nang una bago itinatag ang sanglibutan, nguni\'t inihayag sa mga huling panahon dahil sa inyo."')}
             </p>
             <div className="text-right text-xs font-bold text-brand-gold"><ScriptureLink verse="1 Peter 1:20" onHover={props.onHover}>1 Peter 1:20</ScriptureLink></div>
           </div>
           <div className="p-3 bg-brand-blue/5 rounded-xl border border-brand-blue/10">
-            <h4 className="font-bold text-brand-blue mb-1">{props.lang === 'en' ? "The Glory Before the World" : "Ang Kaluwalhatian Bago ang Mundo"}</h4>
+            <h4 className="font-bold text-brand-blue mb-1">{props.lang === 'en' ? "The Glory Before the World" : (props.lang === 'es' ? "La Gloria Antes del Mundo" : "Ang Kaluwalhatian Bago ang Mundo")}</h4>
             <p className="text-xs text-gray-600">
               {props.lang === 'en'
                 ? "The glory Christ had with the Father before the world was (John 17:5) refers to His status in God's plan, not literal existence."
-                : "Ang kaluwalhatiang taglay ni Cristo kasama ang Ama bago ang mundo (Juan 17:5) ay tumutukoy sa Kaniyang katayuan sa plano ng Diyos, hindi literal na pag-iral."}
+                : (props.lang === 'es' ? "La gloria que Cristo tenía con el Padre antes de que el mundo existiera (Juan 17:5) se refiere a Su estatus en el plan de Dios, no a una existencia literal."
+                : "Ang kaluwalhatiang taglay ni Cristo kasama ang Ama bago ang mundo (Juan 17:5) ay tumutukoy sa Kaniyang katayuan sa plano ng Diyos, hindi literal na pag-iral.")}
             </p>
           </div>
         

@@ -7,6 +7,9 @@ searchKeywords: "covenant eternal everlasting peace blood"
 searchKeywordsTl: "tipan walang hanggan kapayapaan dugo"
 searchContent: "The eternal covenant is God's promise of peace and salvation through the blood of the everlasting covenant. It is a relationship established by God with His people that shall never be removed."
 searchContentTl: "Ang walang hanggang tipan ay ang pangako ng Diyos ng kapayapaan at kaligtasan sa pamamagitan ng dugo ng walang hanggang tipan. Ito ay isang relasyong itinatag ng Diyos sa Kaniyang bayan na hindi kailanman maaalis."
+titleEs: "El Pacto Eterno"
+searchKeywordsEs: "pacto eterno perpetuo paz sangre"
+searchContentEs: "El pacto eterno es la promesa de Dios de paz y salvación a través de la sangre del pacto eterno. Es una relación establecida por Dios con Su pueblo que nunca será quitada."
 ---
 import { ScriptureLink } from '../../scriptureData';
 import { 
@@ -19,7 +22,8 @@ import {
           <p className="text-base leading-snug">
             {props.lang === 'en'
               ? "The eternal covenant is God's promise of peace and salvation through the blood of the everlasting covenant. It is a relationship established by God with His people that shall never be removed."
-              : "Ang walang hanggang tipan ay ang pangako ng Diyos ng kapayapaan at kaligtasan sa pamamagitan ng dugo ng walang hanggang tipan. Ito ay isang relasyong itinatag ng Diyos sa Kaniyang bayan na hindi kailanman maaalis."}
+              : (props.lang === 'es' ? "El pacto eterno es la promesa de Dios de paz y salvación a través de la sangre del pacto eterno. Es una relación establecida por Dios con Su pueblo que nunca será quitada."
+              : "Ang walang hanggang tipan ay ang pangako ng Diyos ng kapayapaan at kaligtasan sa pamamagitan ng dugo ng walang hanggang tipan. Ito ay isang relasyong itinatag ng Diyos sa Kaniyang bayan na hindi kailanman maaalis.")}
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             <div className="bg-brand-blue/5 p-3 rounded-lg border-l-4 border-brand-gold">

@@ -1,12 +1,15 @@
 ---
 title: "The Only True God"
 titleTl: "Ang Tanging Tunay na Diyos"
+titleEs: "El Único Dios Verdadero"
 category: "god"
 icon: "Flame"
 searchKeywords: "one true god father trinity oneness john 17:3 1 corinthians 8:6 malachi 2:10"
 searchKeywordsTl: "iisa tunay na diyos ama trinidad oneness juan 17:3 1 corinto 8:6 malakias 2:10"
+searchKeywordsEs: "un verdadero dios padre trinidad unicidad juan 17:3 1 corintios 8:6 malaquías 2:10"
 searchContent: "The Father is the only true God. John 17:3 and 1 Corinthians 8:6 state that there is but one God, the Father. The Bible rejects the Trinity and Oneness doctrines."
 searchContentTl: "Ang Ama ang tanging tunay na Diyos. Sinasabi sa Juan 17:3 at 1 Corinto 8:6 na mayroon lamang isang Diyos, ang Ama. Tinatanggihan ng Biblia ang mga aral ng Trinidad at Oneness."
+searchContentEs: "El Padre es el único Dios verdadero. Juan 17:3 y 1 Corintios 8:6 afirman que no hay más que un solo Dios, el Padre. La Biblia rechaza las doctrinas de la Trinidad y la Unicidad."
 ---
 import { ScriptureLink } from '../../scriptureData';
 import { 
@@ -19,7 +22,9 @@ import {
           <p className="text-base leading-snug">
             {props.lang === 'en'
               ? "The most fundamental truth in the Bible is that there is only one true God: the Father. This truth is the foundation of the true faith and distinguishes it from man-made doctrines."
-              : "Ang pinakapangunahing katotohanan sa Biblia ay iisa lamang ang tunay na Diyos: ang Ama. Ang katotohanang ito ang pundasyon ng tunay na pananampalataya at nagbubukod dito sa mga aral na gawa ng tao."}
+              : props.lang === 'tl'
+              ? "Ang pinakapangunahing katotohanan sa Biblia ay iisa lamang ang tunay na Diyos: ang Ama. Ang katotohanang ito ang pundasyon ng tunay na pananampalataya at nagbubukod dito sa mga aral na gawa ng tao."
+              : "La verdad más fundamental en la Biblia es que solo hay un Dios verdadero: el Padre. Esta verdad es el cimiento de la verdadera fe y la distingue de las doctrinas hechas por el hombre."}
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             <div className="bg-brand-blue/5 p-3 rounded-lg border-l-4 border-brand-gold">
@@ -34,12 +39,14 @@ import {
           <div className="bg-brand-dark text-white p-3 rounded-2xl border border-brand-gold/30">
             <h4 className="text-brand-gold font-bold mb-2 flex items-center gap-2">
               <ShieldCheck size={18} />
-              {props.lang === 'en' ? "Biblical Monotheism" : "Biblikal na Monoteismo"}
+              {props.lang === 'en' ? "Biblical Monotheism" : props.lang === 'tl' ? "Biblikal na Monoteismo" : "Monoteísmo Bíblico"}
             </h4>
             <p className="text-sm text-gray-300">
               {props.lang === 'en'
                 ? "The Bible never mentions a 'Trinity' (three persons in one God) or 'Oneness' (Jesus as the Father). Malachi 2:10 asks, 'Have we not all one father? hath not one God created us?' identifying the Creator as the Father alone."
-                : "Hindi kailanman binabanggit ng Biblia ang 'Trinidad' (tatlong persona sa isang Diyos) o 'Oneness' (si Jesus bilang Ama). Nagtatanong ang Malakias 2:10, 'Wala ba tayong lahat na isang ama? hindi ba isang Dios ang lumalang sa atin?' na kinikilala ang Maylalang bilang ang Ama lamang."}
+                : props.lang === 'tl'
+                ? "Hindi kailanman binabanggit ng Biblia ang 'Trinidad' (tatlong persona sa isang Diyos) o 'Oneness' (si Jesus bilang Ama). Nagtatanong ang Malakias 2:10, 'Wala ba tayong lahat na isang ama? hindi ba isang Dios ang lumalang sa atin?' na kinikilala ang Maylalang bilang ang Ama lamang."
+                : "La Biblia nunca menciona una 'Trinidad' (tres personas en un solo Dios) o la 'Unicidad' (Jesús como el Padre). Malaquías 2:10 pregunta: '¿No tenemos todos un mismo padre? ¿no nos ha creado un mismo Dios?', identificando al Creador únicamente como el Padre."}
             </p>
           </div>
         

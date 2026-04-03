@@ -7,6 +7,9 @@ searchKeywords: "names titles father creator almighty exodus 3:14 matt 6:9 isa 4
 searchKeywordsTl: "pangalan titulo ama maylalang makapangyarihan exodo 3:14 mateo 6:9 isaias 40:28"
 searchContent: "God is known by many names and titles: Father (Matt 6:9), Creator (Isa 40:28), and Almighty (Gen 17:1). These reveal His relationship with His creation."
 searchContentTl: "Ang Diyos ay kilala sa maraming pangalan at titulo: Ama (Mateo 6:9), Maylalang (Isaias 40:28), at Makapangyarihan sa lahat (Gen 17:1). Ang mga ito ay naghahayag ng Kaniyang relasyon sa Kaniyang nilikha."
+titleEs: "Los Nombres y Títulos de Dios"
+searchKeywordsEs: "nombres títulos padre creador todopoderoso éxodo 3:14 mateo 6:9 isa 40:28"
+searchContentEs: "Dios es conocido por muchos nombres y títulos: Padre (Mat 6:9), Creador (Isa 40:28) y Todopoderoso (Gén 17:1). Estos revelan Su relación con Su creación."
 ---
 import { ScriptureLink } from '../../scriptureData';
 import { 
@@ -19,29 +22,30 @@ import {
           <p className="text-base leading-snug">
             {props.lang === 'en'
               ? "God revealed Himself through various names and titles that describe His power and His relationship with mankind. The most intimate title He gave us is 'Father'."
-              : "Ipinakilala ng Diyos ang Kaniyang sarili sa pamamagitan ng iba't ibang pangalan at titulo na naglalarawan sa Kaniyang kapangyarihan at relasyon sa sangkatauhan. Ang pinakamalapit na titulong ibinigay Niya sa atin ay 'Ama'."}
+              : (props.lang === 'es' ? "Dios se reveló a Sí mismo a través de varios nombres y títulos que describen Su poder y Su relación con la humanidad. El título más íntimo que nos dio es 'Padre'."
+              : "Ipinakilala ng Diyos ang Kaniyang sarili sa pamamagitan ng iba't ibang pangalan at titulo na naglalarawan sa Kaniyang kapangyarihan at relasyon sa sangkatauhan. Ang pinakamalapit na titulong ibinigay Niya sa atin ay 'Ama'.")}
           </p>
           <div className="space-y-2">
             <div className="bg-brand-dark text-white p-5 rounded-xl">
-              <div className="text-brand-gold text-xs uppercase tracking-widest mb-2">{props.lang === 'en' ? "The Savior's Prayer" : "Ang Panalangin ng Tagapagligtas"}</div>
+              <div className="text-brand-gold text-xs uppercase tracking-widest mb-2">{props.lang === 'en' ? "The Savior's Prayer" : (props.lang === 'es' ? "La Oración del Salvador" : "Ang Panalangin ng Tagapagligtas")}</div>
               <div className="text-2xl font-bold italic">"Our Father which art in heaven..."</div>
               <div className="text-xs opacity-60 mt-1"><ScriptureLink verse="Matthew 6:9" onHover={props.onHover}>Matthew 6:9</ScriptureLink></div>
             </div>
             <div className="grid grid-cols-2 gap-3">
               <div className="p-3 bg-white border border-gray-200 rounded-lg">
-                <div className="text-[10px] text-brand-gold font-bold">{props.lang === 'en' ? "Title" : "Titulo"}</div>
-                <div className="font-bold">{props.lang === 'en' ? "Creator" : "Maylalang"}</div>
+                <div className="text-[10px] text-brand-gold font-bold">{props.lang === 'en' ? "Title" : (props.lang === 'es' ? "Título" : "Titulo")}</div>
+                <div className="font-bold">{props.lang === 'en' ? "Creator" : (props.lang === 'es' ? "Creador" : "Maylalang")}</div>
                 <div className="text-[10px] text-gray-400"><ScriptureLink verse="Isaiah 40:28" onHover={props.onHover}>Isaiah 40:28</ScriptureLink></div>
               </div>
               <div className="p-3 bg-white border border-gray-200 rounded-lg">
-                <div className="text-[10px] text-brand-gold font-bold">{props.lang === 'en' ? "Title" : "Titulo"}</div>
-                <div className="font-bold">{props.lang === 'en' ? "Almighty" : "Makapangyarihan"}</div>
+                <div className="text-[10px] text-brand-gold font-bold">{props.lang === 'en' ? "Title" : (props.lang === 'es' ? "Título" : "Titulo")}</div>
+                <div className="font-bold">{props.lang === 'en' ? "Almighty" : (props.lang === 'es' ? "Todopoderoso" : "Makapangyarihan")}</div>
                 <div className="text-[10px] text-gray-400"><ScriptureLink verse="Genesis 17:1" onHover={props.onHover}>Genesis 17:1</ScriptureLink></div>
               </div>
             </div>
             <div className="p-3 bg-brand-blue/5 border border-brand-blue/10 rounded-xl">
-              <h4 className="font-bold text-brand-blue text-sm mb-1">{props.lang === 'en' ? "I AM THAT I AM" : "AKO YAONG AKO NGA"}</h4>
-              <p className="text-xs text-gray-600"><ScriptureLink verse="Exodus 3:14" onHover={props.onHover}>Exodus 3:14</ScriptureLink> - {props.lang === 'en' ? "The name God revealed to Moses." : "Ang pangalang ipinakilala ng Diyos kay Moises."}</p>
+              <h4 className="font-bold text-brand-blue text-sm mb-1">{props.lang === 'en' ? "I AM THAT I AM" : (props.lang === 'es' ? "YO SOY EL QUE SOY" : "AKO YAONG AKO NGA")}</h4>
+              <p className="text-xs text-gray-600"><ScriptureLink verse="Exodus 3:14" onHover={props.onHover}>Exodus 3:14</ScriptureLink> - {props.lang === 'en' ? "The name God revealed to Moses." : (props.lang === 'es' ? "El nombre que Dios reveló a Moisés." : "Ang pangalang ipinakilala ng Diyos kay Moises.")}</p>
             </div>
           </div>
         

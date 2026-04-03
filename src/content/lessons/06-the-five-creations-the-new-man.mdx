@@ -7,6 +7,9 @@ searchKeywords: "adam eve humanity christ new man born again legal satisfaction 
 searchKeywordsTl: "adan eva sangkatauhan cristo bagong tao muling pagsilang legal na katuparan utang katawan ulo"
 searchContent: "There are five creations: Adam from dust, Eve from Adam's rib, humanity through natural birth, Christ through the Holy Spirit in Mary, and the New Man through being born again of water and spirit."
 searchContentTl: "Mayroong limang paglalang: si Adan mula sa alabok, si Eva mula sa tadyang ni Adan, ang sangkatauhan sa pamamagitan ng natural na kapanganakan, si Cristo sa pamamagitan ng Espiritu Santo kay Maria, at ang Bagong Tao sa pamamagitan ng muling pagsilang sa tubig at espiritu."
+titleEs: "Las Cinco Creaciones y El Nuevo Hombre"
+searchKeywordsEs: "adán eva humanidad cristo nuevo hombre nacido de nuevo satisfacción legal deuda cuerpo cabeza"
+searchContentEs: "Hay cinco creaciones: Adán del polvo, Eva de la costilla de Adán, la humanidad por nacimiento natural, Cristo por el Espíritu Santo en María, y el Nuevo Hombre por renacer de agua y espíritu."
 ---
 import { ScriptureLink } from '../../scriptureData';
 import { 
@@ -19,16 +22,17 @@ import {
           <p className="text-base leading-snug">
             {props.lang === 'en'
               ? "God's creative work with humanity spans five distinct stages, culminating in the spiritual rebirth of the 'One New Man'."
-              : "Ang paglalang ng Diyos sa sangkatauhan ay may limang yugto, na nagtatapos sa espirituwal na muling pagsilang ng 'Isang Taong Bago'."}
+              : (props.lang === 'es' ? "La obra creativa de Dios con la humanidad abarca cinco etapas distintas, culminando en el renacimiento espiritual del 'Solo y Nuevo Hombre'."
+              : "Ang paglalang ng Diyos sa sangkatauhan ay may limang yugto, na nagtatapos sa espirituwal na muling pagsilang ng 'Isang Taong Bago'.")}
           </p>
 
           <div className="space-y-2">
             {[
-              { step: 1, name: props.lang === 'en' ? "Adam" : "Adan", desc: props.lang === 'en' ? "From the dust (Physical)" : "Mula sa alabok (Pisikal)" },
-              { step: 2, name: props.lang === 'en' ? "Eve" : "Eva", desc: props.lang === 'en' ? "From Adam's rib" : "Mula sa tadyang ni Adan" },
-              { step: 3, name: props.lang === 'en' ? "Humanity" : "Sangkatauhan", desc: props.lang === 'en' ? "Natural birth (Marriage)" : "Natural na kapanganakan" },
-              { step: 4, name: props.lang === 'en' ? "Christ" : "Cristo", desc: props.lang === 'en' ? "Holy Spirit in Mary" : "Espiritu Santo kay Maria" },
-              { step: 5, name: props.lang === 'en' ? "The New Man" : "Ang Bagong Tao", desc: props.lang === 'en' ? "Born Again (Water & Spirit)" : "Muling Pagsilang (Tubig at Espiritu)" }
+              { step: 1, name: props.lang === 'en' ? "Adam" : props.lang === 'es' ? "Adán" : "Adan", desc: props.lang === 'en' ? "From the dust (Physical)" : props.lang === 'es' ? "Del polvo (Físico)" : "Mula sa alabok (Pisikal)" },
+              { step: 2, name: props.lang === 'en' ? "Eve" : "Eva", desc: props.lang === 'en' ? "From Adam's rib" : props.lang === 'es' ? "De la costilla de Adán" : "Mula sa tadyang ni Adan" },
+              { step: 3, name: props.lang === 'en' ? "Humanity" : props.lang === 'es' ? "Humanidad" : "Sangkatauhan", desc: props.lang === 'en' ? "Natural birth (Marriage)" : props.lang === 'es' ? "Nacimiento natural (Matrimonio)" : "Natural na kapanganakan" },
+              { step: 4, name: props.lang === 'en' ? "Christ" : "Cristo", desc: props.lang === 'en' ? "Holy Spirit in Mary" : props.lang === 'es' ? "Espíritu Santo en María" : "Espiritu Santo kay Maria" },
+              { step: 5, name: props.lang === 'en' ? "The New Man" : props.lang === 'es' ? "El Nuevo Hombre" : "Ang Bagong Tao", desc: props.lang === 'en' ? "Born Again (Water & Spirit)" : props.lang === 'es' ? "Nacido de Nuevo (Agua y Espíritu)" : "Muling Pagsilang (Tubig at Espiritu)" }
             ].map((s) => (
               <div key={s.step} className="flex items-center gap-3 bg-brand-blue/5 p-3 rounded-xl border border-brand-blue/10">
                 <div className="w-8 h-8 rounded-full bg-brand-gold text-brand-dark flex items-center justify-center font-bold text-xs">{s.step}</div>
@@ -43,12 +47,13 @@ import {
           <div className="bg-brand-dark text-white p-3 rounded-2xl border border-brand-gold/30">
             <h4 className="text-brand-gold font-bold mb-2 flex items-center gap-2">
               <Scale size={18} />
-              {props.lang === 'en' ? "Legal Satisfaction" : "Legal na Katuparan"}
+              {props.lang === 'en' ? "Legal Satisfaction" : (props.lang === 'es' ? "Satisfacción Legal" : "Legal na Katuparan")}
             </h4>
             <p className="text-sm text-gray-300">
               {props.lang === 'en'
                 ? "The law (Deut. 24:16) requires each to die for their own sin. By creating the 'One New Man' (Eph. 2:15)—Christ as Head and Church as Body—Jesus could legally pay the debt for His members."
-                : "Ang batas (Deut. 24:16) ay humihingi ng kamatayan para sa sariling sala. Sa paglalang sa 'Isang Taong Bago' (Efe. 2:15), legal na nabayaran ni Cristo ang utang ng Kaniyang mga kaanib."}
+                : (props.lang === 'es' ? "La ley (Deut. 24:16) requiere que cada uno muera por su propio pecado. Al crear el 'Solo y Nuevo Hombre' (Efe. 2:15)—Cristo como Cabeza y la Iglesia como Cuerpo—Jesús pudo pagar legalmente la deuda por Sus miembros."
+                : "Ang batas (Deut. 24:16) ay humihingi ng kamatayan para sa sariling sala. Sa paglalang sa 'Isang Taong Bago' (Efe. 2:15), legal na nabayaran ni Cristo ang utang ng Kaniyang mga kaanib.")}
             </p>
           </div>
         

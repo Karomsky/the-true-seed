@@ -7,6 +7,9 @@ searchKeywords: "born again water spirit john 3:5 baptism"
 searchKeywordsTl: "maipanganak na muli tubig espiritu juan 3:5 bautismo"
 searchContent: "Entering the kingdom of God requires a true spiritual rebirth—being born of water and the Spirit through baptism into the Body of Christ."
 searchContentTl: "Ang pagpasok sa kaharian ng Diyos ay nangangailangan ng tunay na espirituwal na muling pagsilang—ang maipanganak sa tubig at sa Espiritu sa pamamagitan ng bautismo sa Katawan ni Cristo."
+titleEs: "El Requisito de Nacer de Nuevo"
+searchKeywordsEs: "nacer de nuevo agua espíritu juan 3:5 bautismo"
+searchContentEs: "Entrar en el reino de Dios requiere un verdadero renacimiento espiritual: nacer del agua y del Espíritu mediante el bautismo en el Cuerpo de Cristo."
 ---
 import { ScriptureLink } from '../../scriptureData';
 import { 
@@ -19,12 +22,14 @@ import {
           <p className="text-base leading-snug">
             {props.lang === 'en'
               ? "Jesus told Nicodemus: 'Unless one is born of water and the Spirit, he cannot enter the kingdom of God' (John 3:5). This is not just a profession of faith; it is a spiritual creation."
-              : "Sinabi ni Jesus kay Nicodemo: 'Maliban na ang tao'y ipanganak ng tubig at ng Espiritu, ay hindi siya makakapasok sa kaharian ng Dios' (Juan 3:5). Hindi lamang ito pagpapahayag ng pananampalataya; ito ay isang espirituwal na paglikha."}
+              : (props.lang === 'es' ? "Jesús dijo a Nicodemo: 'El que no naciere de agua y del Espíritu, no puede entrar en el reino de Dios' (Juan 3:5). Esto no es solo una profesión de fe; es una creación espiritual."
+              : "Sinabi ni Jesus kay Nicodemo: 'Maliban na ang tao'y ipanganak ng tubig at ng Espiritu, ay hindi siya makakapasok sa kaharian ng Dios' (Juan 3:5). Hindi lamang ito pagpapahayag ng pananampalataya; ito ay isang espirituwal na paglikha.")}
           </p>
           <p className="text-base leading-snug">
             {props.lang === 'en'
               ? "Baptism is the definitive entry point. By being buried with Christ in baptism, we put off the 'Old Man' and put on the 'New Man' (Eph 4:22, 24), becoming a new creation in Christ (2 Cor 5:17)."
-              : "Ang bautismo ang tiyak na entry point. Sa pagkalibing na kasama ni Cristo sa bautismo, hinuhubad natin ang 'Lumang Tao' at isinusuot ang 'Bagong Tao' (Eph 4:22, 24), na nagiging isang bagong nilalang kay Cristo (2 Cor 5:17)."}
+              : (props.lang === 'es' ? "El bautismo es el punto de entrada definitivo. Al ser sepultados con Cristo en el bautismo, nos despojamos del 'Viejo Hombre' y nos revestimos del 'Nuevo Hombre' (Ef 4:22, 24), convirtiéndonos en una nueva creación en Cristo (2 Cor 5:17)."
+              : "Ang bautismo ang tiyak na entry point. Sa pagkalibing na kasama ni Cristo sa bautismo, hinuhubad natin ang 'Lumang Tao' at isinusuot ang 'Bagong Tao' (Eph 4:22, 24), na nagiging isang bagong nilalang kay Cristo (2 Cor 5:17).")}
           </p>
           <div className="bg-brand-blue/5 p-3 rounded-lg border-l-4 border-brand-gold">
             <span className="font-bold block mb-1">

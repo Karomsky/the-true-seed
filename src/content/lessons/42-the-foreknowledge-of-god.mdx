@@ -7,6 +7,9 @@ searchKeywords: "foreknowledge predestined called justified glorified Romans 8:2
 searchKeywordsTl: "pagkaalam bago nagtakda tinawag pinawalang-sala niluwalhati Roma 8:29-30 Gawa 2:23 1 Pedro 1:2 layunin soberanong plano"
 searchContent: "God's foreknowledge is not passive observation — it is active, purposeful selection. Romans 8:29-30 shows the golden chain of salvation: foreknown, predestined, called, justified, and glorified."
 searchContentTl: "Ang pagkaalam ng Diyos nang maaga ay hindi passive na pagmamasid — ito ay aktibo, may layuning pagpili. Ipinapakita ng Roma 8:29-30 ang gintong kadena ng kaligtasan: nakilala bago, nagtakda, tinawag, pinawalang-sala, at niluwalhati."
+titleEs: "La Presciencia de Dios"
+searchKeywordsEs: "presciencia predestinado llamado justificado glorificado romanos 8:29-30 hechos 2:23 1 pedro 1:2 propósito plan soberano"
+searchContentEs: "La presciencia de Dios no es una observación pasiva — es una selección activa y decidida. Romanos 8:29-30 muestra la cadena de oro de la salvación: conocidos, predestinados, llamados, justificados y glorificados."
 ---
 import { ScriptureLink } from '../../scriptureData';
 
@@ -14,15 +17,16 @@ import { ScriptureLink } from '../../scriptureData';
   <p className="text-base leading-snug">
     {props.lang === 'en'
       ? "God's foreknowledge is not merely knowing the future in advance — it is a deep, relational knowing that involves purpose and love. God 'fore-knew' His people in the same way He 'knew' Abraham: with intimate, covenant love."
-      : "Ang pagkaalam ng Diyos nang maaga ay hindi lamang pag-alam sa hinaharap nang maaga — ito ay isang malalim, relasyonal na pagkilala na kinasasangkutan ng layunin at pagmamahal. 'Nakilala bago' ng Diyos ang Kaniyang bayan sa parehong paraan na 'nakilala' Niya si Abraham: may matalik, tipan na pagmamahal."}
+      : (props.lang === 'es' ? "La presciencia de Dios no es simplemente conocer el futuro de antemano — es un conocimiento profundo y relacional que involucra propósito y amor. Dios 'conoció de antemano' a Su pueblo de la misma manera que 'conoció' a Abraham: con un amor íntimo y de pacto."
+      : "Ang pagkaalam ng Diyos nang maaga ay hindi lamang pag-alam sa hinaharap nang maaga — ito ay isang malalim, relasyonal na pagkilala na kinasasangkutan ng layunin at pagmamahal. 'Nakilala bago' ng Diyos ang Kaniyang bayan sa parehong paraan na 'nakilala' Niya si Abraham: may matalik, tipan na pagmamahal.")}
   </p>
 
   <div className="p-4 bg-gradient-to-r from-brand-gold/10 to-brand-blue/5 rounded-xl border border-brand-gold/20">
-    <h4 className="font-bold text-brand-dark mb-2 text-sm uppercase tracking-wider">{props.lang === 'en' ? "The Golden Chain of Salvation" : "Ang Gintong Kadena ng Kaligtasan"}</h4>
+    <h4 className="font-bold text-brand-dark mb-2 text-sm uppercase tracking-wider">{props.lang === 'en' ? "The Golden Chain of Salvation" : (props.lang === 'es' ? "La Cadena de Oro de la Salvación" : "Ang Gintong Kadena ng Kaligtasan")}</h4>
     <div className="flex flex-wrap gap-2 items-center justify-center text-xs font-bold">
       {['Foreknown', 'Predestined', 'Called', 'Justified', 'Glorified'].map((step, i) => (
         <div key={i} className="flex items-center gap-1">
-          <span className="bg-brand-gold text-brand-dark px-2 py-1 rounded-full">{props.lang === 'en' ? step : ['Nakilala Bago', 'Nagtakda', 'Tinawag', 'Pinawalang-sala', 'Niluwalhati'][i]}</span>
+          <span className="bg-brand-gold text-brand-dark px-2 py-1 rounded-full">{props.lang === 'en' ? step : (props.lang === 'es' ? ['Conocido', 'Predestinado', 'Llamado', 'Justificado', 'Glorificado'][i] : ['Nakilala Bago', 'Nagtakda', 'Tinawag', 'Pinawalang-sala', 'Niluwalhati'][i])}</span>
           {i < 4 && <span className="text-brand-gold">→</span>}
         </div>
       ))}
@@ -46,11 +50,12 @@ import { ScriptureLink } from '../../scriptureData';
   </div>
 
   <div className="p-3 bg-white border border-gray-100 rounded-xl shadow-sm">
-    <h4 className="font-bold text-brand-blue mb-1">{props.lang === 'en' ? "Not Based on Human Merit" : "Hindi Batay sa Merito ng Tao"}</h4>
+    <h4 className="font-bold text-brand-blue mb-1">{props.lang === 'en' ? "Not Based on Human Merit" : (props.lang === 'es' ? "No Basado en el Mérito Humano" : "Hindi Batay sa Merito ng Tao")}</h4>
     <p className="text-sm text-gray-600">
       {props.lang === 'en'
         ? "Election is solely based on God's sovereign grace and purpose — not on foreseen human merit or good works. God's choice originates in His own will."
-        : "Ang pagpili ay batay lamang sa makapangyarihang biyaya at layunin ng Diyos — hindi sa nakita nang maaga na merito ng tao o mabuting gawa. Ang pagpili ng Diyos ay nagmumula sa Kaniyang sariling kalooban."}
+        : (props.lang === 'es' ? "La elección se basa únicamente en la gracia y el propósito soberanos de Dios — no en el mérito humano previsto o en las buenas obras. La elección de Dios se origina en Su propia voluntad."
+        : "Ang pagpili ay batay lamang sa makapangyarihang biyaya at layunin ng Diyos — hindi sa nakita nang maaga na merito ng tao o mabuting gawa. Ang pagpili ng Diyos ay nagmumula sa Kaniyang sariling kalooban.")}
       {' '}<ScriptureLink verse="2 Timothy 1:9" onHover={props.onHover}>2 Timothy 1:9</ScriptureLink>
     </p>
   </div>

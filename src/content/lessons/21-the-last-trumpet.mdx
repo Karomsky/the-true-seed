@@ -7,6 +7,9 @@ searchKeywords: "last trumpet end of time judgment day salvation resurrection bo
 searchKeywordsTl: "huling pakakak wakas ng panahon araw ng paghuhukom kaligtasan pagkabuhay na maguli aklat ng buhay 1 tesalonica 4:16 apocalipsis 20:6"
 searchContent: "The sounding of the last trumpet marks the end of time and the beginning of Judgment Day. The dead in Christ shall rise first. Only those whose names are written in the Book of Life will be saved."
 searchContentTl: "Ang pagtunog ng huling pakakak ang nagtatanda ng wakas ng panahon at ang simula ng Araw ng Paghuhukom. Ang mga nangamatay kay Cristo ay unang mangabubuhay na maguli. Ang mga nakasulat lamang sa Aklat ng Buhay ang maliligtas."
+titleEs: "La Última Trompeta"
+searchKeywordsEs: "ultima trompeta fin del tiempo juicio final salvación resurrección libro de la vida 1 tesalonicenses 4:16 apocalipsis 20:6"
+searchContentEs: "El toque de la última trompeta marca el fin del tiempo y el comienzo del Día del Juicio. Los muertos en Cristo resucitarán primero. Solo aquellos cuyos nombres están escritos en el Libro de la Vida serán salvos."
 ---
 import { ScriptureLink } from '../../scriptureData';
 import { 
@@ -19,18 +22,19 @@ import {
           <p className="text-base leading-snug">
             {props.lang === 'en'
               ? "The sounding of the last trumpet marks the end of time and the beginning of Judgment Day. This is the day when all people will be judged according to their deeds."
-              : "Ang pagtunog ng huling pakakak ang nagtatanda ng wakas ng panahon at ang simula ng Araw ng Paghuhukom. Ito ang araw kung kailan ang lahat ng tao ay hahatulan ayon sa kanilang mga gawa."}
+              : (props.lang === 'es' ? "El toque de la última trompeta marca el fin del tiempo y el comienzo del Día del Juicio. Este es el día en que todas las personas serán juzgadas según sus obras."
+              : "Ang pagtunog ng huling pakakak ang nagtatanda ng wakas ng panahon at ang simula ng Araw ng Paghuhukom. Ito ang araw kung kailan ang lahat ng tao ay hahatulan ayon sa kanilang mga gawa.")}
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             <div className="p-3 bg-white border border-gray-100 rounded-xl shadow-sm">
-              <div className="text-brand-gold font-bold text-xs uppercase mb-1">{props.lang === 'en' ? "The Event" : "Ang Kaganapan"}</div>
-              <div className="font-bold">{props.lang === 'en' ? "Resurrection" : "Pagkabuhay na Maguli"}</div>
-              <p className="text-xs text-gray-500 mt-1"><ScriptureLink verse="1 Thessalonians 4:16" onHover={props.onHover}>1 Thess. 4:16</ScriptureLink> - {props.lang === 'en' ? "The dead in Christ shall rise first." : "Ang mga nangamatay kay Cristo ay unang mangabubuhay na maguli."}</p>
+              <div className="text-brand-gold font-bold text-xs uppercase mb-1">{props.lang === 'en' ? "The Event" : (props.lang === 'es' ? "El Evento" : "Ang Kaganapan")}</div>
+              <div className="font-bold">{props.lang === 'en' ? "Resurrection" : (props.lang === 'es' ? "Resurrección" : "Pagkabuhay na Maguli")}</div>
+              <p className="text-xs text-gray-500 mt-1"><ScriptureLink verse="1 Thessalonians 4:16" onHover={props.onHover}>1 Thess. 4:16</ScriptureLink> - {props.lang === 'en' ? "The dead in Christ shall rise first." : (props.lang === 'es' ? "Los muertos en Cristo resucitarán primero." : "Ang mga nangamatay kay Cristo ay unang mangabubuhay na maguli.")}</p>
             </div>
             <div className="p-3 bg-white border border-gray-100 rounded-xl shadow-sm">
-              <div className="text-brand-gold font-bold text-xs uppercase mb-1">{props.lang === 'en' ? "The Standard" : "Ang Pamantayan"}</div>
-              <div className="font-bold">{props.lang === 'en' ? "Book of Life" : "Aklat ng Buhay"}</div>
-              <p className="text-xs text-gray-500 mt-1"><ScriptureLink verse="Revelation 20:12" onHover={props.onHover}>Rev. 20:12</ScriptureLink> - {props.lang === 'en' ? "Judged according to what was written in the books." : "Hinatulan ayon sa mga bagay na nasusulat sa mga aklat."}</p>
+              <div className="text-brand-gold font-bold text-xs uppercase mb-1">{props.lang === 'en' ? "The Standard" : (props.lang === 'es' ? "El Estándar" : "Ang Pamantayan")}</div>
+              <div className="font-bold">{props.lang === 'en' ? "Book of Life" : (props.lang === 'es' ? "Libro de la Vida" : "Aklat ng Buhay")}</div>
+              <p className="text-xs text-gray-500 mt-1"><ScriptureLink verse="Revelation 20:12" onHover={props.onHover}>Rev. 20:12</ScriptureLink> - {props.lang === 'en' ? "Judged according to what was written in the books." : (props.lang === 'es' ? "Juzgados según lo que estaba escrito en los libros." : "Hinatulan ayon sa mga bagay na nasusulat sa mga aklat.")}</p>
             </div>
           </div>
         

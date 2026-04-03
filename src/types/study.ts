@@ -17,11 +17,14 @@ export interface Lesson {
   category: string;
   title: string;
   titleTl: string;
+  titleEs?: string;
   icon: any;
   searchKeywords?: string;
   searchKeywordsTl?: string;
+  searchKeywordsEs?: string;
   searchContent?: string;
   searchContentTl?: string;
+  searchContentEs?: string;
   content: React.ReactNode;
   quiz?: Quiz;
   pdfUrl?: string;

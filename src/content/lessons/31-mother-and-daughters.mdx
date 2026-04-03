@@ -7,6 +7,9 @@ searchKeywords: "mother harlot daughters revelation 17:5 reformation martin luth
 searchKeywordsTl: "ina patutot mga anak apocalipsis 17:5 repormasyon martin luther sekta"
 searchContent: "The Protestant Reformation did not restore the original church; it merely severed a branch from the corrupted root. Revelation 17:5."
 searchContentTl: "Ang Repormasyong Protestante ay hindi nagpanumbalik sa orihinal na iglesia; pinutol lamang nito ang isang sanga mula sa tiwaling ugat. Apocalipsis 17:5."
+titleEs: "Madre e Hijas"
+searchKeywordsEs: "madre ramera hijas apocalipsis 17:5 reforma martín lutero sectas"
+searchContentEs: "La Reforma Protestante no restauró la iglesia original; simplemente cortó una rama de la raíz corrompida. Apocalipsis 17:5."
 ---
 import { ScriptureLink } from '../../scriptureData';
 import { 
@@ -19,11 +22,12 @@ import {
           <p className="text-base leading-snug">
             {props.lang === 'en'
               ? "Revelation 17:5 describes 'Babylon the Great, the Mother of Prostitutes'. The daughters represent the thousands of sects that splinters from the mother church, continuing the original apostasy."
-              : "Inilalarawan sa Apocalipsis 17:5 ang 'Dakilang Babilonia, ang Ina ng mga Patutot'. Ang mga anak ay kumakatawan sa libu-libong sekta na humiwalay sa inang iglesia, na nagpapatuloy sa orihinal na pagtalikod."}
+              : (props.lang === 'es' ? "Apocalipsis 17:5 describe a 'Babilonia la Grande, la Madre de las Rameras'. Las hijas representan las miles de sectas que se separaron de la iglesia madre, continuando la apostasía original."
+              : "Inilalarawan sa Apocalipsis 17:5 ang 'Dakilang Babilonia, ang Ina ng mga Patutot'. Ang mga anak ay kumakatawan sa libu-libong sekta na humiwalay sa inang iglesia, na nagpapatuloy sa orihinal na pagtalikod.")}
           </p>
           <div className="p-3 bg-gray-50 rounded-xl border border-gray-100">
-            <h5 className="font-bold text-brand-blue text-sm mb-1">{props.lang === 'en' ? "The Proliferation" : "Ang Pagdami"}</h5>
-            <p className="text-xs text-gray-600">{props.lang === 'en' ? "Martin Luther birthed thousands of new sects—the very weeds choking the field today." : "Si Martin Luther ay nagsilang ng libu-libong bagong sekta—ang mismong mga pangsirang damo na sumasakal sa bukid ngayon."}</p>
+            <h5 className="font-bold text-brand-blue text-sm mb-1">{props.lang === 'en' ? "The Proliferation" : (props.lang === 'es' ? "La Proliferación" : "Ang Pagdami")}</h5>
+            <p className="text-xs text-gray-600">{props.lang === 'en' ? "Martin Luther birthed thousands of new sects—the very weeds choking the field today." : (props.lang === 'es' ? "Martín Lutero engendró miles de nuevas sectas—la mismísima cizaña que hoy asfixia el campo." : "Si Martin Luther ay nagsilang ng libu-libong bagong sekta—ang mismong mga pangsirang damo na sumasakal sa bukid ngayon.")}</p>
           </div>
         
 

@@ -1,12 +1,15 @@
 ---
 title: "The Elect of God"
 titleTl: "Ang mga Hinirang ng Diyos"
+titleEs: "Los Elegidos de Dios"
 category: "election"
 icon: "Star"
 searchKeywords: "elect chosen predestination foreknowledge called saved remnant Matthew 22:14 Romans 8:33 1 Peter 2:9"
 searchKeywordsTl: "hinirang pinili predestinasyon pagkaalam bago tinawag naligtas nalabi Mateo 22:14 Roma 8:33 1 Pedro 2:9"
+searchKeywordsEs: "elegidos escogidos predestinación presciencia llamados salvos remanente Mateo 22:14 Romanos 8:33 1 Pedro 2:9"
 searchContent: "God elects and chooses a people for Himself. The doctrine of election shows that God foreknew His people before the foundation of the world and calls them to salvation through His Church."
 searchContentTl: "Pinipili ng Diyos ang isang bayan para sa Kaniyang sarili. Ang doktrina ng pagpili ay nagpapakita na nakilala ng Diyos ang Kaniyang bayan bago pa ang pundasyon ng mundo at tinatawag sila sa kaligtasan sa pamamagitan ng Kaniyang Iglesia."
+searchContentEs: "Dios elige y escoge un pueblo para Sí mismo. La doctrina de la elección muestra que Dios conoció a su pueblo de antemano, antes de la fundación del mundo, y los llama a la salvación a través de Su Iglesia."
 ---
 import { ScriptureLink } from '../../scriptureData';
 
@@ -14,7 +17,9 @@ import { ScriptureLink } from '../../scriptureData';
   <p className="text-base leading-snug">
     {props.lang === 'en'
       ? "The Bible reveals that God does not save people by accident. He has a deliberate plan — He elects, calls, and gathers a chosen people. This is the doctrine of Divine Election: that God, in His sovereign wisdom, foreknew and selected those who would be part of His Church."
-      : "Inihahayag ng Biblia na hindi nililigtas ng Diyos ang mga tao nang walang layunin. Mayroon Siyang tiyak na plano — pinipili, tinatawag, at tinitipun Niya ang isang hinirang na bayan. Ito ang doktrina ng Banal na Pagpili: na ang Diyos, sa Kaniyang makapangyarihang karunungan, ay nakilala bago at pinili ang mga magiging bahagi ng Kaniyang Iglesia."}
+      : props.lang === 'tl'
+      ? "Inihahayag ng Biblia na hindi nililigtas ng Diyos ang mga tao nang walang layunin. Mayroon Siyang tiyak na plano — pinipili, tinatawag, at tinitipun Niya ang isang hinirang na bayan. Ito ang doktrina ng Banal na Pagpili: na ang Diyos, sa Kaniyang makapangyarihang karunungan, ay nakilala bago at pinili ang mga magiging bahagi ng Kaniyang Iglesia."
+      : "La Biblia revela que Dios no salva a las personas por accidente. Tiene un plan deliberado: elige, llama y reúne a un pueblo escogido. Esta es la doctrina de la Elección Divina: que Dios, en Su sabiduría soberana, conoció de antemano y seleccionó a los que formarían parte de Su Iglesia."}
   </p>
 
   <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -33,21 +38,25 @@ import { ScriptureLink } from '../../scriptureData';
   </div>
 
   <div className="p-3 bg-brand-blue/5 rounded-xl border border-brand-blue/10">
-    <h4 className="font-bold text-brand-blue mb-1">{props.lang === 'en' ? "Chosen Before the Foundation" : "Hinirang Bago ang Pundasyon"}</h4>
+    <h4 className="font-bold text-brand-blue mb-1">{props.lang === 'en' ? "Chosen Before the Foundation" : props.lang === 'tl' ? "Hinirang Bago ang Pundasyon" : "Elegidos Antes de la Fundación"}</h4>
     <p className="text-sm text-gray-600">
       <ScriptureLink verse="Ephesians 1:4" onHover={props.onHover}>Ephesians 1:4</ScriptureLink>
       {props.lang === 'en'
         ? " — God chose us in Christ before the foundation of the world, that we should be holy and blameless."
-        : " — Pinili tayo ng Diyos kay Cristo bago pa ang pundasyon ng mundo, upang tayo ay maging banal at walang kapintasan."}
+        : props.lang === 'tl'
+        ? " — Pinili tayo ng Diyos kay Cristo bago pa ang pundasyon ng mundo, upang tayo ay maging banal at walang kapintasan."
+        : " — Dios nos escogió en Cristo antes de la fundación del mundo, para que fuésemos santos y sin mancha."}
     </p>
   </div>
 
   <div className="p-3 bg-white border border-gray-100 rounded-xl shadow-sm">
-    <h4 className="font-bold text-brand-gold mb-1">{props.lang === 'en' ? "The Remnant" : "Ang Nalabi"}</h4>
+    <h4 className="font-bold text-brand-gold mb-1">{props.lang === 'en' ? "The Remnant" : props.lang === 'tl' ? "Ang Nalabi" : "El Remanente"}</h4>
     <p className="text-sm text-gray-600">
       {props.lang === 'en'
         ? "Throughout biblical history, God preserved a remnant — a small, faithful group of the elect. Even when Israel fell into apostasy, God kept His chosen ones."
-        : "Sa buong kasaysayan ng Biblia, pinanatili ng Diyos ang isang nalabi — isang maliit, tapat na grupo ng mga hinirang. Kahit nang mahulog ang Israel sa apostasya, pinanatili ng Diyos ang Kaniyang mga pinili."}
+        : props.lang === 'tl'
+        ? "Sa buong kasaysayan ng Biblia, pinanatili ng Diyos ang isang nalabi — isang maliit, tapat na grupo ng mga hinirang. Kahit nang mahulog ang Israel sa apostasya, pinanatili ng Diyos ang Kaniyang mga pinili."
+        : "A lo largo de la historia bíblica, Dios preservó un remanente, un grupo pequeño y fiel de elegidos. Incluso cuando Israel cayó en apostasía, Dios mantuvo a Sus escogidos."}
       {' '}<ScriptureLink verse="Romans 11:5" onHover={props.onHover}>Romans 11:5</ScriptureLink>
     </p>
   </div>

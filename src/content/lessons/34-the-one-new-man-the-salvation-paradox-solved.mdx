@@ -7,6 +7,9 @@ searchKeywords: "one new man salvation paradox deut 24:16 eph 2:15"
 searchKeywordsTl: "isang taong bago paradox ng kaligtasan deut 24:16 eph 2:15"
 searchContent: "The 'Salvation Paradox' states that every man must die for his own sin (Deut 24:16). Christ solved this by creating the 'One New Man' (Eph 2:15), where He is the Head and the Church is His Body."
 searchContentTl: "Sinasabi ng 'Paradox ng Kaligtasan' na ang bawat tao ay dapat mamatay para sa sarili niyang kasalanan (Deut 24:16). Nilutas ito ni Cristo sa pamamagitan ng paglikha ng 'Isang Taong Bago' (Eph 2:15), kung saan Siya ang Ulo at ang Iglesia ang Kaniyang Katawan."
+titleEs: "El Un Solo Hombre Nuevo: Resuelta la Paradoja de la Salvación"
+searchKeywordsEs: "un solo hombre nuevo paradoja salvación deut 24:16 efesios 2:15"
+searchContentEs: "La 'Paradoja de la Salvación' establece que cada hombre debe morir por su propio pecado (Deut 24:16). Cristo lo resolvió creando el 'Un Solo Hombre Nuevo' (Ef 2:15), donde Él es la Cabeza y la Iglesia es Su Cuerpo."
 ---
 import { ScriptureLink } from '../../scriptureData';
 import { 
@@ -19,12 +22,14 @@ import {
           <p className="text-base leading-snug">
             {props.lang === 'en'
               ? "God's law strictly demands personal accountability: 'A person shall be put to death for his own sin' (Deut 24:16). This creates a paradox: how can a sinless Christ save mankind if proxy death is legally impossible?"
-              : "Mahigpit na hinihingi ng kautusan ng Diyos ang personal na pananagutan: 'Ang bawat tao'y papatayin dahil sa kaniyang sariling kasalanan' (Deut 24:16). Lumilikha ito ng paradox: paano maililigtas ng isang walang kasalanang Cristo ang sangkatauhan kung ang proxy death ay legal na imposible?"}
+              : (props.lang === 'es' ? "La ley de Dios exige estrictamente la responsabilidad personal: 'Cada uno morirá por su propio pecado' (Deut 24:16). Esto crea una paradoja: ¿cómo puede un Cristo sin pecado salvar a la humanidad si la muerte por poder es legalmente imposible?"
+              : "Mahigpit na hinihingi ng kautusan ng Diyos ang personal na pananagutan: 'Ang bawat tao'y papatayin dahil sa kaniyang sariling kasalanan' (Deut 24:16). Lumilikha ito ng paradox: paano maililigtas ng isang walang kasalanang Cristo ang sangkatauhan kung ang proxy death ay legal na imposible?")}
           </p>
           <p className="text-base leading-snug">
             {props.lang === 'en'
               ? "Christ solved this not by breaking the law, but by fulfilling it through the creation of the 'One New Man' (Eph 2:15). He is the Head, and the Church is His Body (Col 1:18). When He died, He legally died for His own Body's sins."
-              : "Nilutas ito ni Cristo hindi sa pamamagitan ng paglabag sa kautusan, kundi sa pagtupad nito sa pamamagitan ng paglikha ng 'Isang Taong Bago' (Eph 2:15). Siya ang Ulo, at ang Iglesia ang Kaniyang Katawan (Col 1:18). Nang Siya ay mamatay, legal Siyang namatay para sa mga kasalanan ng Kaniyang sariling Katawan."}
+              : (props.lang === 'es' ? "Cristo resolvió esto no quebrantando la ley, sino cumpliéndola mediante la creación del 'Un Solo Hombre Nuevo' (Ef 2:15). Él es la Cabeza, y la Iglesia es Su Cuerpo (Col 1:18). Cuando Él murió, murió legalmente por los pecados de Su propio Cuerpo."
+              : "Nilutas ito ni Cristo hindi sa pamamagitan ng paglabag sa kautusan, kundi sa pagtupad nito sa pamamagitan ng paglikha ng 'Isang Taong Bago' (Eph 2:15). Siya ang Ulo, at ang Iglesia ang Kaniyang Katawan (Col 1:18). Nang Siya ay mamatay, legal Siyang namatay para sa mga kasalanan ng Kaniyang sariling Katawan.")}
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             <div className="bg-brand-blue/5 p-3 rounded-lg border-l-4 border-brand-gold">

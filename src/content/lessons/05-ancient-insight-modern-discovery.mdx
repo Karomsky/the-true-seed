@@ -7,6 +7,9 @@ searchKeywords: "science circle earth round gravity space stars innumerable"
 searchKeywordsTl: "siyensiya bilog lupa grabidad kalawakan bituin di mabilang"
 searchContent: "The Bible anticipates modern scientific discoveries by thousands of years, proving its origin is outside human intuition. It mentions the round earth, gravity, and innumerable stars."
 searchContentTl: "Inaasahan ng Biblia ang mga makabagong siyentipikong tuklas nang libu-libong taon, na nagpapatunay na ang pinagmulan nito ay nasa labas ng intuwisyon ng tao. Binabanggit nito ang bilog na lupa, grabidad, at di-mabilang na mga bituin."
+titleEs: "Perspectiva Antigua y Descubrimiento Moderno"
+searchKeywordsEs: "ciencia círculo tierra redonda gravedad espacio estrellas innumerables"
+searchContentEs: "La Biblia anticipa descubrimientos científicos modernos por miles de años, probando que su origen está fuera de la intuición humana. Menciona la tierra redonda, la gravedad y estrellas innumerables."
 ---
 import { ScriptureLink } from '../../scriptureData';
 import { 
@@ -19,28 +22,29 @@ import {
           <p className="text-base leading-snug">
             {props.lang === 'en'
               ? "The Bible is not a science textbook, but where it touches on the physical universe, it is unerringly accurate. It stated cosmic truths millennia before telescopes and global circumnavigation."
-              : "Ang Biblia ay hindi isang textbook sa siyensiya, ngunit kung saan ito tumatalakay sa pisikal na uniberso, ito ay walang pagkakamaling tumpak. Inihayag nito ang mga kosmikong katotohanan milenyo bago ang mga teleskopyo at pandaigdigang paglalakbay."}
+              : (props.lang === 'es' ? "La Biblia no es un libro de ciencia, pero donde toca aspectos del universo físico, es infaliblemente precisa. Declaró verdades cósmicas milenios antes de los telescopios y la circunnavegación global."
+              : "Ang Biblia ay hindi isang textbook sa siyensiya, ngunit kung saan ito tumatalakay sa pisikal na uniberso, ito ay walang pagkakamaling tumpak. Inihayag nito ang mga kosmikong katotohanan milenyo bago ang mga teleskopyo at pandaigdigang paglalakbay.")}
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             <div className="bg-brand-blue/5 p-3 rounded-lg border border-brand-blue/10">
               <span className="font-bold block text-brand-blue"><ScriptureLink verse="Isaiah 40:22" onHover={props.onHover}>Isaiah 40:22</ScriptureLink> (700 BC)</span>
               <p className="text-sm italic">"God sits above the 'circle of the earth'."</p>
-              <p className="text-xs mt-1 text-gray-500">{props.lang === 'en' ? "Confirmed round via global circumnavigation." : "Kinumpirmang bilog sa pamamagitan ng pandaigdigang paglalakbay."}</p>
+              <p className="text-xs mt-1 text-gray-500">{props.lang === 'en' ? "Confirmed round via global circumnavigation." : (props.lang === 'es' ? "Confirmada redonda mediante la circunnavegación global." : "Kinumpirmang bilog sa pamamagitan ng pandaigdigang paglalakbay.")}</p>
             </div>
             <div className="bg-brand-blue/5 p-3 rounded-lg border border-brand-blue/10">
               <span className="font-bold block text-brand-blue"><ScriptureLink verse="Job 26:7" onHover={props.onHover}>Job 26:7</ScriptureLink> (1500 BC)</span>
               <p className="text-sm italic">"He hangs the earth on nothing."</p>
-              <p className="text-xs mt-1 text-gray-500">{props.lang === 'en' ? "Earth is suspended in the gravity of space." : "Ang Lupa ay nakabitin sa grabidad ng kalawakan."}</p>
+              <p className="text-xs mt-1 text-gray-500">{props.lang === 'en' ? "Earth is suspended in the gravity of space." : (props.lang === 'es' ? "La Tierra está suspendida en la gravedad del espacio." : "Ang Lupa ay nakabitin sa grabidad ng kalawakan.")}</p>
             </div>
             <div className="bg-brand-blue/5 p-3 rounded-lg border border-brand-blue/10">
               <span className="font-bold block text-brand-blue"><ScriptureLink verse="Jeremiah 33:22" onHover={props.onHover}>Jeremiah 33:22</ScriptureLink> (600 BC)</span>
               <p className="text-sm italic">"The stars are 'innumerable'."</p>
-              <p className="text-xs mt-1 text-gray-500">{props.lang === 'en' ? "Telescopes revealed billions of galaxies." : "Inihayag ng mga teleskopyo ang bilyun-bilyong kalawakan."}</p>
+              <p className="text-xs mt-1 text-gray-500">{props.lang === 'en' ? "Telescopes revealed billions of galaxies." : (props.lang === 'es' ? "Los telescopios revelaron miles de millones de galaxias." : "Inihayag ng mga teleskopyo ang bilyun-bilyong kalawakan.")}</p>
             </div>
             <div className="bg-brand-blue/5 p-3 rounded-lg border border-brand-blue/10">
               <span className="font-bold block text-brand-blue"><ScriptureLink verse="Job 26:7" onHover={props.onHover}>Job 26:7</ScriptureLink></span>
               <p className="text-sm italic">"Empty space in the north."</p>
-              <p className="text-xs mt-1 text-gray-500">{props.lang === 'en' ? "Confirmed as massive cosmic voids." : "Kinumpirma bilang mga malalaking kosmikong void."}</p>
+              <p className="text-xs mt-1 text-gray-500">{props.lang === 'en' ? "Confirmed as massive cosmic voids." : (props.lang === 'es' ? "Confirmados como enormes vacíos cósmicos." : "Kinumpirma bilang mga malalaking kosmikong void.")}</p>
             </div>
           </div>
         

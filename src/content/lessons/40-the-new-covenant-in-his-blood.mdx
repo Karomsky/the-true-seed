@@ -7,6 +7,9 @@ searchKeywords: "new covenant blood christ sacrifice cup testament"
 searchKeywordsTl: "bagong tipan dugo cristo sakripisyo kopa testamento"
 searchContent: "The New Covenant was established by Jesus Christ through His blood. It represents the forgiveness of sins and the new relationship between God and His people."
 searchContentTl: "Ang Bagong Tipan ay itinatag ni Jesucristo sa pamamagitan ng Kaniyang dugo. Kinakatawan nito ang kapatawaran ng mga kasalanan at ang bagong relasyon sa pagitan ng Diyos at ng Kaniyang bayan."
+titleEs: "El Nuevo Pacto en Su Sangre"
+searchKeywordsEs: "nuevo pacto sangre cristo sacrificio copa testamento"
+searchContentEs: "El Nuevo Pacto fue establecido por Jesucristo a través de Su sangre. Representa el perdón de los pecados y la nueva relación entre Dios y Su pueblo."
 ---
 import { ScriptureLink } from '../../scriptureData';
 import { 
@@ -19,12 +22,14 @@ import {
           <p className="text-base leading-snug">
             {props.lang === 'en'
               ? "The New Covenant was established by Jesus Christ through the shedding of His blood. This covenant replaces the old covenant and provides a direct way for humanity to be reconciled with God through the forgiveness of sins."
-              : "Ang Bagong Tipan ay itinatag ni Jesucristo sa pamamagitan ng pagbubuhos ng Kaniyang dugo. Ang tipan na ito ay pumapalit sa lumang tipan at nagbibigay ng direktang paraan para sa sangkatauhan na makipagkasundo sa Diyos sa pamamagitan ng kapatawaran ng mga kasalanan."}
+              : (props.lang === 'es' ? "El Nuevo Pacto fue establecido por Jesucristo mediante el derramamiento de Su sangre. Este pacto reemplaza al antiguo pacto y proporciona un camino directo para que la humanidad se reconcilie con Dios mediante el perdón de los pecados."
+              : "Ang Bagong Tipan ay itinatag ni Jesucristo sa pamamagitan ng pagbubuhos ng Kaniyang dugo. Ang tipan na ito ay pumapalit sa lumang tipan at nagbibigay ng direktang paraan para sa sangkatauhan na makipagkasundo sa Diyos sa pamamagitan ng kapatawaran ng mga kasalanan.")}
           </p>
           <p className="text-base leading-snug">
             {props.lang === 'en'
               ? "During the Last Supper, Jesus took the cup and declared it to be the new testament in His blood, which was shed for many. This sacrifice is the ultimate fulfillment of God's promise to restore His people."
-              : "Noong Huling Hapunan, kinuha ni Jesus ang kopa at ipinahayag na ito ang bagong tipan sa Kaniyang dugo, na ibinuhos para sa marami. Ang sakripisyong ito ang pinakamataas na katuparan ng pangako ng Diyos na ibalik ang Kaniyang bayan."}
+              : (props.lang === 'es' ? "Durante la Última Cena, Jesús tomó la copa y declaró que era el nuevo testamento en Su sangre, la cual fue derramada por muchos. Este sacrificio es el cumplimiento definitivo de la promesa de Dios de restaurar a Su pueblo."
+              : "Noong Huling Hapunan, kinuha ni Jesus ang kopa at ipinahayag na ito ang bagong tipan sa Kaniyang dugo, na ibinuhos para sa marami. Ang sakripisyong ito ang pinakamataas na katuparan ng pangako ng Diyos na ibalik ang Kaniyang bayan.")}
           </p>
           <div className="bg-brand-blue/5 p-3 rounded-lg border-l-4 border-brand-gold">
             <span className="font-bold block mb-1">
@@ -33,7 +38,8 @@ import {
             <p className="text-sm italic">
               {props.lang === 'en'
                 ? "Likewise also the cup after supper, saying, This cup is the new testament in my blood, which is shed for you."
-                : "Gayon din naman ang kopa, pagkatapos na makahapon, na sinasabi, Ang kopang ito ay ang bagong tipan sa aking dugo, na ibinubuhos dahil sa inyo."}
+                : (props.lang === 'es' ? "De la misma manera también la copa después de haber cenado, diciendo: Esta copa es el nuevo pacto en mi sangre, que por vosotros se derrama."
+                : "Gayon din naman ang kopa, pagkatapos na makahapon, na sinasabi, Ang kopang ito ay ang bagong tipan sa aking dugo, na ibinubuhos dahil sa inyo.")}
             </p>
           </div>
         

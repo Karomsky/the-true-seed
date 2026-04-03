@@ -7,6 +7,9 @@ searchKeywords: "called out assembly ekklesia church elect gathered Acts 2:47 Ma
 searchKeywordsTl: "tinawag na kapulungan ekklesia iglesia hinirang tinitipon Gawa 2:47 Mateo 16:18 Juan 15:16 hindi kayo ang pumili nagpili membership"
 searchContent: "The Church (ekklesia) literally means 'the called out ones.' God's election results in a visible, organized body — the Iglesia ni Cristo — where the elect are gathered together under one name."
 searchContentTl: "Ang Iglesia (ekklesia) ay literal na nangangahulugang 'ang mga tinawag na palabas.' Ang pagpili ng Diyos ay nagbubunga ng isang nakikita, organisadong katawan — ang Iglesia ni Cristo — kung saan ang mga hinirang ay tinitipon sa ilalim ng iisang pangalan."
+titleEs: "La Asamblea Llamada"
+searchKeywordsEs: "asamblea llamada ekklesia iglesia elegidos reunidos hechos 2:47 mateo 16:18 juan 15:16 no me elegisteis a mí membresía"
+searchContentEs: "La Iglesia (ekklesia) significa literalmente 'los llamados fuera'. La elección de Dios resulta en un cuerpo visible y organizado — la Iglesia de Cristo — donde los elegidos se reúnen bajo un solo nombre."
 ---
 import { ScriptureLink } from '../../scriptureData';
 
@@ -14,7 +17,8 @@ import { ScriptureLink } from '../../scriptureData';
   <p className="text-base leading-snug">
     {props.lang === 'en'
       ? "The Greek word 'ekklesia' — translated as 'Church' — literally means 'the called-out assembly.' God's election is not a private, invisible affair. It results in a real, visible, organized body of people called out of the world and gathered into one Church."
-      : "Ang salitang Griyego na 'ekklesia' — isinalin bilang 'Iglesia' — ay literal na nangangahulugang 'ang tinawag na palabas na kapulungan.' Ang pagpili ng Diyos ay hindi isang pribado, hindi nakikitang bagay. Ito ay nagbubunga ng isang tunay, nakikita, organisadong katawan ng mga taong tinawag na palabas ng mundo at tinipon sa isang Iglesia."}
+      : (props.lang === 'es' ? "La palabra griega 'ekklesia' — traducida como 'Iglesia' — significa literalmente 'asamblea llamada fuera'. La elección de Dios no es un asunto privado e invisible. Resulta en un cuerpo de personas real, visible y organizado, llamado fuera del mundo y reunido en una sola Iglesia."
+      : "Ang salitang Griyego na 'ekklesia' — isinalin bilang 'Iglesia' — ay literal na nangangahulugang 'ang tinawag na palabas na kapulungan.' Ang pagpili ng Diyos ay hindi isang pribado, hindi nakikitang bagay. Ito ay nagbubunga ng isang tunay, nakikita, organisadong katawan ng mga taong tinawag na palabas ng mundo at tinipon sa isang Iglesia.")}
   </p>
 
   <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -33,11 +37,12 @@ import { ScriptureLink } from '../../scriptureData';
   </div>
 
   <div className="p-3 bg-brand-blue/5 rounded-xl border border-brand-blue/10">
-    <h4 className="font-bold text-brand-blue mb-1">{props.lang === 'en' ? "Election Leads to the Church" : "Ang Pagpili ay Nagdadala sa Iglesia"}</h4>
+    <h4 className="font-bold text-brand-blue mb-1">{props.lang === 'en' ? "Election Leads to the Church" : (props.lang === 'es' ? "La Elección Conduce a la Iglesia" : "Ang Pagpili ay Nagdadala sa Iglesia")}</h4>
     <p className="text-sm text-gray-600">
       {props.lang === 'en'
         ? "God does not elect people to remain scattered and churchless. He calls them INTO the Church — a specific, named organization. Those outside the Church are outside the body of the elect."
-        : "Hindi pinipili ng Diyos ang mga tao upang manatiling kalat at walang iglesia. Tinatawag Niya sila SA Iglesia — isang tiyak, may pangalang organisasyon. Ang mga nasa labas ng Iglesia ay nasa labas ng katawan ng mga hinirang."}
+        : (props.lang === 'es' ? "Dios no elige a personas para que permanezcan dispersas y sin iglesia. Él las llama HACIA la Iglesia — una organización específica y con nombre. Los que están fuera de la Iglesia están fuera del cuerpo de los elegidos."
+        : "Hindi pinipili ng Diyos ang mga tao upang manatiling kalat at walang iglesia. Tinatawag Niya sila SA Iglesia — isang tiyak, may pangalang organisasyon. Ang mga nasa labas ng Iglesia ay nasa labas ng katawan ng mga hinirang.")}
       {' '}<ScriptureLink verse="Ephesians 1:22" onHover={props.onHover}>Ephesians 1:22-23</ScriptureLink>
     </p>
   </div>
@@ -47,7 +52,8 @@ import { ScriptureLink } from '../../scriptureData';
     <p className="text-sm opacity-90">
       {props.lang === 'en'
         ? "Registered on July 27, 1914 — the exact date of the 'ends of the earth' — the Iglesia ni Cristo is the fulfillment of prophecy: the called-out assembly of the elect in the last days."
-        : "Nirehistro noong Hulyo 27, 1914 — ang eksaktong petsa ng 'mga wakas ng lupa' — ang Iglesia ni Cristo ang katuparan ng hula: ang tinawag na kapulungan ng mga hinirang sa mga huling araw."}
+        : (props.lang === 'es' ? "Registrada el 27 de julio de 1914 — la fecha exacta de los 'fines de la tierra' — la Iglesia de Cristo es el cumplimiento de la profecía: la asamblea de los elegidos en los últimos días."
+        : "Nirehistro noong Hulyo 27, 1914 — ang eksaktong petsa ng 'mga wakas ng lupa' — ang Iglesia ni Cristo ang katuparan ng hula: ang tinawag na kapulungan ng mga hinirang sa mga huling araw.")}
     </p>
   </div>
 </div>

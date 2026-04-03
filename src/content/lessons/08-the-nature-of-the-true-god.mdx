@@ -7,6 +7,9 @@ searchKeywords: "god is spirit invisible flesh bones luke 24:39 john 4:24 hosea 
 searchKeywordsTl: "diyos ay espiritu hindi nakikita laman buto lucas 24:39 juan 4:24 hosea 11:9 bilang 23:19"
 searchContent: "God is spirit and does not have flesh and bones. He is not a man. John 4:24 states God is a Spirit, and Luke 24:39 clarifies that a spirit hath not flesh and bones."
 searchContentTl: "Ang Diyos ay espiritu at walang laman at mga buto. Siya ay hindi tao. Sinasabi sa Juan 4:24 na ang Diyos ay Espiritu, at nililinaw ng Lucas 24:39 na ang isang espiritu ay walang laman at mga buto."
+titleEs: "La Naturaleza del Verdadero Dios"
+searchKeywordsEs: "dios es espíritu invisible carne huesos lucas 24:39 juan 4:24 oseas 11:9 números 23:19"
+searchContentEs: "Dios es espíritu y no tiene carne ni huesos. Él no es un hombre. Juan 4:24 declara que Dios es Espíritu, y Lucas 24:39 aclara que un espíritu no tiene carne ni huesos."
 ---
 import { ScriptureLink } from '../../scriptureData';
 import { 
@@ -19,7 +22,8 @@ import {
           <p className="text-base leading-snug">
             {props.lang === 'en'
               ? "The Bible defines God's nature as Spirit. Unlike humans, He does not have a physical body of flesh and bones, making Him invisible but omnipresent."
-              : "Binibigyang-kahulugan ng Biblia ang kalikasan ng Diyos bilang Espiritu. Hindi tulad ng mga tao, Siya ay walang pisikal na katawan na may laman at buto, kaya Siya ay hindi nakikita ngunit nasa lahat ng dako."}
+              : (props.lang === 'es' ? "La Biblia define la naturaleza de Dios como Espíritu. A diferencia de los humanos, Él no tiene un cuerpo físico de carne y huesos, haciéndolo invisible pero omnipresente."
+              : "Binibigyang-kahulugan ng Biblia ang kalikasan ng Diyos bilang Espiritu. Hindi tulad ng mga tao, Siya ay walang pisikal na katawan na may laman at buto, kaya Siya ay hindi nakikita ngunit nasa lahat ng dako.")}
           </p>
           <div className="bg-brand-blue/5 p-3 rounded-2xl border border-brand-blue/10 flex items-start gap-3">
             <div className="bg-brand-gold p-3 rounded-full text-brand-dark"><Zap size={24} /></div>
@@ -31,15 +35,15 @@ import {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             <div className="p-3 bg-white border border-gray-100 rounded-xl shadow-sm">
               <div className="text-brand-gold font-bold text-xs uppercase mb-1">Distinction</div>
-              <div className="font-bold">{props.lang === 'en' ? "Not a Man" : "Hindi Tao"}</div>
+              <div className="font-bold">{props.lang === 'en' ? "Not a Man" : (props.lang === 'es' ? "No es un Hombre" : "Hindi Tao")}</div>
               <div className="text-[10px] text-gray-400"><ScriptureLink verse="Hosea 11:9" onHover={props.onHover}>Hosea 11:9</ScriptureLink>, <ScriptureLink verse="Numbers 23:19" onHover={props.onHover}>Numbers 23:19</ScriptureLink></div>
-              <p className="text-xs mt-2 text-gray-500">{props.lang === 'en' ? "God explicitly states He is not a man." : "Mismong ang Diyos ang nagsabi na Siya ay hindi tao."}</p>
+              <p className="text-xs mt-2 text-gray-500">{props.lang === 'en' ? "God explicitly states He is not a man." : (props.lang === 'es' ? "Dios declara explícitamente que no es un hombre." : "Mismong ang Diyos ang nagsabi na Siya ay hindi tao.")}</p>
             </div>
             <div className="p-3 bg-white border border-gray-100 rounded-xl shadow-sm">
               <div className="text-brand-gold font-bold text-xs uppercase mb-1">Structure</div>
-              <div className="font-bold">{props.lang === 'en' ? "No Flesh & Bones" : "Walang Laman at Buto"}</div>
+              <div className="font-bold">{props.lang === 'en' ? "No Flesh & Bones" : (props.lang === 'es' ? "Sin Carne ni Huesos" : "Walang Laman at Buto")}</div>
               <div className="text-[10px] text-gray-400"><ScriptureLink verse="Luke 24:39" onHover={props.onHover}>Luke 24:39</ScriptureLink></div>
-              <p className="text-xs mt-2 text-gray-500">{props.lang === 'en' ? "A spirit does not have a physical body." : "Ang espiritu ay walang pisikal na katawan."}</p>
+              <p className="text-xs mt-2 text-gray-500">{props.lang === 'en' ? "A spirit does not have a physical body." : (props.lang === 'es' ? "Un espíritu no tiene cuerpo físico." : "Ang espiritu ay walang pisikal na katawan.")}</p>
             </div>
           </div>
         

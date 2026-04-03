@@ -7,6 +7,9 @@ searchKeywords: "prophecy authenticity isaiah 46:9-11 silence revelation 8:1"
 searchKeywordsTl: "hula pagiging tunay isaias 46:9-11 katahimikan apocalipsis 8:1"
 searchContent: "The ultimate proof of the Bible's divine origin is Prophecy—the ability to declare the end from the beginning. The 'half hour of silence' in Rev 8:1 mathematically aligns with the gap between WWI and WWII."
 searchContentTl: "Ang sukdulang patunay ng banal na pinagmulan ng Biblia ay ang Hula—ang kakayahang ihayag ang wakas mula sa simula. Ang 'kalahating oras na katahimikan' sa Apoc 8:1 ay matematikong tumutugma sa agwat sa pagitan ng WWI at WWII."
+titleEs: "Evidencia de Autenticidad: Profecía"
+searchKeywordsEs: "profecía autenticidad isaías 46:9-11 silencio apocalipsis 8:1"
+searchContentEs: "La prueba fundamental del origen divino de la Biblia es la Profecía—la capacidad de declarar el final desde el principio. La 'media hora de silencio' en Apoc 8:1 se alinea matemáticamente con la brecha entre la Primera y Segunda Guerra Mundial."
 ---
 import { ScriptureLink } from '../../scriptureData';
 import { 
@@ -19,12 +22,13 @@ import {
           <p className="text-base leading-snug">
             {props.lang === 'en'
               ? "Human words are fallible, but God's words are absolute truth. Isaiah 46:9-11 declares that God makes known the end from the beginning. A staggering example is the mathematical precision of the 'Half Hour of Silence'."
-              : "Ang mga salita ng tao ay maaaring magkamali, ngunit ang mga salita ng Diyos ay mutlak na katotohanan. Ipinahahayag ng Isaias 46:9-11 na ipinaaalam ng Diyos ang wakas mula sa simula. Isang nakakamanghang halimbawa ay ang matematikong katumpakan ng 'Kalahating Oras na Katahimikan'."}
+              : (props.lang === 'es' ? "Las palabras humanas son falibles, pero las palabras de Dios son la verdad absoluta. Isaías 46:9-11 declara que Dios da a conocer el fin desde el principio. Un ejemplo asombroso es la precisión matemática de la 'Media Hora de Silencio'."
+              : "Ang mga salita ng tao ay maaaring magkamali, ngunit ang mga salita ng Diyos ay mutlak na katotohanan. Ipinahahayag ng Isaias 46:9-11 na ipinaaalam ng Diyos ang wakas mula sa simula. Isang nakakamanghang halimbawa ay ang matematikong katumpakan ng 'Kalahating Oras na Katahimikan'.")}
           </p>
           <div className="bg-white border border-gray-200 rounded-xl overflow-hidden">
             <div className="bg-brand-blue text-white p-3 font-bold flex items-center gap-2">
               <Clock className="h-5 w-5 text-brand-gold" />
-              {props.lang === 'en' ? "The Prophetic Pause" : "Ang Makahulang Paghinto"}
+              {props.lang === 'en' ? "The Prophetic Pause" : (props.lang === 'es' ? "La Pausa Profética" : "Ang Makahulang Paghinto")}
             </div>
             <div className="p-3 space-y-2">
               <div className="bg-brand-gold/10 p-3 rounded-lg text-center">
@@ -33,7 +37,8 @@ import {
                 <div className="text-xs mt-2 text-gray-600">
                   {props.lang === 'en'
                     ? "Actual gap between WWI (Nov 11, 1918) and WWII (Sept 1, 1939): Exactly 20 years, 9 months, and 20 days."
-                    : "Aktwal na agwat sa pagitan ng WWI (Nob 11, 1918) at WWII (Set 1, 1939): Eksaktong 20 taon, 9 na buwan, at 20 araw."}
+                    : (props.lang === 'es' ? "Brecha real entre la Primera Guerra Mundial (Nov 11, 1918) y la Segunda Guerra Mundial (Sept 1, 1939): Exactamente 20 años, 9 meses y 20 días."
+                    : "Aktwal na agwat sa pagitan ng WWI (Nob 11, 1918) at WWII (Set 1, 1939): Eksaktong 20 taon, 9 na buwan, at 20 araw.")}
                 </div>
               </div>
             </div>

@@ -7,6 +7,9 @@ searchKeywords: "name romans 16:16 eccl 12:13 return"
 searchKeywordsTl: "pangalan roma 16:16 eccl 12:13 pagbabalik"
 searchContent: "The true Church bears the name 'Church of Christ' (Romans 16:16). Returning to the Church is the way to fulfill the whole duty of man: to fear God and keep His commandments."
 searchContentTl: "Ang tunay na Iglesia ay nagtataglay ng pangalang 'Iglesia ni Cristo' (Roma 16:16). Ang pagbabalik sa Iglesia ang paraan upang matupad ang buong tungkulin ng tao: ang matakot sa Diyos at sundin ang Kaniyang mga utos."
+titleEs: "El Nombre y el Llamado Final"
+searchKeywordsEs: "nombre romanos 16:16 ecl 12:13 retorno"
+searchContentEs: "La verdadera Iglesia lleva el nombre 'Iglesia de Cristo' (Romanos 16:16). Regresar a la Iglesia es la manera de cumplir con el deber completo del hombre: temer a Dios y guardar Sus mandamientos."
 ---
 import { ScriptureLink } from '../../scriptureData';
 import { 
@@ -19,12 +22,14 @@ import {
           <p className="text-base leading-snug">
             {props.lang === 'en'
               ? "The name of the Church is a mark of its identity and ownership. Romans 16:16 states: 'The churches of Christ salute you.' It is the only authorized path to bridge the gap between the beastly state and the 'Whole Man'."
-              : "Ang pangalan ng Iglesia ay isang tanda ng kaniyang pagkakakilanlan at pagmamay-ari. Sinasabi sa Roma 16:16: 'Binabati kayo ng mga iglesia ni Cristo.' Ito ang tanging awtorisadong landas upang tulay ang agwat sa pagitan ng kalagayang hayop at ng 'Buong Tao'."}
+              : (props.lang === 'es' ? "El nombre de la Iglesia es una marca de su identidad y propiedad. Romanos 16:16 declara: 'Las iglesias de Cristo os saludan'. Es el único camino autorizado para cerrar la brecha entre el estado bestial y el 'Hombre Completo'."
+              : "Ang pangalan ng Iglesia ay isang tanda ng kaniyang pagkakakilanlan at pagmamay-ari. Sinasabi sa Roma 16:16: 'Binabati kayo ng mga iglesia ni Cristo.' Ito ang tanging awtorisadong landas upang tulay ang agwat sa pagitan ng kalagayang hayop at ng 'Buong Tao'.")}
           </p>
           <p className="text-base leading-snug">
             {props.lang === 'en'
               ? "The conclusion of the matter is to 'Fear God, and keep His commandments: for this is the whole duty of man' (Eccl 12:13). Entering the Church of Christ is the fulfillment of this divine purpose."
-              : "Ang wakas ng bagay ay 'Matakot ka sa Dios, at sundin mo ang kaniyang mga utos; sapagka't ito ang buong katungkulan ng tao' (Ecl 12:13). Ang pagpasok sa Iglesia ni Cristo ang katuparan ng banal na layuning ito."}
+              : (props.lang === 'es' ? "La conclusión del asunto es 'Teme a Dios, y guarda sus mandamientos; porque esto es el todo del hombre' (Ecl 12:13). Entrar en la Iglesia de Cristo es el cumplimiento de este propósito divino."
+              : "Ang wakas ng bagay ay 'Matakot ka sa Dios, at sundin mo ang kaniyang mga utos; sapagka't ito ang buong katungkulan ng tao' (Ecl 12:13). Ang pagpasok sa Iglesia ni Cristo ang katuparan ng banal na layuning ito.")}
           </p>
           <div className="bg-brand-blue/5 p-3 rounded-lg border-l-4 border-brand-gold">
             <span className="font-bold block mb-1">

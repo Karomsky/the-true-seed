@@ -7,6 +7,9 @@ searchKeywords: "foundation christ pope papacy revelation 18:2 babylon fallen"
 searchKeywordsTl: "saligan cristo papa papacy apocalipsis 18:2 babilonia naguho"
 searchContent: "The original church collapsed spiritually (naguho) when the foundation stone of Christ was removed and replaced with the Papacy. Revelation 18:2."
 searchContentTl: "Ang orihinal na iglesia ay espirituwal na naguho nang ang batong saligan na si Cristo ay inalis at pinalitan ng Papacy. Apocalipsis 18:2."
+titleEs: "Reemplazando el Fundamento"
+searchKeywordsEs: "fundamento cristo papa papado apocalipsis 18:2 babilonia caída"
+searchContentEs: "La iglesia original colapsó espiritualmente (naguho) cuando la piedra fundamental de Cristo fue removida y reemplazada por el Papado. Apocalipsis 18:2."
 ---
 import { ScriptureLink } from '../../scriptureData';
 import { 
@@ -19,10 +22,11 @@ import {
           <p className="text-base leading-snug">
             {props.lang === 'en'
               ? "The architectural shift occurred when the fundamental structural integrity was violated. Christ was replaced with the Pope as the foundation stone of the church."
-              : "Ang pagbabago sa arkitektura ay nangyari nang malabag ang pangunahing integridad ng istruktura. Si Cristo ay pinalitan ng Papa bilang batong saligan ng iglesia."}
+              : (props.lang === 'es' ? "El cambio arquitectónico ocurrió cuando se violó la integridad estructural fundamental. Cristo fue reemplazado por el Papa como piedra fundamental de la iglesia."
+              : "Ang pagbabago sa arkitektura ay nangyari nang malabag ang pangunahing integridad ng istruktura. Si Cristo ay pinalitan ng Papa bilang batong saligan ng iglesia.")}
           </p>
           <div className="bg-brand-dark text-white p-3 rounded-2xl">
-            <h4 className="font-bold text-brand-gold mb-2 italic">"Fallen! Fallen is Babylon the Great!"</h4>
+            <h4 className="font-bold text-brand-gold mb-2 italic">{props.lang === 'en' ? "Fallen! Fallen is Babylon the Great!" : (props.lang === 'es' ? "¡Ha caído, ha caído la gran Babilonia!" : '"Fallen! Fallen is Babylon the Great!"')}</h4>
             <p className="text-xs opacity-80">— Revelation 18:2</p>
           </div>
         

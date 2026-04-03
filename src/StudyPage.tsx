@@ -37,8 +37,10 @@ import { Lesson, Quiz } from './types/study';
 import QuizComponent from './components/QuizComponent';
 import { getLessons } from './data/lessons';
 import { useAppStore } from './store/useAppStore';
+import { t, getLocalizedField } from './translations';
 import { generateCertificate } from './utils/certificate';
 import { Award, Trophy, Medal } from 'lucide-react';
+import RealityCheckPage from './components/RealityCheckPage';
 
 export default function StudyPage({
   onBack,
@@ -48,25 +50,25 @@ export default function StudyPage({
   onHover
 }: {
   onBack: (scrollToContact?: boolean) => void,
-  lang: 'en' | 'tl',
+  lang: 'en' | 'tl' | 'es',
   initialCategory?: string,
   initialLessonId?: number,
   onHover: (verse: string | null, x: number, y: number) => void
 }) {
   const categories = [
-    { id: 'all', name: lang === 'en' ? 'All Modules' : 'Lahat ng Modyul', icon: Globe, color: 'bg-brand-blue' },
-    { id: 'bible', name: lang === 'en' ? 'The Bible' : 'Ang Biblia', icon: Book, color: 'bg-brand-blue', pdfUrl: 'https://drive.google.com/file/d/1cS1ZJ5DW3VlS6zxBfBw9HU6Ns9qJaO_2/view?usp=drive_link', videoUrl: 'https://youtu.be/inJU4ez8YaI' },
-    { id: 'god', name: lang === 'en' ? 'The True God' : 'Ang Tunay na Diyos', icon: Flame, color: 'bg-brand-gold', pdfUrl: 'https://drive.google.com/file/d/12PhIkV4W-Q3FgmYwnIYv-HGRkGHz_Oel/view?usp=drive_link', videoUrl: 'https://youtu.be/_qcsvXb0kqs' },
-    { id: 'christ', name: lang === 'en' ? 'Jesus Christ' : 'Jesucristo', icon: Users, color: 'bg-brand-dark', pdfUrl: 'https://drive.google.com/file/d/1_KJEnxM6Hd9t6TVlHbKjAkt0cfBHlLwC/view?usp=drive_link', videoUrl: 'https://youtu.be/wpeUJVNQmh0' },
-    { id: 'messenger', name: lang === 'en' ? 'The Messenger' : 'Ang Sugo', icon: Scroll, color: 'bg-brand-blue', pdfUrl: 'https://drive.google.com/file/d/15bTsdOPXg7jEo8U6si_f4kQtmBAh2TdS/view?usp=drive_link', videoUrl: 'https://youtu.be/arCAdJ2AAIg' },
-    { id: 'salvation', name: lang === 'en' ? 'Salvation' : 'Kaligtasan', icon: Heart, color: 'bg-brand-blue', pdfUrl: 'https://drive.google.com/file/d/17h1cPKPG6aYdfJbHyVy4G-6Q503ogslK/view?usp=drive_link', videoUrl: 'https://youtu.be/8ZIEesJT9Jg' },
-    { id: 'judgement', name: lang === 'en' ? 'Judgement Day' : 'Araw ng Paghuhukom', icon: Scale, color: 'bg-brand-gold', pdfUrl: 'https://drive.google.com/file/d/1dF5xqOW7rYPnKSTAOmWX5X17N5InFv_e/view?usp=drive_link', videoUrl: 'https://youtu.be/inLrUSzKd7U' },
-    { id: 'false-churches', name: lang === 'en' ? 'False Churches' : 'Ibang Iglesia', icon: ShieldCheck, color: 'bg-brand-dark', pdfUrl: 'https://drive.google.com/file/d/1pK88Pn0vd3ek02eiTYcpjPI58VBKMuky/view?usp=drive_link', videoUrl: 'https://youtu.be/X-OUhcCBzOY' },
-    { id: 'true-church', name: lang === 'en' ? 'The True Church' : 'Ang Tunay na Iglesia', icon: ShieldCheck, color: 'bg-brand-blue', pdfUrl: 'https://drive.google.com/file/d/1NUjMDRGObk6eooyYw7Nb13NvE90vO337/view?usp=drive_link', videoUrl: 'https://youtu.be/NrLZjwyCabU' },
-    { id: 'eternal-covenant', name: lang === 'en' ? 'Eternal Covenant' : 'Walang Hanggang Tipan', icon: Infinity, color: 'bg-brand-blue', pdfUrl: 'https://drive.google.com/file/d/1v875zO-MiNUiTiXGAY3NcJoPHdAM0laQ/view?usp=drive_link', videoUrl: 'https://youtu.be/_42LiWGjFrk' },
-    { id: 'election', name: lang === 'en' ? 'Election' : 'Pagpili', icon: Star, color: 'bg-brand-gold', pdfUrl: 'https://drive.google.com/file/d/1Dx85elsE6zeTN44tlVDz4L0KWOsk__pU/view?usp=drive_link', videoUrl: 'https://youtu.be/JBq2SKDtSmk' },
-    { id: 'one-new-man', name: lang === 'en' ? 'One New Man' : 'Isang Bagong Tao', icon: Presentation, color: 'bg-brand-blue', pdfUrl: 'https://drive.google.com/file/d/1guh3f-Ys164VYTsOgE3g89qWMBD_3zcF/view?usp=drive_link', videoUrl: 'https://youtu.be/7g3BRtlJHj0?si=MPzIY__sTAGnJAMn' },
-    { id: 'bookmarks', name: lang === 'en' ? 'Bookmarks' : 'Mga Bookmark', icon: Bookmark, color: 'bg-brand-dark' },
+    { id: 'all', name: t('All Modules', lang), icon: Globe, color: 'bg-brand-blue' },
+    { id: 'bible', name: t('The Bible', lang), icon: Book, color: 'bg-brand-blue', pdfUrl: 'https://drive.google.com/file/d/1cS1ZJ5DW3VlS6zxBfBw9HU6Ns9qJaO_2/view?usp=drive_link', videoUrl: 'https://youtu.be/inJU4ez8YaI' },
+    { id: 'god', name: t('The True God', lang), icon: Flame, color: 'bg-brand-gold', pdfUrl: 'https://drive.google.com/file/d/12PhIkV4W-Q3FgmYwnIYv-HGRkGHz_Oel/view?usp=drive_link', videoUrl: 'https://youtu.be/_qcsvXb0kqs' },
+    { id: 'christ', name: t('Jesus Christ', lang), icon: Users, color: 'bg-brand-dark', pdfUrl: 'https://drive.google.com/file/d/1_KJEnxM6Hd9t6TVlHbKjAkt0cfBHlLwC/view?usp=drive_link', videoUrl: 'https://youtu.be/wpeUJVNQmh0' },
+    { id: 'messenger', name: t('The Messenger', lang), icon: Scroll, color: 'bg-brand-blue', pdfUrl: 'https://drive.google.com/file/d/15bTsdOPXg7jEo8U6si_f4kQtmBAh2TdS/view?usp=drive_link', videoUrl: 'https://youtu.be/arCAdJ2AAIg' },
+    { id: 'salvation', name: t('Salvation', lang), icon: Heart, color: 'bg-brand-blue', pdfUrl: 'https://drive.google.com/file/d/17h1cPKPG6aYdfJbHyVy4G-6Q503ogslK/view?usp=drive_link', videoUrl: 'https://youtu.be/8ZIEesJT9Jg' },
+    { id: 'judgement', name: t('Judgement Day', lang), icon: Scale, color: 'bg-brand-gold', pdfUrl: 'https://drive.google.com/file/d/1dF5xqOW7rYPnKSTAOmWX5X17N5InFv_e/view?usp=drive_link', videoUrl: 'https://youtu.be/inLrUSzKd7U' },
+    { id: 'false-churches', name: t('False Churches', lang), icon: ShieldCheck, color: 'bg-brand-dark', pdfUrl: 'https://drive.google.com/file/d/1pK88Pn0vd3ek02eiTYcpjPI58VBKMuky/view?usp=drive_link', videoUrl: 'https://youtu.be/X-OUhcCBzOY' },
+    { id: 'true-church', name: t('The True Church', lang), icon: ShieldCheck, color: 'bg-brand-blue', pdfUrl: 'https://drive.google.com/file/d/1NUjMDRGObk6eooyYw7Nb13NvE90vO337/view?usp=drive_link', videoUrl: 'https://youtu.be/NrLZjwyCabU' },
+    { id: 'eternal-covenant', name: t('Eternal Covenant', lang), icon: Infinity, color: 'bg-brand-blue', pdfUrl: 'https://drive.google.com/file/d/1v875zO-MiNUiTiXGAY3NcJoPHdAM0laQ/view?usp=drive_link', videoUrl: 'https://youtu.be/_42LiWGjFrk' },
+    { id: 'election', name: t('Election', lang), icon: Star, color: 'bg-brand-gold', pdfUrl: 'https://drive.google.com/file/d/1Dx85elsE6zeTN44tlVDz4L0KWOsk__pU/view?usp=drive_link', videoUrl: 'https://youtu.be/JBq2SKDtSmk' },
+    { id: 'one-new-man', name: t('One New Man', lang), icon: Presentation, color: 'bg-brand-blue', pdfUrl: 'https://drive.google.com/file/d/1guh3f-Ys164VYTsOgE3g89qWMBD_3zcF/view?usp=drive_link', videoUrl: 'https://youtu.be/7g3BRtlJHj0?si=MPzIY__sTAGnJAMn' },
+    { id: 'bookmarks', name: t('Bookmarks', lang), icon: Bookmark, color: 'bg-brand-dark' },
   ];
 
   const lessons = getLessons(lang, onHover);
@@ -81,6 +83,7 @@ export default function StudyPage({
   const [isQuizActive, setIsQuizActive] = useState(false);
   const [isGeneratingCertificate, setIsGeneratingCertificate] = useState(false);
   const [showAchievements, setShowAchievements] = useState(false);
+  const [showRealityCheck, setShowRealityCheck] = useState(false);
 
   const getCategoryStatus = (categoryId: string) => {
     const categoryLessons = lessons.filter(l => l.category === categoryId);
@@ -164,14 +167,18 @@ export default function StudyPage({
   };
 
   const activeLessonData = lessons.find(l => l.id === activeLesson) || lessons[0];
-  const lessonTitle = lang === 'en' ? activeLessonData.title : activeLessonData.titleTl;
-  const lessonDesc = lang === 'en' ? activeLessonData.searchContent : activeLessonData.searchContentTl;
+  const lessonTitle = getLocalizedField(activeLessonData, 'title', lang);
+  const lessonDesc = getLocalizedField(activeLessonData, 'searchContent', lang);
+
+  if (showRealityCheck) {
+    return <RealityCheckPage onBack={() => setShowRealityCheck(false)} lang={lang} />;
+  }
 
   return (
     <div className="min-h-screen bg-[#f5f2ed] text-[#1a1a1a] font-serif">
       <Helmet>
         <title>{lessonTitle} - Study Center | The True Seed</title>
-        <meta name="description" content={lessonDesc || (lang === 'en' ? 'Explore our library of biblical lessons.' : 'Galugarin ang aming koleksyon ng mga aralin sa Biblia.')} />
+        <meta name="description" content={lessonDesc || (t('Explore our library of biblical lessons.', lang))} />
       </Helmet>
       {/* Header */}
       <header className="bg-brand-dark text-white py-8 relative overflow-hidden">
@@ -183,7 +190,7 @@ export default function StudyPage({
         <div className="w-full px-4 sm:px-6 lg:px-8 relative z-10 flex items-center justify-between">
           <button
             onClick={() => onBack()}
-            aria-label={lang === 'en' ? "Back to Home" : "Bumalik sa Home"}
+            aria-label={t('Back to Home', lang)}
             className="flex items-center gap-2 text-brand-gold hover:text-white transition-colors group"
           >
             <ArrowLeft className="h-5 w-5 transform group-hover:-translate-x-1 transition-transform" />
@@ -192,7 +199,7 @@ export default function StudyPage({
 
           <div className="hidden md:block">
             <h1 className="text-xl font-bold tracking-widest uppercase font-serif text-brand-gold">
-              {lang === 'en' ? "Study Center" : "Sentro ng Pag-aaral"}
+              {t('Study Center', lang)}
             </h1>
           </div>
         </div>
@@ -205,10 +212,10 @@ export default function StudyPage({
           <div className="bg-white rounded-3xl shadow-2xl p-8 border border-gray-100">
             <div className="text-center mb-8">
               <h2 className="text-2xl font-bold text-brand-blue mb-2 font-serif">
-                {lang === 'en' ? "What would you like to learn today?" : "Ano ang nais mong pag-aralan ngayon?"}
+                {t('What would you like to learn today?', lang)}
               </h2>
               <p className="text-gray-500 text-sm">
-                {lang === 'en' ? "Explore our library of biblical lessons and prophecies." : "Galugarin ang aming koleksyon ng mga aralin sa Biblia at mga hula."}
+                {t('Explore our library of biblical lessons and prophecies.', lang)}
               </p>
             </div>
 
@@ -221,8 +228,8 @@ export default function StudyPage({
               </div>
               <input
                 type="text"
-                aria-label={lang === 'en' ? "Search for a lesson topic" : "Maghanap ng paksa ng aralin"}
-                placeholder={lang === 'en' ? "Search for a lesson topic..." : "Maghanap ng paksa ng aralin..."}
+                aria-label={t('Search for a lesson topic', lang)}
+                placeholder={t('Search for a lesson topic...', lang)}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full pl-16 pr-32 py-5 bg-gray-50 border-2 border-transparent rounded-2xl focus:bg-white focus:border-brand-gold focus:ring-4 focus:ring-brand-gold/10 outline-none font-sans text-lg transition-all placeholder:text-gray-400"
@@ -233,8 +240,8 @@ export default function StudyPage({
                     type="button"
                     onClick={() => setSearchQuery('')}
                     className="p-2 text-gray-400 hover:text-brand-blue transition-colors"
-                    title={lang === 'en' ? "Clear search" : "Linisin ang paghahanap"}
-                    aria-label={lang === 'en' ? "Clear search" : "Linisin ang paghahanap"}
+                    title={t('Clear search', lang)}
+                    aria-label={t('Clear search', lang)}
                   >
                     <X className="h-5 w-5" />
                   </button>
@@ -242,8 +249,8 @@ export default function StudyPage({
                 <button
                   type="submit"
                   className="bg-brand-blue text-white p-2.5 rounded-xl font-bold text-sm hover:bg-brand-dark transition-all shadow-md active:scale-95 flex items-center justify-center"
-                  title={lang === 'en' ? "Search" : "Hanapin"}
-                  aria-label={lang === 'en' ? "Search" : "Hanapin"}
+                  title={t('Search', lang)}
+                  aria-label={t('Search', lang)}
                 >
                   <Search className="h-5 w-5" />
                 </button>
@@ -279,7 +286,7 @@ export default function StudyPage({
                 className={`inline-flex items-center gap-2 px-6 py-2 rounded-full font-bold text-xs uppercase tracking-widest transition-all shadow-sm ${showAchievements ? 'bg-brand-gold text-brand-dark hover:bg-yellow-400' : 'bg-gray-100 text-gray-500 hover:bg-gray-200'}`}
               >
                 <Trophy className="h-4 w-4" />
-                {lang === 'en' ? (showAchievements ? "Hide Progress" : "View Progress") : (showAchievements ? "Itago ang Pag-unlad" : "Tingnan ang Pag-unlad")}
+                {showAchievements ? t('Hide Progress', lang) : t('View Progress', lang)}
               </button>
               {categories.find(c => c.id === selectedCategory)?.videoUrl && (
                 <a
@@ -289,7 +296,7 @@ export default function StudyPage({
                   className="inline-flex items-center gap-2 px-6 py-2 bg-red-500/10 text-red-600 border border-red-500/30 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-red-600 hover:text-white transition-all shadow-sm"
                 >
                   <PlayCircle className="h-4 w-4" />
-                  {lang === 'en' ? "Watch Video" : "Manood ng Video"}
+                  {t('Watch Video', lang)}
                   <ExternalLink className="h-3 w-3 opacity-50" />
                 </a>
               )}
@@ -301,7 +308,7 @@ export default function StudyPage({
                   className="inline-flex items-center gap-2 px-6 py-2 bg-brand-blue/10 text-brand-blue border border-brand-blue/30 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-brand-blue hover:text-white transition-all shadow-sm"
                 >
                   <FileText className="h-4 w-4" />
-                  {lang === 'en' ? "View Study Guide" : "Tingnan ang Gabay sa Pag-aaral"}
+                  {t('View Study Guide', lang)}
                   <ExternalLink className="h-3 w-3 opacity-50" />
                 </a>
               )}
@@ -323,10 +330,10 @@ export default function StudyPage({
                 </div>
                 <div>
                   <div className="text-[9px] uppercase tracking-[0.2em] font-bold text-gray-400 mb-0.5">
-                    {lang === 'en' ? "Your Progress" : "Iyong Pag-unlad"}
+                    {t('Your Progress', lang)}
                   </div>
                   <div className="text-sm font-bold text-brand-blue font-sans">
-                    {completedLessons.length} / {lessons.length} <span className="text-gray-400 font-normal ml-1">{lang === 'en' ? "Lessons" : "Aralin"}</span>
+                    {completedLessons.length} / {lessons.length} <span className="text-gray-400 font-normal ml-1">{t('Lessons', lang)}</span>
                   </div>
                 </div>
               </div>
@@ -349,7 +356,7 @@ export default function StudyPage({
               <div className="flex items-center justify-center gap-2 mb-4">
                 <Trophy className="h-4 w-4 text-brand-gold" />
                 <h3 className="text-[11px] uppercase tracking-[0.2em] font-bold text-gray-500 font-sans">
-                  {lang === 'en' ? "Your Achievements" : "Iyong mga Tagumpay"}
+                  {t('Your Achievements', lang)}
                 </h3>
               </div>
               <div className="flex flex-wrap justify-center gap-4">
@@ -401,7 +408,7 @@ export default function StudyPage({
                       )}
                       {/* Tooltip */}
                       <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 bg-brand-dark text-white text-[10px] py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-50 shadow-xl">
-                        {isDone ? (lang === 'en' ? '🏆 Module Mastered!' : '🏆 Masterado na!') : `${Math.round(progress * 100)}% Complete`}
+                        {isDone ? (t('Module Mastered!', lang)) : `${Math.round(progress * 100)}% Complete`}
                       </div>
                     </motion.div>
                   );
@@ -420,25 +427,33 @@ export default function StudyPage({
                   <div className="relative z-10">
                     <Medal className="h-10 w-10 text-brand-gold mx-auto mb-3" />
                     <h3 className="text-xl font-bold text-white mb-2 font-serif">
-                      {lang === 'en' ? "Congratulations, Graduate!" : "Pagbati, Nagtapos!"}
+                      {t('Congratulations, Graduate!', lang)}
                     </h3>
                     <p className="text-white/70 text-sm mb-6 max-w-sm mx-auto">
-                      {lang === 'en' 
-                        ? "You have completed all theological modules. You are now eligible for your Certificate of Completion." 
-                        : "Natapos mo na ang lahat ng mga teolohikong modyul. Karapat-dapat ka na para sa iyong Katibayan ng Pagtatapos."}
+                      {t('You have completed all theological modules...', lang)}
                     </p>
-                    <button
-                      onClick={handleDownloadCertificate}
-                      disabled={isGeneratingCertificate}
-                      className="bg-brand-gold text-brand-dark px-8 py-3 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-yellow-400 transition-all flex items-center gap-2 mx-auto active:scale-95 shadow-xl disabled:opacity-50"
-                    >
-                      {isGeneratingCertificate ? (
-                        <div className="h-4 w-4 border-2 border-brand-dark/30 border-t-brand-dark rounded-full animate-spin"></div>
-                      ) : (
-                        <FileText className="h-4 w-4" />
-                      )}
-                      {lang === 'en' ? "Download Official Certificate" : "I-download ang Opisyal na Katibayan"}
-                    </button>
+                    <div className="flex flex-wrap justify-center gap-4">
+                      <button
+                        onClick={handleDownloadCertificate}
+                        disabled={isGeneratingCertificate}
+                        className="bg-brand-gold text-brand-dark px-8 py-3 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-yellow-400 transition-all flex items-center gap-2 active:scale-95 shadow-xl disabled:opacity-50"
+                      >
+                        {isGeneratingCertificate ? (
+                          <div className="h-4 w-4 border-2 border-brand-dark/30 border-t-brand-dark rounded-full animate-spin"></div>
+                        ) : (
+                          <FileText className="h-4 w-4" />
+                        )}
+                        {t('Download Official Certificate', lang)}
+                      </button>
+
+                      <button
+                        onClick={() => setShowRealityCheck(true)}
+                        className="bg-white text-brand-blue border-2 border-brand-blue/30 px-8 py-3 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-brand-blue hover:text-white transition-all flex items-center gap-2 active:scale-95 shadow-xl"
+                      >
+                        <Compass className="h-4 w-4" />
+                        {t('Next Challenge: Reality Check', lang)}
+                      </button>
+                    </div>
                   </div>
                 </motion.div>
               )}
@@ -457,12 +472,12 @@ export default function StudyPage({
               <div className="px-4 py-2 flex items-center justify-between">
                 <h2 className="text-[10px] uppercase tracking-[0.2em] font-bold text-gray-500 font-sans">
                   {searchQuery
-                    ? (lang === 'en' ? "Search Results" : "Mga Resulta ng Paghahanap")
-                    : (lang === 'en' ? "Module Selection" : "Pagpili ng Modyul")}
+                    ? (t('Search Results', lang))
+                    : (t('Module Selection', lang))}
                 </h2>
                 {searchQuery && (
                   <span className="text-[9px] bg-brand-blue/10 text-brand-blue px-2 py-0.5 rounded-full font-bold animate-pulse">
-                    {lang === 'en' ? "Global Search Active" : "Aktibo ang Pandaigdigang Paghahanap"}
+                    {t('Global Search Active', lang)}
                   </span>
                 )}
               </div>
@@ -481,7 +496,7 @@ export default function StudyPage({
                   </div>
                   <div className="flex-1">
                     <div className={`font-bold font-sans text-sm ${activeLesson === lesson.id ? 'text-brand-blue' : 'text-gray-600'}`}>
-                      {lang === 'en' ? lesson.title : lesson.titleTl}
+                      {getLocalizedField(lesson, 'title', lang)}
                     </div>
                     <div className="flex items-center gap-2 mt-0.5">
                       <div className="text-[10px] uppercase tracking-widest text-gray-400">Lesson {lesson.id < 10 ? `0${lesson.id}` : lesson.id}</div>
@@ -501,24 +516,28 @@ export default function StudyPage({
                     <>
                       <Bookmark className="h-8 w-8 text-gray-300 mx-auto mb-3" />
                       <div className="text-gray-500 font-bold text-sm mb-1">
-                        {lang === 'en' ? "No bookmarks yet" : "Wala pang mga bookmark"}
+                        {t('No bookmarks yet', lang)}
                       </div>
                       <div className="text-gray-400 text-xs">
-                        {lang === 'en'
-                          ? "Open any lesson and tap the bookmark icon to save it here."
-                          : "Buksan ang anumang aralin at i-tap ang bookmark icon upang i-save ito dito."}
+                        {lang === 'tl'
+                          ? "Buksan ang anumang aralin at i-tap ang bookmark icon upang i-save ito dito."
+                          : (lang === 'es' 
+                            ? "Abre cualquier lección y toca el icono de marcador para guardarla aquí." 
+                            : "Open any lesson and tap the bookmark icon to save it here.")}
                       </div>
                     </>
                   ) : (
                     <>
                       <Search className="h-8 w-8 text-gray-300 mx-auto mb-3 opacity-50" />
                       <div className="text-gray-500 font-bold text-sm mb-1">
-                        {lang === 'en' ? "No matches found" : "Walang nahanap na tugma"}
+                        {t('No matches found', lang)}
                       </div>
                       <div className="text-gray-400 text-xs">
-                        {lang === 'en'
-                          ? "Try searching for different keywords or topics."
-                          : "Subukang maghanap ng ibang mga keyword o paksa."}
+                        {lang === 'tl'
+                          ? "Subukang maghanap ng ibang mga keyword o paksa."
+                          : (lang === 'es'
+                            ? "Intenta buscar diferentes palabras clave o temas."
+                            : "Try searching for different keywords or topics.")}
                       </div>
                     </>
                   )}
@@ -557,11 +576,11 @@ export default function StudyPage({
                             onClick={() => toggleBookmark(activeLesson)}
                             whileTap={{ scale: 0.85 }}
                             title={bookmarkedLessons.includes(activeLesson)
-                              ? (lang === 'en' ? 'Remove Bookmark' : 'Alisin ang Bookmark')
-                              : (lang === 'en' ? 'Bookmark this Lesson' : 'I-bookmark ang Araling Ito')}
+                              ? (t('Remove Bookmark', lang))
+                              : (t('Bookmark this Lesson', lang))}
                             aria-label={bookmarkedLessons.includes(activeLesson)
-                              ? (lang === 'en' ? 'Remove Bookmark' : 'Alisin ang Bookmark')
-                              : (lang === 'en' ? 'Bookmark this Lesson' : 'I-bookmark ang Araling Ito')}
+                              ? (t('Remove Bookmark', lang))
+                              : (t('Bookmark this Lesson', lang))}
                             className={`p-2 rounded-xl border-2 transition-all ${
                               bookmarkedLessons.includes(activeLesson)
                                 ? 'bg-brand-gold border-brand-gold text-brand-dark shadow-md'
@@ -579,7 +598,7 @@ export default function StudyPage({
                               className="inline-flex items-center gap-2 px-4 py-1.5 bg-red-500/10 text-red-600 border border-red-500/20 rounded-full font-bold text-[10px] uppercase tracking-widest hover:bg-red-600 hover:text-white transition-all shadow-sm"
                             >
                               <PlayCircle className="h-3.5 w-3.5" />
-                              {lang === 'en' ? "Watch Video" : "Manood ng Video"}
+                              {t('Watch Video', lang)}
                               <ExternalLink className="h-3 w-3 opacity-50" />
                             </a>
                           )}
@@ -591,14 +610,14 @@ export default function StudyPage({
                               className="inline-flex items-center gap-2 px-4 py-1.5 bg-brand-gold/10 text-brand-gold border border-brand-gold/20 rounded-full font-bold text-[10px] uppercase tracking-widest hover:bg-brand-gold hover:text-brand-dark transition-all shadow-sm"
                             >
                               <FileText className="h-3.5 w-3.5" />
-                              {lang === 'en' ? "Study Guide" : "Gabay sa Pag-aaral"}
+                              {t('Study Guide', lang)}
                               <ExternalLink className="h-3 w-3 opacity-50" />
                             </a>
                           )}
                         </div>
                       </div>
                       <h2 className="text-3xl md:text-4xl font-bold text-brand-blue mb-8 border-b border-gray-100 pb-6 font-serif">
-                        {lang === 'en' ? currentLesson?.title : currentLesson?.titleTl}
+                        {currentLesson ? getLocalizedField(currentLesson, 'title', lang) : ''}
                       </h2>
 
                       <div className="prose prose-base prose-p:leading-snug prose-p:my-3 prose-headings:mb-3 prose-li:my-1 max-w-none text-gray-800 font-sans">
@@ -612,13 +631,13 @@ export default function StudyPage({
                             className="w-full py-4 bg-brand-blue/10 text-brand-blue border-2 border-dashed border-brand-blue/30 rounded-2xl font-bold flex items-center justify-center gap-3 hover:bg-brand-blue/20 transition-all group"
                           >
                             <CheckCircle2 className="h-6 w-6 group-hover:scale-110 transition-transform" />
-                            {lang === 'en' ? "I have finished reading this lesson" : "Tapos ko na basahin ang araling ito"}
+                            {t('I have finished reading this lesson', lang)}
                           </button>
                         ) : (
                           <div className="space-y-8">
                             <div className="bg-emerald-50 border border-emerald-100 p-4 rounded-xl flex items-center gap-3 text-emerald-700 font-bold text-sm">
                               <CheckCircle2 className="h-5 w-5" />
-                              {lang === 'en' ? "Lesson Completed" : "Tapos na ang Aralin"}
+                              {t('Lesson Completed', lang)}
                             </div>
 
                             {showQuizPrompt && currentLesson?.quiz && (
@@ -629,12 +648,10 @@ export default function StudyPage({
                               >
                                 <Zap className="h-10 w-10 text-brand-gold mx-auto mb-4" />
                                 <h3 className="text-xl font-bold text-brand-blue mb-2">
-                                  {lang === 'en' ? "Test Your Knowledge?" : "Subukan ang Iyong Kaalaman?"}
+                                  {t('Test Your Knowledge?', lang)}
                                 </h3>
                                 <p className="text-gray-600 mb-6">
-                                  {lang === 'en'
-                                    ? "Great job! Would you like to take a quick quiz to reinforce what you've learned?"
-                                    : "Magaling! Gusto mo bang kumuha ng maikling pagsusulit para mapagtibay ang iyong natutunan?"}
+                                  {t('quizPromptDetails', lang)}
                                 </p>
                                 <div className="flex flex-wrap justify-center gap-4">
                                   <button
@@ -644,13 +661,13 @@ export default function StudyPage({
                                     }}
                                     className="bg-brand-blue text-white px-8 py-3 rounded-full font-bold hover:bg-brand-dark transition-colors shadow-lg"
                                   >
-                                    {lang === 'en' ? "Yes, take quiz" : "Oo, kumuha ng pagsusulit"}
+                                    {t('Yes, take quiz', lang)}
                                   </button>
                                   <button
                                     onClick={() => setShowQuizPrompt(false)}
                                     className="bg-white text-gray-500 px-8 py-3 rounded-full font-bold hover:bg-gray-50 transition-colors border border-gray-200"
                                   >
-                                    {lang === 'en' ? "Maybe later" : "Mamaya na lang"}
+                                    {t('Maybe later', lang)}
                                   </button>
                                 </div>
                               </motion.div>
@@ -674,7 +691,7 @@ export default function StudyPage({
                             onClick={() => onBack(true)}
                             className="bg-brand-gold text-brand-dark px-6 py-2 rounded-full font-bold font-sans text-sm hover:bg-yellow-400 transition-colors btn-glow"
                           >
-                            {lang === 'en' ? "Contact a Minister" : "Makipag-ugnayan sa Ministro"}
+                            {t('Contact a Minister', lang)}
                           </button>
 
                           <div className="flex gap-4">
@@ -688,7 +705,7 @@ export default function StudyPage({
                               className="bg-gray-100 text-gray-600 px-6 py-2 rounded-full font-bold font-sans text-sm hover:bg-gray-200 transition-colors flex items-center gap-2"
                             >
                               <ChevronRight className="h-4 w-4 rotate-180" />
-                              {lang === 'en' ? "Previous" : "Nakaraan"}
+                              {t('Previous', lang)}
                             </button>
                             <button
                               onClick={() => {
@@ -699,7 +716,7 @@ export default function StudyPage({
                               }}
                               className="bg-brand-blue text-white px-6 py-2 rounded-full font-bold font-sans text-sm hover:bg-brand-dark transition-colors flex items-center gap-2 btn-glow"
                             >
-                              {lang === 'en' ? "Next Lesson" : "Susunod"}
+                              {t('Next Lesson', lang)}
                               <ChevronRight className="h-4 w-4" />
                             </button>
                           </div>

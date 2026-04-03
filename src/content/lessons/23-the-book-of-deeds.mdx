@@ -7,6 +7,9 @@ searchKeywords: "book of deeds recorded hidden works secrets conscience law hear
 searchKeywordsTl: "aklat ng mga gawa nakatala lihim na gawa budhi kautusan puso roma 2:12 eclesiastes 12:14"
 searchContent: "Every hidden work is recorded in God's books. God will judge the secrets of men. Those who never heard the gospel will be judged based on the law written in their hearts and their conscience."
 searchContentTl: "Bawat gawang inilihim ay nakatala sa mga aklat ng Diyos. Hahatulan ng Diyos ang mga lihim ng mga tao. Ang mga hindi nakarinig ng ebanghelyo ay hahatulan batay sa kautusang nakasulat sa kanilang mga puso at sa kanilang budhi."
+titleEs: "El Libro de las Obras"
+searchKeywordsEs: "libro de las obras registrado obras ocultas secretos conciencia ley corazón romanos 2:12 eclesiastés 12:14"
+searchContentEs: "Cada obra oculta está registrada en los libros de Dios. Dios juzgará los secretos de los hombres. Aquellos que nunca oyeron el evangelio serán juzgados según la ley escrita en sus corazones y su conciencia."
 ---
 import { ScriptureLink } from '../../scriptureData';
 import { 
@@ -19,14 +22,16 @@ import {
           <p className="text-base leading-snug">
             {props.lang === 'en'
               ? "Every hidden work, whether good or evil, is recorded in God's books. Nothing is hidden from His sight, and everything will be revealed on that day."
-              : "Bawat gawang inilihim, maging mabuti o masama, ay nakatala sa mga aklat ng Diyos. Walang natatago sa Kaniyang paningin, at ang lahat ay maihahayag sa araw na iyon."}
+              : (props.lang === 'es' ? "Cada obra oculta, buena o mala, está registrada en los libros de Dios. Nada está oculto a Su vista, y todo será revelado en ese día."
+              : "Bawat gawang inilihim, maging mabuti o masama, ay nakatala sa mga aklat ng Diyos. Walang natatago sa Kaniyang paningin, at ang lahat ay maihahayag sa araw na iyon.")}
           </p>
           <div className="bg-brand-blue/5 p-3 rounded-2xl border border-brand-blue/10">
-            <h4 className="font-bold text-brand-blue mb-3">{props.lang === 'en' ? "Judgment of Secrets" : "Paghuhukom sa mga Lihim"}</h4>
+            <h4 className="font-bold text-brand-blue mb-3">{props.lang === 'en' ? "Judgment of Secrets" : (props.lang === 'es' ? "Juicio de los Secretos" : "Paghuhukom sa mga Lihim")}</h4>
             <p className="text-gray-700 leading-snug">
               {props.lang === 'en'
                 ? "God will judge the secrets of men. Even those who did not hear the preached gospel will be judged based on the law written in their hearts and their conscience."
-                : "Hahatulan ng Diyos ang mga lihim ng mga tao. Maging ang mga hindi nakarinig ng ipinangaral na ebanghelyo ay hahatulan batay sa kautusang nakasulat sa kanilang mga puso at sa kanilang budhi."}
+                : (props.lang === 'es' ? "Dios juzgará los secretos de los hombres. Incluso aquellos que no escucharon el evangelio predicado serán juzgados según la ley escrita en sus corazones y su conciencia."
+                : "Hahatulan ng Diyos ang mga lihim ng mga tao. Maging ang mga hindi nakarinig ng ipinangaral na ebanghelyo ay hahatulan batay sa kautusang nakasulat sa kanilang mga puso at sa kanilang budhi.")}
             </p>
             <div className="mt-4 pt-4 border-t border-brand-blue/10">
               <span className="text-xs font-bold text-brand-gold uppercase tracking-widest"><ScriptureLink verse="Romans 2:12" onHover={props.onHover}>Romans 2:12, 15</ScriptureLink></span>

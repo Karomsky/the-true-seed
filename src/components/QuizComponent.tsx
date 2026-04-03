@@ -3,7 +3,7 @@ import { CheckCircle2, X, ChevronRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Quiz } from '../types/study';
 
-export default function QuizComponent({ quiz, lang, onHover }: { quiz: Quiz, lang: 'en' | 'tl', onHover: (verse: string | null, x: number, y: number) => void }) {
+export default function QuizComponent({ quiz, lang, onHover }: { quiz: Quiz, lang: 'en' | 'tl' | 'es', onHover: (verse: string | null, x: number, y: number) => void }) {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [selectedOption, setSelectedOption] = useState<number | null>(null);
   const [showFeedback, setShowFeedback] = useState(false);

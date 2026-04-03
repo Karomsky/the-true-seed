@@ -7,6 +7,9 @@ searchKeywords: "fullness complete stature mature Ephesians 4:13 unity faith kno
 searchKeywordsTl: "kabuuan kumpleto tayog ganap Efeso 4:13 pagkakaisa pananampalataya kaalaman lumalaki sa kanya buong katawan maayos na pinagsama pagtaas"
 searchContent: "The goal of the One New Man is to reach the fullness of Christ — a complete, mature, unified Body. Ephesians 4:13 describes this as 'the measure of the stature of the fullness of Christ,' achieved through the Church working together as one."
 searchContentTl: "Ang layunin ng Isang Bagong Tao ay maabot ang kabuuan ni Cristo — isang kumpleto, ganap, nagkakaisang Katawan. Inilarawan ito ng Efeso 4:13 bilang 'sukatan ng tayog ng kabuuan ni Cristo,' na nakamit sa pamamagitan ng Iglesia na nagtatrabaho nang magkasama bilang isa."
+titleEs: "La Plenitud del Un Solo Hombre Nuevo"
+searchKeywordsEs: "plenitud completo estatura maduro Efesios 4:13 unidad fe conocimiento creciendo en él cuerpo entero bien concertado aumento"
+searchContentEs: "La meta del Un Solo Hombre Nuevo es alcanzar la plenitud de Cristo — un Cuerpo completo, maduro y unificado. Efesios 4:13 describe esto como 'la medida de la estatura de la plenitud de Cristo', lograda a través de la Iglesia trabajando unida."
 ---
 import { ScriptureLink } from '../../scriptureData';
 
@@ -14,20 +17,21 @@ import { ScriptureLink } from '../../scriptureData';
   <p className="text-base leading-snug">
     {props.lang === 'en'
       ? "The One New Man is not static — it is growing. God's grand design is not simply to gather a crowd, but to build His Body into a perfect, unified entity that reaches the very fullness of Christ Himself. This is the ultimate destiny of the Church."
-      : "Ang Isang Bagong Tao ay hindi static — ito ay lumalaki. Ang dakilang disenyo ng Diyos ay hindi lamang upang makapagtipon ng maraming tao, kundi upang itayo ang Kaniyang Katawan sa isang perpekto, nagkakaisang entity na umaabot sa mismong kabuuan ni Cristo. Ito ang pinakamataas na kapalaran ng Iglesia."}
+      : (props.lang === 'es' ? "El Un Solo Hombre Nuevo no ay estático — está creciendo. El gran diseño de Dios no es simplemente reunir a una multitud, sino edificar Su Cuerpo hasta convertirlo en una entidad perfecta y unificada que alcance la plenitud misma de Cristo. Este es el destino final de la Iglesia."
+      : "Ang Isang Bagong Tao ay hindi static — ito ay lumalaki. Ang dakilang disenyo ng Diyos ay hindi lamang upang makapagtipon ng maraming tao, kundi upang itayo ang Kaniyang Katawan sa isang perpekto, nagkakaisang entity na umaabot sa mismong kabuuan ni Cristo. Ito ang pinakamataas na kapalaran ng Iglesia.")}
   </p>
 
   <div className="p-4 bg-gradient-to-br from-brand-gold/10 to-brand-blue/5 rounded-xl border border-brand-gold/20">
-    <h4 className="font-bold text-brand-dark mb-2 text-sm uppercase tracking-wider">{props.lang === 'en' ? "The Four Pillars of Growth" : "Ang Apat na Haligi ng Paglago"}</h4>
+    <h4 className="font-bold text-brand-dark mb-2 text-sm uppercase tracking-wider">{props.lang === 'en' ? "The Four Pillars of Growth" : (props.lang === 'es' ? "Los Cuatro Pilares del Crecimiento" : "Ang Apat na Haligi ng Paglago")}</h4>
     <div className="grid grid-cols-2 gap-2">
       {[
-        { en: 'Unity of Faith', tl: 'Pagkakaisa ng Pananampalataya' },
-        { en: 'Knowledge of Christ', tl: 'Kaalaman kay Cristo' },
-        { en: 'Perfect Man', tl: 'Ganap na Tao' },
-        { en: 'Fullness of Christ', tl: 'Kabuuan ni Cristo' },
+        { en: 'Unity of Faith', es: 'Unidad de la Fe', tl: 'Pagkakaisa ng Pananampalataya' },
+        { en: 'Knowledge of Christ', es: 'Conocimiento de Cristo', tl: 'Kaalaman kay Cristo' },
+        { en: 'Perfect Man', es: 'Hombre Perfecto', tl: 'Ganap na Tao' },
+        { en: 'Fullness of Christ', es: 'Plenitud de Cristo', tl: 'Kabuuan ni Cristo' },
       ].map((item, i) => (
         <div key={i} className="bg-white/70 p-2 rounded-lg text-xs font-bold text-center text-brand-blue border border-brand-blue/10">
-          {props.lang === 'en' ? item.en : item.tl}
+          {props.lang === 'en' ? item.en : (props.lang === 'es' ? item.es : item.tl)}
         </div>
       ))}
     </div>
@@ -50,11 +54,12 @@ import { ScriptureLink } from '../../scriptureData';
   </div>
 
   <div className="p-4 bg-gradient-to-r from-brand-dark/90 to-brand-blue text-white rounded-xl text-center">
-    <p className="font-bold text-brand-gold text-sm uppercase tracking-widest mb-1">{props.lang === 'en' ? "The Final Picture" : "Ang Panghuling Larawan"}</p>
+    <p className="font-bold text-brand-gold text-sm uppercase tracking-widest mb-1">{props.lang === 'en' ? "The Final Picture" : (props.lang === 'es' ? "La Imagen Final" : "Ang Panghuling Larawan")}</p>
     <p className="text-sm opacity-90">
       {props.lang === 'en'
         ? "The One New Man fully realized: Christ the Head, united with His Church the Body — complete, holy, and glorified forever."
-        : "Ang Isang Bagong Tao na ganap na natupad: si Cristo ang Ulo, nagkakaisa sa Kaniyang Iglesia ang Katawan — kumpleto, banal, at niluwalhati magpakailanman."}
+        : (props.lang === 'es' ? "El Un Solo Hombre Nuevo plenamente realizado: Cristo la Cabeza, unido con Su Iglesia el Cuerpo — completo, santo y glorificado para siempre."
+        : "Ang Isang Bagong Tao na ganap na natupad: si Cristo ang Ulo, nagkakaisa sa Kaniyang Iglesia ang Katawan — kumpleto, banal, at niluwalhati magpakailanman.")}
     </p>
     <p className="text-xs text-white/60 mt-2"><ScriptureLink verse="Revelation 21:2" onHover={props.onHover}>Revelation 21:2</ScriptureLink></p>
   </div>

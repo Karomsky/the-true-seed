@@ -7,6 +7,9 @@ searchKeywords: "weeds devil enemy matthew 13:25 13:39 infiltration sabotage"
 searchKeywordsTl: "pangsirang damo diablo kaaway mateo 13:25 13:39 pagpasok sabotahe"
 searchContent: "The proliferation of false churches was not a natural evolution; it was a deliberate spiritual sabotage orchestrated by the Devil. Matthew 13:25, 39."
 searchContentTl: "Ang pagdami ng mga di-tunay na iglesia ay hindi isang natural na ebolusyon; ito ay isang sinadyang espirituwal na sabotahe na pinlano ng Diablo. Mateo 13:25, 39."
+titleEs: "La Parábola de la Cizaña"
+searchKeywordsEs: "cizaña diablo enemigo mateo 13:25 13:39 infiltración sabotaje"
+searchContentEs: "La proliferación de iglesias falsas no fue una evolución natural; fue un sabotaje espiritual deliberado orquestado por el Diablo. Mateo 13:25, 39."
 ---
 import { ScriptureLink } from '../../scriptureData';
 import { 
@@ -19,15 +22,16 @@ import {
           <p className="text-base leading-snug">
             {props.lang === 'en'
               ? "The Bible explains that while men slept, an enemy came and sowed weeds among the wheat. This represents the infiltration of false doctrines and organizations into the spiritual field."
-              : "Ipinaliliwanag ng Biblia na habang nangatutulog ang mga tao, dumating ang isang kaaway at naghasik ng mga pangsirang damo sa gitna ng trigo. Kinakatawan nito ang pagpasok ng mga maling aral at organisasyon sa espirituwal na bukid."}
+              : (props.lang === 'es' ? "La Biblia explica que mientras los hombres dormían, vino un enemigo y sembró cizaña entre el trigo. Esto representa la infiltración de falsas doctrinas y organizaciones en el campo espiritual."
+              : "Ipinaliliwanag ng Biblia na habang nangatutulog ang mga tao, dumating ang isang kaaway at naghasik ng mga pangsirang damo sa gitna ng trigo. Kinakatawan nito ang pagpasok ng mga maling aral at organisasyon sa espirituwal na bukid.")}
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             <div className="p-3 bg-gray-50 rounded-xl border border-gray-100">
-              <div className="text-brand-gold font-bold text-xs mb-1 uppercase tracking-tighter">{props.lang === 'en' ? "The Infiltration" : "Ang Pagpasok"}</div>
+              <div className="text-brand-gold font-bold text-xs mb-1 uppercase tracking-tighter">{props.lang === 'en' ? "The Infiltration" : (props.lang === 'es' ? "La Infiltración" : "Ang Pagpasok")}</div>
               <p className="text-xs text-gray-600 italic">"But while men slept, his enemy came and sowed weeds among the wheat..." (Matt 13:25)</p>
             </div>
             <div className="p-3 bg-gray-50 rounded-xl border border-gray-100">
-              <div className="text-brand-gold font-bold text-xs mb-1 uppercase tracking-tighter">{props.lang === 'en' ? "The Enemy" : "Ang Kaaway"}</div>
+              <div className="text-brand-gold font-bold text-xs mb-1 uppercase tracking-tighter">{props.lang === 'en' ? "The Enemy" : (props.lang === 'es' ? "El Enemigo" : "Ang Kaaway")}</div>
               <p className="text-xs text-gray-600 italic">"The enemy who sowed them is the devil..." (Matt 13:39)</p>
             </div>
           </div>

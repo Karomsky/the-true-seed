@@ -7,6 +7,9 @@ searchKeywords: "true religion salvation ecclesiastes 12:13 duty of man fear god
 searchKeywordsTl: "tunay na relihiyon kaligtasan eclesiastes 12:13 katungkulan ng tao matakot sa diyos utos"
 searchContent: "The whole duty of man is to fear God and keep His commandments. True religion is the way to fulfill this duty and achieve salvation. Ecclesiastes 12:13."
 searchContentTl: "Ang buong katungkulan ng tao ay matakot sa Diyos at sundin ang Kaniyang mga utos. Ang tunay na relihiyon ang paraan upang matupad ang katungkulang ito at makamit ang kaligtasan. Eclesiastes 12:13."
+titleEs: "La Verdadera Religión"
+searchKeywordsEs: "verdadera religión salvación eclesiastés 12:13 deber del hombre temer a dios mandamientos"
+searchContentEs: "El deber completo del hombre es temer a Dios y guardar Sus mandamientos. La verdadera religión es el camino para cumplir este deber y alcanzar la salvación. Eclesiastés 12:13."
 ---
 import { ScriptureLink } from '../../scriptureData';
 import { 
@@ -19,12 +22,13 @@ import {
           <p className="text-base leading-snug">
             {props.lang === 'en'
               ? "True religion is not just a choice; it is the fulfillment of man's whole duty to God. To be saved, one must belong to the true religion and obey God's commands."
-              : "Ang tunay na relihiyon ay hindi lamang isang pagpipilian; ito ay ang pagtupad sa buong katungkulan ng tao sa Diyos. Upang maligtas, ang isa ay dapat mapabilang sa tunay na relihiyon at sumunod sa mga utos ng Diyos."}
+              : (props.lang === 'es' ? "La verdadera religión no es solo una elección; es el cumplimiento del deber completo del hombre ante Dios. Para ser salvo, uno debe pertenecer a la verdadera religión y obedecer los mandatos de Dios."
+              : "Ang tunay na relihiyon ay hindi lamang isang pagpipilian; ito ay ang pagtupad sa buong katungkulan ng tao sa Diyos. Upang maligtas, ang isa ay dapat mapabilang sa tunay na relihiyon at sumunod sa mga utos ng Diyos.")}
           </p>
           <div className="bg-brand-dark text-white p-3 rounded-2xl border border-brand-gold/30">
             <h4 className="text-brand-gold font-bold mb-2 flex items-center gap-2">
               <Scale size={18} />
-              {props.lang === 'en' ? "The Whole Duty of Man" : "Ang Buong Katungkulan ng Tao"}
+              {props.lang === 'en' ? "The Whole Duty of Man" : (props.lang === 'es' ? "El Deber Completo del Hombre" : "Ang Buong Katungkulan ng Tao")}
             </h4>
             <p className="text-sm text-gray-300 italic">
               "Fear God, and keep his commandments: for this is the whole duty of man." — <ScriptureLink verse="Ecclesiastes 12:13" onHover={props.onHover}>Ecclesiastes 12:13</ScriptureLink>
@@ -34,7 +38,8 @@ import {
             <p className="text-sm text-gray-700">
               {props.lang === 'en'
                 ? "Sin destroyed the true essence of man. To be restored in the sight of God, one must belong to the true religion and obey His ordinances."
-                : "Sinira ng kasalanan ang tunay na esensya ng tao. Upang maibalik sa paningin ng Diyos, ang isa ay dapat mapabilang sa tunay na relihiyon at sumunod sa Kaniyang mga utos."}
+                : (props.lang === 'es' ? "El pecado destruyó la verdadera esencia del hombre. Para ser restaurado ante los ojos de Dios, uno debe pertenecer a la verdadera religión y obedecer Sus ordenanzas."
+                : "Sinira ng kasalanan ang tunay na esensya ng tao. Upang maibalik sa paningin ng Diyos, ang isa ay dapat mapabilang sa tunay na relihiyon at sumunod sa Kaniyang mga utos.")}
             </p>
           </div>
         

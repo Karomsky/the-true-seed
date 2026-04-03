@@ -34,6 +34,7 @@ import StudyPage from './StudyPage';
 import BaptismPage from './BaptismPage';
 import AdminDashboard from './AdminDashboard';
 import AuthModal from './components/AuthModal';
+import { supabase } from './lib/supabase';
 import { scriptures, ScriptureLink } from './scriptureData';
 import { useRegisterSW } from 'virtual:pwa-register/react';
 
@@ -126,6 +127,50 @@ const TRANSLATIONS: Record<string, Record<string, string>> = {
     contact_desc: "Naghahanap ka ba na makarinig ng Tunay na Salita? Makipag-ugnayan sa amin upang simulan ang iyong paglalakbay patungo sa pangako.",
     contact_btn: "Ipadala ang Inquiry",
     footer_desc: "Inilaan upang itanghal ang Banal na Paglalakbay ng Iglesia ni Cristo. Nawa'y gabayan ka ng tunay na salita patungo sa katubusan."
+  },
+  es: {
+    nav_theology: "Teología",
+    nav_solution: "Solución Legal",
+    nav_history: "Historia",
+    nav_membership: "Membresía",
+    nav_mission: "Misión",
+    nav_study: "Centro de Estudios",
+    nav_join: "Únete a Nosotros",
+    nav_contact: "Contacto",
+    nav_authority: "Autoridad",
+    hero_subtitle: "El Viaje Divino de la Iglesia de Cristo",
+    hero_title_1: "Escapando del Lago de Fuego:",
+    hero_title_2: "Encontrando Tu Nombre en el Libro de la Vida",
+    hero_desc: "Todos han pecado, y la paga del pecado es muerte (Romanos 6:23)—el lago de fuego. La redención se encuentra únicamente para aquellos cuyos nombres están escritos en el Libro de la Vida, asegurados dentro de la Nación de Dios, la Iglesia de Cristo.",
+    hero_cta: "Aprende el Linaje de la Promesa",
+    theology_title: "El Viaje de la Verdadera Semilla",
+    stages_title: "Las Cinco Etapas de la Creación",
+    solution_title: "El Nuevo Hombre",
+    solution_paradox: "La Ley de Responsabilidad Individual",
+    solution_paradox_desc: "La ley establece que cada persona debe morir por su propio pecado (Deut. 24:16). Nadie puede pagar la deuda de otro. ¿Cómo entonces puede Cristo salvar a la humanidad sin violar la justicia de Dios?",
+    solution_perfect: "La Unión Legal",
+    solution_perfect_desc: "Cristo creó el 'Un Solo y Nuevo Hombre' (Efesios 2:15) uniéndose a Sí mismo como la Cabeza a la Iglesia como Su Cuerpo. Al formar una sola entidad legal, Cristo pudo sufrir legalmente por Su cuerpo, satisfaciendo la ley para todos sus miembros.",
+    history_title: "Apostasía y el Remanente",
+    membership_title: "Nacer de Nuevo",
+    mission_title: "El Sembrador de la Palabra",
+    redemption_title: "El Camino a la Redención",
+    redemption_subtitle: "Un Viaje Divino del Pecado a la Salvación",
+    path_step_1_title: "La Semilla",
+    path_step_1_desc: "Escuchar la Verdadera Palabra de Dios, que es la semilla espiritual que inicia la fe.",
+    path_step_2_title: "El Reconocimiento",
+    path_step_2_desc: "Reconocer que la paga del pecado es muerte y el lago de fuego.",
+    path_step_3_title: "La Solución",
+    path_step_3_desc: "Entender la Unión Legal de Cristo y Su Iglesia como un Solo y Nuevo Hombre.",
+    path_step_4_title: "La Entrada",
+    path_step_4_desc: "Entrar a la Iglesia de Cristo para ser cubierto por la redención de Su sangre.",
+    path_step_5_title: "El Sello",
+    path_step_5_desc: "El bautismo dentro del Cuerpo, asegurando tu nombre en el Libro de la Vida.",
+    path_step_6_title: "La Promesa",
+    path_step_6_desc: "Heredar la Ciudad Santa y escapar de la segunda muerte.",
+    contact_title: "Conviértete en Buena Tierra",
+    contact_desc: "¿Buscas escuchar la Verdadera Palabra? Conéctate con nosotros para comenzar tu viaje hacia la promesa.",
+    contact_btn: "Enviar Consulta",
+    footer_desc: "Dedicado a iluminar el Viaje Divino de la Iglesia de Cristo. Que la verdadera palabra te guíe hacia la redención."
   }
 };
 
@@ -137,28 +182,78 @@ interface TimelineItem {
   content: string;
 }
 
-const timelineData: TimelineItem[] = [
-  {
-    title: "Israel's Fall and Apostasy",
-    date: "Ancient Era",
-    content: "The physical nation of Israel, initially chosen, failed to remain faithful. They fell into deep apostasy, resulting in the division of the kingdom and the eventual loss of the Ten Tribes. This demonstrated that a fleshly lineage was insufficient to maintain God's covenant."
-  },
-  {
-    title: "The First-Century Church",
-    date: "A.D. 33",
-    content: "Christ established His Church in Jerusalem, the spiritual fulfillment of the Seed. However, prophecy foretold that after the era of the Apostles, ravenous wolves would enter the flock, introducing heretical doctrines."
-  },
-  {
-    title: "The Great Apostasy",
-    date: "Post-Apostolic Era",
-    content: "Through severe persecution and the rise of false teachings, the first-century Church was led away from the true doctrines. The true organization disappeared from the earth, fulfilling prophecies of a great falling away."
-  },
-  {
-    title: "The Nalabing Binhi (Remnant Seed)",
-    date: "July 27, 1914",
-    content: "According to biblical prophecy regarding the 'other sheep' from the 'Far East', the Church of Christ re-emerged in the Philippines concurrent with the First World War. This is the 'nalabing binhi', continuing the lineage of the Promise today."
+const getTimelineData = (lang: 'en' | 'tl' | 'es'): TimelineItem[] => {
+  if (lang === 'tl') {
+    return [
+      {
+        title: "Pagbagsak at Apostasya ng Israel",
+        date: "Sinaunang Panahon",
+        content: "Ang pisikal na bansa ng Israel, na orihinal na pinili, ay nabigong manatiling tapat. Sila ay nahulog sa matinding apostasya, na nagresulta sa pagkabahagi ng kaharian at pagkawala ng Sampung Tribo."
+      },
+      {
+        title: "Ang Iglesia sa Unang Siglo",
+        date: "A.D. 33",
+        content: "Itinatag ni Cristo ang Kaniyang Iglesia sa Jerusalem, ang espirituwal na katuparan ng Binhi. Gayunpaman, ipinahayag ng hula na pagkatapos ng panahon ng mga Apostol, papasok ang mababangis na lobo sa kawan."
+      },
+      {
+        title: "Ang Dakilang Pagtalikod",
+        date: "Panahong Post-Apostolic",
+        content: "Sa pamamagitan ng matinding pag-uusig at paglitaw ng mga maling turo, ang Iglesia sa unang siglo ay nailayo sa mga tunay na doktrina. Ang tunay na organisasyon ay nawala sa lupa."
+      },
+      {
+        title: "Ang Nalabing Binhi",
+        date: "Hulyo 27, 1914",
+        content: "Ayon sa hula ng Biblia tungkol sa 'ibang mga tupa' mula sa 'Malayong Silangan', ang Iglesia ni Cristo ay muling lumitaw sa Pilipinas kasabay ng Unang Digmaang Pandaigdig."
+      }
+    ];
   }
-];
+  if (lang === 'es') {
+    return [
+      {
+        title: "La Caída y Apostasía de Israel",
+        date: "Era Antigua",
+        content: "La nación física de Israel, inicialmente elegida, no permaneció fiel. Cayó en una profunda apostasía, lo que resultó en la división del reino y la pérdida eventual de las Diez Tribus."
+      },
+      {
+        title: "La Iglesia del Siglo Primero",
+        date: "33 d.C.",
+        content: "Cristo estableció Su Iglesia en Jerusalén, el cumplimiento espiritual de la Simiente. Sin embargo, la profecía predijo que después de la era de los Apóstoles, entrarían lobos rapaces en el rebaño."
+      },
+      {
+        title: "La Gran Apostasía",
+        date: "Era Post-Apostólica",
+        content: "A causa de la severa persecución y el surgimiento de falsas enseñanzas, la Iglesia del siglo primero fue apartada de las verdaderas doctrinas. La verdadera organización desapareció de la tierra."
+      },
+      {
+        title: "El Remanente (Nalabing Binhi)",
+        date: "27 de julio de 1914",
+        content: "Según la profecía bíblica sobre las 'otras ovejas' del 'Lejano Oriente', la Iglesia de Cristo resurgió en Filipinas al mismo tiempo que la Primera Guerra Mundial."
+      }
+    ];
+  }
+  return [
+    {
+      title: "Israel's Fall and Apostasy",
+      date: "Ancient Era",
+      content: "The physical nation of Israel, initially chosen, failed to remain faithful. They fell into deep apostasy, resulting in the division of the kingdom and the eventual loss of the Ten Tribes. This demonstrated that a fleshly lineage was insufficient to maintain God's covenant."
+    },
+    {
+      title: "The First-Century Church",
+      date: "A.D. 33",
+      content: "Christ established His Church in Jerusalem, the spiritual fulfillment of the Seed. However, prophecy foretold that after the era of the Apostles, ravenous wolves would enter the flock, introducing heretical doctrines."
+    },
+    {
+      title: "The Great Apostasy",
+      date: "Post-Apostolic Era",
+      content: "Through severe persecution and the rise of false teachings, the first-century Church was led away from the true doctrines. The true organization disappeared from the earth, fulfilling prophecies of a great falling away."
+    },
+    {
+      title: "The Nalabing Binhi (Remnant Seed)",
+      date: "July 27, 1914",
+      content: "According to biblical prophecy regarding the 'other sheep' from the 'Far East', the Church of Christ re-emerged in the Philippines concurrent with the First World War. This is the 'nalabing binhi', continuing the lineage of the Promise today."
+    }
+  ];
+};
 
 const inquirySchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters long" }),
@@ -169,8 +264,9 @@ const inquirySchema = z.object({
 type InquiryFormValues = z.infer<typeof inquirySchema>;
 
 export default function App() {
-  const [view, setView] = useState<'home' | 'study' | 'baptism' | 'admin'>('home');
   const { lang, setLang, completedLessons, user, token, setUserSession, syncProgress } = useAppStore();
+  const timelineData = getTimelineData(lang);
+  const [view, setView] = useState<'home' | 'study' | 'baptism' | 'admin'>('home');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const [activeTimelineIndex, setActiveTimelineIndex] = useState(0);
@@ -209,7 +305,7 @@ export default function App() {
     }
   }, [user, token, syncProgress]);
 
-  const t = TRANSLATIONS[lang];
+  const t = TRANSLATIONS[lang] || TRANSLATIONS.en;
 
   const handleHover = (verse: string | null, x: number, y: number) => {
     setTooltip({ verse, x, y });
@@ -219,18 +315,20 @@ export default function App() {
     setSubmitStatus('idle');
 
     try {
-      const response = await fetch('/api/inquiry', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
-      });
+      const { error } = await supabase
+        .from('inquiries')
+        .insert([
+          {
+            name: data.name,
+            email: data.email,
+            message: data.message
+          }
+        ]);
 
-      if (response.ok) {
-        setSubmitStatus('success');
-        reset();
-      } else {
-        setSubmitStatus('error');
-      }
+      if (error) throw error;
+
+      setSubmitStatus('success');
+      reset();
     } catch (error) {
       console.error('Error submitting inquiry:', error);
       setSubmitStatus('error');
@@ -378,6 +476,14 @@ export default function App() {
                       >
                         TL
                       </button>
+                      <button
+                        onClick={() => setLang('es')}
+                        aria-label="Switch to Spanish"
+                        aria-pressed={lang === 'es'}
+                        className={`px-2 py-0.5 text-[10px] font-bold rounded transition-colors ${lang === 'es' ? 'bg-brand-gold text-brand-dark' : 'text-white hover:text-brand-gold'}`}
+                      >
+                        ES
+                      </button>
                     </div>
                     <button
                       onClick={() => user ? setUserSession(null, null) : setIsAuthModalOpen(true)}
@@ -440,16 +546,22 @@ export default function App() {
                     >
                       {t.nav_join}
                     </button>
-                    <div className="flex items-center gap-4 px-3 py-4 mt-2 border-t border-white/10">
+                    <div className="flex flex-wrap items-center gap-2 px-3 py-4 mt-2 border-t border-white/10">
                       <button
                         onClick={() => setLang('en')}
-                        className={`px-4 py-1.5 text-sm font-bold rounded transition-colors ${lang === 'en' ? 'bg-brand-gold text-brand-dark' : 'text-white border border-white/20'}`}
+                        className={`px-3 py-1.5 text-xs font-bold rounded transition-colors ${lang === 'en' ? 'bg-brand-gold text-brand-dark' : 'text-white border border-white/20'}`}
                       >
                         English
                       </button>
                       <button
+                        onClick={() => setLang('es')}
+                        className={`px-3 py-1.5 text-xs font-bold rounded transition-colors ${lang === 'es' ? 'bg-brand-gold text-brand-dark' : 'text-white border border-white/20'}`}
+                      >
+                        Español
+                      </button>
+                      <button
                         onClick={() => setLang('tl')}
-                        className={`px-4 py-1.5 text-sm font-bold rounded transition-colors ${lang === 'tl' ? 'bg-brand-gold text-brand-dark' : 'text-white border border-white/20'}`}
+                        className={`px-3 py-1.5 text-xs font-bold rounded transition-colors ${lang === 'tl' ? 'bg-brand-gold text-brand-dark' : 'text-white border border-white/20'}`}
                       >
                         Tagalog
                       </button>
@@ -467,7 +579,7 @@ export default function App() {
                         className="w-full flex items-center justify-center gap-2 bg-brand-blue/20 text-brand-gold border border-brand-blue/30 py-3 rounded-xl font-bold text-sm hover:bg-brand-blue/30 transition-colors"
                       >
                         <User className="h-5 w-5" />
-                        {user ? (lang === 'en' ? 'Sign Out' : 'Mag-Sign Out') : (lang === 'en' ? 'Sign In / Register' : 'Mag-Sign In')}
+                        {user ? (lang === 'tl' ? 'Mag-Sign Out' : (lang === 'es' ? 'Cerrar Sesión' : 'Sign Out')) : (lang === 'tl' ? 'Mag-Sign In' : (lang === 'es' ? 'Iniciar Sesión / Registro' : 'Sign In / Register'))}
                       </button>
                     </div>
                   </div>
@@ -510,13 +622,17 @@ export default function App() {
                 transition={{ delay: 0.2 }}
                 className="mt-4 max-w-3xl text-lg md:text-xl text-gray-300 leading-relaxed mb-10"
               >
-                {lang === 'en' ? (
+                {lang === 'tl' ? (
                   <>
-                    All have sinned, and the wages of sin is death (<ScriptureLink verse="Romans 6:23" onHover={handleHover}>Romans 6:23</ScriptureLink>)—the lake of fire. Redemption is solely found for those whose names are written in the Book of Life, secured within the Bayan ng Diyos (Nation of God), the Church of Christ.
+                    Ang lahat ay nangagkasala, at ang kabayaran ng kasalanan ay kamatayan (<ScriptureLink verse="Roma 6:23" onHover={handleHover}>Roma 6:23</ScriptureLink>)—ang dagat-dagatang apoy. Ang katubusan ay matatagpuan lamang ng mga may pangalan sa Aklat ng Buhay, na nasisiguro sa loob ng Bayan ng Diyos, ang Iglesia ni Cristo.
+                  </>
+                ) : lang === 'es' ? (
+                  <>
+                    Todos han pecado, y la paga del pecado es muerte (<ScriptureLink verse="Romans 6:23" onHover={handleHover}>Romanos 6:23</ScriptureLink>)—el lago de fuego. La redención se encuentra únicamente para aquellos cuyos nombres están escritos en el Libro de la Vida, asegurados dentro de la Nación de Dios, la Iglesia de Cristo.
                   </>
                 ) : (
                   <>
-                    Ang lahat ay nangagkasala, at ang kabayaran ng kasalanan ay kamatayan (<ScriptureLink verse="Roma 6:23" onHover={handleHover}>Roma 6:23</ScriptureLink>)—ang dagat-dagatang apoy. Ang katubusan ay matatagpuan lamang ng mga may pangalan sa Aklat ng Buhay, na nasisiguro sa loob ng Bayan ng Diyos, ang Iglesia ni Cristo.
+                    All have sinned, and the wages of sin is death (<ScriptureLink verse="Romans 6:23" onHover={handleHover}>Romans 6:23</ScriptureLink>)—the lake of fire. Redemption is solely found for those whose names are written in the Book of Life, secured within the Bayan ng Diyos (Nation of God), the Church of Christ.
                   </>
                 )}
               </motion.p>
@@ -548,29 +664,35 @@ export default function App() {
                 {[
                   {
                     icon: Leaf,
-                    title: lang === 'en' ? "The Eden Foundation" : "Ang Pundasyon sa Eden",
-                    content: lang === 'en' ? (
-                      <>The divine plan was first revealed in Eden. God promised the "Seed of the woman" (<ScriptureLink verse="Genesis 3:15" onHover={handleHover}>Genesis 3:15</ScriptureLink>), prophesying the original promise of a redeemer who would eventually crush the enemy.</>
-                    ) : (
+                    title: lang === 'tl' ? "Ang Pundasyon sa Eden" : (lang === 'es' ? "El Fundamento del Edén" : "The Eden Foundation"),
+                    content: lang === 'tl' ? (
                       <>Ang banal na plano ay unang inihayag sa Eden. Ipinangako ng Diyos ang "Binhi ng babae" (<ScriptureLink verse="Genesis 3:15" onHover={handleHover}>Genesis 3:15</ScriptureLink>), na nagpopropesiya sa orihinal na pangako ng isang manunubos.</>
+                    ) : lang === 'es' ? (
+                      <>El plan divino se reveló por primera vez en el Edén. Dios prometió la "Simiente de la mujer" (<ScriptureLink verse="Genesis 3:15" onHover={handleHover}>Génesis 3:15</ScriptureLink>), profetizando la promesa original de un redentor que eventualmente aplastaría al enemigo.</>
+                    ) : (
+                      <>The divine plan was first revealed in Eden. God promised the "Seed of the woman" (<ScriptureLink verse="Genesis 3:15" onHover={handleHover}>Genesis 3:15</ScriptureLink>), prophesying the original promise of a redeemer who would eventually crush the enemy.</>
                     )
                   },
                   {
                     icon: Globe,
-                    title: lang === 'en' ? "The Abrahamic Covenant" : "Ang Tipan kay Abraham",
-                    content: lang === 'en' ? (
-                      <>The promise was refined through Abraham. God established an "everlasting covenant" (<ScriptureLink verse="Genesis 17:7" onHover={handleHover}>Genesis 17:7</ScriptureLink>) with him, declaring that through his lineage, the promised seed would emerge to bring salvation.</>
-                    ) : (
+                    title: lang === 'tl' ? "Ang Tipan kay Abraham" : (lang === 'es' ? "El Pacto Abrahámico" : "The Abrahamic Covenant"),
+                    content: lang === 'tl' ? (
                       <>Ang pangako ay pinatunayan kay Abraham. Nagtatag ang Diyos ng isang "walang hanggang tipan" (<ScriptureLink verse="Genesis 17:7" onHover={handleHover}>Genesis 17:7</ScriptureLink>) sa kaniya, na nagpapahayag na sa pamamagitan ng kaniyang lahi, lilitaw ang ipinangakong binhi.</>
+                    ) : lang === 'es' ? (
+                      <>La promesa fue refinada a través de Abraham. Dios estableció un "pacto perpetuo" (<ScriptureLink verse="Genesis 17:7" onHover={handleHover}>Génesis 17:7</ScriptureLink>) con él, declarando que a través de su linaje, surgiría la simiente prometida para traer salvación.</>
+                    ) : (
+                      <>The promise was refined through Abraham. God established an "everlasting covenant" (<ScriptureLink verse="Genesis 17:7" onHover={handleHover}>Genesis 17:7</ScriptureLink>) with him, declaring that through his lineage, the promised seed would emerge to bring salvation.</>
                     )
                   },
                   {
                     icon: User,
-                    title: lang === 'en' ? "The Singular Seed" : "Ang Iisang Binhi",
-                    content: lang === 'en' ? (
-                      <>The promise was not meant for many "seeds," but specifically for one: Jesus Christ (<ScriptureLink verse="Galatians 3:16" onHover={handleHover}>Galatians 3:16</ScriptureLink>). He is the True Seed who fulfills the ancient word spoken in Eden.</>
-                    ) : (
+                    title: lang === 'tl' ? "Ang Iisang Binhi" : (lang === 'es' ? "La Simiente Singular" : "The Singular Seed"),
+                    content: lang === 'tl' ? (
                       <>Ang pangako ay hindi para sa maraming "binhi," kundi para sa isa lamang: si Jesucristo (<ScriptureLink verse="Galacia 3:16" onHover={handleHover}>Galacia 3:16</ScriptureLink>). Siya ang Tunay na Binhi.</>
+                    ) : lang === 'es' ? (
+                      <>La promesa no era para muchas "simientes," sino específicamente para una: Jesucristo (<ScriptureLink verse="Galatians 3:16" onHover={handleHover}>Gálatas 3:16</ScriptureLink>). Él es la Verdadera Simiente que cumple la antigua palabra pronunciada en el Edén.</>
+                    ) : (
+                      <>The promise was not meant for many "seeds," but specifically for one: Jesus Christ (<ScriptureLink verse="Galatians 3:16" onHover={handleHover}>Galatians 3:16</ScriptureLink>). He is the True Seed who fulfills the ancient word spoken in Eden.</>
                     )
                   }
                 ].map((item, idx) => (
@@ -596,19 +718,21 @@ export default function App() {
                 <div className="text-center max-w-3xl mx-auto mb-12">
                   <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">{t.stages_title}</h3>
                   <p className="text-gray-600 mb-8">
-                    {lang === 'en'
-                      ? "The path to the 'One New Man' is the final stage of God's creative work with humanity."
-                      : "Ang landas patungo sa 'Isang Taong Bago' ay ang huling yugto ng paglalang ng Diyos sa sangkatauhan."}
+                    {lang === 'tl'
+                      ? "Ang landas patungo sa 'Isang Taong Bago' ay ang huling yugto ng paglalang ng Diyos sa sangkatauhan."
+                      : (lang === 'es' 
+                        ? "El camino al 'Un Solo y Nuevo Hombre' es la etapa final de la obra creadora de Dios con la humanidad."
+                        : "The path to the 'One New Man' is the final stage of God's creative work with humanity.")}
                   </p>
                   <div className="w-16 h-1 bg-brand-gold/50 mx-auto"></div>
                 </div>
                 <div className="grid grid-cols-1 lg:grid-cols-5 gap-4">
                   {[
-                    { stage: 1, name: lang === 'en' ? "Adam" : "Adan", desc: lang === 'en' ? "From the dust of the ground" : "Mula sa alabok ng lupa" },
-                    { stage: 2, name: lang === 'en' ? "Eve" : "Eva", desc: lang === 'en' ? "From the rib of Adam" : "Mula sa tadyang ni Adan" },
-                    { stage: 3, name: lang === 'en' ? "Humanity" : "Sangkatauhan", desc: lang === 'en' ? "Natural birth (Marriage)" : "Natural na kapanganakan" },
-                    { stage: 4, name: lang === 'en' ? "Christ" : "Cristo", desc: lang === 'en' ? "Holy Spirit in Mary" : "Espiritu Santo kay Maria" },
-                    { stage: 5, name: lang === 'en' ? "New Man" : "Bagong Tao", desc: lang === 'en' ? "Born Again (Water & Spirit)" : "Muling Pagsilang (Tubig at Espiritu)" }
+                    { stage: 1, name: lang === 'tl' ? "Adan" : (lang === 'es' ? "Adán" : "Adam"), desc: lang === 'tl' ? "Mula sa alabok ng lupa" : (lang === 'es' ? "Del polvo de la tierra" : "From the dust of the ground") },
+                    { stage: 2, name: lang === 'tl' ? "Eva" : (lang === 'es' ? "Eva" : "Eve"), desc: lang === 'tl' ? "Mula sa tadyang ni Adan" : (lang === 'es' ? "De la costilla de Adán" : "From the rib of Adam") },
+                    { stage: 3, name: lang === 'tl' ? "Sangkatauhan" : (lang === 'es' ? "Humanidad" : "Humanity"), desc: lang === 'tl' ? "Natural na kapanganakan" : (lang === 'es' ? "Nacimiento natural (Matrimonio)" : "Natural birth (Marriage)") },
+                    { stage: 4, name: lang === 'tl' ? "Cristo" : (lang === 'es' ? "Cristo" : "Christ"), desc: lang === 'tl' ? "Espiritu Santo kay Maria" : (lang === 'es' ? "Espíritu Santo en María" : "Holy Spirit in Mary") },
+                    { stage: 5, name: lang === 'tl' ? "Bagong Tao" : (lang === 'es' ? "Nuevo Hombre" : "New Man"), desc: lang === 'tl' ? "Muling Pagsilang (Tubig at Espiritu)" : (lang === 'es' ? "Nacido de Nuevo (Agua y Espíritu)" : "Born Again (Water & Spirit)") }
                   ].map((s, i) => (
                     <motion.div
                       key={i}
@@ -618,7 +742,7 @@ export default function App() {
                       transition={{ delay: i * 0.05 }}
                       className="bg-white p-6 rounded-xl border border-gray-100 shadow-sm text-center group hover:border-brand-gold transition-colors"
                     >
-                      <div className="text-brand-gold font-bold text-xs mb-2 uppercase tracking-widest">Stage {s.stage}</div>
+                      <div className="text-brand-gold font-bold text-xs mb-2 uppercase tracking-widest">{lang === 'es' ? 'Etapa' : 'Stage'} {s.stage}</div>
                       <div className="text-brand-blue font-bold text-lg mb-1">{s.name}</div>
                       <div className="text-gray-500 text-xs leading-tight">{s.desc}</div>
                     </motion.div>
@@ -655,9 +779,11 @@ export default function App() {
                         <Scale className="h-5 w-5" /> {t.solution_paradox}
                       </h4>
                       <p className="text-gray-300 leading-relaxed">
-                        {lang === 'en'
-                          ? <>The law states that each person must be put to death for their own sin (<ScriptureLink verse="Deuteronomy 24:16" onHover={handleHover}>Deut. 24:16</ScriptureLink>). No one can pay for another's debt. How then can Christ save mankind without violating God's justice?</>
-                          : <>Sinasabi ng batas na bawat tao ay dapat mamatay para sa sariling kasalanan (<ScriptureLink verse="Deuteronomy 24:16" onHover={handleHover}>Deut. 24:16</ScriptureLink>). Walang sinuman ang makapagbabayad para sa utang ng iba.</>}
+                        {lang === 'tl'
+                          ? <>Sinasabi ng batas na bawat tao ay dapat mamatay para sa sariling kasalanan (<ScriptureLink verse="Deuteronomy 24:16" onHover={handleHover}>Deut. 24:16</ScriptureLink>). Walang sinuman ang makapagbabayad para sa utang ng iba.</>
+                          : (lang === 'es'
+                            ? <>La ley establece que cada persona debe morir por su propio pecado (<ScriptureLink verse="Deuteronomy 24:16" onHover={handleHover}>Deut. 24:16</ScriptureLink>). Nadie puede pagar la deuda de otro. ¿Cómo entonces puede Cristo salvar a la humanidad sin violar la justicia de Dios?</>
+                            : <>The law states that each person must be put to death for their own sin (<ScriptureLink verse="Deuteronomy 24:16" onHover={handleHover}>Deut. 24:16</ScriptureLink>). No one can pay for another's debt. How then can Christ save mankind without violating God's justice?</>)}
                       </p>
                     </motion.div>
 
@@ -672,9 +798,11 @@ export default function App() {
                         <Users className="h-5 w-5 text-brand-gold" /> {t.solution_perfect}
                       </h4>
                       <p className="text-gray-300 leading-relaxed">
-                        {lang === 'en'
-                          ? <>Christ created the 'One New Man' (<ScriptureLink verse="Ephesians 2:15" onHover={handleHover}>Eph. 2:15</ScriptureLink>) by joining Himself as the Head to the Church as His Body. Because they form one single legal entity, Christ could legally suffer for His body, the Church, satisfying the law for all its members.</>
-                          : <>Nilalang ni Cristo ang 'Isang Taong Bago' (<ScriptureLink verse="Ephesians 2:15" onHover={handleHover}>Efe. 2:15</ScriptureLink>) sa pamamagitan ng pag-uugnay sa Kaniyang sarili bilang Ulo sa Iglesia bilang Kaniyang Katawan.</>}
+                        {lang === 'tl'
+                          ? <>Nilalang ni Cristo ang 'Isang Taong Bago' (<ScriptureLink verse="Ephesians 2:15" onHover={handleHover}>Efe. 2:15</ScriptureLink>) sa pamamagitan ng pag-uugnay sa Kaniyang sarili bilang Ulo sa Iglesia bilang Kaniyang Katawan.</>
+                          : (lang === 'es'
+                            ? <>Cristo creó el 'Un Solo y Nuevo Hombre' (<ScriptureLink verse="Ephesians 2:15" onHover={handleHover}>Efesios 2:15</ScriptureLink>) uniéndose a Sí mismo como la Cabeza a la Iglesia como Su Cuerpo. Al formar una sola entidad legal, Cristo pudo sufrir legalmente por Su cuerpo, satisfaciendo la ley para todos sus miembros.</>
+                            : <>Christ created the 'One New Man' (<ScriptureLink verse="Ephesians 2:15" onHover={handleHover}>Eph. 2:15</ScriptureLink>) by joining Himself as the Head to the Church as His Body. Because they form one single legal entity, Christ could legally suffer for His body, the Church, satisfying the law for all its members.</>)}
                       </p>
                     </motion.div>
                   </div>
@@ -724,7 +852,11 @@ export default function App() {
                 <h2 className="text-brand-blue text-sm font-bold tracking-widest uppercase mb-2">{t.nav_history}</h2>
                 <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 font-serif">{t.history_title}</h3>
                 <p className="text-gray-600">
-                  {lang === 'en' ? "Trace the historical journey of God's nation from its ancient origins to its re-emergence in the modern era." : "Sundan ang makasaysayang paglalakbay ng bayan ng Diyos mula sa sinaunang pinagmulan nito hanggang sa muling paglitaw nito."}
+                  {lang === 'tl'
+                    ? "Sundan ang makasaysayang paglalakbay ng bayan ng Diyos mula sa sinaunang pinagmulan nito hanggang sa muling paglitaw nito."
+                    : (lang === 'es'
+                      ? "Traza el viaje histórico de la nación de Dios desde sus orígenes antiguos hasta su resurgimiento en la era moderna."
+                      : "Trace the historical journey of God's nation from its ancient origins to its re-emergence in the modern era.")}
                 </p>
               </div>
 
@@ -741,39 +873,47 @@ export default function App() {
                 <div className="flex flex-col gap-6">
                   {[
                     {
-                      date: lang === 'en' ? "Ancient Era" : "Sinaunang Panahon",
-                      title: lang === 'en' ? "Israel's Fall and Apostasy" : "Ang Pagbagsak ng Israel",
-                      content: lang === 'en' ? (
-                        <>The physical nation of Israel rebelled (<ScriptureLink verse="Isaiah 63:10" onHover={handleHover}>Isa. 63:10</ScriptureLink>) and fell into deep apostasy. This demonstrated that a fleshly lineage was insufficient to maintain God's covenant.</>
-                      ) : (
+                      date: lang === 'tl' ? "Sinaunang Panahon" : (lang === 'es' ? "Era Antigua" : "Ancient Era"),
+                      title: lang === 'tl' ? "Ang Pagbagsak ng Israel" : (lang === 'es' ? "La Caída de Israel" : "Israel's Fall and Apostasy"),
+                      content: lang === 'tl' ? (
                         <>Ang pisikal na bansa ng Israel ay naghimagsik (<ScriptureLink verse="Isaias 63:10" onHover={handleHover}>Isa. 63:10</ScriptureLink>) at tuluyang tumalikod sa Diyos.</>
+                      ) : lang === 'es' ? (
+                        <>La nación física de Israel se rebeló (<ScriptureLink verse="Isaiah 63:10" onHover={handleHover}>Isa. 63:10</ScriptureLink>) y cayó en profunda apostasía. Esto demostró que un linaje carnal era insuficiente para mantener el pacto de Dios.</>
+                      ) : (
+                        <>The physical nation of Israel rebelled (<ScriptureLink verse="Isaiah 63:10" onHover={handleHover}>Isa. 63:10</ScriptureLink>) and fell into deep apostasy. This demonstrated that a fleshly lineage was insufficient to maintain God's covenant.</>
                       )
                     },
                     {
                       date: "A.D. 33",
-                      title: lang === 'en' ? "The First-Century Church" : "Ang Iglesia sa Unang Siglo",
-                      content: lang === 'en' ? (
-                        <>Christ established His Church in Jerusalem (<ScriptureLink verse="Matthew 16:18" onHover={handleHover}>Matt. 16:18</ScriptureLink>), the spiritual fulfillment of the Seed. However, prophecy foretold that after the era of the Apostles, ravenous wolves would enter the flock (<ScriptureLink verse="Acts 20:29" onHover={handleHover}>Acts 20:29</ScriptureLink>).</>
-                      ) : (
+                      title: lang === 'tl' ? "Ang Iglesia sa Unang Siglo" : (lang === 'es' ? "La Iglesia del Primer Siglo" : "The First-Century Church"),
+                      content: lang === 'tl' ? (
                         <>Itinatag ni Cristo ang Kaniyang Iglesia sa Jerusalem (<ScriptureLink verse="Mateo 16:18" onHover={handleHover}>Mat. 16:18</ScriptureLink>).</>
+                      ) : lang === 'es' ? (
+                        <>Cristo estableció Su Iglesia en Jerusalén (<ScriptureLink verse="Matthew 16:18" onHover={handleHover}>Mat. 16:18</ScriptureLink>), el cumplimiento espiritual de la Simiente. Sin embargo, la profecía predijo que después de la era de los Apóstoles, lobos rapaces entrarían en el rebaño (<ScriptureLink verse="Acts 20:29" onHover={handleHover}>Hechos 20:29</ScriptureLink>).</>
+                      ) : (
+                        <>Christ established His Church in Jerusalem (<ScriptureLink verse="Matthew 16:18" onHover={handleHover}>Matt. 16:18</ScriptureLink>), the spiritual fulfillment of the Seed. However, prophecy foretold that after the era of the Apostles, ravenous wolves would enter the flock (<ScriptureLink verse="Acts 20:29" onHover={handleHover}>Acts 20:29</ScriptureLink>).</>
                       )
                     },
                     {
-                      date: lang === 'en' ? "Post-Apostolic" : "Pagkatapos ng mga Apostol",
-                      title: lang === 'en' ? "The Great Apostasy" : "Ang Malawakang Pagtalikod",
-                      content: lang === 'en' ? (
-                        <>Through severe persecution and false teachings, the first-century Church was led away from the true doctrines (<ScriptureLink verse="1 Timothy 4:1" onHover={handleHover}>1 Tim. 4:1</ScriptureLink>).</>
-                      ) : (
+                      date: lang === 'tl' ? "Pagkatapos ng mga Apostol" : (lang === 'es' ? "Post-Apostólico" : "Post-Apostolic"),
+                      title: lang === 'tl' ? "Ang Malawakang Pagtalikod" : (lang === 'es' ? "La Gran Apostasía" : "The Great Apostasy"),
+                      content: lang === 'tl' ? (
                         <>Sa pamamagitan ng pag-uusig at maling aral, ang Iglesia sa unang siglo ay natalikod (<ScriptureLink verse="1 Timoteo 4:1" onHover={handleHover}>1 Tim. 4:1</ScriptureLink>).</>
+                      ) : lang === 'es' ? (
+                        <>A través de severas persecuciones y falsas enseñanzas, la Iglesia del primer siglo fue desviada de las verdaderas doctrinas (<ScriptureLink verse="1 Timothy 4:1" onHover={handleHover}>1 Tim. 4:1</ScriptureLink>).</>
+                      ) : (
+                        <>Through severe persecution and false teachings, the first-century Church was led away from the true doctrines (<ScriptureLink verse="1 Timothy 4:1" onHover={handleHover}>1 Tim. 4:1</ScriptureLink>).</>
                       )
                     },
                     {
                       date: "July 27, 1914",
-                      title: lang === 'en' ? "The Nalabing Binhi" : "Ang Nalabing Binhi",
-                      content: lang === 'en' ? (
-                        <>The Church of Christ re-emerged in the Philippines concurrent with the First World War (<ScriptureLink verse="Matthew 24:6" onHover={handleHover}>Mat. 24:6-7</ScriptureLink>). This is the 'remnant seed' (<ScriptureLink verse="Isaiah 43:5" onHover={handleHover}>Isa. 43:5-6</ScriptureLink>) continuing the lineage of the Promise today.</>
-                      ) : (
+                      title: lang === 'tl' ? "Ang Nalabing Binhi" : (lang === 'es' ? "La Simiente Remanente" : "The Nalabing Binhi"),
+                      content: lang === 'tl' ? (
                         <>Ang Iglesia ni Cristo ay muling lumitaw sa Pilipinas kasabay ng Unang Digmaang Pandaigdig (<ScriptureLink verse="Mateo 24:6" onHover={handleHover}>Mat. 24:6-7</ScriptureLink>).</>
+                      ) : lang === 'es' ? (
+                        <>La Iglesia de Cristo resurgió en Filipinas simultáneamente con la Primera Guerra Mundial (<ScriptureLink verse="Matthew 24:6" onHover={handleHover}>Mat. 24:6-7</ScriptureLink>). Esta es la 'simiente remanente' (<ScriptureLink verse="Isaiah 43:5" onHover={handleHover}>Isa. 43:5-6</ScriptureLink>) que continúa el linaje de la Promesa hoy.</>
+                      ) : (
+                        <>The Church of Christ re-emerged in the Philippines concurrent with the First World War (<ScriptureLink verse="Matthew 24:6" onHover={handleHover}>Mat. 24:6-7</ScriptureLink>). This is the 'remnant seed' (<ScriptureLink verse="Isaiah 43:5" onHover={handleHover}>Isa. 43:5-6</ScriptureLink>) continuing the lineage of the Promise today.</>
                       )
                     }
                   ].map((item, idx) => (
@@ -834,12 +974,14 @@ export default function App() {
               <div className="text-center max-w-3xl mx-auto mb-16">
                 <h2 className="text-brand-blue text-sm font-bold tracking-widest uppercase mb-2">{t.nav_authority}</h2>
                 <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                  {lang === 'en' ? "The Divine Commission" : "Ang Banal na Komisyon"}
+                  {lang === 'tl' ? "Ang Banal na Komisyon" : (lang === 'es' ? "La Comisión Divina" : "The Divine Commission")}
                 </h3>
                 <p className="text-gray-600">
-                  {lang === 'en'
-                    ? "The True Messenger derives his authority directly from God. He was given the knowledge hidden in mystery."
-                    : "Ang Tunay na Sugo ay humuhugot ng kaniyang karapatan nang direkta mula sa Diyos. Siya ay binigyan ng kaalamang nakatago sa hiwaga."}
+                  {lang === 'tl'
+                    ? "Ang Tunay na Sugo ay humuhugot ng kaniyang karapatan nang direkta mula sa Diyos. Siya ay binigyan ng kaalamang nakatago sa hiwaga."
+                    : (lang === 'es'
+                      ? "El Verdadero Mensajero deriva su autoridad directamente de Dios. Se le dio el conocimiento oculto en el misterio."
+                      : "The True Messenger derives his authority directly from God. He was given the knowledge hidden in mystery.")}
                 </p>
                 <div className="w-24 h-1 bg-brand-gold mx-auto mt-4"></div>
               </div>
@@ -847,28 +989,28 @@ export default function App() {
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
                 {[
                   {
-                    title: lang === 'en' ? "Divine Commission" : "Banal na Komisyon",
-                    desc: lang === 'en' ? "Authority is established by being 'sent' by God, distinguishing true messengers from false prophets." : "Ang karapatan ay itinatatag sa pamamagitan ng pagiging 'sinugo' ng Diyos.",
+                    title: lang === 'tl' ? "Banal na Komisyon" : (lang === 'es' ? "Comisión Divina" : "Divine Commission"),
+                    desc: lang === 'tl' ? "Ang karapatan ay itinatatag sa pamamagitan ng pagiging 'sinugo' ng Diyos." : (lang === 'es' ? "La autoridad se establece al ser 'enviado' por Dios, distinguiendo a los verdaderos mensajeros de los falsos profetas." : "Authority is established by being 'sent' by God, distinguishing true messengers from false prophets."),
                     lessonId: 17
                   },
                   {
-                    title: lang === 'en' ? "Exclusive Revelation" : "Eksklusibong Pahayag",
-                    desc: lang === 'en' ? "The 'secret knowledge' is revealed only to those God chooses to send, a mystery kept since the world began." : "Ang 'lihim na kaalaman' ay inihahayag lamang sa mga pinili ng Diyos na suguin.",
+                    title: lang === 'tl' ? "Eksklusibong Pahayag" : (lang === 'es' ? "Revelación Exclusiva" : "Exclusive Revelation"),
+                    desc: lang === 'tl' ? "Ang 'lihim na kaalaman' ay inihahayag lamang sa mga pinili ng Diyos na suguin." : (lang === 'es' ? "El 'conocimiento secreto' se revela solo a aquellos que Dios elige enviar, un misterio guardado desde que el mundo comenzó." : "The 'secret knowledge' is revealed only to those God chooses to send, a mystery kept since the world began."),
                     lessonId: 17
                   },
                   {
-                    title: lang === 'en' ? "The One New Man" : "Ang Isang Taong Bago",
-                    desc: lang === 'en' ? "A unique understanding of the logic of salvation: Christ as the Head and the Church as His Body." : "Isang natatanging pag-unawa sa lohika ng kaligtasan: si Cristo bilang Ulo at ang Iglesia bilang Kaniyang Katawan.",
+                    title: lang === 'tl' ? "Ang Isang Taong Bago" : (lang === 'es' ? "El Un Solo y Nuevo Hombre" : "The One New Man"),
+                    desc: lang === 'tl' ? "Isang natatanging pag-unawa sa lohika ng kaligtasan: si Cristo bilang Ulo at ang Iglesia bilang Kaniyang Katawan." : (lang === 'es' ? "Una comprensión única de la lógica de la salvación: Cristo como la Cabeza y la Iglesia como Su Cuerpo." : "A unique understanding of the logic of salvation: Christ as the Head and the Church as His Body."),
                     lessonId: 6
                   },
                   {
-                    title: lang === 'en' ? "Prophetic Fulfillment" : "Katuparan ng Hula",
-                    desc: lang === 'en' ? "Validation through alignment with biblical prophecy, such as the 'angel' ascending from the east." : "Pagpapatunay sa pamamagitan ng pag-ayon sa hula ng Biblia, gaya ng 'anghel' na umaakyat mula sa silangan.",
+                    title: lang === 'tl' ? "Katuparan ng Hula" : (lang === 'es' ? "Cumplimiento Profético" : "Prophetic Fulfillment"),
+                    desc: lang === 'tl' ? "Pagpapatunay sa pamamagitan ng pag-ayon sa hula ng Biblia, gaya ng 'anghel' na umaakyat mula sa silangan." : (lang === 'es' ? "Validación mediante la alineación con la profecía bíblica, como el 'ángel' que asciende del este." : "Validation through alignment with biblical prophecy, such as the 'angel' ascending from the east."),
                     lessonId: 18
                   },
                   {
-                    title: lang === 'en' ? "Tool for Salvation" : "Kasangkapan sa Kaligtasan",
-                    desc: lang === 'en' ? "Equipped with the 'seal' to guide people back to their original purpose: fearing God and keeping His commandments." : "Nasasandatahan ng 'tatak' upang gabayan ang mga tao pabalik sa kanilang orihinal na layunin.",
+                    title: lang === 'tl' ? "Kasangkapan sa Kaligtasan" : (lang === 'es' ? "Herramienta para la Salvación" : "Tool for Salvation"),
+                    desc: lang === 'tl' ? "Nasasandatahan ng 'tatak' upang gabayan ang mga tao pabalik sa kanilang orihinal na layunin." : (lang === 'es' ? "Equipado con el 'sello' para guiar a las personas de regreso a su propósito original: temer a Dios y guardar Sus mandamientos." : "Equipped with the 'seal' to guide people back to their original purpose: fearing God and keeping His commandments."),
                     lessonId: 19
                   }
                 ].map((item, idx) => (
@@ -889,7 +1031,7 @@ export default function App() {
                       onClick={() => openStudy('messenger', item.lessonId)}
                       className="text-xs font-bold text-brand-gold uppercase tracking-widest flex items-center gap-1 hover:text-brand-blue transition-colors"
                     >
-                      {lang === 'en' ? "Read Full Lesson" : "Basahin ang Aralin"}
+                      {lang === 'tl' ? "Basahin ang Aralin" : (lang === 'es' ? "Leer Lección Completa" : "Read Full Lesson")}
                       <ChevronRight className="h-3 w-3 group-hover:translate-x-1 transition-transform" />
                     </button>
                   </motion.div>
@@ -912,12 +1054,14 @@ export default function App() {
                   </div>
                   <div>
                     <h4 className="text-2xl font-bold text-brand-gold mb-4">
-                      {lang === 'en' ? "The Master Architect's Blueprints" : "Ang Blueprints ng Punong Arkitekto"}
+                      {lang === 'tl' ? "Ang Blueprints ng Punong Arkitekto" : (lang === 'es' ? "Los Planos del Arquitecto Maestro" : "The Master Architect's Blueprints")}
                     </h4>
                     <p className="text-gray-300 leading-relaxed italic">
-                      {lang === 'en'
-                        ? "While anyone can look at a finished building, only the architect's chosen foreman is given the 'hidden' technical blueprints. These blueprints provide the exclusive authority and knowledge needed to properly lead the construction and ensure the structure fulfills its intended purpose; without them, any attempt to build would be unauthorized."
-                        : "Habang ang sinuman ay maaaring tumingin sa isang natapos na gusali, ang piniling foreman lamang ng arkitekto ang binibigyan ng 'nakatagong' teknikal na blueprints. Ang mga blueprints na ito ang nagbibigay ng eksklusibong karapatan at kaalaman."}
+                      {lang === 'tl'
+                        ? "Habang ang sinuman ay maaaring tumingin sa isang natapos na gusali, ang piniling foreman lamang ng arkitekto ang binibigyan ng 'nakatagong' teknikal na blueprints. Ang mga blueprints na ito ang nagbibigay ng eksklusibong karapatan at kaalaman."
+                        : (lang === 'es'
+                          ? "Mientras que cualquiera puede mirar un edificio terminado, solo al capataz elegido por el arquitecto se le dan los planos técnicos 'ocultos'. Estos planos proporcionan la autoridad exclusiva y el conocimiento necesarios para liderar adecuadamente la construcción y garantizar que la estructura cumpla su propósito previsto; sin ellos, cualquier intento de construir no estaría autorizado."
+                          : "While anyone can look at a finished building, only the architect's chosen foreman is given the 'hidden' technical blueprints. These blueprints provide the exclusive authority and knowledge needed to properly lead the construction and ensure the structure fulfills its intended purpose; without them, any attempt to build would be unauthorized.")}
                     </p>
                   </div>
                 </div>
@@ -934,9 +1078,9 @@ export default function App() {
 
                   <div className="space-y-10 relative">
                     {[
-                      { title: "The Transformation", content: lang === 'en' ? <>Physical birth is insufficient for salvation. One must undergo a complete transformation, being "Born Again" of water and the Spirit (<ScriptureLink verse="John 3:5" onHover={handleHover}>John 3:5</ScriptureLink>).</> : <>Ang pisikal na kapanganakan ay hindi sapat. Dapat sumailalim sa muling pagsilang (<ScriptureLink verse="Juan 3:5" onHover={handleHover}>Juan 3:5</ScriptureLink>).</> },
-                      { title: "The Process", content: <>This renewal requires true Baptism into the Church of Christ (<ScriptureLink verse="Matthew 16:18" onHover={handleHover}>Matt. 16:18</ScriptureLink>), signifying the death of the old self and the emergence of a "new creation."</> },
-                      { title: "The Result", content: <>By entering the true Church, the individual legally becomes "Abraham's seed and heirs according to the promise" (<ScriptureLink verse="Galatians 3:29" onHover={handleHover}>Galatians 3:29</ScriptureLink>).</> }
+                      { title: lang === 'tl' ? "Ang Transformasyon" : (lang === 'es' ? "La Transformación" : "The Transformation"), content: lang === 'tl' ? <>Ang pisikal na kapanganakan ay hindi sapat. Dapat sumailalim sa muling pagsilang (<ScriptureLink verse="Juan 3:5" onHover={handleHover}>Juan 3:5</ScriptureLink>).</> : (lang === 'es' ? <>El nacimiento físico es insuficiente para la salvación. Uno debe experimentar una transformación completa, "naciendo de nuevo" del agua y del Espíritu (<ScriptureLink verse="John 3:5" onHover={handleHover}>Juan 3:5</ScriptureLink>).</> : <>Physical birth is insufficient for salvation. One must undergo a complete transformation, being "Born Again" of water and the Spirit (<ScriptureLink verse="John 3:5" onHover={handleHover}>John 3:5</ScriptureLink>).</>) },
+                      { title: lang === 'tl' ? "Ang Proseso" : (lang === 'es' ? "El Proceso" : "The Process"), content: lang === 'tl' ? <>Ang pagbabagong ito ay nangangailangan ng tunay na Bautismo sa Iglesia ni Cristo (<ScriptureLink verse="Matthew 16:18" onHover={handleHover}>Mat. 16:18</ScriptureLink>).</> : (lang === 'es' ? <>Esta renovación requiere el verdadero Bautismo en la Iglesia de Cristo (<ScriptureLink verse="Matthew 16:18" onHover={handleHover}>Mat. 16:18</ScriptureLink>), que significa la muerte del viejo yo y el surgimiento de una "nueva creación".</> : <>This renewal requires true Baptism into the Church of Christ (<ScriptureLink verse="Matthew 16:18" onHover={handleHover}>Matt. 16:18</ScriptureLink>), signifying the death of the old self and the emergence of a "new creation."</>) },
+                      { title: lang === 'tl' ? "Ang Resulta" : (lang === 'es' ? "El Resultado" : "The Result"), content: lang === 'tl' ? <>Sa pagpasok sa tunay na Iglesia, ang indibidwal ay legal na nagiging "binhi ni Abraham at mga tagapagmana ayon sa pangako" (<ScriptureLink verse="Galatians 3:29" onHover={handleHover}>Galacia 3:29</ScriptureLink>).</> : (lang === 'es' ? <>Al ingresar a la verdadera Iglesia, el individuo se convierte legalmente en "linaje de Abraham y herederos según la promesa" (<ScriptureLink verse="Galatians 3:29" onHover={handleHover}>Gálatas 3:29</ScriptureLink>).</> : <>By entering the true Church, the individual legally becomes "Abraham's seed and heirs according to the promise" (<ScriptureLink verse="Galatians 3:29" onHover={handleHover}>Galatians 3:29</ScriptureLink>).</>) }
                     ].map((step, idx) => (
                       <motion.div
                         key={idx}
@@ -959,15 +1103,15 @@ export default function App() {
                 </div>
 
                 <div className="order-1 lg:order-2">
-                  <h2 className="text-brand-blue text-sm font-bold tracking-widest uppercase mb-2">Membership</h2>
-                  <h3 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6 font-serif">Being Born Again</h3>
+                  <h2 className="text-brand-blue text-sm font-bold tracking-widest uppercase mb-2">{t.nav_membership}</h2>
+                  <h3 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6 font-serif">{t.membership_title}</h3>
                   <div className="w-24 h-1 bg-brand-gold mb-8"></div>
 
                   <p className="text-lg text-gray-600 leading-relaxed mb-6">
-                    Entering the Book of Life is not determined by human lineage or earthly merit. It requires a profound spiritual rebirth.
+                    {lang === 'tl' ? "Ang pagpasok sa Aklat ng Buhay ay hindi nakabatay sa pisikal na lahi o merito sa mundo. Ito ay nangangailangan ng malalim na espirituwal na muling pagsilang." : (lang === 'es' ? "Ingresar al Libro de la Vida no está determinado por linaje humano o mérito terrenal. Requiere un renacimiento espiritual profundo." : "Entering the Book of Life is not determined by human lineage or earthly merit. It requires a profound spiritual rebirth.")}
                   </p>
                   <p className="text-lg text-gray-600 leading-relaxed">
-                    To claim the promise given in Eden and affirmed to Abraham, one must unite with the Singular Seed, Jesus Christ, by becoming a recognized member of His body. This ensures that the punishment of the lake of fire is averted through His ultimate sacrifice.
+                    {lang === 'tl' ? "Upang maangkin ang pangakong ibinigay sa Eden at pinagtibay kay Abraham, ang isa ay dapat makiisa sa Iisang Binhi, na si Jesucristo, sa pamamagitan ng pagiging kinikilalang kasapi ng Kaniyang katawan. Tinitiyak nito na ang parusa ng dagat-dagatang apoy ay maiiwasan sa pamamagitan ng Kaniyang perpektong sakripisyo." : (lang === 'es' ? "Para reclamar la promesa dada en el Edén y afirmada a Abraham, uno debe unirse con la Simiente Singular, Jesucristo, convirtiéndose en un miembro reconocido de Su cuerpo. Esto asegura que el castigo del lago de fuego sea evitado a través de Su sacrificio final." : "To claim the promise given in Eden and affirmed to Abraham, one must unite with the Singular Seed, Jesus Christ, by becoming a recognized member of His body. This ensures that the punishment of the lake of fire is averted through His ultimate sacrifice.")}
                   </p>
                   <div className="flex flex-wrap gap-4 mt-8">
                     <motion.button
@@ -976,7 +1120,7 @@ export default function App() {
                       onClick={() => setView('baptism')}
                       className="inline-flex items-center gap-2 bg-brand-blue text-white px-8 py-3 rounded-full font-bold uppercase tracking-widest shadow-lg hover:bg-brand-dark transition-colors btn-glow"
                     >
-                      {lang === 'en' ? "Learn About Baptism" : "Alamin ang Tungkol sa Bautismo"}
+                      {lang === 'tl' ? "Alamin ang Tungkol sa Bautismo" : (lang === 'es' ? "Aprende Sobre el Bautismo" : "Learn About Baptism")}
                       <ChevronRight className="h-5 w-5" />
                     </motion.button>
                     <motion.a
@@ -985,7 +1129,7 @@ export default function App() {
                       href="#contact"
                       className="inline-flex items-center gap-2 bg-white border-2 border-brand-blue text-brand-blue px-8 py-3 rounded-full font-bold uppercase tracking-widest shadow-md hover:bg-gray-50 transition-colors btn-glow"
                     >
-                      {lang === 'en' ? "Contact a Minister" : "Makipag-ugnayan sa Ministro"}
+                      {lang === 'tl' ? "Makipag-ugnayan sa Ministro" : (lang === 'es' ? "Contactar a un Ministro" : "Contact a Minister")}
                     </motion.a>
                   </div>
                 </div>
@@ -1063,7 +1207,7 @@ export default function App() {
                   onClick={() => setView('baptism')}
                   className="px-10 py-4 bg-brand-blue text-white rounded-full font-bold uppercase tracking-widest shadow-xl hover:bg-brand-dark transition-all flex items-center gap-3 mx-auto btn-glow"
                 >
-                  {lang === 'en' ? "Begin Your Journey" : "Simulan ang Iyong Paglalakbay"}
+                  {lang === 'tl' ? "Simulan ang Iyong Paglalakbay" : (lang === 'es' ? "Comienza Tu Viaje" : "Begin Your Journey")}
                   <ArrowRight className="h-5 w-5" />
                 </motion.button>
               </div>
@@ -1087,13 +1231,15 @@ export default function App() {
                   className="bg-brand-blue/30 border border-brand-gold/20 p-8 rounded-xl backdrop-blur-sm"
                 >
                   <BookOpen className="text-brand-gold h-10 w-10 mb-6" />
-                  <h4 className="text-xl font-bold mb-3">{lang === 'en' ? "Sowing the Word" : "Paghahasik ng Salita"}</h4>
+                  <h4 className="text-xl font-bold mb-3">{lang === 'tl' ? "Paghahasik ng Salita" : (lang === 'es' ? "Sembrando la Palabra" : "Sowing the Word")}</h4>
                   <p className="text-gray-300 text-sm leading-relaxed">
-                    {lang === 'en' ? (
-                      <>The mission continues today as Ministers actively propagate the gospel, sowing the Word of God—the spiritual Seed (<ScriptureLink verse="Luke 8:11" onHover={handleHover}>Luke 8:11</ScriptureLink>)—across the world.</>
-                    ) : (
+                    {lang === 'tl' ? (
                       <>Ang misyon ay nagpapatuloy sa paghahasik ng Salita ng Diyos—ang espirituwal na Binhi (<ScriptureLink verse="Lucas 8:11" onHover={handleHover}>Luc. 8:11</ScriptureLink>).</>
-                    )}
+                    ) : (lang === 'es' ? (
+                      <>La misión continúa hoy mientras los Ministros propagan activamente el evangelio, sembrando la Palabra de Dios—la Simiente espiritual (<ScriptureLink verse="Luke 8:11" onHover={handleHover}>Lucas 8:11</ScriptureLink>)—en todo el mundo.</>
+                    ) : (
+                      <>The mission continues today as Ministers actively propagate the gospel, sowing the Word of God—the spiritual Seed (<ScriptureLink verse="Luke 8:11" onHover={handleHover}>Luke 8:11</ScriptureLink>)—across the world.</>
+                    ))}
                   </p>
                 </motion.div>
 
@@ -1104,7 +1250,7 @@ export default function App() {
                   className="bg-brand-blue/50 border border-brand-gold p-8 rounded-xl backdrop-blur-sm relative shadow-2xl"
                 >
                   <div className="absolute -top-5 right-5 bg-brand-gold text-brand-dark font-bold px-4 py-1 rounded-full text-sm">
-                    Good Ground
+                    {lang === 'tl' ? "Mabuting Lupa" : (lang === 'es' ? "Buena Tierra" : "Good Ground")}
                   </div>
                   <div className="flex justify-center mb-6">
                     <div className="relative w-24 h-24 rounded-full border-8 border-gray-700 overflow-hidden flex items-center justify-center">
@@ -1112,9 +1258,9 @@ export default function App() {
                       <span className="relative z-10 font-bold text-xl text-white drop-shadow-md">25%</span>
                     </div>
                   </div>
-                  <h4 className="text-xl font-bold mb-3 text-center text-brand-gold">The 25% Probability</h4>
+                  <h4 className="text-xl font-bold mb-3 text-center text-brand-gold">{lang === 'tl' ? "Ang 25% na Probabilidad" : (lang === 'es' ? "La Probabilidad del 25%" : "The 25% Probability")}</h4>
                   <p className="text-gray-300 text-sm leading-relaxed text-center">
-                    In the Parable of the Sower, only 1 in 4 types of soil represents "good ground." Only a portion of those who hear will persevere, believe, and undergo baptism.
+                    {lang === 'tl' ? "Sa Talinghaga ng Manghahasik, 1 lamang sa 4 na uri ng lupa ang kumakatawan sa \"mabuting lupa.\" Bahagi lamang ng mga nakikinig ang magtitiyaga, mananampalataya, at mababautismuhan." : (lang === 'es' ? "En la Parábola del Sembrador, solo 1 de los 4 tipos de tierra representa la \"buena tierra\". Solo una parte de los que escuchan perseverará, creerá y será bautizada." : "In the Parable of the Sower, only 1 in 4 types of soil represents \"good ground.\" Only a portion of those who hear will persevere, believe, and undergo baptism.")}
                   </p>
                 </motion.div>
 
@@ -1125,9 +1271,9 @@ export default function App() {
                   className="bg-brand-blue/30 border border-brand-gold/20 p-8 rounded-xl backdrop-blur-sm"
                 >
                   <Droplets className="text-brand-gold h-10 w-10 mb-6" />
-                  <h4 className="text-xl font-bold mb-3">Member Duties</h4>
+                  <h4 className="text-xl font-bold mb-3">{lang === 'tl' ? "Mga Tungkulin ng Kaanib" : (lang === 'es' ? "Deberes de los Miembros" : "Member Duties")}</h4>
                   <p className="text-gray-300 text-sm leading-relaxed">
-                    Those in the Church possess the duty to help "water" these seeds. This is fulfilled through spiritual guidance, offerings to support the Ministry, and the construction of magnificent Houses of Worship.
+                    {lang === 'tl' ? "Ang mga nasa loob ng Iglesia ay may tungkuling tumulong na 'diligin' ang mga binhing ito. Natutupad ito sa pamamagitan ng espirituwal na patnubay, paghahandog upang suportahan ang Ministeryo, at pagtatayo ng mga mariringal na Gusaling Sambahan." : (lang === 'es' ? "Aquellos en la Iglesia tienen el deber de ayudar a 'regar' estas semillas. Esto se cumple mediante guía espiritual, ofrendas para apoyar al Ministerio y la construcción de magníficas Casas de Adoración." : "Those in the Church possess the duty to help \"water\" these seeds. This is fulfilled through spiritual guidance, offerings to support the Ministry, and the construction of magnificent Houses of Worship.")}
                   </p>
                 </motion.div>
               </div>
@@ -1144,13 +1290,13 @@ export default function App() {
                       <Mail className="w-64 h-64" />
                     </div>
                     <div className="relative z-10">
-                      <h3 className="text-3xl font-bold mb-4">Become Good Ground</h3>
+                      <h3 className="text-3xl font-bold mb-4">{t.contact_title}</h3>
                       <p className="text-gray-300 mb-8">
-                        Are you seeking to hear the True Word? Connect with us to begin your journey towards the promise, finding your name written in the Book of Life.
+                        {t.contact_desc}
                       </p>
                       <div className="flex items-center gap-4 text-brand-gold">
                         <MapPin className="h-5 w-5" />
-                        <span>Find a local congregation</span>
+                        <span>{lang === 'tl' ? "Hanapin ang lokal na kongregasyon" : (lang === 'es' ? "Encontrar una congregación local" : "Find a local congregation")}</span>
                       </div>
                     </div>
                   </div>
@@ -1166,18 +1312,20 @@ export default function App() {
                           <Check className="h-8 w-8" />
                         </div>
                         <h4 className="text-2xl font-bold text-gray-900">
-                          {lang === 'en' ? "Thank You" : "Salamat Po"}
+                          {lang === 'tl' ? "Salamat Po" : (lang === 'es' ? "Gracias" : "Thank You")}
                         </h4>
                         <p className="text-gray-600">
-                          {lang === 'en'
-                            ? "Your inquiry has been received. A minister will be in contact shortly."
-                            : "Natanggap na ang iyong inquiry. Isang ministro ang makikipag-ugnayan sa iyo sa lalong madaling panahon."}
+                          {lang === 'tl'
+                            ? "Natanggap na ang iyong inquiry. Isang ministro ang makikipag-ugnayan sa iyo sa lalong madaling panahon."
+                            : (lang === 'es'
+                              ? "Su consulta ha sido recibida. Un ministro se pondrá en contacto en breve."
+                              : "Your inquiry has been received. A minister will be in contact shortly.")}
                         </p>
                         <button
                           onClick={() => setSubmitStatus('idle')}
                           className="text-brand-blue font-bold uppercase tracking-widest text-xs hover:underline mt-4"
                         >
-                          {lang === 'en' ? "Send another message" : "Magpadala ng isa pang mensahe"}
+                          {lang === 'tl' ? "Magpadala ng isa pang mensahe" : (lang === 'es' ? "Enviar otro mensaje" : "Send another message")}
                         </button>
                       </motion.div>
                     ) : (
@@ -1187,13 +1335,15 @@ export default function App() {
                       >
                         {submitStatus === 'error' && (
                           <div className="p-4 bg-red-50 text-red-600 text-sm rounded-lg border border-red-100">
-                            {lang === 'en'
-                              ? "There was an error sending your inquiry. Please try again later."
-                              : "Nagkaroon ng error sa pagpapadala. Pakisubukang muli mamaya."}
+                            {lang === 'tl'
+                              ? "Nagkaroon ng error sa pagpapadala. Pakisubukang muli mamaya."
+                              : (lang === 'es'
+                                ? "Hubo un error al enviar su consulta. Por favor inténtelo de nuevo más tarde."
+                                : "There was an error sending your inquiry. Please try again later.")}
                           </div>
                         )}
                         <div>
-                          <label htmlFor="name" className="block text-sm font-medium text-gray-700">Full Name</label>
+                          <label htmlFor="name" className="block text-sm font-medium text-gray-700">{lang === 'tl' ? "Buong Pangalan" : (lang === 'es' ? "Nombre Completo" : "Full Name")}</label>
                           <input
                             type="text"
                             id="name"
@@ -1204,7 +1354,7 @@ export default function App() {
                           {errors.name && <p className="mt-1 text-sm text-red-600">{errors.name.message}</p>}
                         </div>
                         <div>
-                          <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email Address</label>
+                          <label htmlFor="email" className="block text-sm font-medium text-gray-700">{lang === 'tl' ? "Email Address" : (lang === 'es' ? "Correo Electrónico" : "Email Address")}</label>
                           <input
                             type="email"
                             id="email"
@@ -1215,7 +1365,7 @@ export default function App() {
                           {errors.email && <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>}
                         </div>
                         <div>
-                          <label htmlFor="message" className="block text-sm font-medium text-gray-700">Your Message</label>
+                          <label htmlFor="message" className="block text-sm font-medium text-gray-700">{lang === 'tl' ? "Iyong Mensahe" : (lang === 'es' ? "Tu Mensaje" : "Your Message")}</label>
                           <textarea
                             id="message"
                             rows={4}
@@ -1233,7 +1383,7 @@ export default function App() {
                           {isSubmitting ? (
                             <span className="flex items-center gap-2">
                               <div className="w-4 h-4 border-2 border-brand-dark border-t-transparent rounded-full animate-spin"></div>
-                              {lang === 'en' ? "Sending..." : "Ipinapadala..."}
+                              {lang === 'tl' ? "Ipinapadala..." : (lang === 'es' ? "Enviando..." : "Sending...")}
                             </span>
                           ) : t.contact_btn}
                         </button>
@@ -1259,7 +1409,7 @@ export default function App() {
                   </p>
                 </div>
                 <div>
-                  <h4 className="text-brand-gold font-bold uppercase tracking-widest mb-6">{lang === 'en' ? "Quick Links" : "Mabilis na Links"}</h4>
+                  <h4 className="text-brand-gold font-bold uppercase tracking-widest mb-6">{lang === 'tl' ? "Mabilis na Links" : (lang === 'es' ? "Enlaces Rápidos" : "Quick Links")}</h4>
                   <ul className="space-y-4 text-sm text-gray-400">
                     {['theology', 'solution', 'history', 'authority', 'membership', 'mission'].map((item) => (
                       <li key={item}>
@@ -1269,7 +1419,7 @@ export default function App() {
                   </ul>
                 </div>
                 <div>
-                  <h4 className="text-brand-gold font-bold uppercase tracking-widest mb-6">{lang === 'en' ? "Resources" : "Mga Sanggunian"}</h4>
+                  <h4 className="text-brand-gold font-bold uppercase tracking-widest mb-6">{lang === 'tl' ? "Mga Sanggunian" : (lang === 'es' ? "Recursos" : "Resources")}</h4>
                   <ul className="space-y-4 text-sm text-gray-400">
                     <li><button onClick={() => openStudy()} className="hover:text-brand-gold transition-colors">{t.nav_study}</button></li>
                     <li><button onClick={() => setView('baptism')} className="hover:text-brand-gold transition-colors">{t.nav_join}</button></li>

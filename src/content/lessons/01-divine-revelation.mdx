@@ -1,12 +1,15 @@
 ---
 title: "The Divine Revelation"
 titleTl: "Ang Banal na Pahayag"
+titleEs: "La Revelación Divina"
 category: "bible"
 icon: "Zap"
 searchKeywords: "prophets chosen mouths speak revelation finger of god"
 searchKeywordsTl: "propeta pinili bibig salita pahayag daliri ng diyos"
+searchKeywordsEs: "profetas elegidos bocas hablar revelación dedo de Dios"
 searchContent: "God's words originated from Him. He used various methods: writing with His 'finger' (Deut 9:10), placing words in prophets' mouths (Jer 1:9), and speaking through Christ (Heb 1:1-2)."
 searchContentTl: "Ang mga salita ng Diyos ay nagmula sa Kaniya. Gumamit Siya ng iba't ibang paraan: pagsulat gamit ang Kaniyang 'daliri' (Deut 9:10), paglalagay ng mga salita sa bibig ng mga propeta (Jer 1:9), at pagsasalita sa pamamagitan ni Cristo (Heb 1:1-2)."
+searchContentEs: "Las palabras de Dios se originaron de Él. Usó varios métodos: escribiendo con Su 'dedo' (Deut 9:10), poniendo palabras en la boca de los profetas (Jer 1:9) y hablando por medio de Cristo (Heb 1:1-2)."
 ---
 import { ScriptureLink } from '../../scriptureData';
 
@@ -14,7 +17,9 @@ import { ScriptureLink } from '../../scriptureData';
   <p className="text-base leading-snug">
     {props.lang === 'en' 
       ? "The Bible is the highly engineered Word of God. It was revealed through various authorized channels: the 'Finger of God' for the Commandments, the 'Mouth of the Prophet' for specific messages, and finally through the Ultimate Messenger, Jesus Christ."
-      : "Ang Biblia ay ang mataas na pagkaka-engineer na Salita ng Diyos. Ito ay inihayag sa pamamagitan ng iba't ibang awtorisadong channel: ang 'Daliri ng Diyos' para sa mga Kautusan, ang 'Bibig ng Propeta' para sa mga partikular na mensahe, at sa huli ay sa pamamagitan ng Pinakadakilang Sugo, si Jesucristo."}
+      : props.lang === 'tl'
+      ? "Ang Biblia ay ang mataas na pagkaka-engineer na Salita ng Diyos. Ito ay inihayag sa pamamagitan ng iba't ibang awtorisadong channel: ang 'Daliri ng Diyos' para sa mga Kautusan, ang 'Bibig ng Propeta' para sa mga partikular na mensahe, at sa huli ay sa pamamagitan ng Pinakadakilang Sugo, si Jesucristo."
+      : "La Biblia es la Palabra de Dios altamente diseñada. Fue revelada a través de varios conductos autorizados: el 'Dedo de Dios' para los Mandamientos, la 'Boca del Profeta' para mensajes específicos, y finalmente a través del Último Mensajero, Jesucristo."}
   </p>
   <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
     <div className="bg-brand-blue/5 p-3 rounded-lg border-l-4 border-brand-gold">
@@ -33,6 +38,8 @@ import { ScriptureLink } from '../../scriptureData';
   <p className="text-base leading-snug">
     {props.lang === 'en'
       ? "God also revealed truths through Direct Voice (Moses), Angelic Messengers (Gabriel), and Visions & Dreams to chosen prophets."
-      : "Inihayag din ng Diyos ang mga katotohanan sa pamamagitan ng Tuwirang Tinig (Moises), mga Anghel na Sugo (Gabriel), at mga Paningin at Panaginip sa mga piniling propeta."}
+      : props.lang === 'tl'
+      ? "Inihayag din ng Diyos ang mga katotohanan sa pamamagitan ng Tuwirang Tinig (Moises), mga Anghel na Sugo (Gabriel), at mga Paningin at Panaginip sa mga piniling propeta."
+      : "Dios también reveló verdades a través de la Voz Directa (Moisés), Mensajeros Angelicales (Gabriel), y Visiones y Sueños a profetas elegidos."}
   </p>
 </div>

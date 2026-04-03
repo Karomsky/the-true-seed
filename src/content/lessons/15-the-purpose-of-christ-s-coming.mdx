@@ -7,6 +7,9 @@ searchKeywords: "purpose mission salvation save sinners seek lost matthew 1:21 l
 searchKeywordsTl: "layunin misyon kaligtasan iligtas ang mga makasalanan hanapin ang nawawala mateo 1:21 lucas 19:10"
 searchContent: "Jesus Christ came to earth with a specific mission: to save His people from their sins (Matthew 1:21) and to seek and save that which was lost (Luke 19:10). His coming was an act of God's love for mankind."
 searchContentTl: "Si Jesucristo ay naparito sa lupa na may tiyak na misyon: upang iligtas ang Kaniyang bayan sa kanilang mga kasalanan (Mateo 1:21) at upang hanapin at iligtas ang nawawala (Lucas 19:10). Ang Kaniyang pagparito ay gawa ng pag-ibig ng Diyos sa sangkatauhan."
+titleEs: "El Propósito de la Venida de Cristo"
+searchKeywordsEs: "propósito misión salvación salvar pecadores buscar perdidos mateo 1:21 lucas 19:10"
+searchContentEs: "Jesucristo vino a la tierra con una misión específica: salvar a Su pueblo de sus pecados (Mateo 1:21) y buscar y salvar lo que se había perdido (Lucas 19:10). Su venida fue un acto del amor de Dios por la humanidad."
 ---
 import { ScriptureLink } from '../../scriptureData';
 import { 
@@ -19,22 +22,24 @@ import {
           <p className="text-base leading-snug">
             {props.lang === 'en'
               ? "The primary purpose of Jesus Christ's coming was to provide a way for salvation. He came to reconcile mankind back to God by offering Himself as the perfect sacrifice for sin."
-              : "Ang pangunahing layunin ng pagparito ni Jesucristo ay upang magbigay ng daan para sa kaligtasan. Siya ay naparito upang muling ipakipagkasundo ang sangkatauhan sa Diyos sa pamamagitan ng pag-aalay ng Kaniyang sarili bilang perpektong hain para sa kasalanan."}
+              : (props.lang === 'es' ? "El propósito principal de la venida de Jesucristo fue proveer un camino para la salvación. Vino a reconciliar a la humanidad con Dios ofreciendo a Sí mismo como el sacrificio perfecto por el pecado."
+              : "Ang pangunahing layunin ng pagparito ni Jesucristo ay upang magbigay ng daan para sa kaligtasan. Siya ay naparito upang muling ipakipagkasundo ang sangkatauhan sa Diyos sa pamamagitan ng pag-aalay ng Kaniyang sarili bilang perpektong hain para sa kasalanan.")}
           </p>
           <div className="space-y-2">
             <div className="p-3 bg-brand-blue/5 rounded-xl border border-brand-blue/10">
-              <h4 className="font-bold text-brand-blue mb-1">{props.lang === 'en' ? "To Save His People" : "Upang Iligtas ang Kaniyang Bayan"}</h4>
+              <h4 className="font-bold text-brand-blue mb-1">{props.lang === 'en' ? "To Save His People" : (props.lang === 'es' ? "Para Salvar a Su Pueblo" : "Upang Iligtas ang Kaniyang Bayan")}</h4>
               <p className="text-xs text-gray-600"><ScriptureLink verse="Matthew 1:21" onHover={props.onHover}>Matthew 1:21</ScriptureLink> - "...for he shall save his people from their sins."</p>
             </div>
             <div className="p-3 bg-brand-blue/5 rounded-xl border border-brand-blue/10">
-              <h4 className="font-bold text-brand-blue mb-1">{props.lang === 'en' ? "To Seek and Save the Lost" : "Upang Hanapin at Iligtas ang Nawawala"}</h4>
+              <h4 className="font-bold text-brand-blue mb-1">{props.lang === 'en' ? "To Seek and Save the Lost" : (props.lang === 'es' ? "Para Buscar y Salvar a los Perdidos" : "Upang Hanapin at Iligtas ang Nawawala")}</h4>
               <p className="text-xs text-gray-600"><ScriptureLink verse="Luke 19:10" onHover={props.onHover}>Luke 19:10</ScriptureLink> - "For the Son of man is come to seek and to save that which was lost."</p>
             </div>
           </div>
           <div className="p-3 bg-brand-gold/5 rounded-xl border border-brand-gold/20 italic text-sm text-center">
             {props.lang === 'en'
               ? "Christ's mission was not for Himself, but for the salvation of all who would believe and follow Him."
-              : "Ang misyon ni Cristo ay hindi para sa Kaniyang sarili, kundi para sa kaligtasan ng lahat ng maniniwala at susunod sa Kaniya."}
+              : (props.lang === 'es' ? "La misión de Cristo no fue para Sí mismo, sino para la salvación de todos los que creerían y lo seguirían."
+              : "Ang misyon ni Cristo ay hindi para sa Kaniyang sarili, kundi para sa kaligtasan ng lahat ng maniniwala at susunod sa Kaniya.")}
           </div>
         
 

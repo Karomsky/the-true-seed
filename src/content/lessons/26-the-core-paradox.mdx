@@ -7,6 +7,9 @@ searchKeywords: "paradox matthew 16:18 one church denominations origin"
 searchKeywordsTl: "kabalintunaan mateo 16:18 iisang iglesia sekta pinagmulan"
 searchContent: "If Christ established only one Church (Matthew 16:18), why are there thousands of competing denominations today? Where did the false churches originate?"
 searchContentTl: "Kung iisa lamang ang Iglesiang itinayo ni Cristo (Mateo 16:18), bakit may libu-libong naglalaban-labang sekta ngayon? Saan nagmula ang mga di-tunay na iglesia?"
+titleEs: "La Paradoja Central"
+searchKeywordsEs: "paradoja mateo 16:18 una iglesia denominaciones origen"
+searchContentEs: "¿Si Cristo estableció una sola Iglesia (Mateo 16:18), por qué hay miles de denominaciones rivales hoy? ¿De dónde se originaron las iglesias falsas?"
 ---
 import { ScriptureLink } from '../../scriptureData';
 import { 
@@ -19,12 +22,13 @@ import {
           <p className="text-base leading-snug">
             {props.lang === 'en'
               ? "The Bible states that Christ built only one Church. However, the modern religious landscape is fragmented into thousands of denominations. This creates a paradox that can only be resolved by understanding the biblical origin of these groups."
-              : "Sinasabi ng Biblia na iisa lamang ang Iglesiang itinayo ni Cristo. Gayunpaman, ang modernong relihiyon ay nahahati sa libu-libong sekta. Lumilikha ito ng kabalintunaan na malulutas lamang sa pamamagitan ng pag-unawa sa biblikal na pinagmulan ng mga grupong ito."}
+              : (props.lang === 'es' ? "La Biblia afirma que Cristo edificó una sola Iglesia. Sin embargo, el panorama religioso moderno está fragmentado en miles de denominaciones. Esto crea una paradoja que solo puede resolverse comprendiendo el origen bíblico de estos grupos."
+              : "Sinasabi ng Biblia na iisa lamang ang Iglesiang itinayo ni Cristo. Gayunpaman, ang modernong relihiyon ay nahahati sa libu-libong sekta. Lumilikha ito ng kabalintunaan na malulutas lamang sa pamamagitan ng pag-unawa sa biblikal na pinagmulan ng mga grupong ito.")}
           </p>
           <div className="bg-brand-blue/5 p-3 rounded-2xl border-l-4 border-brand-blue">
-            <h4 className="font-bold text-brand-blue mb-2">{props.lang === 'en' ? "The Foundation" : "Ang Saligan"}</h4>
+            <h4 className="font-bold text-brand-blue mb-2">{props.lang === 'en' ? "The Foundation" : (props.lang === 'es' ? "El Fundamento" : "Ang Saligan")}</h4>
             <p className="text-sm text-gray-700 italic">
-              {props.lang === 'en' ? '"I will build my church..." — Matthew 16:18' : '"Itatayo ko ang aking iglesia..." — Mateo 16:18'}
+              {props.lang === 'en' ? '"I will build my church..." — Matthew 16:18' : (props.lang === 'es' ? '"Edificaré mi iglesia..." — Mateo 16:18' : '"Itatayo ko ang aking iglesia..." — Mateo 16:18')}
             </p>
           </div>
         

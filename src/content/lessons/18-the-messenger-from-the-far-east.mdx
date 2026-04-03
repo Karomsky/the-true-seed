@@ -1,12 +1,15 @@
 ---
 title: "The Messenger from the Far East"
 titleTl: "Ang Sugo mula sa Malayong Silangan"
+titleEs: "El Mensajero del Lejano Oriente"
 category: "messenger"
 icon: "Compass"
 searchKeywords: "messenger far east felix manalo prophecy philippines 1914 revelation 7:2 isaiah 46:11 isaiah 41:9-10"
 searchKeywordsTl: "sugo malayong silangan felix manalo hula pilipinas 1914 apocalipsis 7:2 isaias 46:11 isaias 41:9-10"
+searchKeywordsEs: "mensajero lejano oriente felix manalo profecía filipinas 1914 apocalipsis 7:2 isaías 46:11 isaías 41:9-10"
 searchContent: "Prophecy speaks of a messenger sent from the Far East (Philippines) in the last days. This was fulfilled in the mission of Brother Felix Y. Manalo, who began preaching in 1914, coinciding with the ends of the earth."
 searchContentTl: "Nagsasalita ang hula tungkol sa isang sugo na mula sa Malayong Silangan (Pilipinas) sa mga huling araw. Ito ay natupad sa misyon ng Kapatid na Felix Y. Manalo, na nagsimulang mangaral noong 1914, kasabay ng mga wakas ng lupa."
+searchContentEs: "La profecía habla de un mensajero enviado desde el Lejano Oriente (Filipinas) en los últimos días. Esto se cumplió en la misión del Hermano Félix Y. Manalo, quien comenzó a predicar en 1914, coincidiendo con los fines de la tierra."
 ---
 import { ScriptureLink } from '../../scriptureData';
 import { 
@@ -19,7 +22,9 @@ import {
           <p className="text-base leading-snug">
             {props.lang === 'en'
               ? "Prophecy speaks of a messenger sent from the 'Far East' to bring salvation in the last days. This was fulfilled in the mission of Brother Felix Y. Manalo."
-              : "Nagsasalita ang hula tungkol sa isang sugo na mula sa 'Malayong Silangan' upang magdala ng kaligtasan sa mga huling araw. Ito ay natupad sa misyon ng Kapatid na Felix Y. Manalo."}
+              : props.lang === 'tl'
+              ? "Nagsasalita ang hula tungkol sa isang sugo na mula sa 'Malayong Silangan' upang magdala ng kaligtasan sa mga huling araw. Ito ay natupad sa misyon ng Kapatid na Felix Y. Manalo."
+              : "La profecía habla de un mensajero enviado desde el 'Lejano Oriente' para traer salvación en los últimos días. Esto se cumplió en la misión del Hermano Félix Y. Manalo."}
           </p>
           <div className="space-y-2">
             <div className="flex gap-3 items-start bg-brand-blue/5 p-3 rounded-xl">
@@ -40,7 +45,9 @@ import {
           <p className="text-sm text-gray-500 italic">
             {props.lang === 'en'
               ? "Brother Felix Manalo began preaching the Iglesia ni Cristo in the Philippines (Far East) in 1914, fulfilling these prophecies."
-              : "Nagsimulang mangaral ang Kapatid na Felix Manalo ng Iglesia ni Cristo sa Pilipinas (Malayong Silangan) noong 1914, bilang katuparan ng mga hulang ito."}
+              : props.lang === 'tl'
+              ? "Nagsimulang mangaral ang Kapatid na Felix Manalo ng Iglesia ni Cristo sa Pilipinas (Malayong Silangan) noong 1914, bilang katuparan ng mga hulang ito."
+              : "El Hermano Félix Manalo comenzó a predicar la Iglesia de Cristo en Filipinas (Oriente Lejano) en 1914, en cumplimiento de estas profecías."}
           </p>
         
 

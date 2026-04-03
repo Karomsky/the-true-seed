@@ -7,6 +7,9 @@ searchKeywords: "authority preach sent messenger romans 10:15 mark 4:11 ephesian
 searchKeywordsTl: "karapatan pangaral sinugo sugo roma 10:15 marcos 4:11 efeso 1:9 hiwaga"
 searchContent: "True preachers must be sent by God to reveal the mysteries of the gospel. Romans 10:15 asks, 'how shall they preach, except they be sent?' The secret of the kingdom of God is given only to those sent by God."
 searchContentTl: "Ang mga tunay na mangangaral ay dapat sinugo ng Diyos upang ihayag ang mga hiwaga ng ebanghelyo. Nagtatanong ang Roma 10:15, 'paano sila mangangaral, kung hindi sila mga sinugo?' Ang lihim ng kaharian ng Diyos ay ibinibigay lamang sa mga sinugo ng Diyos."
+titleEs: "La Autoridad para Predicar"
+searchKeywordsEs: "autoridad predicar enviado mensajero romanos 10:15 marcos 4:11 efesios 1:9 misterio"
+searchContentEs: "Los verdaderos predicadores deben ser enviados por Dios para revelar los misterios del evangelio. Romanos 10:15 pregunta: '¿cómo predicarán si no son enviados?' El secreto del reino de Dios solo se da a quienes Dios envía."
 ---
 import { ScriptureLink } from '../../scriptureData';
 import { 
@@ -19,7 +22,8 @@ import {
           <p className="text-base leading-snug">
             {props.lang === 'en'
               ? "Not everyone who uses the Bible has the authority to preach. True preachers must be 'sent' by God to reveal the mysteries of the gospel."
-              : "Hindi lahat ng gumagamit ng Biblia ay may karapatang mangaral. Ang mga tunay na mangangaral ay dapat 'sinugo' ng Diyos upang ihayag ang mga hiwaga ng ebanghelyo."}
+              : (props.lang === 'es' ? "No todo el que usa la Biblia tiene la autoridad para predicar. Los verdaderos predicadores deben ser 'enviados' por Dios para revelar los misterios del evangelio."
+              : "Hindi lahat ng gumagamit ng Biblia ay may karapatang mangaral. Ang mga tunay na mangangaral ay dapat 'sinugo' ng Diyos upang ihayag ang mga hiwaga ng ebanghelyo.")}
           </p>
           <div className="bg-brand-gold/5 p-3 rounded-2xl border border-brand-gold/20 flex items-start gap-3">
             <div className="bg-brand-blue p-3 rounded-full text-brand-gold"><Zap size={24} /></div>
@@ -30,12 +34,12 @@ import {
           </div>
           <div className="space-y-2">
             <div className="p-3 bg-white border border-gray-200 rounded-lg">
-              <span className="font-bold block text-brand-blue mb-1">{props.lang === 'en' ? "Secret Knowledge" : "Lihim na Kaalaman"}</span>
-              <p className="text-xs text-gray-600"><ScriptureLink verse="Mark 4:11" onHover={props.onHover}>Mark 4:11</ScriptureLink> - {props.lang === 'en' ? "The secret of the kingdom of God is given only to those sent by God." : "Ang lihim ng kaharian ng Diyos ay ibinibigay lamang sa mga sinugo ng Diyos."}</p>
+              <span className="font-bold block text-brand-blue mb-1">{props.lang === 'en' ? "Secret Knowledge" : (props.lang === 'es' ? "Conocimiento Secreto" : "Lihim na Kaalaman")}</span>
+              <p className="text-xs text-gray-600"><ScriptureLink verse="Mark 4:11" onHover={props.onHover}>Mark 4:11</ScriptureLink> - {props.lang === 'en' ? "The secret of the kingdom of God is given only to those sent by God." : (props.lang === 'es' ? "El secreto del reino de Dios solo se da a los enviados por Dios." : "Ang lihim ng kaharian ng Diyos ay ibinibigay lamang sa mga sinugo ng Diyos.")}</p>
             </div>
             <div className="p-3 bg-white border border-gray-200 rounded-lg">
-              <span className="font-bold block text-brand-blue mb-1">{props.lang === 'en' ? "The Mystery Revealed" : "Ang Hiwagang Inihayag"}</span>
-              <p className="text-xs text-gray-600"><ScriptureLink verse="Ephesians 1:9" onHover={props.onHover}>Ephesians 1:9</ScriptureLink> - {props.lang === 'en' ? "God enables His messengers to know the things He planned secretly." : "Binibigyang-daan ng Diyos ang Kaniyang mga sugo na malaman ang mga bagay na lihim Niyang pinlano."}</p>
+              <span className="font-bold block text-brand-blue mb-1">{props.lang === 'en' ? "The Mystery Revealed" : (props.lang === 'es' ? "El Misterio Revelado" : "Ang Hiwagang Inihayag")}</span>
+              <p className="text-xs text-gray-600"><ScriptureLink verse="Ephesians 1:9" onHover={props.onHover}>Ephesians 1:9</ScriptureLink> - {props.lang === 'en' ? "God enables His messengers to know the things He planned secretly." : (props.lang === 'es' ? "Dios capacita a Sus mensajeros para conocer las cosas que planeó en secreto." : "Binibigyang-daan ng Diyos ang Kaniyang mga sugo na malaman ang mga bagay na lihim Niyang pinlano.")}</p>
             </div>
           </div>
         

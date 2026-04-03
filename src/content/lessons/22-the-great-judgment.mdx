@@ -7,6 +7,9 @@ searchKeywords: "great judgment court of god deeds raised sentence gospel bible 
 searchKeywordsTl: "dakilang paghuhukom hukuman ng diyos gawa bubuhayin hatol ebanghelyo biblia apocalipsis 20:12 roma 2:16"
 searchContent: "On Judgment Day, all men will stand before God's court. Judgment will be based on their deeds and the Gospel. Those who entered Christ will be saved, while those outside will face judgment."
 searchContentTl: "Sa Araw ng Paghuhukom, ang lahat ng tao ay haharap sa hukuman ng Diyos. Ang paghuhukom ay ibabatay sa kanilang mga gawa at sa Ebanghelyo. Ang mga pumasok kay Cristo ay maliligtas, habang ang mga nasa labas ay haharap sa paghuhukom."
+titleEs: "El Gran Juicio"
+searchKeywordsEs: "gran juicio tribunal de dios obras resucitados sentencia evangelio biblia apocalipsis 20:12 romanos 2:16"
+searchContentEs: "En el Día del Juicio, todos los hombres estarán ante el tribunal de Dios. El juicio se basará en sus obras y en el Evangelio. Los que entraron en Cristo serán salvos, mientras que los de afuera enfrentarán el juicio."
 ---
 import { ScriptureLink } from '../../scriptureData';
 import { 
@@ -19,7 +22,8 @@ import {
           <p className="text-base leading-snug">
             {props.lang === 'en'
               ? "The Day of Judgment is when all men will face the court of God. The dead will be raised to receive their sentence based on their deeds."
-              : "Ang Araw ng Paghuhukom ay ang panahon na ang lahat ng tao ay haharap sa hukuman ng Diyos. Ang mga patay ay bubuhayin upang tanggapin ang kanilang hatol batay sa kanilang mga gawa."}
+              : (props.lang === 'es' ? "El Día del Juicio es cuando todos los hombres enfrentarán el tribunal de Dios. Los muertos serán resucitados para recibir su sentencia basada en sus obras."
+              : "Ang Araw ng Paghuhukom ay ang panahon na ang lahat ng tao ay haharap sa hukuman ng Diyos. Ang mga patay ay bubuhayin upang tanggapin ang kanilang hatol batay sa kanilang mga gawa.")}
           </p>
           <div className="space-y-2">
             <div className="p-3 bg-white border border-gray-200 rounded-lg shadow-sm">
@@ -27,7 +31,8 @@ import {
               <p className="text-sm text-gray-600">
                 {props.lang === 'en'
                   ? "And I saw the dead, small and great, stand before God; and the books were opened..."
-                  : "At nakita ko ang mga patay, malalaki at maliliit, na nangakatayo sa harapan ng luklukan; at nangabuksan ang mga aklat..."}
+                  : (props.lang === 'es' ? "Y vi a los muertos, grandes y pequeños, de pie ante Dios; y los libros fueron abiertos..."
+                  : "At nakita ko ang mga patay, malalaki at maliliit, na nangakatayo sa harapan ng luklukan; at nangabuksan ang mga aklat...")}
               </p>
             </div>
             <div className="p-3 bg-white border border-gray-200 rounded-lg shadow-sm">
@@ -35,14 +40,16 @@ import {
               <p className="text-sm text-gray-600">
                 {props.lang === 'en'
                   ? "In the day when God shall judge the secrets of men by Jesus Christ according to my gospel."
-                  : "Sa araw na hahatulan ng Dios ang mga lihim ng mga tao, ayon sa aking evangelio, sa pamamagitan ni Jesucristo."}
+                  : (props.lang === 'es' ? "En el día en que Dios juzgará los secretos de los hombres por Jesucristo según mi evangelio."
+                  : "Sa araw na hahatulan ng Dios ang mga lihim ng mga tao, ayon sa aking evangelio, sa pamamagitan ni Jesucristo.")}
               </p>
             </div>
           </div>
           <p className="text-sm text-gray-500 italic">
             {props.lang === 'en'
               ? "The judgment will be based on the Gospel or the Bible. Those who entered Christ will be saved, while those outside will face judgment."
-              : "Ang paghuhukom ay ibabatay sa Ebanghelyo o sa Biblia. Ang mga pumasok kay Cristo ay maliligtas, habang ang mga nasa labas ay haharap sa paghuhukom."}
+              : (props.lang === 'es' ? "El juicio se basará en el Evangelio o en la Biblia. Los que entraron en Cristo serán salvos, mientras que los de afuera enfrentarán el juicio."
+              : "Ang paghuhukom ay ibabatay sa Ebanghelyo o sa Biblia. Ang mga pumasok kay Cristo ay maliligtas, habang ang mga nasa labas ay haharap sa paghuhukom.")}
           </p>
         
 

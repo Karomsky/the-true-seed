@@ -7,6 +7,9 @@ searchKeywords: "parable sower seed word of god luke 8:11"
 searchKeywordsTl: "parabula tagapaghasik binhi salita ng diyos lucas 8:11"
 searchContent: "The lineage of the promise continues today through the preaching of the Word. The seed is the Word of God, and ministers are tasked with sowing it."
 searchContentTl: "Ang pinagmulan ng pangako ay nagpapatuloy ngayon sa pamamagitan ng pangangaral ng Salita. Ang binhi ay ang Salita ng Diyos, at ang mga ministro ay may tungkuling ihasik ito."
+titleEs: "Propagación: La Parábola del Sembrador"
+searchKeywordsEs: "parábola sembrador semilla palabra de dios lucas 8:11"
+searchContentEs: "El linaje de la promesa continúa hoy a través de la predicación de la Palabra. La semilla es la Palabra de Dios, y los ministros tienen la tarea de sembrarla."
 ---
 import { ScriptureLink } from '../../scriptureData';
 import { 
@@ -19,12 +22,14 @@ import {
           <p className="text-base leading-snug">
             {props.lang === 'en'
               ? "The Parable of the Sower reveals how the Seed (the Word of God) grows today. Luke 8:11 explicitly states: 'The seed is the word of God.' Ministers sow the seed, while members support the work through inviting and offerings."
-              : "Inihahayag ng Parabula ng Tagapaghasik kung paano lumalago ang Binhi (ang Salita ng Diyos) ngayon. Eksplicitong sinasabi sa Lucas 8:11: 'Ang binhi ay ang salita ng Dios.' Ang mga ministro ang naghahasik ng binhi, habang ang mga miyembro ay sumusuporta sa gawain sa pamamagitan ng pag-aanyaya at mga handog."}
+              : (props.lang === 'es' ? "La Parábola del Sembrador revela cómo la Simiente (la Palabra de Dios) crece hoy. Lucas 8:11 declara explícitamente: 'La semilla es la palabra de Dios'. Los ministros siembran la semilla, mientras que los miembros apoyan la obra mediante invitaciones y ofrendas."
+              : "Inihahayag ng Parabula ng Tagapaghasik kung paano lumalago ang Binhi (ang Salita ng Diyos) ngayon. Eksplicitong sinasabi sa Lucas 8:11: 'Ang binhi ay ang salita ng Dios.' Ang mga ministro ang naghahasik ng binhi, habang ang mga miyembro ay sumusuporta sa gawain sa pamamagitan ng pag-aanyaya at mga handog.")}
           </p>
           <p className="text-base leading-snug">
             {props.lang === 'en'
               ? "There is a division of labor (1 Cor 3:6): The Minister plants, the Members water, and God gives the increase. This sustained work ensures the growth of the Church."
-              : "Mayroong paghahati ng tungkulin (1 Cor 3:6): Ang Ministro ang nagtatanim, ang mga Miyembro ang nagdidilig, at ang Diyos ang nagpapalago. Ang patuloy na gawaing ito ang tumitiyak sa paglago ng Iglesia."}
+              : (props.lang === 'es' ? "Hay una división del trabajo (1 Cor 3:6): El Ministro planta, los Miembros riegan y Dios da el crecimiento. Este trabajo sostenido asegura el crecimiento de la Iglesia."
+              : "Mayroong paghahati ng tungkulin (1 Cor 3:6): Ang Ministro ang nagtatanim, ang mga Miyembro ang nagdidilig, at ang Diyos ang nagpapalago. Ang patuloy na gawaing ito ang tumitiyak sa paglago ng Iglesia.")}
           </p>
           <div className="bg-brand-blue/5 p-3 rounded-lg border-l-4 border-brand-gold">
             <span className="font-bold block mb-1">

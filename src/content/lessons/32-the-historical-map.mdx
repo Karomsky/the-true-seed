@@ -7,6 +7,9 @@ searchKeywords: "map history foundation apostasy sects restored flock"
 searchKeywordsTl: "mapa kasaysayan saligan pagtalikod sekta kawan"
 searchContent: "The path to the true flock involves 4 stages: Original Foundation, Great Apostasy, Branching Sects, and the Restored Flock."
 searchContentTl: "Ang landas patungo sa tunay na kawan ay kinabibilangan ng 4 na yugto: Orihinal na Saligan, Malawakang Pagtalikod, mga Sangang Sekta, at ang Ipinanumbalik na Kawan."
+titleEs: "El Mapa Histórico"
+searchKeywordsEs: "mapa historia fundamento apostasía sectas rebaño restaurado"
+searchContentEs: "El camino hacia el verdadero rebaño consta de 4 etapas: Fundamento Original, Gran Apostasía, Sectas Ramificadas y el Rebaño Restaurado."
 ---
 import { ScriptureLink } from '../../scriptureData';
 import { 
@@ -18,14 +21,14 @@ import {
 <div className="space-y-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             {[
-              { t: "1. Original Foundation", d: "Christ established ONE Church (Mat 16:18)." },
-              { t: "2. The Great Apostasy", d: "Departure led by the Mystery of Iniquity (1 Tim 4:1-3)." },
-              { t: "3. The Branching Sects", d: "Reformation splinters creating thousands of denominations (Rev 17:5)." },
-              { t: "4. The Restored Flock", d: "The call to exit Babylon and enter the true fold (John 10:9, Acts 20:28)." }
+              { t: props.lang === 'es' ? "1. Fundamento Original" : (props.lang === 'en' ? "1. Original Foundation" : "1. Orihinal na Saligan"), d: props.lang === 'es' ? "Cristo estableció UNA sola Iglesia (Mat 16:18)." : (props.lang === 'en' ? "Christ established ONE Church (Mat 16:18)." : "Nagtaguyod si Cristo ng IISANG Iglesia (Mat 16:18).") },
+              { t: props.lang === 'es' ? "2. La Gran Apostasía" : (props.lang === 'en' ? "2. The Great Apostasy" : "2. Ang Malawakang Pagtalikod"), d: props.lang === 'es' ? "La partida liderada por el Misterio de la Iniquidad (1 Tim 4:1-3)." : (props.lang === 'en' ? "Departure led by the Mystery of Iniquity (1 Tim 4:1-3)." : "Ang pagtalikod na pinangunahan ng Hiwaga ng Kasamaan (1 Tim 4:1-3).") },
+              { t: props.lang === 'es' ? "3. Las Sectas Ramificadas" : (props.lang === 'en' ? "3. The Branching Sects" : "3. Ang mga Sangang Sekta"), d: props.lang === 'es' ? "Fragmentos de la Reforma creando miles de denominaciones (Apoc 17:5)." : (props.lang === 'en' ? "Reformation splinters creating thousands of denominations (Rev 17:5)." : "Ang mga pagkakawatak-watak sa panahon ng Repormasyon na lumikha ng libu-libong denominasyon (Apoc 17:5).") },
+              { t: props.lang === 'es' ? "4. El Rebaño Restaurado" : (props.lang === 'en' ? "4. The Restored Flock" : "4. Ang Ipinanumbalik na Kawan"), d: props.lang === 'es' ? "El llamado a salir de Babilonia y entrar en el redil verdadero (Juan 10:9, Hechos 20:28)." : (props.lang === 'en' ? "The call to exit Babylon and enter the true fold (John 10:9, Acts 20:28)." : "Ang tawag na lumabas sa Babilonia at pumaloob sa tunay na kawan (Juan 10:9, Gawa 20:28).") }
             ].map((step, i) => (
               <div key={i} className="p-3 bg-white rounded-xl shadow-sm border border-gray-100">
-                <div className="text-brand-gold font-bold text-[10px] mb-1 uppercase tracking-widest">{props.lang === 'en' ? step.t : step.t}</div>
-                <p className="text-xs text-gray-500">{props.lang === 'en' ? step.d : step.d}</p>
+                <div className="text-brand-gold font-bold text-[10px] mb-1 uppercase tracking-widest">{step.t}</div>
+                <p className="text-xs text-gray-500">{step.d}</p>
               </div>
             ))}
           </div>

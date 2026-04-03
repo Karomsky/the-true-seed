@@ -7,6 +7,9 @@ searchKeywords: "legal necessity acts 20:28 lamsa blood purchase"
 searchKeywordsTl: "legal na pangangailangan gawa 20:28 lamsa dugo binili"
 searchContent: "The Church is legally necessary because Christ purchased it with His own blood. By being in the Church, Christ's sacrifice becomes legally valid for us."
 searchContentTl: "Ang Iglesia ay legal na kinakailangan dahil binili ito ni Cristo ng Kaniyang sariling dugo. Sa pagiging nasa Iglesia, ang sakripisyo ni Cristo ay nagiging legal na wasto para sa atin."
+titleEs: "La Necesidad Legal de la Iglesia"
+searchKeywordsEs: "necesidad legal hechos 20:28 lamsa compra sangre"
+searchContentEs: "La Iglesia es legalmente necesaria porque Cristo la compró con Su propia sangre. Al estar en la Iglesia, el sacrificio de Cristo se vuelve legalmente válido para nosotros."
 ---
 import { ScriptureLink } from '../../scriptureData';
 import { 
@@ -19,12 +22,14 @@ import {
           <p className="text-base leading-snug">
             {props.lang === 'en'
               ? "Acts 20:28 (Lamsa Translation) identifies the specific group purchased by Christ: 'the church of Christ, which he has purchased with his blood.' A generic sacrifice for all mankind would violate the law of personal accountability."
-              : "Kinikilala ng Gawa 20:28 (Lamsa Translation) ang tiyak na grupong binili ni Cristo: 'ang iglesia ni Cristo, na binili niya ng kaniyang dugo.' Ang isang pangkalahatang sakripisyo para sa buong sangkatauhan ay lalabag sa kautusan ng personal na pananagutan."}
+              : (props.lang === 'es' ? "Hechos 20:28 (Traducción Lamsa) identifica al grupo específico comprado por Cristo: 'la iglesia de Cristo, la cual él compró con su sangre'. Un sacrificio genérico para toda la humanidad violaría la ley de responsabilidad personal."
+              : "Kinikilala ng Gawa 20:28 (Lamsa Translation) ang tiyak na grupong binili ni Cristo: 'ang iglesia ni Cristo, na binili niya ng kaniyang dugo.' Ang isang pangkalahatang sakripisyo para sa buong sangkatauhan ay lalabag sa kautusan ng personal na pananagutan.")}
           </p>
           <p className="text-base leading-snug">
             {props.lang === 'en'
               ? "By uniting with the Church, Christ is no longer a 'stranger' to the believer. He is the Head dying for His own Body. This fulfills the law (Matt 5:17) and satisfies God's justice."
-              : "Sa pakikipag-isa sa Iglesia, si Cristo ay hindi na 'dayuhan' sa mananampalataya. Siya ang Ulo na namamatay para sa Kaniyang sariling Katawan. Tinutupad nito ang kautusan (Mat 5:17) at binibigyang-kasiyahan ang katarungan ng Diyos."}
+              : (props.lang === 'es' ? "Al unirse a la Iglesia, Cristo ya no es un 'extraño' para el creyente. Él es la Cabeza que muere por Su propio Cuerpo. Esto cumple la ley (Mat 5:17) y satisface la justicia de Dios."
+              : "Sa pakikipag-isa sa Iglesia, si Cristo ay hindi na 'dayuhan' sa mananampalataya. Siya ang Ulo na namamatay para sa Kaniyang sariling Katawan. Tinutupad nito ang kautusan (Mat 5:17) at binibigyang-kasiyahan ang katarungan ng Diyos.")}
           </p>
           <div className="bg-brand-blue/5 p-3 rounded-lg border-l-4 border-brand-gold">
             <span className="font-bold block mb-1">

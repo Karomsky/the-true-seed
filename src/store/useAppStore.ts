@@ -7,8 +7,8 @@ interface UserProfile {
 }
 
 interface AppState {
-    lang: 'en' | 'tl';
-    setLang: (lang: 'en' | 'tl') => void;
+    lang: 'en' | 'tl' | 'es';
+    setLang: (lang: 'en' | 'tl' | 'es') => void;
     completedLessons: number[];
     markLessonComplete: (id: number) => void;
     setCompletedLessons: (lessons: number[]) => void;

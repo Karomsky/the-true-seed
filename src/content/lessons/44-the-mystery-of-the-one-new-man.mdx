@@ -7,6 +7,9 @@ searchKeywords: "one new man mystery ephesians Jew Gentile body head Christ chur
 searchKeywordsTl: "isang bagong tao misteryo efeso Judio Hentil katawan ulo Cristo iglesia pagkakaisa dalawa nagiging isa bagong nilikha"
 searchContent: "The 'One New Man' is the greatest mystery in Scripture — the union of Christ (the Head) and the Church (His Body) into a single new creation. Ephesians 2:15 reveals this mystery: two became one through the cross."
 searchContentTl: "Ang 'Isang Bagong Tao' ang pinakamalaking misteryo sa Kasulatan — ang pagkakaisa ni Cristo (ang Ulo) at ng Iglesia (ang Kaniyang Katawan) sa iisang bagong nilikha. Inihahayag ng Efeso 2:15 ang misteryo na ito: ang dalawa ay naging isa sa pamamagitan ng krus."
+titleEs: "El Misterio del Un Solo Hombre Nuevo"
+searchKeywordsEs: "un solo hombre nuevo misterio efesios judío gentil cuerpo cabeza cristo iglesia unidad dos convirtiéndose en uno nueva creación"
+searchContentEs: "El 'Un Solo Hombre Nuevo' es el misterio más grande de las Escrituras — la unión de Cristo (la Cabeza) y la Iglesia (Su Cuerpo) en una sola creación nueva. Efesios 2:15 revela este misterio: dos se convirtieron en uno a través de la cruz."
 ---
 import { ScriptureLink } from '../../scriptureData';
 
@@ -14,7 +17,8 @@ import { ScriptureLink } from '../../scriptureData';
   <p className="text-base leading-snug">
     {props.lang === 'en'
       ? "The middle wall of partition between us and God is the sin committed by all men. Christ has broken this down by creating the one new man. Through His sacrifice, Christ abolished the enmity, making peace between God and men in the one body. In the Church of Christ, there is no more distinction; all are one in the One New Man."
-      : "Ang harang na pader na namamagitan sa atin at sa Diyos ay ang kasalanang nagawa ng lahat ng tao. Ginuho ito ni Cristo sa paglalang ng isang bagong tao. Sa pamamagitan ng Kaniyang sakripisyo, inalis ni Cristo ang alitan, na gumagawa ng kapayapaan sa pagitan ng Diyos at mga tao sa isang katawan. Sa Iglesia ni Cristo, wala nang pagkakaiba; lahat ay iisa sa Isang Bagong Tao."}
+      : (props.lang === 'es' ? "La pared intermedia de separación entre nosotros y Dios es el pecado cometido por todos los hombres. Cristo ha derribado esto creando el un solo hombre nuevo. A través de Su sacrificio, Cristo abolió la enemistad, haciendo la paz entre Dios y los hombres en un solo cuerpo. En la Iglesia de Cristo ya no hay distinción; todos son uno en el Un Solo Hombre Nuevo."
+      : "Ang harang na pader na namamagitan sa atin at sa Diyos ay ang kasalanang nagawa ng lahat ng tao. Ginuho ito ni Cristo sa paglalang ng isang bagong tao. Sa pamamagitan ng Kaniyang sakripisyo, inalis ni Cristo ang alitan, na gumagawa ng kapayapaan sa pagitan ng Diyos at mga tao sa isang katawan. Sa Iglesia ni Cristo, wala nang pagkakaiba; lahat ay iisa sa Isang Bagong Tao.")}
   </p>
 
   <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -33,13 +37,13 @@ import { ScriptureLink } from '../../scriptureData';
   </div>
 
   <div className="p-4 bg-gradient-to-r from-brand-dark/90 to-brand-blue text-white rounded-xl">
-    <h4 className="font-bold mb-2 text-brand-gold">{props.lang === 'en' ? "Two → One New Creation" : "Dalawa → Isang Bagong Nilikha"}</h4>
+    <h4 className="font-bold mb-2 text-brand-gold">{props.lang === 'en' ? "Two → One New Creation" : (props.lang === 'es' ? "Dos → Una Nueva Creación" : "Dalawa → Isang Bagong Nilikha")}</h4>
     <div className="flex items-center justify-center gap-4 text-sm font-bold">
-      <span className="bg-white/20 px-3 py-1 rounded-full">{props.lang === 'en' ? "Christ" : "Cristo"}</span>
+      <span className="bg-white/20 px-3 py-1 rounded-full">{props.lang === 'en' ? "Christ" : (props.lang === 'es' ? "Cristo" : "Cristo")}</span>
       <span className="text-brand-gold">+</span>
-      <span className="bg-white/20 px-3 py-1 rounded-full">{props.lang === 'en' ? "Church" : "Iglesia"}</span>
+      <span className="bg-white/20 px-3 py-1 rounded-full">{props.lang === 'en' ? "Church" : (props.lang === 'es' ? "Iglesia" : "Iglesia")}</span>
       <span className="text-brand-gold">→</span>
-      <span className="bg-brand-gold text-brand-dark px-3 py-1 rounded-full">{props.lang === 'en' ? "One New Man" : "Isang Bagong Tao"}</span>
+      <span className="bg-brand-gold text-brand-dark px-3 py-1 rounded-full">{props.lang === 'en' ? "One New Man" : (props.lang === 'es' ? "Un Solo Hombre Nuevo" : "Isang Bagong Tao")}</span>
     </div>
     <p className="text-xs text-white/70 text-center mt-2"><ScriptureLink verse="Ephesians 2:15" onHover={props.onHover}>Ephesians 2:15</ScriptureLink></p>
   </div>

@@ -7,6 +7,9 @@ searchKeywords: "virgin birth mary miracle holy spirit matthew 1:18-25 luke 1:30
 searchKeywordsTl: "birheng pagsilang maria himala espiritu santo mateo 1:18-25 lucas 1:30-35 hula katuparan"
 searchContent: "Jesus was born of a virgin named Mary through the power of the Holy Spirit. This miracle fulfilled the prophecy that a virgin would conceive and bear a son. Matthew 1:18-25 and Luke 1:30-35 record this divine event."
 searchContentTl: "Si Jesus ay ipinanganak ng isang birhen na nagngangalang Maria sa pamamagitan ng kapangyarihan ng Espiritu Santo. Ang himalang ito ay tumupad sa hula na ang isang birhen ay maglilihi at manganganak ng isang lalaki. Ang Mateo 1:18-25 at Lucas 1:30-35 ang nagtala ng banal na kaganapang ito."
+titleEs: "El Nacimiento Virginal de Cristo"
+searchKeywordsEs: "nacimiento virginal maría milagro espíritu santo mateo 1:18-25 lucas 1:30-35 profecía cumplimiento"
+searchContentEs: "Jesús nació de una virgen llamada María por el poder del Espíritu Santo. Este milagro cumplió la profecía de que una virgen concebiría y daría a luz un hijo. Mateo 1:18-25 y Lucas 1:30-35 registran este evento divino."
 ---
 import { ScriptureLink } from '../../scriptureData';
 import { 
@@ -19,24 +22,26 @@ import {
           <p className="text-base leading-snug">
             {props.lang === 'en'
               ? "The birth of Jesus Christ was a unique miracle. He was conceived by the Holy Spirit and born of the Virgin Mary, fulfilling ancient prophecies."
-              : "Ang kapanganakan ni Jesucristo ay isang natatanging himala. Siya ay ipinaglihi sa pamamagitan ng Espiritu Santo at ipinanganak ng Birheng Maria, bilang katuparan ng mga sinaunang hula."}
+              : (props.lang === 'es' ? "El nacimiento de Jesucristo fue un milagro único. Fue concebido por el Espíritu Santo y nació de la Virgen María, cumpliendo profecías antiguas."
+              : "Ang kapanganakan ni Jesucristo ay isang natatanging himala. Siya ay ipinaglihi sa pamamagitan ng Espiritu Santo at ipinanganak ng Birheng Maria, bilang katuparan ng mga sinaunang hula.")}
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             <div className="p-3 rounded-xl bg-brand-gold/5 border border-brand-gold/20">
-              <h4 className="font-bold text-brand-dark mb-1">{props.lang === 'en' ? "Conceived by the Spirit" : "Ipinaglihi sa Espiritu"}</h4>
+              <h4 className="font-bold text-brand-dark mb-1">{props.lang === 'en' ? "Conceived by the Spirit" : (props.lang === 'es' ? "Concebido por el Espíritu" : "Ipinaglihi sa Espiritu")}</h4>
               <p className="text-xs text-gray-600"><ScriptureLink verse="Matthew 1:20" onHover={props.onHover}>Matthew 1:20</ScriptureLink> - "...for that which is conceived in her is of the Holy Ghost."</p>
             </div>
             <div className="p-3 rounded-xl bg-brand-gold/5 border border-brand-gold/20">
-              <h4 className="font-bold text-brand-dark mb-1">{props.lang === 'en' ? "Born of a Virgin" : "Ipinanganak ng Birhen"}</h4>
+              <h4 className="font-bold text-brand-dark mb-1">{props.lang === 'en' ? "Born of a Virgin" : (props.lang === 'es' ? "Nacido de una Virgen" : "Ipinanganak ng Birhen")}</h4>
               <p className="text-xs text-gray-600"><ScriptureLink verse="Isaiah 7:14" onHover={props.onHover}>Isaiah 7:14</ScriptureLink> - "Behold, a virgin shall conceive, and bear a son..."</p>
             </div>
           </div>
           <div className="p-3 bg-brand-blue/5 rounded-xl border border-brand-blue/10">
-            <h4 className="font-bold text-brand-blue mb-1">{props.lang === 'en' ? "The Miracle of Incarnation" : "Ang Himala ng Pagkakatawang-tao"}</h4>
+            <h4 className="font-bold text-brand-blue mb-1">{props.lang === 'en' ? "The Miracle of Incarnation" : (props.lang === 'es' ? "El Milagro de la Encarnación" : "Ang Himala ng Pagkakatawang-tao")}</h4>
             <p className="text-xs text-gray-600">
               {props.lang === 'en'
                 ? "This miracle allowed Christ to be truly human while being the unique Son of God, sent to save mankind."
-                : "Ang himalang ito ay nagpahintulot kay Cristo na maging tunay na tao habang Siya ay ang natatanging Anak ng Diyos, na sinugo upang iligtas ang sangkatauhan."}
+                : (props.lang === 'es' ? "Este milagro permitió a Cristo ser verdaderamente humano siendo al mismo tiempo el único Hijo de Dios, enviado para salvar a la humanidad."
+                : "Ang himalang ito ay nagpahintulot kay Cristo na maging tunay na tao habang Siya ay ang natatanging Anak ng Diyos, na sinugo upang iligtas ang sangkatauhan.")}
             </p>
           </div>
         
