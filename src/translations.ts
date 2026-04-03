@@ -108,6 +108,8 @@ export const t = (key: string, lang: Language): string => {
   return translations[key][lang] || translations[key]['en'] || key;
 };
 
+// *Last Updated: April 3, 2026*
+
 export const getLocalizedField = (obj: any, field: string, lang: Language): string => {
   const capField = field.charAt(0).toUpperCase() + field.slice(1);
   if (lang === 'tl' && obj[`${field}Tl`]) return obj[`${field}Tl`];
