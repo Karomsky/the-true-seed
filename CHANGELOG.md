@@ -38,4 +38,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-*Last Updated: April 2, 2026*
+## [0.3.1] - 2026-04-04
+### Changed
+- **Forced Deployment**: Triggered a fresh build to ensure Spanish (ES) localization fixes are live and functional in the production environment.
+- **Verification**: Confirmed local functionality of the Spanish language switcher and study center.
+
+---
+
+*Last Updated: April 4, 2026*
