@@ -6,8 +6,10 @@ RUN apt-get update && apt-get install -y python3 make g++ && rm -rf /var/lib/apt
 # Create app directory
 WORKDIR /usr/src/app
 
+# Force production environment to ensure Vite builds correctly and the server serves 'dist'
+ENV NODE_ENV=production
+
 # Define the volume for persistent SQLite database storage
-# We mount this to an external persistent disk on Railway/Render so data isn't lost on restart.
 RUN mkdir -p /usr/src/app/data
 ENV DB_PATH=/usr/src/app/data/inquiries.db
 
@@ -18,10 +20,11 @@ RUN npm install
 # Bundle app source
 COPY . .
 
-# Build the Vite Frontend
+# Build the Vite Frontend (creating the 'dist' folder)
 RUN npm run build
 
-# Let the dynamic PORT handle routing
+# Expose port 8080 (standard for Railway, though PORT env variable is preferred)
+EXPOSE 8080
 
 # Start the full-stack server
 CMD [ "npm", "run", "start" ]
