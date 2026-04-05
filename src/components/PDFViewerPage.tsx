@@ -40,9 +40,9 @@ const PDFViewerPage: React.FC<PDFViewerPageProps> = ({ pdfUrl, lang, onBack }) =
                 href={pdfUrl} 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="p-2 bg-brand-gold/10 text-brand-gold rounded-lg hover:bg-brand-gold hover:text-brand-dark transition-all"
-                title="Open in new tab"
+                className="flex items-center gap-2 px-3 py-1.5 bg-brand-gold text-brand-dark rounded-full hover:bg-yellow-400 transition-all font-bold text-[10px] sm:text-xs uppercase tracking-widest shadow-lg"
             >
+                <span className="hidden xs:inline">{t('Open Fullscreen', 'Buksan sa Fullscreen', 'Abrir Pantalla Completa')}</span>
                 <ExternalLink className="h-4 w-4" />
             </a>
         </div>
