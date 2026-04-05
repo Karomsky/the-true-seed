@@ -1,3 +1,4 @@
+// V2.0.1 - Internal PDF Viewer Patch
 import React, { useState, useEffect, useRef } from 'react';
 import {
   Sun,
