@@ -34,6 +34,7 @@ import StudyPage from './StudyPage';
 import BaptismPage from './BaptismPage';
 import AdminDashboard from './AdminDashboard';
 import AuthModal from './components/AuthModal';
+import PDFViewerPage from './components/PDFViewerPage';
 import { supabase } from './lib/supabase';
 import { scriptures, ScriptureLink } from './scriptureData';
 import { useRegisterSW } from 'virtual:pwa-register/react';
@@ -268,7 +269,8 @@ export default function App() {
   const { lang, setLang, completedLessons, user, token, setUserSession, syncProgress, fullName } = useAppStore();
   const lessons = getLessons(lang, () => {});
   const timelineData = getTimelineData(lang);
-  const [view, setView] = useState<'home' | 'study' | 'baptism' | 'admin'>('home');
+  const [view, setView] = useState<'home' | 'study' | 'baptism' | 'admin' | 'pdf'>('home');
+  const [activePdf, setActivePdf] = useState<string | null>(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const [activeTimelineIndex, setActiveTimelineIndex] = useState(0);
@@ -365,6 +367,12 @@ export default function App() {
     window.scrollTo(0, 0);
   };
 
+  const openPdf = (pdfUrl: string) => {
+    setActivePdf(pdfUrl);
+    setView('pdf');
+    window.scrollTo(0, 0);
+  };
+
   const handleBackToHome = (scrollToContact?: boolean) => {
     setView('home');
     if (scrollToContact) {
@@ -430,10 +438,17 @@ export default function App() {
         )}
       </AnimatePresence>
 
-      {view === 'study' ? (
+      {view === 'pdf' ? (
+        <PDFViewerPage
+          pdfUrl={activePdf || ''}
+          lang={lang}
+          onBack={() => setView('study')}
+        />
+      ) : view === 'study' ? (
         <StudyPage
           lang={lang}
           onBack={handleBackToHome}
+          openPdf={openPdf}
           initialCategory={studyConfig.category}
           initialLessonId={studyConfig.lessonId}
           onHover={handleHover}

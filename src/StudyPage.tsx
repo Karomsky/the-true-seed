@@ -47,13 +47,15 @@ export default function StudyPage({
   lang,
   initialCategory = 'all',
   initialLessonId,
-  onHover
+  onHover,
+  openPdf
 }: {
   onBack: (scrollToContact?: boolean) => void,
   lang: 'en' | 'tl' | 'es',
   initialCategory?: string,
   initialLessonId?: number,
-  onHover: (verse: string | null, x: number, y: number) => void
+  onHover: (verse: string | null, x: number, y: number) => void,
+  openPdf?: (url: string) => void
 }) {
   const categories = [
     { id: 'all', name: t('All Modules', lang), icon: Globe, color: 'bg-brand-blue' },
@@ -317,16 +319,18 @@ export default function StudyPage({
                 </a>
               )}
               {categories.find(c => c.id === selectedCategory)?.pdfUrl && (
-                <a
-                  href={`/view-pdf.html?file=${encodeURIComponent(categories.find(c => c.id === selectedCategory)?.pdfUrl || '')}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-6 py-2 bg-brand-blue/10 text-brand-blue border border-brand-blue/30 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-brand-blue hover:text-white transition-all shadow-sm"
+                <button
+                  onClick={(e) => {
+                      e.preventDefault();
+                      const url = categories.find(c => c.id === selectedCategory)?.pdfUrl;
+                      if (url && openPdf) openPdf(url);
+                  }}
+                  className="inline-flex items-center gap-2 px-6 py-2 bg-brand-blue/10 text-brand-blue border border-brand-blue/30 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-brand-blue hover:text-white transition-all shadow-sm cursor-pointer"
                 >
                   <FileText className="h-4 w-4" />
                   {t('View Study Guide', lang)}
                   <ExternalLink className="h-3 w-3 opacity-50" />
-                </a>
+                </button>
               )}
             </motion.div>
 
@@ -632,16 +636,18 @@ export default function StudyPage({
                             </a>
                           )}
                           {categories.find(c => c.id === currentLesson?.category)?.pdfUrl && (
-                            <a
-                              href={`/view-pdf.html?file=${encodeURIComponent(categories.find(c => c.id === currentLesson?.category)?.pdfUrl || '')}`}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="inline-flex items-center gap-2 px-4 py-1.5 bg-brand-gold/10 text-brand-gold border border-brand-gold/20 rounded-full font-bold text-[10px] uppercase tracking-widest hover:bg-brand-gold hover:text-brand-dark transition-all shadow-sm"
+                            <button
+                              onClick={(e) => {
+                                  e.preventDefault();
+                                  const url = categories.find(c => c.id === currentLesson?.category)?.pdfUrl;
+                                  if (url && openPdf) openPdf(url);
+                              }}
+                              className="inline-flex items-center gap-2 px-4 py-1.5 bg-brand-gold/10 text-brand-gold border border-brand-gold/20 rounded-full font-bold text-[10px] uppercase tracking-widest hover:bg-brand-gold hover:text-brand-dark transition-all shadow-sm cursor-pointer"
                             >
                               <FileText className="h-3.5 w-3.5" />
                               {t('Study Guide', lang)}
                               <ExternalLink className="h-3 w-3 opacity-50" />
-                            </a>
+                            </button>
                           )}
                         </div>
                       </div>
