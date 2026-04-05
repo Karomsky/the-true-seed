@@ -57,17 +57,17 @@ export default function StudyPage({
 }) {
   const categories = [
     { id: 'all', name: t('All Modules', lang), icon: Globe, color: 'bg-brand-blue' },
-    { id: 'bible', name: t('The Bible', lang), icon: Book, color: 'bg-brand-blue', pdfUrl: 'https://drive.google.com/file/d/1cS1ZJ5DW3VlS6zxBfBw9HU6Ns9qJaO_2/preview', videoUrl: 'https://youtu.be/inJU4ez8YaI' },
-    { id: 'god', name: t('The True God', lang), icon: Flame, color: 'bg-brand-gold', pdfUrl: 'https://drive.google.com/file/d/12PhIkV4W-Q3FgmYwnIYv-HGRkGHz_Oel/preview', videoUrl: 'https://youtu.be/_qcsvXb0kqs' },
-    { id: 'christ', name: t('Jesus Christ', lang), icon: Users, color: 'bg-brand-dark', pdfUrl: 'https://drive.google.com/file/d/1_KJEnxM6Hd9t6TVlHbKjAkt0cfBHlLwC/preview', videoUrl: 'https://youtu.be/wpeUJVNQmh0' },
-    { id: 'messenger', name: t('The Messenger', lang), icon: Scroll, color: 'bg-brand-blue', pdfUrl: 'https://drive.google.com/file/d/15bTsdOPXg7jEo8U6si_f4kQtmBAh2TdS/preview', videoUrl: 'https://youtu.be/arCAdJ2AAIg' },
-    { id: 'salvation', name: t('Salvation', lang), icon: Heart, color: 'bg-brand-blue', pdfUrl: 'https://drive.google.com/file/d/17h1cPKPG6aYdfJbHyVy4G-6Q503ogslK/preview', videoUrl: 'https://youtu.be/8ZIEesJT9Jg' },
-    { id: 'judgement', name: t('Judgement Day', lang), icon: Scale, color: 'bg-brand-gold', pdfUrl: 'https://drive.google.com/file/d/1dF5xqOW7rYPnKSTAOmWX5X17N5InFv_e/preview', videoUrl: 'https://youtu.be/inLrUSzKd7U' },
-    { id: 'false-churches', name: t('False Churches', lang), icon: ShieldCheck, color: 'bg-brand-dark', pdfUrl: 'https://drive.google.com/file/d/1pK88Pn0vd3ek02eiTYcpjPI58VBKMuky/preview', videoUrl: 'https://youtu.be/X-OUhcCBzOY' },
-    { id: 'true-church', name: t('The True Church', lang), icon: ShieldCheck, color: 'bg-brand-blue', pdfUrl: 'https://drive.google.com/file/d/1NUjMDRGObk6eooyYw7Nb13NvE90vO337/preview', videoUrl: 'https://youtu.be/NrLZjwyCabU' },
-    { id: 'eternal-covenant', name: t('Eternal Covenant', lang), icon: Infinity, color: 'bg-brand-blue', pdfUrl: 'https://drive.google.com/file/d/1v875zO-MiNUiTiXGAY3NcJoPHdAM0laQ/preview', videoUrl: 'https://youtu.be/_42LiWGjFrk' },
-    { id: 'election', name: t('Election', lang), icon: Star, color: 'bg-brand-gold', pdfUrl: 'https://drive.google.com/file/d/1Dx85elsE6zeTN44tlVDz4L0KWOsk__pU/preview', videoUrl: 'https://youtu.be/JBq2SKDtSmk' },
-    { id: 'one-new-man', name: t('One New Man', lang), icon: Presentation, color: 'bg-brand-blue', pdfUrl: 'https://drive.google.com/file/d/1guh3f-Ys164VYTsOgE3g89qWMBD_3zcF/preview', videoUrl: 'https://youtu.be/7g3BRtlJHj0?si=MPzIY__sTAGnJAMn' },
+    { id: 'bible', name: t('The Bible', lang), icon: Book, color: 'bg-brand-blue', pdfUrl: 'https://docs.google.com/viewer?url=https://drive.google.com/uc?id=1cS1ZJ5DW3VlS6zxBfBw9HU6Ns9qJaO_2&embedded=true', videoUrl: 'https://youtu.be/inJU4ez8YaI' },
+    { id: 'god', name: t('The True God', lang), icon: Flame, color: 'bg-brand-gold', pdfUrl: 'https://docs.google.com/viewer?url=https://drive.google.com/uc?id=12PhIkV4W-Q3FgmYwnIYv-HGRkGHz_Oel&embedded=true', videoUrl: 'https://youtu.be/_qcsvXb0kqs' },
+    { id: 'christ', name: t('Jesus Christ', lang), icon: Users, color: 'bg-brand-dark', pdfUrl: 'https://docs.google.com/viewer?url=https://drive.google.com/uc?id=1_KJEnxM6Hd9t6TVlHbKjAkt0cfBHlLwC&embedded=true', videoUrl: 'https://youtu.be/wpeUJVNQmh0' },
+    { id: 'messenger', name: t('The Messenger', lang), icon: Scroll, color: 'bg-brand-blue', pdfUrl: 'https://docs.google.com/viewer?url=https://drive.google.com/uc?id=15bTsdOPXg7jEo8U6si_f4kQtmBAh2TdS&embedded=true', videoUrl: 'https://youtu.be/arCAdJ2AAIg' },
+    { id: 'salvation', name: t('Salvation', lang), icon: Heart, color: 'bg-brand-blue', pdfUrl: 'https://docs.google.com/viewer?url=https://drive.google.com/uc?id=17h1cPKPG6aYdfJbHyVy4G-6Q503ogslK&embedded=true', videoUrl: 'https://youtu.be/8ZIEesJT9Jg' },
+    { id: 'judgement', name: t('Judgement Day', lang), icon: Scale, color: 'bg-brand-gold', pdfUrl: 'https://docs.google.com/viewer?url=https://drive.google.com/uc?id=1dF5xqOW7rYPnKSTAOmWX5X17N5InFv_e&embedded=true', videoUrl: 'https://youtu.be/inLrUSzKd7U' },
+    { id: 'false-churches', name: t('False Churches', lang), icon: ShieldCheck, color: 'bg-brand-dark', pdfUrl: 'https://docs.google.com/viewer?url=https://drive.google.com/uc?id=1pK88Pn0vd3ek02eiTYcpjPI58VBKMuky&embedded=true', videoUrl: 'https://youtu.be/X-OUhcCBzOY' },
+    { id: 'true-church', name: t('The True Church', lang), icon: ShieldCheck, color: 'bg-brand-blue', pdfUrl: 'https://docs.google.com/viewer?url=https://drive.google.com/uc?id=1NUjMDRGObk6eooyYw7Nb13NvE90vO337&embedded=true', videoUrl: 'https://youtu.be/NrLZjwyCabU' },
+    { id: 'eternal-covenant', name: t('Eternal Covenant', lang), icon: Infinity, color: 'bg-brand-blue', pdfUrl: 'https://docs.google.com/viewer?url=https://drive.google.com/uc?id=1v875zO-MiNUiTiXGAY3NcJoPHdAM0laQ&embedded=true', videoUrl: 'https://youtu.be/_42LiWGjFrk' },
+    { id: 'election', name: t('Election', lang), icon: Star, color: 'bg-brand-gold', pdfUrl: 'https://docs.google.com/viewer?url=https://drive.google.com/uc?id=1Dx85elsE6zeTN44tlVDz4L0KWOsk__pU&embedded=true', videoUrl: 'https://youtu.be/JBq2SKDtSmk' },
+    { id: 'one-new-man', name: t('One New Man', lang), icon: Presentation, color: 'bg-brand-blue', pdfUrl: 'https://docs.google.com/viewer?url=https://drive.google.com/uc?id=1guh3f-Ys164VYTsOgE3g89qWMBD_3zcF&embedded=true', videoUrl: 'https://youtu.be/7g3BRtlJHj0?si=MPzIY__sTAGnJAMn' },
     { id: 'bookmarks', name: t('Bookmarks', lang), icon: Bookmark, color: 'bg-brand-dark' },
   ];
 
