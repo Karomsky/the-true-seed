@@ -37,6 +37,7 @@ import AuthModal from './components/AuthModal';
 import { supabase } from './lib/supabase';
 import { scriptures, ScriptureLink } from './scriptureData';
 import { useRegisterSW } from 'virtual:pwa-register/react';
+import { getLessons } from './data/lessons';
 
 
 const TRANSLATIONS: Record<string, Record<string, string>> = {
@@ -264,7 +265,8 @@ const inquirySchema = z.object({
 type InquiryFormValues = z.infer<typeof inquirySchema>;
 
 export default function App() {
-  const { lang, setLang, completedLessons, user, token, setUserSession, syncProgress } = useAppStore();
+  const { lang, setLang, completedLessons, user, token, setUserSession, syncProgress, fullName } = useAppStore();
+  const lessons = getLessons(lang, () => {});
   const timelineData = getTimelineData(lang);
   const [view, setView] = useState<'home' | 'study' | 'baptism' | 'admin'>('home');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -296,8 +298,34 @@ export default function App() {
       setScrolled(window.scrollY > 50);
     };
     window.addEventListener('scroll', handleScroll);
+
+    // Analytics: Log site visit
+    const logVisit = async () => {
+      let sessionId = sessionStorage.getItem('ts_session_id');
+      if (!sessionId) {
+        sessionId = 'sess_' + Math.random().toString(36).substring(2, 11);
+        sessionStorage.setItem('ts_session_id', sessionId);
+      }
+
+      try {
+        await fetch('/api/analytics/visit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            session_id: sessionId,
+            language: lang,
+            path: window.location.hash || '#home'
+          })
+        });
+      } catch (e) {
+        // Silent fail for analytics
+      }
+    };
+
+    logVisit();
+
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [lang]);
 
   useEffect(() => {
     if (user && token) {
@@ -315,22 +343,18 @@ export default function App() {
     setSubmitStatus('idle');
 
     try {
-      const { error } = await supabase
-        .from('inquiries')
-        .insert([
-          {
-            name: data.name,
-            email: data.email,
-            message: data.message
-          }
-        ]);
+      const response = await fetch('/api/inquiry', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
 
-      if (error) throw error;
+      if (!response.ok) throw new Error('Failed to send inquiry');
 
       setSubmitStatus('success');
       reset();
     } catch (error) {
-      console.error('Error submitting inquiry:', error);
+      console.error('Submission error:', error);
       setSubmitStatus('error');
     }
   };
@@ -448,7 +472,7 @@ export default function App() {
                     <span>{hpT.nav_study}</span>
                     {completedLessons.length > 0 && (
                       <span className="bg-brand-dark text-brand-gold px-2 py-0.5 rounded-full text-[10px]">
-                        {completedLessons.length}/38
+                        {completedLessons.length}/{lessons.length}
                       </span>
                     )}
                   </button>
@@ -1251,6 +1275,7 @@ export default function App() {
                 >
                   <div className="absolute -top-5 right-5 bg-brand-gold text-brand-dark font-bold px-4 py-1 rounded-full text-sm">
                     {lang === 'tl' ? "Mabuting Lupa" : (lang === 'es' ? "Buena Tierra" : "Good Ground")}
+                    {fullName && <span className="ml-2 opacity-80 border-l border-brand-dark/20 pl-2">{fullName}</span>}
                   </div>
                   <div className="flex justify-center mb-6">
                     <div className="relative w-24 h-24 rounded-full border-8 border-gray-700 overflow-hidden flex items-center justify-center">

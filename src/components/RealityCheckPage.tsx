@@ -18,9 +18,10 @@ import { supabase } from '../lib/supabase';
 interface RealityCheckPageProps {
   onBack: () => void;
   lang: Language;
+  userName?: string;
 }
 
-export default function RealityCheckPage({ onBack, lang }: RealityCheckPageProps) {
+export default function RealityCheckPage({ onBack, lang, userName }: RealityCheckPageProps) {
   const [formData, setFormData] = useState({
     congregation: '',
     location: '',
@@ -79,6 +80,7 @@ export default function RealityCheckPage({ onBack, lang }: RealityCheckPageProps
         .from('reality_checks')
         .insert([
           {
+            full_name: userName,
             congregation: formData.congregation,
             location_url: formData.location,
             minister_name: formData.minister,
@@ -87,6 +89,24 @@ export default function RealityCheckPage({ onBack, lang }: RealityCheckPageProps
         ]);
 
       if (dbError) throw dbError;
+
+      // 4. Notify Admin via Email
+      try {
+        await fetch('/api/admin/reality-check-notify', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            full_name: userName,
+            congregation: formData.congregation,
+            location_url: formData.location,
+            minister_name: formData.minister,
+            photo_url: photoUrl
+          })
+        });
+      } catch (err) {
+        console.warn('Failed to send admin notification email', err);
+        // Don't fail the whole submission if email fails
+      }
 
       setIsSuccess(true);
     } catch (err: any) {
@@ -179,6 +199,7 @@ export default function RealityCheckPage({ onBack, lang }: RealityCheckPageProps
                 className="text-4xl md:text-6xl font-bold font-serif"
               >
                 {t('Reality Check', lang)}
+                {userName && <span className="text-brand-gold opacity-50 block md:inline md:ml-4 text-2xl md:text-4xl font-serif italic text-white/40">for {userName}</span>}
               </motion.h1>
             </div>
             <motion.div
@@ -210,6 +231,7 @@ export default function RealityCheckPage({ onBack, lang }: RealityCheckPageProps
                 {t('Beyond Theory', lang)}
               </h2>
               <p className="text-gray-600 leading-relaxed text-lg">
+                {userName && <span className="block font-bold text-brand-blue mb-2 italic">Now, {userName}, it's time to put your faith into action.</span>}
                 {t('realityCheckConvince', lang)}
               </p>
             </section>
@@ -364,6 +386,11 @@ export default function RealityCheckPage({ onBack, lang }: RealityCheckPageProps
                 </div>
               </div>
 
+              {userName && (
+                <div className="text-center mb-1 text-[10px] font-sans font-bold uppercase tracking-widest text-brand-blue/30 italic">
+                  Submitting as: <span className="text-brand-blue/60">{userName}</span>
+                </div>
+              )}
               <motion.button
                 whileHover={{ scale: 1.02, backgroundColor: '#D4AF37' }}
                 whileTap={{ scale: 0.98 }}

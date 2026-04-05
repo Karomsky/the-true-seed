@@ -77,13 +77,15 @@ export default function StudyPage({
   const [selectedCategory, setSelectedCategory] = useState<string>(initialCategory);
   const [activeLesson, setActiveLesson] = useState(initialLessonId || 1);
   const [searchQuery, setSearchQuery] = useState('');
-  const { completedLessons, markLessonComplete, bookmarkedLessons, toggleBookmark } = useAppStore();
+  const { completedLessons, markLessonComplete, bookmarkedLessons, toggleBookmark, fullName, setFullName } = useAppStore();
   const [hasReadCurrent, setHasReadCurrent] = useState(false);
   const [showQuizPrompt, setShowQuizPrompt] = useState(false);
   const [isQuizActive, setIsQuizActive] = useState(false);
   const [isGeneratingCertificate, setIsGeneratingCertificate] = useState(false);
   const [showAchievements, setShowAchievements] = useState(false);
   const [showRealityCheck, setShowRealityCheck] = useState(false);
+  const [isNameModalOpen, setIsNameModalOpen] = useState(false);
+  const [nameModalMode, setNameModalMode] = useState<'certificate' | 'challenge'>('certificate');
 
   const getCategoryStatus = (categoryId: string) => {
     const categoryLessons = lessons.filter(l => l.category === categoryId);
@@ -92,15 +94,29 @@ export default function StudyPage({
     return (completedInCategory.length / categoryLessons.length);
   };
 
-  const handleDownloadCertificate = async () => {
+  const handleDownloadCertificate = async (e?: React.FormEvent) => {
+    if (e) e.preventDefault();
+    if (!fullName.trim()) return;
+
+    setIsNameModalOpen(false);
+
+    if (nameModalMode === 'challenge') {
+      setShowRealityCheck(true);
+      return;
+    }
+
+    // Otherwise proceed with certificate generation
     setIsGeneratingCertificate(true);
     try {
-      const { user } = useAppStore.getState();
-      const userName = user?.email.split('@')[0] || 'Faithful Student';
-      const date = new Date().toLocaleDateString();
-      await generateCertificate(userName, date, lang);
+      const date = new Date().toLocaleDateString(lang === 'en' ? 'en-US' : (lang === 'es' ? 'es-ES' : 'en-PH'), {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      });
+
+      await generateCertificate(fullName, date, lang);
     } catch (err) {
-      console.error(err);
+      console.error('Certificate generation failed:', err);
     } finally {
       setIsGeneratingCertificate(false);
     }
@@ -171,7 +187,7 @@ export default function StudyPage({
   const lessonDesc = getLocalizedField(activeLessonData, 'searchContent', lang);
 
   if (showRealityCheck) {
-    return <RealityCheckPage onBack={() => setShowRealityCheck(false)} lang={lang} />;
+    return <RealityCheckPage onBack={() => setShowRealityCheck(false)} lang={lang} userName={fullName} />;
   }
 
   return (
@@ -348,6 +364,14 @@ export default function StudyPage({
                     className="h-full bg-brand-gold"
                   />
                 </div>
+                {import.meta.env.DEV && (
+                   <button 
+                     onClick={() => lessons.forEach(l => markLessonComplete(l.id))}
+                     className="mt-2 text-[9px] bg-red-500/10 text-red-500 px-2 py-1 rounded-full border border-red-500/20 hover:bg-red-500 hover:text-white transition-all font-bold uppercase tracking-tighter"
+                   >
+                     Dev: Mark All Complete
+                   </button>
+                )}
               </div>
             </div>
 
@@ -434,20 +458,25 @@ export default function StudyPage({
                     </p>
                     <div className="flex flex-wrap justify-center gap-4">
                       <button
-                        onClick={handleDownloadCertificate}
-                        disabled={isGeneratingCertificate}
-                        className="bg-brand-gold text-brand-dark px-8 py-3 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-yellow-400 transition-all flex items-center gap-2 active:scale-95 shadow-xl disabled:opacity-50"
+                        onClick={() => {
+                          setNameModalMode('certificate');
+                          setIsNameModalOpen(true);
+                        }}
+                        className="bg-brand-gold text-brand-dark px-8 py-3 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-yellow-400 transition-all flex items-center gap-2 active:scale-95 shadow-xl"
                       >
-                        {isGeneratingCertificate ? (
-                          <div className="h-4 w-4 border-2 border-brand-dark/30 border-t-brand-dark rounded-full animate-spin"></div>
-                        ) : (
-                          <FileText className="h-4 w-4" />
-                        )}
+                        <FileText className="h-4 w-4" />
                         {t('Download Official Certificate', lang)}
                       </button>
 
                       <button
-                        onClick={() => setShowRealityCheck(true)}
+                        onClick={() => {
+                          if (!fullName.trim()) {
+                            setNameModalMode('challenge');
+                            setIsNameModalOpen(true);
+                          } else {
+                            setShowRealityCheck(true);
+                          }
+                        }}
                         className="bg-white text-brand-blue border-2 border-brand-blue/30 px-8 py-3 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-brand-blue hover:text-white transition-all flex items-center gap-2 active:scale-95 shadow-xl"
                       >
                         <Compass className="h-4 w-4" />
@@ -739,6 +768,72 @@ export default function StudyPage({
           </p>
         </div>
       </footer>
+      {/* Certificate Name Modal */}
+      <AnimatePresence>
+        {isNameModalOpen && (
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-brand-dark/80 backdrop-blur-md">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              className="bg-white rounded-[2.5rem] p-8 md:p-12 max-w-lg w-full shadow-2xl border border-brand-gold/20 relative overflow-hidden"
+            >
+              <div className="absolute top-0 right-0 p-8 opacity-5">
+                <FileText size={180} className="text-brand-gold" />
+              </div>
+
+              <div className="relative z-10 text-center">
+                <div className="w-20 h-20 bg-brand-gold/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <PenTool className="h-10 w-10 text-brand-gold" />
+                </div>
+                
+                <h3 className="text-3xl font-bold text-brand-blue mb-4 font-serif">
+                  {t('Enter your Full Name', lang)}
+                </h3>
+                <p className="text-gray-500 mb-8 max-w-xs mx-auto leading-relaxed">
+                  {t('Full name for certificate', lang)}
+                </p>
+
+                <form onSubmit={handleDownloadCertificate} className="space-y-6">
+                  <div className="relative">
+                    <input
+                      autoFocus
+                      type="text"
+                      required
+                      value={fullName}
+                      onChange={(e) => setFullName(e.target.value)}
+                      placeholder={lang === 'en' ? 'John Doe' : (lang === 'es' ? 'Juan Pérez' : 'Juan dela Cruz')}
+                      className="w-full px-8 py-5 bg-gray-50 border-2 border-gray-100 rounded-2xl focus:bg-white focus:border-brand-gold focus:ring-4 focus:ring-brand-gold/10 outline-none font-serif text-2xl text-center text-brand-blue transition-all"
+                    />
+                  </div>
+
+                  <div className="flex flex-col sm:flex-row gap-4 pt-4">
+                    <button
+                      type="button"
+                      onClick={() => setIsNameModalOpen(false)}
+                      className="flex-1 py-4 px-6 rounded-2xl font-bold text-gray-500 hover:bg-gray-100 transition-all text-sm uppercase tracking-widest"
+                    >
+                      {t('Cancel', lang)}
+                    </button>
+                    <button
+                      type="submit"
+                      disabled={isGeneratingCertificate || !fullName.trim()}
+                      className="flex-[2] py-4 px-6 bg-brand-gold text-brand-dark rounded-2xl font-bold text-sm uppercase tracking-widest hover:bg-yellow-400 transition-all shadow-lg active:scale-95 disabled:opacity-50 disabled:pointer-events-none flex items-center justify-center gap-3"
+                    >
+                      {isGeneratingCertificate ? (
+                        <div className="h-5 w-5 border-2 border-brand-dark/30 border-t-brand-dark rounded-full animate-spin"></div>
+                      ) : (
+                        <CheckCircle2 className="h-5 w-5" />
+                      )}
+                      {t('Confirm & Download', lang)}
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

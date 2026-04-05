@@ -4,6 +4,7 @@ import { persist } from 'zustand/middleware';
 interface UserProfile {
     id: number;
     email: string;
+    full_name?: string;
 }
 
 interface AppState {
@@ -15,6 +16,8 @@ interface AppState {
     resetProgress: () => void;
     bookmarkedLessons: number[];
     toggleBookmark: (id: number) => void;
+    fullName: string;
+    setFullName: (name: string) => void;
     user: UserProfile | null;
     token: string | null;
     setUserSession: (user: UserProfile | null, token: string | null) => void;
@@ -28,6 +31,24 @@ export const useAppStore = create<AppState>()(
             setLang: (lang) => set({ lang }),
             completedLessons: [],
             bookmarkedLessons: [],
+            fullName: localStorage.getItem('graduate_name') || '',
+            setFullName: (name) => {
+                set({ fullName: name });
+                localStorage.setItem('graduate_name', name);
+                
+                const state = get();
+                if (state.token) {
+                    // Sync name to profile
+                    fetch('/api/user/profile', {
+                        method: 'PATCH',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${state.token}`
+                        },
+                        body: JSON.stringify({ full_name: name })
+                    }).catch(console.error);
+                }
+            },
             toggleBookmark: (id) => {
                 const state = get();
                 const isBookmarked = state.bookmarkedLessons.includes(id);
@@ -83,6 +104,22 @@ export const useAppStore = create<AppState>()(
                                         body: JSON.stringify({ completed_lessons: merged })
                                     }).catch(console.error);
                                 }
+                            }
+                            
+                            // Also sync profile name if backend has it and local doesn't
+                            if (data.full_name && !state.fullName) {
+                                set({ fullName: data.full_name });
+                                localStorage.setItem('graduate_name', data.full_name);
+                            } else if (state.fullName && !data.full_name) {
+                                // Push local name to backend if missing
+                                fetch('/api/user/profile', {
+                                    method: 'PATCH',
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                        'Authorization': `Bearer ${state.token}`
+                                    },
+                                    body: JSON.stringify({ full_name: state.fullName })
+                                }).catch(console.error);
                             }
                         } else if (res.status === 401 || res.status === 403) {
                             set({ user: null, token: null });
