@@ -53,6 +53,21 @@ export async function createServer() {
 
   app.use(express.json());
 
+  // PDF Viewer Route Force Inline Viewing
+  app.get("/view-pdf", (req, res) => {
+    const file = req.query.file as string;
+    if (!file) return res.status(400).send("File query parameter is missing");
+    
+    const safeFile = path.basename(file);
+    if (!safeFile.toLowerCase().endsWith(".pdf")) return res.status(403).send("Only PDF files are allowed");
+    
+    const filePath = path.join(process.cwd(), "public", safeFile);
+    
+    res.setHeader('Content-Type', 'application/pdf');
+    res.setHeader('Content-Disposition', 'inline');
+    res.sendFile(filePath);
+  });
+
   app.post("/api/inquiry", async (req, res) => {
     const { name, email, message } = req.body;
 
