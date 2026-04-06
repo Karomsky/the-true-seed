@@ -271,7 +271,7 @@ export default function App() {
   const lessons = getLessons(lang, () => {});
   const timelineData = getTimelineData(lang);
   const [view, setView] = useState<'home' | 'study' | 'baptism' | 'admin' | 'pdf'>('home');
-  const [activePdf, setActivePdf] = useState<string | null>(null);
+  const [activePdf, setActivePdf] = useState<{ url: string; title?: string } | null>(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const [activeTimelineIndex, setActiveTimelineIndex] = useState(0);
@@ -368,8 +368,8 @@ export default function App() {
     window.scrollTo(0, 0);
   };
 
-  const openPdf = (pdfUrl: string) => {
-    setActivePdf(pdfUrl);
+  const openPdf = (pdfUrl: string, title?: string) => {
+    setActivePdf({ url: pdfUrl, title });
     setView('pdf');
     window.scrollTo(0, 0);
   };
@@ -441,7 +441,8 @@ export default function App() {
 
       {view === 'pdf' ? (
         <PDFViewerPage
-          pdfUrl={activePdf || ''}
+          pdfUrl={activePdf?.url || ''}
+          title={activePdf?.title}
           lang={lang}
           onBack={() => setView('study')}
         />

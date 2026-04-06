@@ -4,11 +4,12 @@ import { motion } from 'motion/react';
 
 interface PDFViewerPageProps {
   pdfUrl: string;
+  title?: string;
   lang: 'en' | 'tl' | 'es';
   onBack: () => void;
 }
 
-const PDFViewerPage: React.FC<PDFViewerPageProps> = ({ pdfUrl, lang, onBack }) => {
+const PDFViewerPage: React.FC<PDFViewerPageProps> = ({ pdfUrl, title, lang, onBack }) => {
   const t = (en: string, tl: string, es: string) => {
     if (lang === 'es') return es;
     if (lang === 'tl') return tl;
@@ -16,7 +17,7 @@ const PDFViewerPage: React.FC<PDFViewerPageProps> = ({ pdfUrl, lang, onBack }) =
   };
 
   const fileName = pdfUrl.split('/').pop() || 'Study Guide';
-  const cleanTitle = fileName.replace(/_/g, ' ').replace('.pdf', '');
+  const cleanTitle = title || fileName.replace(/_/g, ' ').replace('.pdf', '');
 
   return (
     <div className="fixed inset-0 z-[100] bg-brand-light flex flex-col h-screen overflow-hidden">
@@ -51,7 +52,7 @@ const PDFViewerPage: React.FC<PDFViewerPageProps> = ({ pdfUrl, lang, onBack }) =
       {/* PDF View Area */}
       <main className="flex-1 w-full bg-gray-200 relative">
         <iframe
-          src={`https://docs.google.com/viewer?url=${encodeURIComponent(window.location.origin + pdfUrl)}&embedded=true`}
+          src={pdfUrl.startsWith('http') ? pdfUrl : `https://docs.google.com/viewer?url=${encodeURIComponent(window.location.origin + pdfUrl)}&embedded=true`}
           className="w-full h-full border-none"
           title="PDF Viewer"
         />

@@ -55,7 +55,7 @@ export default function StudyPage({
   initialCategory?: string,
   initialLessonId?: number,
   onHover: (verse: string | null, x: number, y: number) => void,
-  openPdf?: (url: string) => void
+  openPdf?: (url: string, title?: string) => void
 }) {
   const categories = [
     { id: 'all', name: t('All Modules', lang), icon: Globe, color: 'bg-brand-blue' },
@@ -65,7 +65,7 @@ export default function StudyPage({
     { id: 'messenger', name: t('The Messenger', lang), icon: Scroll, color: 'bg-brand-blue', pdfUrl: '/The_Messenger_Study_Guide.pdf', videoUrl: 'https://youtu.be/arCAdJ2AAIg' },
     { id: 'salvation', name: t('Salvation', lang), icon: Heart, color: 'bg-brand-blue', pdfUrl: '/Salvation_Study_Guide.pdf', videoUrl: 'https://youtu.be/8ZIEesJT9Jg' },
     { id: 'judgement', name: t('Judgement Day', lang), icon: Scale, color: 'bg-brand-gold', pdfUrl: '/Judgement_Day_Study_Guide.pdf', videoUrl: 'https://youtu.be/inLrUSzKd7U' },
-    { id: 'false-churches', name: t('False Churches', lang), icon: ShieldCheck, color: 'bg-brand-dark', pdfUrl: '/False_Church_Study_Guide.pdf', videoUrl: 'https://youtu.be/X-OUhcCBzOY' },
+    { id: 'false-churches', name: t('False Churches', lang), icon: ShieldCheck, color: 'bg-brand-dark', pdfUrl: 'https://drive.google.com/file/d/1pK88Pn0vd3ek02eiTYcpjPI58VBKMuky/preview?usp=drive_link', videoUrl: 'https://youtu.be/X-OUhcCBzOY' },
     { id: 'true-church', name: t('The True Church', lang), icon: ShieldCheck, color: 'bg-brand-blue', pdfUrl: '/The_True_Church_Study_Guide.pdf', videoUrl: 'https://youtu.be/NrLZjwyCabU' },
     { id: 'eternal-covenant', name: t('Eternal Covenant', lang), icon: Infinity, color: 'bg-brand-blue', pdfUrl: '/Eternal_Covenant_Study_Guide.pdf', videoUrl: 'https://youtu.be/_42LiWGjFrk' },
     { id: 'election', name: t('Election', lang), icon: Star, color: 'bg-brand-gold', pdfUrl: '/Election_Study_Guide.pdf', videoUrl: 'https://youtu.be/JBq2SKDtSmk' },
@@ -322,8 +322,10 @@ export default function StudyPage({
                 <button
                   onClick={(e) => {
                       e.preventDefault();
-                      const url = categories.find(c => c.id === selectedCategory)?.pdfUrl;
-                      if (url && openPdf) openPdf(url);
+                      const category = categories.find(c => c.id === selectedCategory);
+                      const url = category?.pdfUrl;
+                      const title = category?.name;
+                      if (url && openPdf) openPdf(url, title);
                   }}
                   className="inline-flex items-center gap-2 px-6 py-2 bg-brand-blue/10 text-brand-blue border border-brand-blue/30 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-brand-blue hover:text-white transition-all shadow-sm cursor-pointer"
                 >
@@ -639,8 +641,10 @@ export default function StudyPage({
                             <button
                               onClick={(e) => {
                                   e.preventDefault();
-                                  const url = categories.find(c => c.id === currentLesson?.category)?.pdfUrl;
-                                  if (url && openPdf) openPdf(url);
+                                  const category = categories.find(c => c.id === currentLesson?.category);
+                                  const url = category?.pdfUrl;
+                                  const title = category?.name;
+                                  if (url && openPdf) openPdf(url, title);
                               }}
                               className="inline-flex items-center gap-2 px-4 py-1.5 bg-brand-gold/10 text-brand-gold border border-brand-gold/20 rounded-full font-bold text-[10px] uppercase tracking-widest hover:bg-brand-gold hover:text-brand-dark transition-all shadow-sm cursor-pointer"
                             >
