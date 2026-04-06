@@ -64,7 +64,7 @@ export default function StudyPage({
     { id: 'christ', name: t('Jesus Christ', lang), icon: Users, color: 'bg-brand-dark', pdfUrl: '/Jesus_Christ_Study_Guide.pdf', videoUrl: 'https://youtu.be/wpeUJVNQmh0' },
     { id: 'messenger', name: t('The Messenger', lang), icon: Scroll, color: 'bg-brand-blue', pdfUrl: 'https://drive.google.com/file/d/15bTsdOPXg7jEo8U6si_f4kQtmBAh2TdS/preview?usp=drive_link', videoUrl: 'https://youtu.be/arCAdJ2AAIg' },
     { id: 'salvation', name: t('Salvation', lang), icon: Heart, color: 'bg-brand-blue', pdfUrl: '/Salvation_Study_Guide.pdf', videoUrl: 'https://youtu.be/8ZIEesJT9Jg' },
-    { id: 'judgement', name: t('Judgement Day', lang), icon: Scale, color: 'bg-brand-gold', pdfUrl: '/Judgement_Day_Study_Guide.pdf', videoUrl: 'https://youtu.be/inLrUSzKd7U' },
+    { id: 'judgement', name: t('Judgement Day', lang), icon: Scale, color: 'bg-brand-gold', pdfUrl: 'https://drive.google.com/file/d/1dF5xqOW7rYPnKSTAOmWX5X17N5InFv_e/preview?usp=drive_link', videoUrl: 'https://youtu.be/inLrUSzKd7U' },
     { id: 'false-churches', name: t('False Churches', lang), icon: ShieldCheck, color: 'bg-brand-dark', pdfUrl: 'https://drive.google.com/file/d/1pK88Pn0vd3ek02eiTYcpjPI58VBKMuky/preview?usp=drive_link', videoUrl: 'https://youtu.be/X-OUhcCBzOY' },
     { id: 'true-church', name: t('The True Church', lang), icon: ShieldCheck, color: 'bg-brand-blue', pdfUrl: 'https://drive.google.com/file/d/1NUjMDRGObk6eooyYw7Nb13NvE90vO337/preview?usp=drive_link', videoUrl: 'https://youtu.be/NrLZjwyCabU' },
     { id: 'eternal-covenant', name: t('Eternal Covenant', lang), icon: Infinity, color: 'bg-brand-blue', pdfUrl: 'https://drive.google.com/file/d/1v875zO-MiNUiTiXGAY3NcJoPHdAM0laQ/preview?usp=drive_link', videoUrl: 'https://youtu.be/_42LiWGjFrk' },
