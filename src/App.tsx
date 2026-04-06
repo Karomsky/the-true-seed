@@ -416,10 +416,14 @@ export default function App() {
       </AnimatePresence>
 
       <Helmet>
-        <title>{lang === 'en' ? 'The True Seed | Church of Christ' : 'Ang Tunay na Binhi | Iglesia ni Cristo'}</title>
-        <meta name="description" content={lang === 'en' ? 'Explore the highly engineered theological structure of the Bible.' : 'Siyasatin ang mataas na pagkaka-engineer sa teolohiya ng Biblia.'} />
-        <meta property="og:title" content="The True Seed" />
-        <meta property="og:description" content="A dynamic exploration of divine biblical prophecy." />
+        <title>{lang === 'tl' ? 'Ang Tunay na Binhi | Iglesia ni Cristo' : (lang === 'es' ? 'La Verdadera Semilla | Iglesia de Cristo' : 'The True Seed | Church of Christ')}</title>
+        <meta name="description" content={hpT.hero_subtitle} />
+        <meta property="og:title" content="The True Seed | Church of Christ" />
+        <meta property="og:description" content={hpT.hero_subtitle} />
+        <meta property="og:url" content="https://www.r510.org/" />
+        <meta property="og:image" content="https://www.r510.org/og-image.png" />
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:image" content="https://www.r510.org/og-image.png" />
         <html lang={lang} />
       </Helmet>
 
