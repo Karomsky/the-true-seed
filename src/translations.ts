@@ -104,6 +104,7 @@ export const translations: TranslationDictionary = {
   'Sync Your Progress': { en: 'Sync Your Progress', tl: 'I-sync ang Iyong Pag-unlad', es: 'Sincroniza tu Progreso' },
   'Save your milestones in the cloud to access them on any device.': { en: 'Save your milestones in the cloud to access them on any device.', tl: 'I-save ang iyong mga tagumpay sa cloud para ma-access ang mga ito sa anumang device.', es: 'Guarda tus logros en la nube para acceder a ellos en cualquier dispositivo.' },
   'Sign In to Sync': { en: 'Sign In to Sync', tl: 'Mag-Sign In para Mag-sync', es: 'Iniciar Sesión para Sincronizar' },
+  'Return to Authority': { en: 'Return to Authority', tl: 'Bumalik sa Karapatan', es: 'Volver a Autoridad' },
 };
 
 /**

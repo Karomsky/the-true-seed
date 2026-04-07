@@ -51,16 +51,18 @@ export default function StudyPage({
   onHover,
   openPdf,
   userEmail,
-  onOpenAuth
+  onOpenAuth,
+  fromSection
 }: {
-  onBack: (scrollToContact?: boolean) => void,
+  onBack: (targetId?: string) => void,
   lang: 'en' | 'tl' | 'es',
   initialCategory?: string,
   initialLessonId?: number,
   onHover: (verse: string | null, x: number, y: number) => void,
   openPdf?: (url: string, title?: string) => void,
   userEmail?: string,
-  onOpenAuth: () => void
+  onOpenAuth: () => void,
+  fromSection?: string
 }) {
   const categories = [
     { id: 'all', name: t('All Modules', lang), icon: Globe, color: 'bg-brand-blue' },
@@ -223,14 +225,26 @@ export default function StudyPage({
           </svg>
         </div>
         <div className="w-full px-4 sm:px-6 lg:px-8 relative z-10 flex items-center justify-between">
-          <button
-            onClick={() => onBack()}
-            aria-label={t('Back to Home', lang)}
-            className="flex items-center gap-2 text-brand-gold hover:text-white transition-colors group"
-          >
-            <ArrowLeft className="h-5 w-5 transform group-hover:-translate-x-1 transition-transform" />
-            <span className="uppercase tracking-widest text-xs font-bold font-sans">Back to Home</span>
-          </button>
+          <div className="flex items-center gap-4">
+            <button
+              onClick={() => onBack()}
+              aria-label={t('Back to Home', lang)}
+              className="flex items-center gap-2 text-brand-gold hover:text-white transition-colors group"
+            >
+              <ArrowLeft className="h-5 w-5 transform group-hover:-translate-x-1 transition-transform" />
+              <span className="uppercase tracking-widest text-[10px] sm:text-xs font-bold font-sans">{lang === 'es' ? 'Volver a Inicio' : 'Back to Home'}</span>
+            </button>
+
+            {fromSection === 'authority' && (
+              <button
+                onClick={() => onBack('authority')}
+                className="flex items-center gap-2 bg-brand-gold/10 text-brand-gold px-4 py-2 rounded-full border border-brand-gold/30 hover:bg-brand-gold hover:text-brand-dark transition-all text-[10px] sm:text-xs font-bold uppercase tracking-widest btn-glow shadow-lg shadow-brand-gold/10"
+              >
+                <ChevronRight className="h-4 w-4 rotate-180" />
+                {t('Return to Authority', lang)}
+              </button>
+            )}
+          </div>
 
           <div className="hidden md:block">
             <h1 className="text-xl font-bold tracking-widest uppercase font-serif text-brand-gold">
@@ -780,7 +794,7 @@ export default function StudyPage({
 
                         <div className="flex flex-wrap justify-center gap-4">
                           <button
-                            onClick={() => onBack(true)}
+                            onClick={() => onBack('contact')}
                             className="bg-brand-gold text-brand-dark px-6 py-2 rounded-full font-bold font-sans text-sm hover:bg-yellow-400 transition-colors btn-glow"
                           >
                             {t('Contact a Minister', lang)}

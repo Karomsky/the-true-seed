@@ -15,7 +15,7 @@ import {
 import { motion } from 'motion/react';
 import { ScriptureLink } from './scriptureData';
 
-export default function BaptismPage({ onBack, lang, onHover }: { onBack: (scrollToContact?: boolean) => void, lang: 'en' | 'tl' | 'es', onHover: (verse: string | null, x: number, y: number) => void }) {
+export default function BaptismPage({ onBack, lang, onHover }: { onBack: (targetId?: string) => void, lang: 'en' | 'tl' | 'es', onHover: (verse: string | null, x: number, y: number) => void }) {
   const steps = [
     {
       id: 1,
@@ -266,7 +266,7 @@ export default function BaptismPage({ onBack, lang, onHover }: { onBack: (scroll
                 : "Ang paglalakbay sa kaligtasan ay nagsisimula sa isang hakbang. Pumasok sa kawan at isiguro ang iyong pangalan sa Aklat ng Buhay.")}
           </p>
           <button
-            onClick={() => onBack(true)}
+            onClick={() => onBack('contact')}
             className="bg-brand-blue text-white px-10 py-4 rounded-full font-bold uppercase tracking-widest hover:bg-brand-dark transition-all shadow-lg hover:-translate-y-1 btn-glow"
           >
             {lang === 'en' ? "Contact a Minister" : (lang === 'es' ? "Contactar a un Ministro" : "Makipag-ugnayan sa Ministro")}

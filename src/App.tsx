@@ -279,7 +279,7 @@ export default function App() {
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const [activeTimelineIndex, setActiveTimelineIndex] = useState(0);
   const [tooltip, setTooltip] = useState<{ verse: string | null; x: number; y: number }>({ verse: null, x: 0, y: 0 });
-  const [studyConfig, setStudyConfig] = useState<{ category?: string; lessonId?: number }>({});
+  const [studyConfig, setStudyConfig] = useState<{ category?: string; lessonId?: number; fromSection?: string }>({});
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [scrolled, setScrolled] = useState(false);
 
@@ -365,8 +365,8 @@ export default function App() {
     }
   };
 
-  const openStudy = (category?: string, lessonId?: number) => {
-    setStudyConfig({ category, lessonId });
+  const openStudy = (category?: string, lessonId?: number, fromSection?: string) => {
+    setStudyConfig({ category, lessonId, fromSection });
     setView('study');
     window.scrollTo(0, 0);
   };
@@ -377,11 +377,11 @@ export default function App() {
     window.scrollTo(0, 0);
   };
 
-  const handleBackToHome = (scrollToContact?: boolean) => {
+  const handleBackToHome = (targetId?: string) => {
     setView('home');
-    if (scrollToContact) {
+    if (targetId) {
       setTimeout(() => {
-        document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+        document.getElementById(targetId)?.scrollIntoView({ behavior: 'smooth' });
       }, 100);
     } else {
       window.scrollTo(0, 0);
@@ -463,11 +463,12 @@ export default function App() {
           onHover={handleHover}
           userEmail={user?.email}
           onOpenAuth={() => setIsAuthModalOpen(true)}
+          fromSection={studyConfig.fromSection}
         />
       ) : view === 'baptism' ? (
-        <BaptismPage lang={lang} onBack={handleBackToHome} onHover={handleHover} />
+        <BaptismPage lang={lang} onBack={() => handleBackToHome()} onHover={handleHover} />
       ) : view === 'admin' ? (
-        <AdminDashboard onBack={handleBackToHome} />
+        <AdminDashboard onBack={() => handleBackToHome()} />
       ) : (
         <>
           {/* Navigation */}
@@ -1083,7 +1084,7 @@ export default function App() {
                     <h4 className="font-bold text-brand-blue mb-2">{item.title}</h4>
                     <p className="text-sm text-gray-600 leading-relaxed flex-1 mb-4">{item.desc}</p>
                     <button
-                      onClick={() => openStudy(item.category, item.lessonId)}
+                      onClick={() => openStudy(item.category, item.lessonId, 'authority')}
                       className="text-xs font-bold text-brand-gold uppercase tracking-widest flex items-center gap-1 hover:text-brand-blue transition-colors"
                     >
                       {lang === 'tl' ? "Basahin ang Aralin" : (lang === 'es' ? "Leer Lección Completa" : "Read Full Lesson")}
