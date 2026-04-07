@@ -68,7 +68,7 @@ export default function StudyPage({
       pdfUrl: lang === 'es' 
         ? 'https://drive.google.com/file/d/1wNFpyMFZl-IWiUd4DYZWaMLOqALiJvjK/preview?usp=drive_link' 
         : 'https://drive.google.com/file/d/15bTsdOPXg7jEo8U6si_f4kQtmBAh2TdS/preview?usp=drive_link', 
-      videoUrl: 'https://youtu.be/arCAdJ2AAIg' 
+      videoUrl: lang === 'es' ? 'https://youtu.be/8dkIediXSPo' : 'https://youtu.be/arCAdJ2AAIg' 
     },
     { id: 'salvation', name: t('Salvation', lang), icon: Heart, color: 'bg-brand-blue', pdfUrl: '/Salvation_Study_Guide.pdf', videoUrl: 'https://youtu.be/8ZIEesJT9Jg' },
     { id: 'judgement', name: t('Judgement Day', lang), icon: Scale, color: 'bg-brand-gold', pdfUrl: 'https://drive.google.com/file/d/1dF5xqOW7rYPnKSTAOmWX5X17N5InFv_e/preview?usp=drive_link', videoUrl: 'https://youtu.be/inLrUSzKd7U' },

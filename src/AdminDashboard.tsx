@@ -67,8 +67,8 @@ export default function AdminDashboard({ onBack }: { onBack: () => void }) {
     };
 
     const fetchAllData = (token: string) => {
-        if (activeTab === 'inquiries') fetchInquiries(token);
-        else fetchStats(token);
+        fetchInquiries(token);
+        fetchStats(token);
     };
 
     const fetchInquiries = async (token: string) => {
@@ -282,7 +282,7 @@ export default function AdminDashboard({ onBack }: { onBack: () => void }) {
                         {/* Summary Cards */}
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                             {[
-                                { label: 'Total Visits', value: stats?.totalVisits || 0, icon: RefreshCw, color: 'text-blue-500' },
+                                { label: 'Visitor Sessions', value: stats?.totalVisits || 0, icon: Globe, color: 'text-blue-500' },
                                 { label: 'Registered Students', value: stats?.totalUsers || 0, icon: User, color: 'text-green-500' },
                                 { label: 'Inquiries Received', value: stats?.totalInquiries || 0, icon: Mail, color: 'text-brand-gold' }
                             ].map((stat, i) => (
