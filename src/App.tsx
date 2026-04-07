@@ -462,6 +462,7 @@ export default function App() {
           initialLessonId={studyConfig.lessonId}
           onHover={handleHover}
           userEmail={user?.email}
+          onOpenAuth={() => setIsAuthModalOpen(true)}
         />
       ) : view === 'baptism' ? (
         <BaptismPage lang={lang} onBack={handleBackToHome} onHover={handleHover} />
@@ -1040,27 +1041,32 @@ export default function App() {
                   {
                     title: lang === 'tl' ? "Banal na Komisyon" : (lang === 'es' ? "Comisión Divina" : "Divine Commission"),
                     desc: lang === 'tl' ? "Ang karapatan ay itinatatag sa pamamagitan ng pagiging 'sinugo' ng Diyos." : (lang === 'es' ? "La autoridad se establece al ser 'enviado' por Dios, distinguiendo a los verdaderos mensajeros de los falsos profetas." : "Authority is established by being 'sent' by God, distinguishing true messengers from false prophets."),
-                    lessonId: 17
+                    lessonId: 17,
+                    category: 'messenger'
                   },
                   {
                     title: lang === 'tl' ? "Eksklusibong Pahayag" : (lang === 'es' ? "Revelación Exclusiva" : "Exclusive Revelation"),
                     desc: lang === 'tl' ? "Ang 'lihim na kaalaman' ay inihahayag lamang sa mga pinili ng Diyos na suguin." : (lang === 'es' ? "El 'conocimiento secreto' se revela solo a aquellos que Dios elige enviar, un misterio guardado desde que el mundo comenzó." : "The 'secret knowledge' is revealed only to those God chooses to send, a mystery kept since the world began."),
-                    lessonId: 17
+                    lessonId: 18,
+                    category: 'messenger'
                   },
                   {
                     title: lang === 'tl' ? "Ang Isang Taong Bago" : (lang === 'es' ? "El Un Solo y Nuevo Hombre" : "The One New Man"),
                     desc: lang === 'tl' ? "Isang natatanging pag-unawa sa lohika ng kaligtasan: si Cristo bilang Ulo at ang Iglesia bilang Kaniyang Katawan." : (lang === 'es' ? "Una comprensión única de la lógica de la salvación: Cristo como la Cabeza y la Iglesia como Su Cuerpo." : "A unique understanding of the logic of salvation: Christ as the Head and the Church as His Body."),
-                    lessonId: 6
+                    lessonId: 46,
+                    category: 'one-new-man'
                   },
                   {
                     title: lang === 'tl' ? "Katuparan ng Hula" : (lang === 'es' ? "Cumplimiento Profético" : "Prophetic Fulfillment"),
                     desc: lang === 'tl' ? "Pagpapatunay sa pamamagitan ng pag-ayon sa hula ng Biblia, gaya ng 'anghel' na umaakyat mula sa silangan." : (lang === 'es' ? "Validación mediante la alineación con la profecía bíblica, como el 'ángel' que asciende del este." : "Validation through alignment with biblical prophecy, such as the 'angel' ascending from the east."),
-                    lessonId: 18
+                    lessonId: 16,
+                    category: 'messenger'
                   },
                   {
                     title: lang === 'tl' ? "Kasangkapan sa Kaligtasan" : (lang === 'es' ? "Herramienta para la Salvación" : "Tool for Salvation"),
                     desc: lang === 'tl' ? "Nasasandatahan ng 'tatak' upang gabayan ang mga tao pabalik sa kanilang orihinal na layunin." : (lang === 'es' ? "Equipado con el 'sello' para guiar a las personas de regreso a su propósito original: temer a Dios y guardar Sus mandamientos." : "Equipped with the 'seal' to guide people back to their original purpose: fearing God and keeping His commandments."),
-                    lessonId: 19
+                    lessonId: 19,
+                    category: 'salvation'
                   }
                 ].map((item, idx) => (
                   <motion.div
@@ -1077,7 +1083,7 @@ export default function App() {
                     <h4 className="font-bold text-brand-blue mb-2">{item.title}</h4>
                     <p className="text-sm text-gray-600 leading-relaxed flex-1 mb-4">{item.desc}</p>
                     <button
-                      onClick={() => openStudy('messenger', item.lessonId)}
+                      onClick={() => openStudy(item.category, item.lessonId)}
                       className="text-xs font-bold text-brand-gold uppercase tracking-widest flex items-center gap-1 hover:text-brand-blue transition-colors"
                     >
                       {lang === 'tl' ? "Basahin ang Aralin" : (lang === 'es' ? "Leer Lección Completa" : "Read Full Lesson")}

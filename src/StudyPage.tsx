@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   Book,
   Scroll,
@@ -27,7 +27,8 @@ import {
   FileText,
   Star,
   Bookmark,
-  PlayCircle
+  PlayCircle,
+  Cloud
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ScriptureLink } from './scriptureData';
@@ -49,7 +50,8 @@ export default function StudyPage({
   initialLessonId,
   onHover,
   openPdf,
-  userEmail
+  userEmail,
+  onOpenAuth
 }: {
   onBack: (scrollToContact?: boolean) => void,
   lang: 'en' | 'tl' | 'es',
@@ -57,7 +59,8 @@ export default function StudyPage({
   initialLessonId?: number,
   onHover: (verse: string | null, x: number, y: number) => void,
   openPdf?: (url: string, title?: string) => void,
-  userEmail?: string
+  userEmail?: string,
+  onOpenAuth: () => void
 }) {
   const categories = [
     { id: 'all', name: t('All Modules', lang), icon: Globe, color: 'bg-brand-blue' },
@@ -81,6 +84,7 @@ export default function StudyPage({
   ];
 
   const lessons = getLessons(lang, onHover);
+  const contentRef = useRef<HTMLElement>(null);
 
 
   const [selectedCategory, setSelectedCategory] = useState<string>(initialCategory);
@@ -134,6 +138,12 @@ export default function StudyPage({
   useEffect(() => {
     if (initialLessonId) {
       setActiveLesson(initialLessonId);
+      // Auto-scroll on mobile when arriving from an external section link
+      if (window.innerWidth < 1024 && contentRef.current) {
+        setTimeout(() => {
+          contentRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 300); // Small delay to ensure render is stable
+      }
     }
     if (initialCategory) {
       setSelectedCategory(initialCategory);
@@ -233,6 +243,32 @@ export default function StudyPage({
 
 
       <main className="w-full px-4 sm:px-6 lg:px-8 py-8">
+        {!userEmail && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="max-w-5xl mx-auto mb-8 bg-gradient-to-r from-brand-blue to-brand-dark rounded-[2rem] p-6 shadow-xl border-l-4 border-brand-gold flex flex-col md:flex-row items-center justify-between gap-6 overflow-hidden relative group"
+          >
+            <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:scale-110 transition-transform">
+              <Cloud size={100} className="text-white" />
+            </div>
+            <div className="flex items-center gap-5 relative z-10 text-center md:text-left">
+              <div className="p-3 bg-white/10 rounded-2xl border border-white/20">
+                <Cloud className="h-8 w-8 text-brand-gold animate-pulse" />
+              </div>
+              <div>
+                <h3 className="text-xl font-bold text-white font-serif">{t('Sync Your Progress', lang)}</h3>
+                <p className="text-white/70 text-sm leading-relaxed">{t('Save your milestones in the cloud to access them on any device.', lang)}</p>
+              </div>
+            </div>
+            <button
+              onClick={onOpenAuth}
+              className="bg-brand-gold text-brand-dark px-8 py-3 rounded-xl font-bold uppercase tracking-widest text-[10px] hover:bg-yellow-400 transition-all shadow-lg active:scale-95 whitespace-nowrap btn-glow"
+            >
+              {t('Sign In to Sync', lang)}
+            </button>
+          </motion.div>
+        )}
         <div className="max-w-5xl mx-auto mb-16">
           <div className="bg-white rounded-3xl shadow-2xl p-8 border border-gray-100">
             <div className="text-center mb-8">
@@ -589,7 +625,7 @@ export default function StudyPage({
           </aside>
 
           {/* Content Area */}
-          <section className="lg:col-span-9">
+          <section className="lg:col-span-9" ref={contentRef}>
             <AnimatePresence mode="wait">
               {(() => {
                 const currentLesson = lessons.find(l => l.id === activeLesson) || lessons[0];
@@ -685,6 +721,16 @@ export default function StudyPage({
                               <CheckCircle2 className="h-5 w-5" />
                               {t('Lesson Completed', lang)}
                             </div>
+                            {!userEmail && (
+                              <p className="text-[10px] text-gray-400 mt-2 italic px-1">
+                                {lang === 'en' 
+                                  ? "💡 Tip: Log in to save this milestone forever in the cloud." 
+                                  : (lang === 'es' 
+                                    ? "💡 Consejo: Inicia sesión para guardar este logro para siempre en la nube." 
+                                    : "💡 Tip: Mag-log in para i-save ang tagumpay na ito nang permanente sa cloud.") 
+                                }
+                              </p>
+                            )}
 
                             {showQuizPrompt && currentLesson?.quiz && (
                               <motion.div
