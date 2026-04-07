@@ -218,7 +218,7 @@ export async function createServer() {
   });
 
   app.post("/api/admin/reality-check-notify", async (req, res) => {
-    const { full_name, congregation, location_url, minister_name, photo_url } = req.body;
+    const { full_name, congregation, location_url, minister_name, photo_url, student_email, country } = req.body;
     const recipient = process.env.INQUIRY_RECIPIENT || "rova2k723@gmail.com";
     const smtpUser = process.env.SMTP_USER;
     const smtpPass = process.env.SMTP_PASS;
@@ -232,6 +232,7 @@ export async function createServer() {
           auth: { user: smtpUser, pass: smtpPass },
         });
 
+        // 1. Send Notification to Admin
         await transporter.sendMail({
           from: `"True Seed Reality Check" <${smtpUser}>`,
           to: recipient,
@@ -239,28 +240,58 @@ export async function createServer() {
           html: `
             <div style="font-family: serif; color: #1a1a1a; max-width: 600px; margin: 0 auto; border: 1px solid #eee; padding: 40px; border-radius: 20px;">
               <h2 style="color: #D4AF37; text-align: center; font-size: 24px;">New Reality Check Submission</h2>
-              <p style="text-align: center; color: #666;">A student has completed their final challenge.</p>
-              
               <div style="background: #fdfbf7; padding: 25px; border-radius: 15px; margin: 30px 0;">
                 <p><strong>Student Name:</strong> ${full_name || 'Anonymous'}</p>
+                <p><strong>Student Email:</strong> ${student_email || 'Not Provided'}</p>
+                <p><strong>Country:</strong> ${country || 'Not Provided'}</p>
                 <p><strong>Congregation:</strong> ${congregation}</p>
                 <p><strong>Location:</strong> <a href="${location_url}" style="color: #D4AF37;">View on Google Maps</a></p>
                 <p><strong>Minister:</strong> ${minister_name}</p>
               </div>
-
-              ${photo_url ? `
-                <div style="text-align: center; margin: 30px 0;">
-                  <p style="text-align: left; color: #666; font-size: 12px; margin-bottom: 10px;">Submitted Photo:</p>
-                  <img src="${photo_url}" style="max-width: 100%; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);" alt="Reality Check Photo" />
-                </div>
-              ` : ''}
-
-              <div style="text-align: center; margin-top: 40px; border-top: 1px solid #eee; pt: 20px;">
-                <p style="font-size: 12px; color: #999;">The True Seed Administration</p>
-              </div>
+              ${photo_url ? `<div style="text-align: center; margin: 30px 0;"><img src="${photo_url}" style="max-width: 100%; border-radius: 15px;" /></div>` : ''}
             </div>
           `,
         });
+
+        // 2. Send "Thank You" Email to Student (if email provided)
+        if (student_email) {
+          const isOutsidePH = country && !['philippines', 'ph', 'pilipinas'].includes(country.toLowerCase().trim());
+          
+          await transporter.sendMail({
+            from: `"The True Seed" <${smtpUser}>`,
+            to: student_email,
+            subject: `Congratulations on your Reality Check, ${full_name || 'Student'}!`,
+            html: `
+              <div style="font-family: serif; color: #1a1a1a; max-width: 600px; margin: 0 auto; border: 1px solid #eee; padding: 40px; border-radius: 20px;">
+                <h2 style="color: #D4AF37; text-align: center;">Mission Accomplished!</h2>
+                <p>Dear ${full_name || 'Student'},</p>
+                <p>Congratulations on completing your <strong>Reality Check</strong> challenge. Your dedication to seeking the truth is a blessing.</p>
+                
+                ${isOutsidePH ? `
+                  <p>If you feel moved to support our efforts in translation and hosting, you may do so via bank transfer:</p>
+                  
+                  <div style="background: #f8f9fa; border: 1px solid #e9ecef; padding: 25px; border-radius: 15px; margin: 30px 0;">
+                    <h3 style="color: #1e3a8a; margin-top: 0; font-size: 16px; text-transform: uppercase;">Bank Transfer Details</h3>
+                    <p style="margin: 5px 0;"><strong>Bank Name:</strong> BDO Unibank (USD Account)</p>
+                    <p style="margin: 5px 0;"><strong>Account Holder:</strong> ROMEO V ALVAREZ</p>
+                    <p style="margin: 5px 0;"><strong>Account Number:</strong> 1089 4004 7724</p>
+                    <p style="margin: 5px 0;"><strong>SWIFT Code:</strong> BNORPHMM</p>
+                    <p style="font-size: 12px; color: #666; margin-top: 15px;"><em>Please use "True Seed Support" as the reference.</em></p>
+                  </div>
+
+                  <p style="font-size: 14px; line-height: 1.6; color: #444;">
+                    Every contribution, no matter the size, ensures that the True Word continues to reach seekers across the ends of the earth.
+                  </p>
+                ` : ''}
+                
+                <p style="margin-top: 40px; border-top: 1px solid #eee; padding-top: 20px; font-size: 12px; color: #999; text-align: center;">
+                  The True Seed Administration
+                </p>
+              </div>
+            `,
+          });
+        }
+
         res.json({ success: true });
       } catch (error) {
         console.error("Reality check notification failed:", error);

@@ -99,6 +99,8 @@ export const translations: TranslationDictionary = {
     es: '¡Felicidades! Has dado el primer paso hacia la promesa. Que Dios continúe guiando tu camino.'
   },
   'Back to Study': { en: 'Back to Study', tl: 'Bumalik sa Pag-aaral', es: 'Volver al Estudio' },
+  'Support the Mission': { en: 'Support the Mission', tl: 'Suportahan ang Misyon', es: 'Apoyar la Misión' },
+  'Country of Residence': { en: 'Country of Residence', tl: 'Bansang Tinitirhan', es: 'País de Residencia' },
 };
 
 /**

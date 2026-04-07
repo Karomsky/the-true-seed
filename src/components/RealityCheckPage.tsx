@@ -10,6 +10,7 @@ import {
   Building2,
   Image as ImageIcon,
   Loader2,
+  Globe,
   X
 } from 'lucide-react';
 import { t, Language } from '../translations';
@@ -19,13 +20,15 @@ interface RealityCheckPageProps {
   onBack: () => void;
   lang: Language;
   userName?: string;
+  userEmail?: string;
 }
 
-export default function RealityCheckPage({ onBack, lang, userName }: RealityCheckPageProps) {
+export default function RealityCheckPage({ onBack, lang, userName, userEmail }: RealityCheckPageProps) {
   const [formData, setFormData] = useState({
     congregation: '',
     location: '',
     minister: '',
+    country: '',
   });
   const [photo, setPhoto] = useState<File | null>(null);
   const [photoPreview, setPhotoPreview] = useState<string | null>(null);
@@ -33,6 +36,22 @@ export default function RealityCheckPage({ onBack, lang, userName }: RealityChec
   const [isSuccess, setIsSuccess] = useState(false);
 
   const [error, setError] = useState<string | null>(null);
+
+  // Auto-detect country on mount for seamless conditional email logic
+  React.useEffect(() => {
+    const detectCountry = async () => {
+      try {
+        const response = await fetch('https://ipapi.co/json/');
+        const data = await response.json();
+        if (data.country_name) {
+          setFormData(prev => ({ ...prev, country: data.country_name }));
+        }
+      } catch (err) {
+        console.warn('Failed to auto-detect country, will use default logic.', err);
+      }
+    };
+    detectCountry();
+  }, []);
 
   const handlePhotoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -100,7 +119,9 @@ export default function RealityCheckPage({ onBack, lang, userName }: RealityChec
             congregation: formData.congregation,
             location_url: formData.location,
             minister_name: formData.minister,
-            photo_url: photoUrl
+            country: formData.country,
+            photo_url: photoUrl,
+            student_email: userEmail
           })
         });
       } catch (err) {

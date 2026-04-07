@@ -44,6 +44,7 @@ import { getLessons } from './data/lessons';
 
 const TRANSLATIONS: Record<string, Record<string, string>> = {
   en: {
+    nav_support: "Support",
     nav_theology: "Theology",
     nav_solution: "Legal Solution",
     nav_history: "History",
@@ -88,6 +89,7 @@ const TRANSLATIONS: Record<string, Record<string, string>> = {
     footer_desc: "Dedicated to illuminating the Divine Journey of the Church of Christ. May the true word guide you to redemption."
   },
   tl: {
+    nav_support: "Suporta",
     nav_theology: "Teolohiya",
     nav_solution: "Legal na Solusyon",
     nav_history: "Kasaysayan",
@@ -132,6 +134,7 @@ const TRANSLATIONS: Record<string, Record<string, string>> = {
     footer_desc: "Inilaan upang itanghal ang Banal na Paglalakbay ng Iglesia ni Cristo. Nawa'y gabayan ka ng tunay na salita patungo sa katubusan."
   },
   es: {
+    nav_support: "Apoyo",
     nav_theology: "Teología",
     nav_solution: "Solución Legal",
     nav_history: "Historia",
@@ -458,6 +461,7 @@ export default function App() {
           initialCategory={studyConfig.category}
           initialLessonId={studyConfig.lessonId}
           onHover={handleHover}
+          userEmail={user?.email}
         />
       ) : view === 'baptism' ? (
         <BaptismPage lang={lang} onBack={handleBackToHome} onHover={handleHover} />
@@ -486,7 +490,7 @@ export default function App() {
                       <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-gold transition-all duration-300 group-hover:w-full"></span>
                     </a>
                   ))}
-                  <button
+                   <button
                     onClick={() => openStudy()}
                     className="flex items-center gap-2 bg-brand-gold text-brand-dark px-5 py-2 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-yellow-400 transition-all hover:scale-105 active:scale-95 btn-glow"
                   >
@@ -573,7 +577,7 @@ export default function App() {
                         {hpT[`nav_${item}` as keyof typeof hpT] || item.charAt(0).toUpperCase() + item.slice(1).replace('-', ' ')}
                       </a>
                     ))}
-                    <button
+                     <button
                       onClick={() => {
                         openStudy();
                         setIsMenuOpen(false);

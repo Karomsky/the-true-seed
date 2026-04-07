@@ -78,6 +78,11 @@ graph TD
 3.  **Data Persistence**: The app connects to Supabase for all user data (Inquiries, Reality Check Photos, and User Progress).
 4.  **Marketing Integration**: A main Squarespace site acts as the public landing page, directing serious seekers to the Railway-hosted Study Center for deep interactive learning.
 
+### Study Guide Hosting
+We utilize a hybrid model for study guides:
+- **Local Assets**: Essential foundational PDFs are hosted in the `/public` folder for direct bundling.
+- **External Hosting (Google Drive)**: Advanced or larger resources are hosted on Google Drive and rendered via a secure proxy in our internal `PDFViewerPage` to reduce initial bundle size and ensure easy content updates.
+
 ---
 
-*Last Updated: April 3, 2026*
+*Last Updated: April 6, 2026*

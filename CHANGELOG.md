@@ -5,6 +5,16 @@ All notable changes to the *The True Seed* platform will be documented in this f
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.3.3] - 2026-04-07
+### Added
+- Spanish (ES) Study Guide for "The Messenger" category.
+- Support for language-specific PDF Study Guides in Study Center.
+
+## [0.3.2] - 2026-04-06
+### Added
+- External PDF Viewer Hosting: Integrated Google Drive-based PDF hosting for key study guides.
+- Enhanced In-App PDF Viewer: Updated the internal PDFViewerPage to support external URLs.
+
 ## [0.3.0] - 2026-04-02
 ### Added
 - **Full Spanish Localization**: Completed Spanish translations for all 45 lessons including:
@@ -38,11 +48,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-## [0.3.1] - 2026-04-04
+## [0.3.2] - 2026-04-06
+### Added
+- **External PDF Viewer Hosting**: Integrated Google Drive-based PDF hosting for key study guides (False Churches, Messenger, Judgement Day, etc.) to improve availability and loading speeds.
+- **Enhanced In-App PDF Viewer**: Updated the internal `PDFViewerPage` to support external URLs and dynamic title rendering for a better user experience across all languages.
+
 ### Changed
-- **Forced Deployment**: Triggered a fresh build to ensure Spanish (ES) localization fixes are live and functional in the production environment.
-- **Verification**: Confirmed local functionality of the Spanish language switcher and study center.
+- **PWA Social Optimization**: Updated Open Graph and Twitter card metadata for `r510.org` to ensure premium social sharing previews.
+- **Resource Management**: Optimized `VitePWA` service worker configuration to handle larger PDF assets and ensure aggressive offline caching for essential UI elements.
 
 ---
 
-*Last Updated: April 4, 2026*
+*Last Updated: April 6, 2026*
