@@ -282,6 +282,7 @@ export default function App() {
   const [studyConfig, setStudyConfig] = useState<{ category?: string; lessonId?: number; fromSection?: string }>({});
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [scrolled, setScrolled] = useState(false);
+  const [scrollTarget, setScrollTarget] = useState<string | null>(null);
 
   // PWA update notification
   const { needRefresh: [needRefresh], updateServiceWorker } = useRegisterSW({
@@ -339,6 +340,20 @@ export default function App() {
     }
   }, [user, token, syncProgress]);
 
+  // Handle scroll to section after view transition
+  useEffect(() => {
+    if (view === 'home' && scrollTarget) {
+      const timer = setTimeout(() => {
+        const element = document.getElementById(scrollTarget);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+        setScrollTarget(null);
+      }, 500); // Wait for view transition
+      return () => clearTimeout(timer);
+    }
+  }, [view, scrollTarget]);
+
   const hpT = TRANSLATIONS[lang] || TRANSLATIONS.en;
 
   const handleHover = (verse: string | null, x: number, y: number) => {
@@ -380,9 +395,7 @@ export default function App() {
   const handleBackToHome = (targetId?: string) => {
     setView('home');
     if (targetId) {
-      setTimeout(() => {
-        document.getElementById(targetId)?.scrollIntoView({ behavior: 'smooth' });
-      }, 100);
+      setScrollTarget(targetId);
     } else {
       window.scrollTo(0, 0);
     }
