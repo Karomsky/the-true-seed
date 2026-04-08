@@ -265,13 +265,13 @@ export default function StudyPage({
             </button>
           </motion.div>
         )}
-        <div className="max-w-5xl mx-auto mb-16">
-          <div className="bg-white rounded-3xl shadow-2xl p-8 border border-gray-100">
-            <div className="text-center mb-8">
-              <h2 className="text-2xl font-bold text-brand-blue mb-2 font-serif">
+        <div className="max-w-5xl mx-auto mb-6 md:mb-16">
+          <div className="bg-white rounded-3xl shadow-xl md:shadow-2xl p-6 md:p-8 border border-gray-100">
+            <div className="text-center mb-4 md:mb-8">
+              <h2 className="hidden md:block text-2xl font-bold text-brand-blue mb-2 font-serif">
                 {t('What would you like to learn today?', lang)}
               </h2>
-              <p className="text-gray-500 text-sm">
+              <p className="text-brand-blue/80 italic font-serif text-sm md:text-gray-500 md:text-sm md:font-sans md:not-italic">
                 {t('Explore our library of biblical lessons and prophecies.', lang)}
               </p>
             </div>
@@ -298,7 +298,7 @@ export default function StudyPage({
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              className="mt-6 mb-12 flex flex-wrap justify-center gap-4"
+              className="mt-6 mb-4 md:mb-12 flex flex-wrap justify-center gap-4"
             >
               {categories.find(c => c.id === selectedCategory)?.pdfUrl && (
                 <button
@@ -500,7 +500,7 @@ export default function StudyPage({
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12">
 
           {/* Sidebar Navigation */}
           <aside className="lg:col-span-3 space-y-6 lg:sticky lg:top-24 lg:h-[calc(100vh-200px)] overflow-y-auto pr-2 custom-scrollbar">
