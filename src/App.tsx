@@ -479,9 +479,9 @@ export default function App() {
           fromSection={studyConfig.fromSection}
         />
       ) : view === 'baptism' ? (
-        <BaptismPage lang={lang} onBack={() => handleBackToHome()} onHover={handleHover} />
+        <BaptismPage lang={lang} onBack={handleBackToHome} onHover={handleHover} />
       ) : view === 'admin' ? (
-        <AdminDashboard onBack={() => handleBackToHome()} />
+        <AdminDashboard onBack={handleBackToHome} />
       ) : (
         <>
           {/* Navigation */}
