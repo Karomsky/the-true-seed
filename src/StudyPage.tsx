@@ -283,8 +283,8 @@ export default function StudyPage({
                     key={cat.id}
                     onClick={() => handleCategoryChange(cat.id)}
                     className={`flex items-center gap-2 px-6 py-3 rounded-xl transition-all border-2 ${selectedCategory === cat.id
-                      ? `border-brand-gold ${cat.color} text-white shadow-md scale-105`
-                      : 'border-gray-100 bg-white text-gray-500 hover:border-brand-blue/30'
+                      ? 'border-green-500 bg-green-500 text-white shadow-[0_0_15px_rgba(34,197,94,0.5)] scale-110'
+                      : 'border-gray-100 bg-white text-gray-500 hover:border-green-500/30 hover:text-green-600'
                       }`}
                   >
                     <cat.icon className={`h-4 w-4 ${selectedCategory === cat.id ? 'text-brand-gold' : 'text-gray-400'}`} />
@@ -309,7 +309,7 @@ export default function StudyPage({
                       const title = category?.name;
                       if (url && openPdf) openPdf(url, title);
                   }}
-                  className="inline-flex items-center gap-2 px-6 py-2 bg-brand-blue/10 text-brand-blue border border-brand-blue/30 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-brand-blue hover:text-white transition-all shadow-sm cursor-pointer"
+                  className="inline-flex items-center gap-2 px-6 py-2 bg-red-500/10 text-red-600 border border-red-500/30 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-red-600 hover:text-white transition-all shadow-sm cursor-pointer"
                 >
                   <FileText className="h-4 w-4" />
                   {t('View Study Guide', lang)}
@@ -321,7 +321,7 @@ export default function StudyPage({
                   href={categories.find(c => c.id === selectedCategory)?.videoUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-6 py-2 bg-red-500/10 text-red-600 border border-red-500/30 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-red-600 hover:text-white transition-all shadow-sm"
+                  className="inline-flex items-center gap-2 px-6 py-2 bg-green-500/10 text-green-600 border border-green-500/30 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-green-600 hover:text-white transition-all shadow-sm"
                 >
                   <PlayCircle className="h-4 w-4" />
                   {t('Watch Video', lang)}
@@ -330,7 +330,7 @@ export default function StudyPage({
               )}
               <button
                 onClick={() => setShowAchievements(!showAchievements)}
-                className={`inline-flex items-center gap-2 px-6 py-2 rounded-full font-bold text-xs uppercase tracking-widest transition-all shadow-sm ${showAchievements ? 'bg-brand-gold text-brand-dark hover:bg-yellow-400' : 'bg-gray-100 text-gray-500 hover:bg-gray-200'}`}
+                className={`inline-flex items-center gap-2 px-6 py-2 rounded-full font-bold text-xs uppercase tracking-widest transition-all shadow-sm ${showAchievements ? 'bg-red-600 text-white hover:bg-red-700' : 'bg-red-500/10 text-red-600 border border-red-500/30 hover:bg-red-500/20'}`}
               >
                 <Trophy className="h-4 w-4" />
                 {showAchievements ? t('Hide Progress', lang) : t('View Progress', lang)}
@@ -624,7 +624,7 @@ export default function StudyPage({
                               href={categories.find(c => c.id === currentLesson?.category)?.videoUrl}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="inline-flex items-center gap-2 px-4 py-1.5 bg-red-500/10 text-red-600 border border-red-500/20 rounded-full font-bold text-[10px] uppercase tracking-widest hover:bg-red-600 hover:text-white transition-all shadow-sm"
+                              className="inline-flex items-center gap-2 px-4 py-1.5 bg-green-500/10 text-green-600 border border-green-500/20 rounded-full font-bold text-[10px] uppercase tracking-widest hover:bg-green-600 hover:text-white transition-all shadow-sm"
                             >
                               <PlayCircle className="h-3.5 w-3.5" />
                               {t('Watch Video', lang)}
@@ -640,7 +640,7 @@ export default function StudyPage({
                                   const title = category?.name;
                                   if (url && openPdf) openPdf(url, title);
                               }}
-                              className="inline-flex items-center gap-2 px-4 py-1.5 bg-brand-gold/10 text-brand-gold border border-brand-gold/20 rounded-full font-bold text-[10px] uppercase tracking-widest hover:bg-brand-gold hover:text-brand-dark transition-all shadow-sm cursor-pointer"
+                              className="inline-flex items-center gap-2 px-4 py-1.5 bg-red-500/10 text-red-600 border border-red-500/20 rounded-full font-bold text-[10px] uppercase tracking-widest hover:bg-red-600 hover:text-white transition-all shadow-sm cursor-pointer"
                             >
                               <FileText className="h-3.5 w-3.5" />
                               {t('Study Guide', lang)}
