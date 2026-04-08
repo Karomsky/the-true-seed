@@ -300,25 +300,6 @@ export default function StudyPage({
               animate={{ opacity: 1, y: 0 }}
               className="mt-6 mb-12 flex flex-wrap justify-center gap-4"
             >
-              <button
-                onClick={() => setShowAchievements(!showAchievements)}
-                className={`inline-flex items-center gap-2 px-6 py-2 rounded-full font-bold text-xs uppercase tracking-widest transition-all shadow-sm ${showAchievements ? 'bg-brand-gold text-brand-dark hover:bg-yellow-400' : 'bg-gray-100 text-gray-500 hover:bg-gray-200'}`}
-              >
-                <Trophy className="h-4 w-4" />
-                {showAchievements ? t('Hide Progress', lang) : t('View Progress', lang)}
-              </button>
-              {categories.find(c => c.id === selectedCategory)?.videoUrl && (
-                <a
-                  href={categories.find(c => c.id === selectedCategory)?.videoUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-6 py-2 bg-red-500/10 text-red-600 border border-red-500/30 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-red-600 hover:text-white transition-all shadow-sm"
-                >
-                  <PlayCircle className="h-4 w-4" />
-                  {t('Watch Video', lang)}
-                  <ExternalLink className="h-3 w-3 opacity-50" />
-                </a>
-              )}
               {categories.find(c => c.id === selectedCategory)?.pdfUrl && (
                 <button
                   onClick={(e) => {
@@ -335,6 +316,25 @@ export default function StudyPage({
                   <ExternalLink className="h-3 w-3 opacity-50" />
                 </button>
               )}
+              {categories.find(c => c.id === selectedCategory)?.videoUrl && (
+                <a
+                  href={categories.find(c => c.id === selectedCategory)?.videoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-6 py-2 bg-red-500/10 text-red-600 border border-red-500/30 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-red-600 hover:text-white transition-all shadow-sm"
+                >
+                  <PlayCircle className="h-4 w-4" />
+                  {t('Watch Video', lang)}
+                  <ExternalLink className="h-3 w-3 opacity-50" />
+                </a>
+              )}
+              <button
+                onClick={() => setShowAchievements(!showAchievements)}
+                className={`inline-flex items-center gap-2 px-6 py-2 rounded-full font-bold text-xs uppercase tracking-widest transition-all shadow-sm ${showAchievements ? 'bg-brand-gold text-brand-dark hover:bg-yellow-400' : 'bg-gray-100 text-gray-500 hover:bg-gray-200'}`}
+              >
+                <Trophy className="h-4 w-4" />
+                {showAchievements ? t('Hide Progress', lang) : t('View Progress', lang)}
+              </button>
             </motion.div>
 
             {/* Progress Section */}
@@ -513,7 +513,12 @@ export default function StudyPage({
               {filteredLessons.map((lesson) => (
                 <button
                   key={lesson.id}
-                  onClick={() => setActiveLesson(lesson.id)}
+                  onClick={() => {
+                    setActiveLesson(lesson.id);
+                    if (window.innerWidth < 1024 && contentRef.current) {
+                      contentRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                  }}
                   className={`w-full text-left p-4 rounded-xl transition-all flex items-center gap-4 group ${activeLesson === lesson.id
                     ? 'bg-white shadow-md border-l-4 border-brand-gold'
                     : 'hover:bg-white/50'
