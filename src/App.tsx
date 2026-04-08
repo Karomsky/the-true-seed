@@ -570,14 +570,16 @@ export default function App() {
                 >
                   <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                     {['theology', 'solution', 'history', 'authority', 'membership', 'mission'].map((item) => (
-                      <a
+                      <button
                         key={item}
-                        href={`#${item}`}
-                        onClick={() => setIsMenuOpen(false)}
-                        className="block px-3 py-2 text-white hover:text-brand-gold text-base font-medium"
+                        onClick={() => {
+                          setIsMenuOpen(false);
+                          handleBackToHome(item);
+                        }}
+                        className="block w-full text-left px-3 py-2 text-white hover:text-brand-gold text-base font-medium transition-colors"
                       >
                         {hpT[`nav_${item}` as keyof typeof hpT] || item.charAt(0).toUpperCase() + item.slice(1).replace('-', ' ')}
-                      </a>
+                      </button>
                     ))}
                      <button
                       onClick={() => {
