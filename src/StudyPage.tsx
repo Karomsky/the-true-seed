@@ -283,7 +283,7 @@ export default function StudyPage({
                     key={cat.id}
                     onClick={() => handleCategoryChange(cat.id)}
                     className={`flex items-center gap-2 px-6 py-3 rounded-xl transition-all border-2 ${selectedCategory === cat.id
-                      ? 'border-green-500/30 bg-green-500/10 text-green-600 shadow-sm scale-105 md:border-green-500 md:bg-green-500 md:text-white md:shadow-[0_0_15px_rgba(34,197,94,0.5)] md:scale-110 font-black'
+                      ? 'border-green-500/30 bg-green-500/10 text-green-600 shadow-sm scale-105 font-bold'
                       : 'border-gray-100 bg-white text-gray-500 hover:border-green-500/30 hover:text-green-600'
                       }`}
                   >
