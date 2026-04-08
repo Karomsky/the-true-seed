@@ -718,21 +718,8 @@ export default function StudyPage({
                         )}
                       </div>
 
-                      <div className="mt-12 pt-8 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-6">
-                        <div className="flex items-center gap-2 text-gray-400 text-xs font-sans uppercase tracking-widest">
-                          <Book className="h-4 w-4" />
-                          Study Resource
-                        </div>
-
-                        <div className="flex flex-wrap justify-center gap-4">
-                          <button
-                            onClick={() => onBack('contact')}
-                            className="bg-brand-gold text-brand-dark px-6 py-2 rounded-full font-bold font-sans text-sm hover:bg-yellow-400 transition-colors btn-glow"
-                          >
-                            {t('Contact a Minister', lang)}
-                          </button>
-
-                          <div className="flex gap-4">
+                      <div className="mt-12 pt-8 border-t border-gray-100 flex justify-center">
+                        <div className="flex gap-4">
                             <button
                               onClick={() => {
                                 const availableLessons = lessons.filter(l => l.category === selectedCategory);
@@ -760,7 +747,6 @@ export default function StudyPage({
                           </div>
                         </div>
                       </div>
-                    </div>
                   </motion.div>
                 );
               })()}
