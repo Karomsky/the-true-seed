@@ -91,7 +91,6 @@ export default function StudyPage({
 
   const [selectedCategory, setSelectedCategory] = useState<string>(initialCategory);
   const [activeLesson, setActiveLesson] = useState(initialLessonId || 1);
-  const [searchQuery, setSearchQuery] = useState('');
   const { completedLessons, markLessonComplete, bookmarkedLessons, toggleBookmark, fullName, setFullName } = useAppStore();
   const [hasReadCurrent, setHasReadCurrent] = useState(false);
   const [showQuizPrompt, setShowQuizPrompt] = useState(false);
@@ -174,24 +173,7 @@ export default function StudyPage({
       return bookmarkedLessons.includes(l.id);
     }
 
-    const query = searchQuery.toLowerCase().trim();
-    const matchesCategory = selectedCategory === 'all' || l.category === selectedCategory;
-    if (query === '') return matchesCategory;
-
-    const matchesTitle = l.title.toLowerCase().includes(query) ||
-      l.titleTl.toLowerCase().includes(query);
-    const matchesKeywords = (l.searchKeywords?.toLowerCase().includes(query)) ||
-      (l.searchKeywordsTl?.toLowerCase().includes(query));
-    const matchesContent = (l.searchContent?.toLowerCase().includes(query)) ||
-      (l.searchContentTl?.toLowerCase().includes(query));
-    const matchesQuiz = l.quiz?.questions.some(q => {
-      const qText = typeof q.question === 'string' ? q.question.toLowerCase() : '';
-      const expText = typeof q.explanation === 'string' ? q.explanation.toLowerCase() : '';
-      const optionsText = q.options.some(o => typeof o === 'string' ? o.toLowerCase().includes(query) : false);
-      return qText.includes(query) || expText.includes(query) || optionsText;
-    });
-    const matchesSearch = matchesTitle || matchesKeywords || matchesContent || matchesQuiz;
-    return matchesCategory && matchesSearch;
+    return selectedCategory === 'all' || l.category === selectedCategory;
   });
 
   const handleCategoryChange = (categoryId: string) => {
@@ -293,44 +275,6 @@ export default function StudyPage({
                 {t('Explore our library of biblical lessons and prophecies.', lang)}
               </p>
             </div>
-
-            <form
-              onSubmit={(e) => e.preventDefault()}
-              className="relative mb-8 group"
-            >
-              <div className="absolute inset-y-0 left-0 pl-6 flex items-center pointer-events-none">
-                <Search className="h-6 w-6 text-brand-gold group-focus-within:text-brand-blue transition-colors" />
-              </div>
-              <input
-                type="text"
-                aria-label={t('Search for a lesson topic', lang)}
-                placeholder={t('Search for a lesson topic...', lang)}
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-16 pr-32 py-5 bg-gray-50 border-2 border-transparent rounded-2xl focus:bg-white focus:border-brand-gold focus:ring-4 focus:ring-brand-gold/10 outline-none font-sans text-lg transition-all placeholder:text-gray-400"
-              />
-              <div className="absolute inset-y-0 right-0 flex items-center pr-3 gap-2">
-                {searchQuery && (
-                  <button
-                    type="button"
-                    onClick={() => setSearchQuery('')}
-                    className="p-2 text-gray-400 hover:text-brand-blue transition-colors"
-                    title={t('Clear search', lang)}
-                    aria-label={t('Clear search', lang)}
-                  >
-                    <X className="h-5 w-5" />
-                  </button>
-                )}
-                <button
-                  type="submit"
-                  className="bg-brand-blue text-white p-2.5 rounded-xl font-bold text-sm hover:bg-brand-dark transition-all shadow-md active:scale-95 flex items-center justify-center"
-                  title={t('Search', lang)}
-                  aria-label={t('Search', lang)}
-                >
-                  <Search className="h-5 w-5" />
-                </button>
-              </div>
-            </form>
 
             <div className="overflow-x-auto pb-2 custom-scrollbar">
               <div className="flex justify-center gap-3 min-w-max">
@@ -563,15 +507,8 @@ export default function StudyPage({
             <div className="space-y-2">
               <div className="px-4 py-2 flex items-center justify-between">
                 <h2 className="text-[10px] uppercase tracking-[0.2em] font-bold text-gray-500 font-sans">
-                  {searchQuery
-                    ? (t('Search Results', lang))
-                    : (t('Module Selection', lang))}
+                  {t('Module Selection', lang)}
                 </h2>
-                {searchQuery && (
-                  <span className="text-[9px] bg-brand-blue/10 text-brand-blue px-2 py-0.5 rounded-full font-bold animate-pulse">
-                    {t('Global Search Active', lang)}
-                  </span>
-                )}
               </div>
               {filteredLessons.map((lesson) => (
                 <button
@@ -592,11 +529,6 @@ export default function StudyPage({
                     </div>
                     <div className="flex items-center gap-2 mt-0.5">
                       <div className="text-[10px] uppercase tracking-widest text-gray-400">Lesson {lesson.id < 10 ? `0${lesson.id}` : lesson.id}</div>
-                      {searchQuery && (
-                        <div className="text-[9px] uppercase tracking-tighter px-1.5 py-0.5 bg-gray-100 text-gray-500 rounded font-bold">
-                          {categories.find(c => c.id === lesson.category)?.name}
-                        </div>
-                      )}
                     </div>
                   </div>
                   <ChevronRight className={`h-4 w-4 transition-transform ${activeLesson === lesson.id ? 'text-brand-gold translate-x-1' : 'text-gray-300'}`} />
