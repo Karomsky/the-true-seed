@@ -191,7 +191,7 @@ export const getLessons = (
       searchContentEs: lesson01Fm.searchContentEs,
       content: <Lesson01Content lang={lang} onHover={onHover} />,
       quiz: {
-        title: lz("The Revelation", "Ang Pahayag", "La Revelación"),
+        title: lz(lesson01Fm.quizTitle, lesson01Fm.quizTitleTl, lesson01Fm.quizTitleEs),
         questions: [
           {
             question: lz(
@@ -262,7 +262,7 @@ export const getLessons = (
       searchContentEs: lesson02Fm.searchContentEs,
       content: <Lesson02Content lang={lang} onHover={onHover} />,
       quiz: {
-        title: lz("Recording and Sealing", "Pagtatala at Pagtatatak", "Registro y Sellado"),
+        title: lz(lesson02Fm.quizTitle, lesson02Fm.quizTitleTl, lesson02Fm.quizTitleEs),
         questions: [
           {
             question: lz(
@@ -348,7 +348,7 @@ export const getLessons = (
       searchContentEs: lesson03Fm.searchContentEs,
       content: <Lesson03Content lang={lang} onHover={onHover} />,
       quiz: {
-        title: lz("Composition and Authority", "Komposisyon at Karapatan", "Composición y Autoridad"),
+        title: lz(lesson03Fm.quizTitle, lesson03Fm.quizTitleTl, lesson03Fm.quizTitleEs),
         questions: [
           {
             question: lz(
@@ -419,7 +419,7 @@ export const getLessons = (
       searchContentEs: lesson04Fm.searchContentEs,
       content: <Lesson04Content lang={lang} onHover={onHover} />,
       quiz: {
-        title: lz("Prophetic Precision", "Eksaktong mga Hula", "Precisión Profética"),
+        title: lz(lesson04Fm.quizTitle, lesson04Fm.quizTitleTl, lesson04Fm.quizTitleEs),
         questions: [
           {
             question: lz(
@@ -505,7 +505,7 @@ export const getLessons = (
       searchContentEs: lesson05Fm.searchContentEs,
       content: <Lesson05Content lang={lang} onHover={onHover} />,
       quiz: {
-        title: lz("Bible and Science", "Ang Biblia at Agham", "La Biblia y la Ciencia"),
+        title: lz(lesson05Fm.quizTitle, lesson05Fm.quizTitleTl, lesson05Fm.quizTitleEs),
         questions: [
           {
             question: lz(
@@ -591,7 +591,7 @@ export const getLessons = (
       searchContentEs: lesson06Fm.searchContentEs,
       content: <Lesson06Content lang={lang} onHover={onHover} />,
       quiz: {
-        title: lz("The Five Creations & The New Man", "Ang Limang Paglikha at Ang Isang Bagong Tao", "Las Cinco Creaciones y el Solo y Nuevo Hombre"),
+        title: lz(lesson06Fm.quizTitle, lesson06Fm.quizTitleTl, lesson06Fm.quizTitleEs),
         questions: [
           {
             question: lz(
@@ -700,7 +700,7 @@ export const getLessons = (
       searchContentEs: lesson07Fm.searchContentEs,
       content: <Lesson07Content lang={lang} onHover={onHover} />,
       quiz: {
-        title: "The Only True God",
+        title: lz(lesson07Fm.quizTitle, lesson07Fm.quizTitleTl, lesson07Fm.quizTitleEs),
         questions: [
           {
             question: lz(
@@ -761,7 +761,7 @@ export const getLessons = (
       searchContentEs: lesson08Fm.searchContentEs,
       content: <Lesson08Content lang={lang} onHover={onHover} />,
       quiz: {
-        title: lz("The Nature of the True God", "Ang Kalikasan ng Tunay na Diyos", "La Naturaleza del Verdadero Dios"),
+        title: lz(lesson08Fm.quizTitle, lesson08Fm.quizTitleTl, lesson08Fm.quizTitleEs),
         questions: [
           {
             question: lz(
@@ -880,7 +880,7 @@ export const getLessons = (
       searchContentEs: lesson09Fm.searchContentEs,
       content: <Lesson09Content lang={lang} onHover={onHover} />,
       quiz: {
-        title: lz("The Attributes of God", "Ang mga Katangian ng Diyos", "Los Atributos de Dios"),
+        title: lz(lesson09Fm.quizTitle, lesson09Fm.quizTitleTl, lesson09Fm.quizTitleEs),
         questions: [
           {
             question: lz(
@@ -966,7 +966,7 @@ export const getLessons = (
       searchContentEs: lesson10Fm.searchContentEs,
       content: <Lesson10Content lang={lang} onHover={onHover} />,
       quiz: {
-        title: lz("The Character of God", "Ang Katangian ng Diyos", "El Carácter de Dios"),
+        title: lz(lesson10Fm.quizTitle, lesson10Fm.quizTitleTl, lesson10Fm.quizTitleEs),
         questions: [
           {
             question: lz(
@@ -1022,7 +1022,7 @@ export const getLessons = (
       searchContentEs: lesson11Fm.searchContentEs,
       content: <Lesson11Content lang={lang} onHover={onHover} />,
       quiz: {
-        title: lz("The Names and Titles of God", "Ang mga Pangalan at Titulo ng Diyos", "Los Nombres y Títulos de Dios"),
+        title: lz(lesson11Fm.quizTitle, lesson11Fm.quizTitleTl, lesson11Fm.quizTitleEs),
         questions: [
           {
             question: lz(
@@ -1078,7 +1078,7 @@ export const getLessons = (
       searchContentEs: lesson12Fm.searchContentEs,
       content: <Lesson12Content lang={lang} onHover={onHover} />,
       quiz: {
-        title: lz("The Nature of Jesus Christ", "Ang Kalikasan ni Jesucristo", "La Naturaleza de Jesucristo"),
+        title: lz(lesson12Fm.quizTitle, lesson12Fm.quizTitleTl, lesson12Fm.quizTitleEs),
         questions: [
           {
             question: lz(
@@ -1149,7 +1149,7 @@ export const getLessons = (
       searchContentEs: lesson13Fm.searchContentEs,
       content: <Lesson13Content lang={lang} onHover={onHover} />,
       quiz: {
-        title: lz("The Pre-existence of Christ", "Ang Pre-existence ni Cristo", "La Preexistencia de Cristo"),
+        title: lz(lesson13Fm.quizTitle, lesson13Fm.quizTitleTl, lesson13Fm.quizTitleEs),
         questions: [
           {
             question: lz(
@@ -1235,7 +1235,7 @@ export const getLessons = (
       searchContentEs: lesson14Fm.searchContentEs,
       content: <Lesson14Content lang={lang} onHover={onHover} />,
       quiz: {
-        title: lz("The Virgin Birth of Christ", "Ang Pagkapanganak na Birhen ni Cristo", "El Nacimiento Virginal de Cristo"),
+        title: lz(lesson14Fm.quizTitle, lesson14Fm.quizTitleTl, lesson14Fm.quizTitleEs),
         questions: [
           {
             question: lz(
@@ -1392,7 +1392,7 @@ export const getLessons = (
       searchContentEs: lesson16Fm.searchContentEs,
       content: <Lesson16Content lang={lang} onHover={onHover} />,
       quiz: {
-        title: "The Ends of the Earth",
+        title: lz(lesson16Fm.quizTitle, lesson16Fm.quizTitleTl, lesson16Fm.quizTitleEs),
         questions: [
           {
             question: lz(
@@ -1446,7 +1446,7 @@ export const getLessons = (
       searchContentEs: lesson17Fm.searchContentEs,
       content: <Lesson17Content lang={lang} onHover={onHover} />,
       quiz: {
-        title: "The Authority to Preach",
+        title: lz(lesson17Fm.quizTitle, lesson17Fm.quizTitleTl, lesson17Fm.quizTitleEs),
         questions: [
           {
             question: lz(
@@ -1500,7 +1500,7 @@ export const getLessons = (
       searchContentEs: lesson18Fm.searchContentEs,
       content: <Lesson18Content lang={lang} onHover={onHover} />,
       quiz: {
-        title: "The Messenger from the Far East",
+        title: lz(lesson18Fm.quizTitle, lesson18Fm.quizTitleTl, lesson18Fm.quizTitleEs),
         questions: [
           {
             question: lz(
@@ -1571,7 +1571,7 @@ export const getLessons = (
       searchContentEs: lesson19Fm.searchContentEs,
       content: <Lesson19Content lang={lang} onHover={onHover} />,
       quiz: {
-        title: lz("True Religion", "Tunay na Relihiyon", "La Religión Verdadera"),
+        title: lz(lesson19Fm.quizTitle, lesson19Fm.quizTitleTl, lesson19Fm.quizTitleEs),
         questions: [
           {
             question: lz(
@@ -1642,7 +1642,7 @@ export const getLessons = (
       searchContentEs: lesson20Fm.searchContentEs,
       content: <Lesson20Content lang={lang} onHover={onHover} />,
       quiz: {
-        title: "The One New Man",
+        title: lz(lesson20Fm.quizTitle, lesson20Fm.quizTitleTl, lesson20Fm.quizTitleEs),
         questions: [
           {
             question: lz(
@@ -1713,7 +1713,7 @@ export const getLessons = (
       searchContentEs: lesson21Fm.searchContentEs,
       content: <Lesson21Content lang={lang} onHover={onHover} />,
       quiz: {
-        title: lz("The Last Trumpet", "Ang Huling Pakakak", "La Última Trompeta"),
+        title: lz(lesson21Fm.quizTitle, lesson21Fm.quizTitleTl, lesson21Fm.quizTitleEs),
         questions: [
           {
             question: lz(
@@ -1799,7 +1799,7 @@ export const getLessons = (
       searchContentEs: lesson22Fm.searchContentEs,
       content: <Lesson22Content lang={lang} onHover={onHover} />,
       quiz: {
-        title: lz("The Great Judgment", "Ang Dakilang Paghuhukom", "El Gran Juicio"),
+        title: lz(lesson22Fm.quizTitle, lesson22Fm.quizTitleTl, lesson22Fm.quizTitleEs),
         questions: [
           {
             question: lz(
@@ -1933,7 +1933,7 @@ export const getLessons = (
       searchContentEs: lesson23Fm.searchContentEs,
       content: <Lesson23Content lang={lang} onHover={onHover} />,
       quiz: {
-        title: lz("The Book of Deeds", "Ang Aklat ng mga Gawa", "El Libro de las Obras"),
+        title: lz(lesson23Fm.quizTitle, lesson23Fm.quizTitleTl, lesson23Fm.quizTitleEs),
         questions: [
           {
             question: lz(
@@ -2062,7 +2062,7 @@ export const getLessons = (
       searchContentEs: lesson25Fm.searchContentEs,
       content: <Lesson25Content lang={lang} onHover={onHover} />,
       quiz: {
-        title: lz("The Holy Supper", "Ang Banal na Hapunan", "La Santa Cena"),
+        title: lz(lesson25Fm.quizTitle, lesson25Fm.quizTitleTl, lesson25Fm.quizTitleEs),
         questions: [
           {
             question: lz(
@@ -2211,7 +2211,7 @@ export const getLessons = (
       searchContentEs: lesson26Fm.searchContentEs,
       content: <Lesson26Content lang={lang} onHover={onHover} />,
       quiz: {
-        title: lz("The Core Paradox", "Ang Pangunahing Paradox", "La Paradoja Central"),
+        title: lz(lesson26Fm.quizTitle, lesson26Fm.quizTitleTl, lesson26Fm.quizTitleEs),
         questions: [
           {
             question: lz(
@@ -2264,7 +2264,7 @@ export const getLessons = (
       searchContentEs: lesson27Fm.searchContentEs,
       content: <Lesson27Content lang={lang} onHover={onHover} />,
       quiz: {
-        title: lz("Parable of the Weeds", "Ang Talinghaga ng mga Pangsirang Damo", "Parábola de la Cizaña"),
+        title: lz(lesson27Fm.quizTitle, lesson27Fm.quizTitleTl, lesson27Fm.quizTitleEs),
         questions: [
           {
             question: lz(
@@ -2317,7 +2317,7 @@ export const getLessons = (
       searchContentEs: lesson28Fm.searchContentEs,
       content: <Lesson28Content lang={lang} onHover={onHover} />,
       quiz: {
-        title: lz("Total Apostasy", "Ganap na Pagtalikod", "Apostasía Total"),
+        title: lz(lesson28Fm.quizTitle, lesson28Fm.quizTitleTl, lesson28Fm.quizTitleEs),
         questions: [
           {
             question: lz(
@@ -2370,7 +2370,7 @@ export const getLessons = (
       searchContentEs: lesson29Fm.searchContentEs,
       content: <Lesson29Content lang={lang} onHover={onHover} />,
       quiz: {
-        title: lz("Doctrines of Demons", "Mga Aral ng Demonyo", "Doctrinas de Demonios"),
+        title: lz(lesson29Fm.quizTitle, lesson29Fm.quizTitleTl, lesson29Fm.quizTitleEs),
         questions: [
           {
             question: lz(
@@ -2423,7 +2423,7 @@ export const getLessons = (
       searchContentEs: lesson30Fm.searchContentEs,
       content: <Lesson30Content lang={lang} onHover={onHover} />,
       quiz: {
-        title: lz("Replacing the Foundation", "Pagpapalit sa Saligan", "Reemplazando el Fundamento"),
+        title: lz(lesson30Fm.quizTitle, lesson30Fm.quizTitleTl, lesson30Fm.quizTitleEs),
         questions: [
           {
             question: lz(
@@ -2461,7 +2461,7 @@ export const getLessons = (
       searchContentEs: lesson31Fm.searchContentEs,
       content: <Lesson31Content lang={lang} onHover={onHover} />,
       quiz: {
-        title: lz("Mother and Daughters", "Ina at mga Anak na Babae", "Madre e Hijas"),
+        title: lz(lesson31Fm.quizTitle, lesson31Fm.quizTitleTl, lesson31Fm.quizTitleEs),
         questions: [
           {
             question: lz(
@@ -2514,7 +2514,7 @@ export const getLessons = (
       searchContentEs: lesson32Fm.searchContentEs,
       content: <Lesson32Content lang={lang} onHover={onHover} />,
       quiz: {
-        title: lz("The Historical Map", "Ang Mapang Pangkasaysayan", "El Mapa Histórico"),
+        title: lz(lesson32Fm.quizTitle, lesson32Fm.quizTitleTl, lesson32Fm.quizTitleEs),
         questions: [
           {
             question: lz(
@@ -2567,7 +2567,7 @@ export const getLessons = (
       searchContentEs: lesson33Fm.searchContentEs,
       content: <Lesson33Content lang={lang} onHover={onHover} />,
       quiz: {
-        title: lz("The Eternal Covenant", "Ang Walang Hanggang Tipan", "El Pacto Eterno"),
+        title: lz(lesson33Fm.quizTitle, lesson33Fm.quizTitleTl, lesson33Fm.quizTitleEs),
         questions: [
           {
             question: lz(
@@ -2620,7 +2620,7 @@ export const getLessons = (
       searchContentEs: lesson34Fm.searchContentEs,
       content: <Lesson34Content lang={lang} onHover={onHover} />,
       quiz: {
-        title: lz("The Salvation Paradox", "Ang Paradox ng Kaligtasan", "La Paradoja de la Salvación"),
+        title: lz(lesson34Fm.quizTitle, lesson34Fm.quizTitleTl, lesson34Fm.quizTitleEs),
         questions: [
           {
             question: lz(
@@ -2724,7 +2724,7 @@ export const getLessons = (
       searchContentEs: lesson35Fm.searchContentEs,
       content: <Lesson35Content lang={lang} onHover={onHover} />,
       quiz: {
-        title: lz("The Seed of Abraham", "Ang Binhi ni Abraham", "La Simiente de Abraham"),
+        title: lz(lesson35Fm.quizTitle, lesson35Fm.quizTitleTl, lesson35Fm.quizTitleEs),
         questions: [
           {
             question: lz(
@@ -2810,7 +2810,7 @@ export const getLessons = (
       searchContentEs: lesson36Fm.searchContentEs,
       content: <Lesson36Content lang={lang} onHover={onHover} />,
       quiz: {
-        title: lz("Being Born Again", "Ang Muling Pagkapanganak", "Nacer de Nuevo"),
+        title: lz(lesson36Fm.quizTitle, lesson36Fm.quizTitleTl, lesson36Fm.quizTitleEs),
         questions: [
           {
             question: lz(
@@ -2896,7 +2896,7 @@ export const getLessons = (
       searchContentEs: lesson37Fm.searchContentEs,
       content: <Lesson37Content lang={lang} onHover={onHover} />,
       quiz: {
-        title: lz("The Parable of the Sower", "Ang Talinghaga ng Tagapaghasik", "La Parábola del Sembrador"),
+        title: lz(lesson37Fm.quizTitle, lesson37Fm.quizTitleTl, lesson37Fm.quizTitleEs),
         questions: [
           {
             question: lz(
@@ -2967,7 +2967,7 @@ export const getLessons = (
       searchContentEs: lesson38Fm.searchContentEs,
       content: <Lesson38Content lang={lang} onHover={onHover} />,
       quiz: {
-        title: lz("The Legal Necessity", "Ang Legal na Pangangailangan", "La Necesidad Legal"),
+        title: lz(lesson38Fm.quizTitle, lesson38Fm.quizTitleTl, lesson38Fm.quizTitleEs),
         questions: [
           {
             question: lz(
@@ -3053,7 +3053,7 @@ export const getLessons = (
       searchContentEs: lesson39Fm.searchContentEs,
       content: <Lesson39Content lang={lang} onHover={onHover} />,
       quiz: {
-        title: lz("The Final Call", "Ang Huling Tawag", "El Último Llamado"),
+        title: lz(lesson39Fm.quizTitle, lesson39Fm.quizTitleTl, lesson39Fm.quizTitleEs),
         questions: [
           {
             question: lz(
@@ -3139,7 +3139,7 @@ export const getLessons = (
       searchContentEs: lesson40Fm.searchContentEs,
       content: <Lesson40Content lang={lang} onHover={onHover} />,
       quiz: {
-        title: lz("The New Covenant", "Ang Bagong Tipan", "El Nuevo Pacto"),
+        title: lz(lesson40Fm.quizTitle, lesson40Fm.quizTitleTl, lesson40Fm.quizTitleEs),
         questions: [
           {
             question: lz(
@@ -3225,7 +3225,7 @@ export const getLessons = (
       searchContentEs: lesson41Fm.searchContentEs,
       content: <Lesson41Content lang={lang} onHover={onHover} />,
       quiz: {
-        title: "The Elect of God",
+        title: lz(lesson41Fm.quizTitle, lesson41Fm.quizTitleTl, lesson41Fm.quizTitleEs),
         questions: [
           {
             question: lz(
@@ -3315,7 +3315,7 @@ export const getLessons = (
       searchContentEs: lesson42Fm.searchContentEs,
       content: <Lesson42Content lang={lang} onHover={onHover} />,
       quiz: {
-        title: lz("The Foreknowledge of God", "Ang Paunang Kaalaman ng Diyos", "El Preconocimiento de Dios"),
+        title: lz(lesson42Fm.quizTitle, lesson42Fm.quizTitleTl, lesson42Fm.quizTitleEs),
         questions: [
           {
             question: lz(
@@ -3401,7 +3401,7 @@ export const getLessons = (
       searchContentEs: lesson43Fm.searchContentEs,
       content: <Lesson43Content lang={lang} onHover={onHover} />,
       quiz: {
-        title: lz("The Called Out Assembly", "Ang Tinawag na Kapulungan", "La Asamblea Llamada"),
+        title: lz(lesson43Fm.quizTitle, lesson43Fm.quizTitleTl, lesson43Fm.quizTitleEs),
         questions: [
           {
             question: lz(
@@ -3487,7 +3487,7 @@ export const getLessons = (
       searchContentEs: lesson44Fm.searchContentEs,
       content: <Lesson44Content lang={lang} onHover={onHover} />,
       quiz: {
-        title: lz("The Mystery of the One New Man", "Ang Misteryo ng Isang Bagong Tao", "El Misterio del Solo y Nuevo Hombre"),
+        title: lz(lesson44Fm.quizTitle, lesson44Fm.quizTitleTl, lesson44Fm.quizTitleEs),
         questions: [
           {
             question: lz(
@@ -3573,7 +3573,7 @@ export const getLessons = (
       searchContentEs: lesson45Fm.searchContentEs,
       content: <Lesson45Content lang={lang} onHover={onHover} />,
       quiz: {
-        title: lz("Christ the Head, Church the Body", "Cristo ang Ulo, Iglesia ang Katawan", "Cristo la Cabeza, la Iglesia el Cuerpo"),
+        title: lz(lesson45Fm.quizTitle, lesson45Fm.quizTitleTl, lesson45Fm.quizTitleEs),
         questions: [
           {
             question: lz(
@@ -3659,7 +3659,7 @@ export const getLessons = (
       searchContentEs: lesson46Fm.searchContentEs,
       content: <Lesson46Content lang={lang} onHover={onHover} />,
       quiz: {
-        title: lz("The Fullness of the One New Man", "Ang Kabuuan ng Isang Bagong Tao", "La Plenitud del Solo y Nuevo Hombre"),
+        title: lz(lesson46Fm.quizTitle, lesson46Fm.quizTitleTl, lesson46Fm.quizTitleEs),
         questions: [
           {
             question: lz(

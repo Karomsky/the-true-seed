@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'motion/react';
 import { ArrowLeft, Trash2, Mail, User, Clock, ShieldCheck, LogIn, AlertCircle, RefreshCw, Globe } from 'lucide-react';
+import { getLessons } from './data/lessons';
+
+const TOTAL_LESSONS = getLessons('en', () => {}).length;
 
 interface Inquiry {
     id: number;
@@ -333,13 +336,13 @@ export default function AdminDashboard({ onBack }: { onBack: () => void }) {
                                                     <td className="px-6 py-4">
                                                         <div className="flex items-center gap-3">
                                                             <div className="flex-1 h-2 bg-gray-100 rounded-full overflow-hidden max-w-[100px]">
-                                                                <div className="h-full bg-brand-gold" style={{ width: `${Math.min(100, (up.completedCount / 39) * 100)}%` }} />
+                                                                <div className="h-full bg-brand-gold" style={{ width: `${Math.min(100, (up.completedCount / TOTAL_LESSONS) * 100)}%` }} />
                                                             </div>
-                                                            <span className="text-xs font-bold text-gray-600">{up.completedCount}/39</span>
+                                                            <span className="text-xs font-bold text-gray-600">{up.completedCount}/{TOTAL_LESSONS}</span>
                                                         </div>
                                                     </td>
                                                     <td className="px-6 py-4">
-                                                        {up.completedCount >= 39 ? (
+                                                        {up.completedCount >= TOTAL_LESSONS ? (
                                                             <span className="px-2 py-1 bg-green-100 text-green-700 rounded-md text-[10px] font-bold uppercase tracking-wider">Graduate</span>
                                                         ) : (
                                                             <span className="px-2 py-1 bg-blue-100 text-blue-700 rounded-md text-[10px] font-bold uppercase tracking-wider">Active</span>

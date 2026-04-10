@@ -25,7 +25,7 @@ import {
   ArrowRight,
   Share2
 } from 'lucide-react';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence, useScroll, useTransform } from 'motion/react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
@@ -284,6 +284,10 @@ export default function App() {
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [scrolled, setScrolled] = useState(false);
   const [scrollTarget, setScrollTarget] = useState<string | null>(null);
+
+  const { scrollY } = useScroll();
+  const backgroundY = useTransform(scrollY, [0, 1000], [0, 300]);
+  const textY = useTransform(scrollY, [0, 1000], [0, 150]);
 
   // PWA update notification
   const { needRefresh: [needRefresh], updateServiceWorker } = useRegisterSW({
@@ -662,38 +666,49 @@ export default function App() {
           </nav>
 
           {/* Hero Section */}
-          <header id="home" className="relative bg-brand-dark min-h-screen flex items-center overflow-hidden pt-20">
-            <div className="spire-bg"></div>
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-4xl bg-brand-gold/5 rounded-full blur-3xl pointer-events-none"></div>
+          <header id="home" className="relative bg-brand-dark min-h-screen flex items-center justify-center overflow-hidden pt-20">
+            {/* Animated Background */}
+            <div className="absolute inset-0 z-0">
+               <div className="absolute top-0 -left-10 md:-left-20 w-72 md:w-96 h-72 md:h-96 bg-brand-gold/20 rounded-full mix-blend-screen filter blur-[100px] opacity-70 animate-blob"></div>
+               <div className="absolute top-0 -right-10 w-72 md:w-96 h-72 md:h-96 bg-brand-blue/40 rounded-full mix-blend-screen filter blur-[100px] opacity-70 animate-blob animation-delay-2000"></div>
+               <div className="absolute -bottom-20 left-20 w-72 md:w-96 h-72 md:h-96 bg-purple-900/20 rounded-full mix-blend-screen filter blur-[100px] opacity-70 animate-blob animation-delay-4000"></div>
+            </div>
 
-            <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
-              <motion.span
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="text-brand-gold font-semibold tracking-[0.2em] uppercase mb-4 text-sm md:text-base border-b border-brand-gold/30 pb-2"
+            {/* Parallax elements */}
+            <motion.div 
+               style={{ y: backgroundY }}
+               className="spire-bg absolute inset-0 z-0 opacity-10 parallax-bg" 
+            ></motion.div>
+
+            <motion.div style={{ y: textY }} className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center mt-10">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                className="mb-8"
               >
-                {hpT.hero_subtitle}
-              </motion.span>
+                <span className="glass-card px-6 py-2 rounded-full text-brand-gold font-bold tracking-[0.2em] uppercase text-xs md:text-sm shadow-xl inline-block mt-4">
+                  {hpT.hero_subtitle}
+                </span>
+              </motion.div>
+
               <motion.h1
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.1 }}
-                className="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-8 max-w-5xl font-serif"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2, duration: 0.8, ease: "easeOut" }}
+                className="text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-tight mb-8 max-w-6xl font-serif drop-shadow-2xl"
               >
                 {hpT.hero_title_1} <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-gold to-yellow-200 italic font-normal">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-gold via-yellow-200 to-brand-gold animate-gradient-x italic font-normal">
                   {hpT.hero_title_2}
                 </span>
               </motion.h1>
 
               <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2 }}
-                className="mt-4 max-w-3xl text-lg md:text-xl text-gray-300 leading-relaxed mb-10"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4, duration: 0.8, ease: "easeOut" }}
+                className="mt-4 max-w-3xl text-lg md:text-2xl text-gray-300 leading-relaxed mb-12 glass-card p-6 md:p-8 rounded-3xl"
               >
                 {lang === 'tl' ? (
                   <>
@@ -710,18 +725,33 @@ export default function App() {
                 )}
               </motion.p>
 
-              <motion.a
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.3 }}
-                href="#theology"
-                className="inline-flex items-center justify-center px-10 py-4 text-base font-bold text-brand-dark bg-brand-gold hover:bg-yellow-400 rounded-full shadow-gold transition-all transform hover:-translate-y-1 uppercase tracking-widest btn-glow"
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6, duration: 0.8, ease: "easeOut" }}
+                className="flex flex-col sm:flex-row gap-6 relative"
               >
-                {hpT.hero_cta}
-                <ArrowDown className="ml-2 h-5 w-5 animate-bounce" />
-              </motion.a>
-            </div>
+                <div className="absolute inset-0 bg-brand-gold/20 blur-2xl rounded-full scale-150 animate-pulse"></div>
+                <a
+                  href="#theology"
+                  className="relative px-10 py-5 text-sm md:text-base font-bold text-brand-dark bg-gradient-to-r from-brand-gold to-yellow-400 hover:to-yellow-300 rounded-full shadow-[0_0_40px_rgba(212,175,55,0.4)] transition-all transform hover:-translate-y-1 hover:scale-105 uppercase tracking-widest flex items-center gap-3 overflow-hidden group"
+                >
+                  <span className="absolute w-0 h-0 transition-all duration-500 ease-out bg-white rounded-full group-hover:w-56 group-hover:h-56 opacity-10"></span>
+                  <span className="relative">{hpT.hero_cta}</span>
+                  <ArrowDown className="relative h-5 w-5 animate-bounce" />
+                </a>
+              </motion.div>
+            </motion.div>
+            
+            {/* Scroll indicator connecting to theology */}
+            <motion.div 
+               initial={{ opacity: 0 }}
+               animate={{ opacity: 1 }}
+               transition={{ delay: 1.5, duration: 1 }}
+               className="absolute bottom-0 left-1/2 transform -translate-x-1/2 flex flex-col items-center"
+            >
+              <div className="w-[1px] h-24 bg-gradient-to-b from-brand-gold/80 to-transparent animate-pulse"></div>
+            </motion.div>
           </header>
 
           {/* Theology Section */}
