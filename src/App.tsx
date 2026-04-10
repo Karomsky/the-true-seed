@@ -280,6 +280,7 @@ export default function App() {
   const [activeTimelineIndex, setActiveTimelineIndex] = useState(0);
   const [tooltip, setTooltip] = useState<{ verse: string | null; x: number; y: number }>({ verse: null, x: 0, y: 0 });
   const [studyConfig, setStudyConfig] = useState<{ category?: string; lessonId?: number; fromSection?: string }>({});
+  const [baptismConfig, setBaptismConfig] = useState<{ fromSection?: string }>({});
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [scrolled, setScrolled] = useState(false);
   const [scrollTarget, setScrollTarget] = useState<string | null>(null);
@@ -392,6 +393,12 @@ export default function App() {
     window.scrollTo(0, 0);
   };
 
+  const openBaptism = (fromSection?: string) => {
+    setBaptismConfig({ fromSection });
+    setView('baptism');
+    window.scrollTo(0, 0);
+  };
+
   const handleBackToHome = (targetId?: string) => {
     setView('home');
     if (targetId) {
@@ -479,7 +486,7 @@ export default function App() {
           fromSection={studyConfig.fromSection}
         />
       ) : view === 'baptism' ? (
-        <BaptismPage lang={lang} onBack={handleBackToHome} onHover={handleHover} />
+        <BaptismPage lang={lang} onBack={(targetId) => handleBackToHome(targetId || baptismConfig.fromSection)} onHover={handleHover} />
       ) : view === 'admin' ? (
         <AdminDashboard onBack={handleBackToHome} />
       ) : (
@@ -517,7 +524,7 @@ export default function App() {
                     )}
                   </button>
                   <button
-                    onClick={() => setView('baptism')}
+                    onClick={() => openBaptism()}
                     className="text-white/80 hover:text-brand-gold transition-colors text-xs font-bold uppercase tracking-widest"
                   >
                     {hpT.nav_join}
@@ -605,7 +612,7 @@ export default function App() {
                     </button>
                     <button
                       onClick={() => {
-                        setView('baptism');
+                        openBaptism();
                         setIsMenuOpen(false);
                       }}
                       className="w-full text-left block px-3 py-2 text-white hover:text-brand-gold text-base font-medium"
@@ -1188,7 +1195,7 @@ export default function App() {
                     <motion.button
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      onClick={() => setView('baptism')}
+                      onClick={() => openBaptism('membership')}
                       className="inline-flex items-center gap-2 bg-brand-blue text-white px-8 py-3 rounded-full font-bold uppercase tracking-widest shadow-lg hover:bg-brand-dark transition-colors btn-glow"
                     >
                       {lang === 'tl' ? "Alamin ang Tungkol sa Bautismo" : (lang === 'es' ? "Aprende Sobre el Bautismo" : "Learn About Baptism")}
@@ -1275,7 +1282,7 @@ export default function App() {
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  onClick={() => setView('baptism')}
+                  onClick={() => openBaptism('redemption-path')}
                   className="px-10 py-4 bg-brand-blue text-white rounded-full font-bold uppercase tracking-widest shadow-xl hover:bg-brand-dark transition-all flex items-center gap-3 mx-auto btn-glow"
                 >
                   {lang === 'tl' ? "Simulan ang Iyong Paglalakbay" : (lang === 'es' ? "Comienza Tu Viaje" : "Begin Your Journey")}
@@ -1494,7 +1501,7 @@ export default function App() {
                   <h4 className="text-brand-gold font-bold uppercase tracking-widest mb-6">{lang === 'tl' ? "Mga Sanggunian" : (lang === 'es' ? "Recursos" : "Resources")}</h4>
                   <ul className="space-y-4 text-sm text-gray-400">
                     <li><button onClick={() => openStudy()} className="hover:text-brand-gold transition-colors">{hpT.nav_study}</button></li>
-                    <li><button onClick={() => setView('baptism')} className="hover:text-brand-gold transition-colors">{hpT.nav_join}</button></li>
+                    <li><button onClick={() => openBaptism()} className="hover:text-brand-gold transition-colors">{hpT.nav_join}</button></li>
                   </ul>
                 </div>
               </div>
