@@ -255,8 +255,6 @@ export async function createServer() {
 
         // 2. Send "Thank You" Email to Student (if email provided)
         if (student_email) {
-          const isOutsidePH = country && !['philippines', 'ph', 'pilipinas'].includes(country.toLowerCase().trim());
-          
           await transporter.sendMail({
             from: `"The True Seed" <${smtpUser}>`,
             to: student_email,
@@ -267,22 +265,12 @@ export async function createServer() {
                 <p>Dear ${full_name || 'Student'},</p>
                 <p>Congratulations on completing your <strong>Reality Check</strong> challenge. Your dedication to seeking the truth is a blessing.</p>
                 
-                ${isOutsidePH ? `
-                  <p>If you feel moved to support our efforts in translation and hosting, you may do so via bank transfer:</p>
-                  
-                  <div style="background: #f8f9fa; border: 1px solid #e9ecef; padding: 25px; border-radius: 15px; margin: 30px 0;">
-                    <h3 style="color: #1e3a8a; margin-top: 0; font-size: 16px; text-transform: uppercase;">Bank Transfer Details</h3>
-                    <p style="margin: 5px 0;"><strong>Bank Name:</strong> BDO Unibank (USD Account)</p>
-                    <p style="margin: 5px 0;"><strong>Account Holder:</strong> ROMEO V ALVAREZ</p>
-                    <p style="margin: 5px 0;"><strong>Account Number:</strong> 1089 4004 7724</p>
-                    <p style="margin: 5px 0;"><strong>SWIFT Code:</strong> BNORPHMM</p>
-                    <p style="font-size: 12px; color: #666; margin-top: 15px;"><em>Please use "True Seed Support" as the reference.</em></p>
-                  </div>
-
-                  <p style="font-size: 14px; line-height: 1.6; color: #444;">
-                    Every contribution, no matter the size, ensures that the True Word continues to reach seekers across the ends of the earth.
-                  </p>
-                ` : ''}
+                <p style="font-size: 16px; line-height: 1.6; color: #444; margin-top: 20px;">
+                  May the Truth you have discovered bear abundant fruit in your life. We are profoundly moved by your commitment to complete this journey and to undergo this Reality Check in person. Never stop holding fast to the genuine Word of God, for it is this very truth that leads to eternal life.
+                </p>
+                <p style="font-size: 16px; line-height: 1.6; color: #444;">
+                  Our prayers are with you as you take your next steps in faith. May God bless you continually.
+                </p>
                 
                 <p style="margin-top: 40px; border-top: 1px solid #eee; padding-top: 20px; font-size: 12px; color: #999; text-align: center;">
                   The True Seed Administration
