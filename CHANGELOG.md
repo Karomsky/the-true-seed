@@ -5,6 +5,10 @@ All notable changes to the *The True Seed* platform will be documented in this f
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.3.6] - 2026-04-10
+### Added
+- Added localized Spanish (ES) Google Drive links for all remaining study guides in the Study Center categories (The Bible, The True God, Jesus Christ, Salvation, Judgement Day, False Churches, The True Church, Eternal Covenant, Election, and One New Man).
+
 ## [0.3.5] - 2026-04-07
 ### Changed
 - Renamed Module 20 from "The One New Man" (mistranslated as "The Lonely and New Man" in some contexts) to "The Logic of Atonement".
