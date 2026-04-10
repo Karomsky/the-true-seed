@@ -1178,6 +1178,17 @@ export default function App() {
                       </motion.div>
                     ))}
                   </div>
+
+                  <div className="mt-12 lg:hidden flex z-10 relative pl-[5.5rem]">
+                    <motion.a
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      href="#contact"
+                      className="inline-flex items-center gap-2 bg-white border-2 border-brand-blue text-brand-blue px-6 py-3 rounded-full font-bold uppercase tracking-widest shadow-md hover:bg-gray-50 transition-colors btn-glow text-sm md:text-base"
+                    >
+                      {lang === 'tl' ? "Makipag-ugnayan sa Ministro" : (lang === 'es' ? "Contactar a un Ministro" : "Contact a Minister")}
+                    </motion.a>
+                  </div>
                 </div>
 
                 <div className="order-1 lg:order-2">
@@ -1205,7 +1216,7 @@ export default function App() {
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       href="#contact"
-                      className="inline-flex items-center gap-2 bg-white border-2 border-brand-blue text-brand-blue px-8 py-3 rounded-full font-bold uppercase tracking-widest shadow-md hover:bg-gray-50 transition-colors btn-glow"
+                      className="hidden lg:inline-flex items-center gap-2 bg-white border-2 border-brand-blue text-brand-blue px-8 py-3 rounded-full font-bold uppercase tracking-widest shadow-md hover:bg-gray-50 transition-colors btn-glow"
                     >
                       {lang === 'tl' ? "Makipag-ugnayan sa Ministro" : (lang === 'es' ? "Contactar a un Ministro" : "Contact a Minister")}
                     </motion.a>
