@@ -27,8 +27,42 @@ interface AppState {
 export const useAppStore = create<AppState>()(
     persist(
         (set, get) => ({
-            lang: 'en',
-            setLang: (lang) => set({ lang }),
+            lang: (() => {
+                if (typeof window !== 'undefined') {
+                    const path = window.location.pathname;
+                    if (path.startsWith('/es')) return 'es';
+                    if (path.startsWith('/tl')) return 'tl';
+                    if (path.startsWith('/en')) return 'en';
+                }
+                return 'en';
+            })(),
+            setLang: (lang) => {
+                if (typeof window !== 'undefined') {
+                    const currentPath = window.location.pathname;
+                    const hash = window.location.hash;
+                    const search = window.location.search;
+                    
+                    let newPath = currentPath;
+                    if (currentPath.match(/^\/(en|es|tl)(\/|$)/)) {
+                        newPath = currentPath.replace(/^\/(en|es|tl)/, `/${lang}`);
+                    } else if (lang !== 'en') {
+                        // Assuming root path, prepend language
+                        newPath = `/${lang}${currentPath === '/' ? '' : currentPath}`;
+                    } else if (lang === 'en' && currentPath !== '/') {
+                        // For 'en', we can either use /en or just root. Let's use /en for consistency 
+                        // if they switch, or keep root. Let's just use /en.
+                        newPath = `/en${currentPath === '/' ? '' : currentPath}`;
+                    } else if (lang === 'en' && currentPath === '/') {
+                        newPath = '/en';
+                    }
+
+                    // Only push if it's different to prevent loops
+                    if (newPath !== currentPath) {
+                        window.history.pushState({}, '', `${newPath}${search}${hash}`);
+                    }
+                }
+                set({ lang });
+            },
             completedLessons: [],
             bookmarkedLessons: [],
             fullName: localStorage.getItem('graduate_name') || '',
